@@ -1,0 +1,47 @@
+project:
+  type: "website"
+  title: "Research Software Engineering Summer School"
+  render:
+    - "index.qmd"
+    - "2023/*.qmd"
+
+website:
+  title: "Research Software Engineering Summer School"
+  page-navigation: true
+  reader-mode: true
+  open-graph: true
+  search:
+    location: navbar
+    type: textbox
+  sidebar:
+    style: docked
+    contents:
+      - href: index.qmd
+        text: "🏠 Home"
+      - href: schedule.qmd
+        text: "📓 Schedule"
+      - href: teaching.qmd
+        text: "📟 Teacher"
+      - href: application.qmd
+        text: "✍️ Apply Now"
+
+  navbar:
+    background: primary
+  page-footer:
+    background: light
+    left: "CC-By Benedikt Ehinger" 
+
+
+
+format:
+  html:
+    email-obfuscation: javascript
+    link-external-newwindow: true
+    link-external-icon: true
+
+    theme:
+      light: 
+        - journal
+        - styles.scss # I use this just to change the default colour
+
+    toc: true

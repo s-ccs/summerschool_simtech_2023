@@ -1,0 +1,35 @@
+---
+title: "Research Software Engineering with Julia: Basics, Visualization, and Statistics"
+---
+
+# 📑 Course Brief
+
+**Focus:** Nearly all scientists are writing **research software** for their analyses - but most do not have any training for it. We will teach the basics of such **research software engineering**, of visualization and statistics in JuliaLang - a scientific programming language.
+
+**How:** A healthy mix of keynotes from invited lecturers and hands-on sessions.
+
+# 🎯 Learning Objectives
+- Learn the basics of the scientific programming language Julia
+- From git to continuous integration: Reearch Software Engineering, with and without Julia
+- How to generate complex multipanel vizualizations and use interactive plots efficiently
+
+
+# 💶 Costs
+- 50€ course fee, including lunch + dinner 
+- You have to pay for Hotel + Travel + Breakfast
+
+
+# 💬 Typical questions that will be answered
+- How can I use git beyond "git clone" and "rm * + git clone"?
+- What is continuous integration - and why should I care as a researcher?
+- How do I use unit-testing?
+- What kinds of documentation should I write?
+- Why are these skills that will boost my reproducibility in my projects?
+- Why is Julia so great for RSE?
+- How can I run quick interactive visualizations?
+- Is bootstrapping really all I need to know for statistics?
+
+
+
+# Abstract
+Development of software has become an important part of research projects in many areas of science and engineering. In this week-long summer school, we will therefore acquaint you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research.  Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty.

@@ -1,0 +1,11 @@
+Doug Bates - Julia, Statistics, Optimization
+
+Hendrik - Julia, RSE, Optimization
+
+?? - Julia, Statistics
+
+Marco Oesting - Statistics
+
+Benjamin Ueckerman - RSE
+
+Benedikt Ehinger - Julia, Visualization, RSE
