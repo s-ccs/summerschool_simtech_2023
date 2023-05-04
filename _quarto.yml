@@ -1,9 +1,7 @@
 project:
   type: "website"
   title: "Research Software Engineering Summer School"
-  render:
-    - "index.qmd"
-    - "2023/*.qmd"
+
 
 website:
   title: "Research Software Engineering Summer School"
