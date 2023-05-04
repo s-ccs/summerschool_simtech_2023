@@ -1,3 +1,7 @@
+---
+title: "Schedule"
+---
+
 |       | Sunday  | Monday                | Tuesday            | Wednesday                   | Thursday                                  | Friday                          |
 |-------|---------|-----------------------|--------------------|-----------------------------|-------------------------------------------|---------------------------------|
 | 9.00  | Arrival | Basic RSE             | Gentle Julia Intro | Visualization with Makie.jl | Resampling: Bootstrap & Permutation tests | Excourse: Optimization in Julia |
