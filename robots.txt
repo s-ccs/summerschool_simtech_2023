@@ -1,1 +1,1 @@
-Sitemap: https://s-ccs.github.io/summerschool_simtech_2023/sitemap.xml
+Sitemap: https://github.com/s-ccs/summerschool_simtech_2023/sitemap.xml
