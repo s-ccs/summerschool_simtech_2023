@@ -19,7 +19,7 @@ website:
       - href: schedule.qmd
         text: "📓 Schedule"
       - href: teaching.qmd
-        text: "📟 Teacher"
+        text: "📟 Teachers"
       - href: application.qmd
         text: "✍️ Apply Now"
 
