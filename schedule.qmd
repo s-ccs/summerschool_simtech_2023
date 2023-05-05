@@ -6,14 +6,14 @@ title: "Schedule"
 |----------|----------|----------|----------|----------|-----------|----------|
 | Topic-of-the-day | Arrival          | Basics of RSE and Julia | Julia+RSE         | Vis + Interactivity + Stats | Stats II + Projects                       | Optimization + Project          |
 |                  |                  |                         |                   |                             |                                           |                                 |
-| 9.00             |                  | Basic RSE               | First own package | Visualization with Makie.jl | Resampling: Bootstrap & Permutation tests | Excourse: Optimization in Julia |
-| 10.00            |                  |                         |                   |                             |                                           | Project Work                    |
-| 11.00            |                  |                         |                   | AlgebraOfGraphics.jl        |                                           | Project Work                    |
+| 9.00             |                  |                         | First own package | Visualization with Makie.jl | Resampling: Bootstrap & Permutation tests | Excourse: Optimization in Julia |
+| 10.00            |                  | What and Why RSE?       |                   |                             |                                           | Project Work                    |
+| 11.00            |                  | Advanced Git            |                   | AlgebraOfGraphics.jl        |                                           | Project Work                    |
 | 12.00            |                  |                         |                   |                             |                                           |                                 |
 | 13.00            |                  | Lunch                   | Lunch             | Lunch                       | Lunch                                     | Lunch                           |
 | 14.00            |                  | Why Julia?              |                   |                             | Project Work??                            | Project Work                    |
 | 15.00            |                  | First Steps             |                   | Statistics in Julia         | Project Work                              | Project Work                    |
-| 16.00            |                  |                         |                   |                             | Project Work                              |                                 |
+| 16.00            |                  | GitHub Actions          |                   |                             | Project Work                              |                                 |
 | 17.00            |                  |                         |                   | Tables.jl / Arrow.jl??      |                                           | Farewell                        |
 | 18.00            |                  |                         |                   |                             |                                           |                                 |
 | 19.00            | Pre-Get-together | Welcome-BBQ \@ SimTech  | Social1           | Social2                     | Social3                                   |                                 |
