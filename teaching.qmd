@@ -2,14 +2,18 @@
 title: "Teachers"
 ---
 
-Doug Bates - Julia, Statistics, Optimization
+## Invited Speakers
 
-Hendrik - Julia, RSE, Optimization
+[Doug Bates](https://github.com/dmbates) - Julia, Statistics, Optimization
+
+[Hendrik Ranocha](https://ranocha.de) - Julia, RSE, Optimization
 
 ?? - Julia, Statistics
 
-Marco Oesting - Statistics
+## Organizers and Teachers
 
-Benjamin Ueckerman - RSE
+[Marco Oesting](https://www.isa.uni-stuttgart.de/computational-statistics/) - Statistics
 
-Benedikt Ehinger - Julia, Visualization, RSE
+[Benjamin Uekermann](https://github.com/uekerman) - RSE
+
+[Benedikt Ehinger](https://www.s-ccs.de/) - Julia, Visualization, RSE
