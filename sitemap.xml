@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/s-ccs/summerschool_simtech_2023/teaching.html</loc>
-    <lastmod>2023-05-05T15:13:59.541Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/application.html</loc>
-    <lastmod>2023-05-05T15:14:00.329Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/s-ccs/summerschool_simtech_2023/schedule.html</loc>
-    <lastmod>2023-05-05T15:14:00.757Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/s-ccs/summerschool_simtech_2023/about.html</loc>
-    <lastmod>2023-05-05T15:14:01.105Z</lastmod>
+    <lastmod>2023-05-29T19:11:38.897Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/index.html</loc>
-    <lastmod>2023-05-05T15:14:01.569Z</lastmod>
+    <lastmod>2023-05-29T19:11:39.593Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/s-ccs/summerschool_simtech_2023/schedule.html</loc>
+    <lastmod>2023-05-29T19:11:39.953Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/s-ccs/summerschool_simtech_2023/teaching.html</loc>
+    <lastmod>2023-05-29T19:11:40.241Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/s-ccs/summerschool_simtech_2023/about.html</loc>
+    <lastmod>2023-05-29T19:11:40.501Z</lastmod>
   </url>
 </urlset>

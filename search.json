@@ -1,31 +1,17 @@
 [
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teachers",
-    "section": "",
-    "text": "Doug Bates - Julia, Statistics, Optimization\nHendrik Ranocha - Julia, RSE, Optimization\n?? - Julia, Statistics"
-  },
-  {
-    "objectID": "teaching.html#invited-speakers",
-    "href": "teaching.html#invited-speakers",
-    "title": "Teachers",
-    "section": "",
-    "text": "Doug Bates - Julia, Statistics, Optimization\nHendrik Ranocha - Julia, RSE, Optimization\n?? - Julia, Statistics"
-  },
-  {
-    "objectID": "teaching.html#organizers-and-teachers",
-    "href": "teaching.html#organizers-and-teachers",
-    "title": "Teachers",
-    "section": "Organizers and Teachers",
-    "text": "Organizers and Teachers\nMarco Oesting - Statistics\nBenjamin Uekermann - RSE\nBenedikt Ehinger - Julia, Visualization, RSE"
-  },
-  {
     "objectID": "application.html",
     "href": "application.html",
     "title": "Applications",
     "section": "",
     "text": "Apply here at XYZ"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
+    "section": "",
+    "text": "📑 Course Brief\nNearly all scientists are writing research software for their analyses - but most did not receive any training for it. We will teach the basics of such research software engineering, of visualization and statistics in JuliaLang - a scientific programming language.\n\n\n\n\n\n\nWe will have a healthy mix of keynotes from invited lecturers and hands-on sessions.\n\n\n\n\n\n🎯 Learning Objectives\n\nLearn the basics of the scientific programming language Julia\nFrom git to continuous integration: Reearch Software Engineering, with and without Julia\nHow to generate complex multipanel vizualizations and use interactive plots efficiently\n\n\n\n💶 Costs\n\n150€ course fee, including lunch + dinner\nYou have to pay for Hotel + Travel + Breakfast\n\n\n\n💬 Typical questions that will be answered\n\nHow can I use git beyond “git clone” and “rm * + git clone”?\nWhat is continuous integration - and why should I care as a researcher?\nHow do I use unit-testing?\nWhat kinds of documentation should I write?\nWhy are these skills that will boost my reproducibility in my projects?\nWhy is Julia so great for RSE?\nHow can I run quick interactive visualizations?\nIs bootstrapping really all I need to know for statistics?\n\n\n\nAbstract\nDevelopment of software has become an important part of research projects in many areas of science and engineering. In this week-long summer school, we will therefore acquaint you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research. Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty."
   },
   {
     "objectID": "schedule.html",
@@ -35,17 +21,31 @@
     "text": "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\nTopic-of-the-day\nArrival\nBasics of RSE and Julia\nJulia+RSE\nVis + Interactivity + Stats\nStats II + Projects\nOptimization + Project\n\n\n\n\n\n\n\n\n\n\n\n9.00\n\n\nFirst own package\nVisualization with Makie.jl\nResampling: Bootstrap & Permutation tests\nExcourse: Optimization in Julia\n\n\n10.00\n\nWhat and Why RSE?\n\n\n\nProject Work\n\n\n11.00\n\nAdvanced Git\n\nAlgebraOfGraphics.jl\n\nProject Work\n\n\n12.00\n\n\n\n\n\n\n\n\n13.00\n\nLunch\nLunch\nLunch\nLunch\nLunch\n\n\n14.00\n\nWhy Julia?\n\n\nProject Work??\nProject Work\n\n\n15.00\n\nFirst Steps\n\nStatistics in Julia\nProject Work\nProject Work\n\n\n16.00\n\nGitHub Actions\n\n\nProject Work\n\n\n\n17.00\n\n\n\nTables.jl / Arrow.jl??\n\nFarewell\n\n\n18.00\n\n\n\n\n\n\n\n\n19.00\nPre-Get-together\nWelcome-BBQ @ SimTech\nSocial1\nSocial2\nSocial3"
   },
   {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teachers",
+    "section": "",
+    "text": "Prof. Lisa DeBruine - Julia, Statistics, Simulation\nProf. Doug Bates - Julia, Statistics, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
+  },
+  {
+    "objectID": "teaching.html#invited-speakers",
+    "href": "teaching.html#invited-speakers",
+    "title": "Teachers",
+    "section": "",
+    "text": "Prof. Lisa DeBruine - Julia, Statistics, Simulation\nProf. Doug Bates - Julia, Statistics, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
+  },
+  {
+    "objectID": "teaching.html#organizers-and-teachers",
+    "href": "teaching.html#organizers-and-teachers",
+    "title": "Teachers",
+    "section": "Organizers and Teachers",
+    "text": "Organizers and Teachers\nMarco Oesting - Statistics\nBenjamin Uekermann - RSE\nBenedikt Ehinger - Julia, Visualization, RSE"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
-    "section": "",
-    "text": "📑 Course Brief\nNearly all scientists are writing research software for their analyses - but most did not receive any training for it. We will teach the basics of such research software engineering, of visualization and statistics in JuliaLang - a scientific programming language.\n\n\n\n\n\n\nWe will have a healthy mix of keynotes from invited lecturers and hands-on sessions.\n\n\n\n\n\n🎯 Learning Objectives\n\nLearn the basics of the scientific programming language Julia\nFrom git to continuous integration: Reearch Software Engineering, with and without Julia\nHow to generate complex multipanel vizualizations and use interactive plots efficiently\n\n\n\n💶 Costs\n\n150€ course fee, including lunch + dinner\nYou have to pay for Hotel + Travel + Breakfast\n\n\n\n💬 Typical questions that will be answered\n\nHow can I use git beyond “git clone” and “rm * + git clone”?\nWhat is continuous integration - and why should I care as a researcher?\nHow do I use unit-testing?\nWhat kinds of documentation should I write?\nWhy are these skills that will boost my reproducibility in my projects?\nWhy is Julia so great for RSE?\nHow can I run quick interactive visualizations?\nIs bootstrapping really all I need to know for statistics?\n\n\n\nAbstract\nDevelopment of software has become an important part of research projects in many areas of science and engineering. In this week-long summer school, we will therefore acquaint you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research. Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty."
   }
 ]
