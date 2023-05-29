@@ -4,7 +4,14 @@
     "href": "application.html",
     "title": "Applications",
     "section": "",
-    "text": "Apply here at XYZ"
+    "text": "Note\n\n\n\nApplication (most likely) opens at 15th June 2023"
+  },
+  {
+    "objectID": "application.html#footnotes",
+    "href": "application.html#footnotes",
+    "title": "Applications",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWhile we know it is near impossible to gauge skills adequately, we still want to have some assurance on the minimal programming experience/skill level. We will ask to self-identify as Beginner (e.g. experience from courses, knows basic syntax), Advanced Beginner (did some analyses, basic plotting is no longer a problem), Intermediate (used it to complete a project/paper, can decode many of the error messages), Advanced (developed packages, can debug 90% of problems, helps others).↩︎"
   },
   {
     "objectID": "index.html",
@@ -18,7 +25,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\nTopic-of-the-day\nArrival\nBasics of RSE and Julia\nJulia+RSE\nVis + Interactivity + Stats\nStats II + Projects\nOptimization + Project\n\n\n\n\n\n\n\n\n\n\n\n9.00\n\n\nFirst own package\nVisualization with Makie.jl\nResampling: Bootstrap & Permutation tests\nExcourse: Optimization in Julia\n\n\n10.00\n\nWhat and Why RSE?\n\n\n\nProject Work\n\n\n11.00\n\nAdvanced Git\n\nAlgebraOfGraphics.jl\n\nProject Work\n\n\n12.00\n\n\n\n\n\n\n\n\n13.00\n\nLunch\nLunch\nLunch\nLunch\nLunch\n\n\n14.00\n\nWhy Julia?\n\n\nProject Work??\nProject Work\n\n\n15.00\n\nFirst Steps\n\nStatistics in Julia\nProject Work\nProject Work\n\n\n16.00\n\nGitHub Actions\n\n\nProject Work\n\n\n\n17.00\n\n\n\nTables.jl / Arrow.jl??\n\nFarewell\n\n\n18.00\n\n\n\n\n\n\n\n\n19.00\nPre-Get-together\nWelcome-BBQ @ SimTech\nSocial1\nSocial2\nSocial3"
+    "text": "Note\n\n\n\nThe schedule is very preliminary and will most likely change drastically :)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\n\nArrival\nBasics of RSE and Julia\nJulia+RSE\nVis + Interactivity + Stats\nStats II + Projects\nOptimization + Project\n\n\n\n\n\n\n\n\n\n\n\n09.00\n\n\nMyFirstPackage.jl\nBene: Viz in Makie.jl\nResampling: Bootstrap & Permutation tests\nDoug?: Optimized (bootstrap) code\n\n\n10.00\n\nWhat and why RSE?\nDocumentation\nBene: AlgebraOfGraphics.jl\ncont.\nProject Work\n\n\n11.00\n\nAdvanced Git / Contributing\nUnittests\nBene: PlutoUI.jl\ncont.\ncont.\n\n\n12.00\n\nContinuous Integration\nSimplyfy with PkgTemplates.jl\ncont.\ncont.\n\n\n\n13.00\n\nLunch\nLunch\nLunch\nLunch\nLunch\n\n\n14.00\n\nHendrik?: Why Julia?\n??\nLisa?: Stats via Simulation\nProject Work??\nProject Work\n\n\n15.00\n\nFirst Steps\n??\ncont. ?\ncont.\ncont.\n\n\n16.00\n\nJulia+Git+Packages\n??\ncont. ?\ncont.\n\n\n\n17.00\n\n\n\nDoug?: Tables.jl / Arrow.jl\ncont.\nFarewell\n\n\n18.00\n\n\n\n\n\n\n\n\n19.00\nPre-Get-together\nWelcome-BBQ @ SimTech\nSocial 1\nSocial 2\nSocial 3"
   },
   {
     "objectID": "teaching.html",
