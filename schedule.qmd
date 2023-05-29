@@ -2,18 +2,24 @@
 title: "Schedule"
 ---
 
-|                  | Sunday           | Monday                  | Tuesday           | Wednesday                   | Thursday                                  | Friday                          |
-|----------|----------|----------|----------|----------|-----------|----------|
-| Topic-of-the-day | Arrival          | Basics of RSE and Julia | Julia+RSE         | Vis + Interactivity + Stats | Stats II + Projects                       | Optimization + Project          |
-|                  |                  |                         |                   |                             |                                           |                                 |
-| 9.00             |                  |                         | First own package | Visualization with Makie.jl | Resampling: Bootstrap & Permutation tests | Excourse: Optimization in Julia |
-| 10.00            |                  | What and Why RSE?       |                   |                             |                                           | Project Work                    |
-| 11.00            |                  | Advanced Git            |                   | AlgebraOfGraphics.jl        |                                           | Project Work                    |
-| 12.00            |                  |                         |                   |                             |                                           |                                 |
-| 13.00            |                  | Lunch                   | Lunch             | Lunch                       | Lunch                                     | Lunch                           |
-| 14.00            |                  | Why Julia?              |                   |                             | Project Work??                            | Project Work                    |
-| 15.00            |                  | First Steps             |                   | Statistics in Julia         | Project Work                              | Project Work                    |
-| 16.00            |                  | GitHub Actions          |                   |                             | Project Work                              |                                 |
-| 17.00            |                  |                         |                   | Tables.jl / Arrow.jl??      |                                           | Farewell                        |
-| 18.00            |                  |                         |                   |                             |                                           |                                 |
-| 19.00            | Pre-Get-together | Welcome-BBQ \@ SimTech  | Social1           | Social2                     | Social3                                   |                                 |
+::: callout-note
+The schedule is very preliminary and will most likely change drastically :)
+:::
+
+|       | Sunday           | Monday                      | Tuesday                       | Wednesday                   | Thursday                                  | Friday                            |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|       | Arrival          | Basics of RSE and Julia     | Julia+RSE                     | Vis + Interactivity + Stats | Stats II + Projects                       | Optimization + Project            |
+|       |                  |                             |                               |                             |                                           |                                   |
+| 09.00 |                  |                       | MyFirstPackage.jl             | Bene: Viz in Makie.jl       | Resampling: Bootstrap & Permutation tests | Doug?: Optimized (bootstrap) code |
+| 10.00 |                  | What and why RSE?           | Documentation                 | Bene: AlgebraOfGraphics.jl  | cont.                                     | Project Work                      |
+| 11.00 |                  | Advanced Git / Contributing | Unittests                     | Bene: PlutoUI.jl            | cont.                                     | cont.                             |
+| 12.00 |                  | Continuous Integration      | Simplyfy with PkgTemplates.jl | cont.                       | cont.                                     |                                   |
+| 13.00 |                  | **Lunch**                   | **Lunch**                     | **Lunch**                   | **Lunch**                                 | **Lunch**                         |
+| 14.00 |                  | Hendrik?: Why Julia?        | ??                            | Lisa?: Stats via Simulation | Project Work??                            | Project Work                      |
+| 15.00 |                  | First Steps                 | ??                            | cont. ?                     | cont.                                     | cont.                             |
+| 16.00 |                  | Julia+Git+Packages          | ??                            | cont. ?                     | cont.                                     |                                   |
+| 17.00 |                  |                             |                               | Doug?: Tables.jl / Arrow.jl | cont.                                     | Farewell                          |
+| 18.00 |                  |                             |                               |                             |                                           |                                   |
+| 19.00 | Pre-Get-together | Welcome-BBQ \@ SimTech      | Social 1                      | Social 2                    | Social 3                                  |                                   |
+
+: {.striped .hover}
