@@ -4,11 +4,12 @@ title: "Teachers"
 
 ## Invited Speakers
 
-[Doug Bates](https://github.com/dmbates) - Julia, Statistics, Optimization
+[Prof. Lisa DeBruine](https://debruine.github.io/) - Julia, Statistics, Simulation
 
-[Hendrik Ranocha](https://ranocha.de) - Julia, RSE, Optimization
+[Prof. Doug Bates](https://github.com/dmbates) - Julia, Statistics, Optimization
 
-?? - Julia, Statistics
+[Prof. Hendrik Ranocha](https://ranocha.de) - Julia, RSE, Optimization
+
 
 ## Organizers and Teachers
 
