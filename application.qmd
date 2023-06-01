@@ -3,7 +3,7 @@ title: "Applications"
 ---
 
 ::: callout-note
-Application (most likely) opens at 15th June 2023
+Application (most likely) opens in mid-June 2023
 :::
 
 ### Requirements
@@ -11,8 +11,8 @@ Application (most likely) opens at 15th June 2023
 - Basics of GIT (only! - see below)
 
 ### Important Dates
-- 15 June 2023 Application opens
-- 15 July 2023 Invites are send out
+- mid-June 2023 Application opens
+- mid-July 2023 Invites are send out
 - 31 July 2023 Time to confirm and pay (students on waiting-list are informed)
 
 ### Application Process
@@ -21,7 +21,7 @@ There is a **two-stage** application process: first you apply - then we select (
 ### Motivation
 We will ask for a short (500 chars) motivation statement. 
 
-For example you could state why this course will be helpful to your PhD project, why this is the right time for you to learn these skills to you or why you are excited for this topic. No need to answer all (or even any) of these questions. We are using this to 
+For example you could state why this course will be helpful to your PhD project, why this is the right time for you to learn these skills to you or why you are excited for this topic. No need to answer all (or even any) of these questions.
 
 
 [^1]: While we know it is near impossible to gauge skills adequately, we still want to have some assurance on the minimal programming experience/skill level. We will ask to self-identify as **Beginner** (e.g. experience from courses, knows basic syntax), **Advanced Beginner** (did some analyses, basic plotting is no longer a problem), **Intermediate** (used it to complete a project/paper, can decode many of the error messages), **Advanced** (developed packages, can debug 90% of problems, helps others). 
