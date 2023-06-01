@@ -16,8 +16,8 @@ website:
     contents:
       - href: index.qmd
         text: "🏠 Home"
-      - href: schedule.qmd
-        text: "📓 Schedule"
+      #- href: schedule.qmd
+      #  text: "📓 Schedule"
       - href: teaching.qmd
         text: "📟 Teachers"
       - href: application.qmd
