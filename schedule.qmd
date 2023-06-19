@@ -8,18 +8,23 @@ The schedule is very preliminary and will most likely change drastically :)
 
 |       | Sunday           | Monday                      | Tuesday                       | Wednesday                   | Thursday                                  | Friday                            |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-|       | Arrival          | Basics of RSE and Julia     | Julia+RSE                     | Vis + Interactivity + Stats | Stats II + Projects                       | Optimization + Project            |
-|       |                  |                             |                               |                             |                                           |                                   |
-| 09.00 |                  |                       | MyFirstPackage.jl             | Bene: Viz in Makie.jl       | Resampling: Bootstrap & Permutation tests | Doug?: Optimized (bootstrap) code |
-| 10.00 |                  | What and why RSE?           | Documentation                 | Bene: AlgebraOfGraphics.jl  | cont.                                     | Project Work                      |
-| 11.00 |                  | Advanced Git / Contributing | Unittests                     | Bene: PlutoUI.jl            | cont.                                     | cont.                             |
-| 12.00 |                  | Continuous Integration      | Simplyfy with PkgTemplates.jl | cont.                       | cont.                                     |                                   |
-| 13.00 |                  | **Lunch**                   | **Lunch**                     | **Lunch**                   | **Lunch**                                 | **Lunch**                         |
-| 14.00 |                  | Hendrik?: Why Julia?        | ??                            | Lisa?: Stats via Simulation | Project Work??                            | Project Work                      |
-| 15.00 |                  | First Steps                 | ??                            | cont. ?                     | cont.                                     | cont.                             |
-| 16.00 |                  | Julia+Git+Packages          | ??                            | cont. ?                     | cont.                                     |                                   |
-| 17.00 |                  |                             |                               | Doug?: Tables.jl / Arrow.jl | cont.                                     | Farewell                          |
-| 18.00 |                  |                             |                               |                             |                                           |                                   |
-| 19.00 | Pre-Get-together | Welcome-BBQ \@ SimTech      | Social 1                      | Social 2                    | Social 3                                  |                                   |
+|       | Arrival          | Basics of RSE and Julia         | Julia+RSE                         | Julia+Viz+Simulation | Stats + Projects                       | Optimization + Project            |
+|       |                  |                                 |                                   |    |                                            |                                   |
+| 09.00 |                  |                                 | Advanced Git / Contributing (1+1) | **Hendrik**: All the nice Julia Features (1+1)  | Resampling: Bootstrap & Permutation tests (1+1) | **Doug**: Optimized (bootstrap) code |
+| 10.00 |                  | Welcome / What and why RSE? (1) | **Lisa**: Code-Review (1+1)       | Vizualization in Julia (1+1)                    |                                   | Project Work                      |
+| 11.00 |                  | **Hendrik**: Why Julia? (1)         | ~~~~                          |  ~~~                                            |                                    | cont.                             |
+| 12.00 |                  | First Steps  - "Hello World"+Types (1+1) | ~~~~                     |  ~~~                                            |                                  |                                   |
+| 13.00 |                  | **Lunch**                       | **Lunch**                         | **Lunch**                                       | **Lunch**                                 | **Lunch**                         |
+| 14.00 |                  | Julia+Git+Packages/Environments (1+1) | Unittests (1+1)             | **Lisa**: Simulating Data (1+1)                 | Project Work??                            | Project Work                      |
+| 15.00 |                  | MyFirstPackage.jl (1+1)         | Continuous Integration (1+1)      |                                                 |                                     | cont.                             |
+| 16.00 |                  | ~~~                             | ~~~                               | **Doug**: Things to keep in mind for datastorage (1+1) |                                     |                                   |
+| 17.00 |                  | ~~~                             | ~~~                               |                                                 |                                     | Farewell                          |
+| 18.00 |                  | ~~~                             | PkgTemplates.jl (0.5+0.5) => wed/hendrik?    |                                      |                                           |                                   | /1
+| 19.00 | Pre-Get-together | Welcome-BBQ \@ SimTech          | Social 1                          | Social 2                                        | Social 3                                  |                                   |
+
+
 
 : {.striped .hover}
+
+
+Missing Topics right now: Documentation, License,
