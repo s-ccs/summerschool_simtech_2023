@@ -28,7 +28,8 @@ website:
   page-footer:
     background: light
     left: "CC-By Benedikt Ehinger" 
-
+resources:
+  - CNAME
 
 
 format:
