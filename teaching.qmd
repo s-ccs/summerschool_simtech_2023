@@ -4,17 +4,17 @@ title: "Teachers"
 
 ## Invited Speakers
 
-[Prof. Lisa DeBruine](https://debruine.github.io/) - Julia, Statistics, Simulation
+[Prof. Lisa DeBruine](https://debruine.github.io/) - Statistics, Simulation
 
-[Prof. Doug Bates](https://github.com/dmbates) - Julia, Statistics, Optimization
+[Prof. Przemysław Szufel]() - Julia, Optimization
 
 [Prof. Hendrik Ranocha](https://ranocha.de) - Julia, RSE, Optimization
 
 
 ## Organizers and Teachers
 
-[Marco Oesting](https://www.isa.uni-stuttgart.de/computational-statistics/) - Statistics
+[Assistant Prof. Marco Oesting](https://www.isa.uni-stuttgart.de/computational-statistics/) - Statistics
 
-[Benjamin Uekermann](https://github.com/uekerman) - RSE
+[Assistant Prof. Benjamin Uekermann](https://github.com/uekerman) - RSE
 
-[Benedikt Ehinger](https://www.s-ccs.de/) - Julia, Visualization, RSE
+[Assistant Prof. Benedikt Ehinger](https://www.s-ccs.de/) - Julia, Visualization, RSE
