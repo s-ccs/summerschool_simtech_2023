@@ -2,6 +2,8 @@ project:
   type: "website"
   title: "Research Software Engineering Summer School"
 
+editor:
+  render-on-save: true
 
 website:
   title: "Research Software Engineering Summer School"
@@ -12,17 +14,27 @@ website:
     location: navbar
     type: textbox
   sidebar:
+    collapse-level: 3
     style: docked
     contents:
       - href: index.qmd
         text: "🏠 Home"
-      #- href: schedule.qmd
-      #  text: "📓 Schedule"
+      - href: schedule.qmd
+        text: "📓 Schedule"
       - href: teaching.qmd
         text: "📟 Teachers"
-      - href: application.qmd
-        text: "✍️ Apply Now"
-
+      - section: "Slides / Handouts"
+        contents:
+          - section: "Monday"
+            contents:
+              - href: material/1_mon/rse/rse_basics_slides.qmd
+                text: "📊 1 - RSE"
+              - href: "missing.md"
+                text: "2 - Why Julia"
+              - href: "material/1_mon/firststeps/firststeps_handout.qmd"
+                text: "📝 3 - First Steps"
+              - href: "material/1_mon/envs/envs_handout.qmd"
+                text: "📝 4 - Environments & Packages"
   navbar:
     background: primary
   page-footer:
