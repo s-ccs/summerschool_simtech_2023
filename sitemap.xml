@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.simtech-summerschool.de/about.html</loc>
-    <lastmod>2023-07-19T12:24:04.791Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.simtech-summerschool.de/material/1_mon/rse/rse_basics_slides.html</loc>
-    <lastmod>2023-07-19T12:24:04.195Z</lastmod>
+    <loc>https://www.simtech-summerschool.de/teaching.html</loc>
+    <lastmod>2023-09-08T18:47:39.074Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/git_basics_demo.html</loc>
-    <lastmod>2023-07-19T12:24:03.351Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.simtech-summerschool.de/material/2_tue/git/intro_slides.html</loc>
-    <lastmod>2023-07-19T12:24:02.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.simtech-summerschool.de/schedule.html</loc>
-    <lastmod>2023-07-19T12:24:01.683Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.simtech-summerschool.de/index.html</loc>
-    <lastmod>2023-07-19T12:24:00.463Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.simtech-summerschool.de/teaching.html</loc>
-    <lastmod>2023-07-19T12:24:01.195Z</lastmod>
+    <lastmod>2023-09-08T18:47:38.314Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/standards_slides.html</loc>
-    <lastmod>2023-07-19T12:24:02.071Z</lastmod>
+    <lastmod>2023-09-08T18:47:37.090Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/workflow_slides.html</loc>
-    <lastmod>2023-07-19T12:24:02.899Z</lastmod>
+    <lastmod>2023-09-08T18:47:35.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/material/1_mon/envs/envs_handout.html</loc>
+    <lastmod>2023-09-08T18:47:34.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/index.html</loc>
+    <lastmod>2023-09-08T18:47:32.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/schedule.html</loc>
+    <lastmod>2023-09-08T18:47:31.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/material/1_mon/firststeps/firststeps_handout.html</loc>
+    <lastmod>2023-09-08T18:47:33.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/material/1_mon/rse/rse_basics_slides.html</loc>
+    <lastmod>2023-09-08T18:47:34.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/merge_rebase_slides.html</loc>
-    <lastmod>2023-07-19T12:24:03.799Z</lastmod>
+    <lastmod>2023-09-08T18:47:36.622Z</lastmod>
   </url>
   <url>
-    <loc>https://www.simtech-summerschool.de/application.html</loc>
-    <lastmod>2023-07-19T12:24:04.515Z</lastmod>
+    <loc>https://www.simtech-summerschool.de/material/2_tue/git/intro_slides.html</loc>
+    <lastmod>2023-09-08T18:47:37.666Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.simtech-summerschool.de/missing.html</loc>
+    <lastmod>2023-09-08T18:47:38.674Z</lastmod>
   </url>
 </urlset>

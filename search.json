@@ -1,38 +1,24 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teachers",
     "section": "",
-    "text": "About this site"
+    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html",
-    "href": "material/1_mon/rse/rse_basics_slides.html",
-    "title": "Introduction to Research Software Engineering",
+    "objectID": "teaching.html#invited-speakers",
+    "href": "teaching.html#invited-speakers",
+    "title": "Teachers",
     "section": "",
-    "text": "DORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)\n\n\n\n\n\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good\n\n\n\n\n\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
+    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#starting-points",
-    "href": "material/1_mon/rse/rse_basics_slides.html#starting-points",
-    "title": "Introduction to Research Software Engineering",
-    "section": "",
-    "text": "DORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
-    "href": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
-    "title": "Introduction to Research Software Engineering",
-    "section": "",
-    "text": "… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
-    "href": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
-    "title": "Introduction to Research Software Engineering",
-    "section": "",
-    "text": "Yes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
+    "objectID": "teaching.html#organizers-and-teachers",
+    "href": "teaching.html#organizers-and-teachers",
+    "title": "Teachers",
+    "section": "Organizers and Teachers",
+    "text": "Organizers and Teachers\nAssistant Prof. Marco Oesting - Statistics\nAssistant Prof. Benjamin Uekermann - RSE\nAssistant Prof. Benedikt Ehinger - Julia, Visualization, RSE"
   },
   {
     "objectID": "material/2_tue/git/git_basics_demo.html",
@@ -61,104 +47,6 @@
     "title": "Git Demo",
     "section": "",
     "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html",
-    "href": "material/2_tue/git/intro_slides.html",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Note\n\n\n\nThe schedule is very preliminary and will most likely change drastically :)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\n\nArrival\nBasics of RSE and Julia\nJulia+RSE\nJulia+Viz+Simulation\nStats + Projects\nOptimization + Project\n\n\n\n\n\n\n\n\n\n\n\n09.00\n\n\nBenjamin: Advanced Git / Contributing (1+1)\nHendrik: All the nice Julia Features (1+1)?\nMarco Resampling: Bootstrap & Permutation tests (2+2)\nDoug: Optimized (bootstrap) code (1)?\n\n\n10.00\n\nBenjamin: Welcome / What and why RSE? (1)\nBenjamin/Bene: Unittests (1+1)\nBene Vizualization in Julia (1+1)\n~~~\nProject Work\n\n\n11.00\n\nHendrik: Why Julia? (1)?\n~~~~\n~~~\n\ncont.\n\n\n12.00\n\nBene: First Steps - “Hello World” + Types (1+1)\n~~~~\n~~~\n\n\n\n\n13.00\n\nLunch\nLunch\nLunch\nLunch\nLunch\n\n\n14.00\n\n~~~\nBenjamin: Continuous Integration (1+1)\nLisa: Simulating Data (1+1)\nProject Work\nProject Work\n\n\n15.00\n\nBene: Julia + Git + Packages/Environments (1+1)\nLisa: Code-Review (1+1)?\n~~~\n\ncont.\n\n\n16.00\n\n~~~\n~~~\nDoug: Things to keep in mind for datastorage (1+1)?\n\n\n\n\n17.00\n\nBene: MyFirstPackage.jl (1+1)\n~~~\n~~~\n\nFarewell\n\n\n18.00\n\n~~~\nBene: PkgTemplates.jl (0.5+0.5) =&gt; wed/hendrik?\n~~~\n\n\n\n\n19.00\nPre-Get-together\nWelcome-BBQ @ SimTech\nSocial 1\nSocial 2\nSocial 3\n\n\n\n\nMissing Topics right now: Documentation, License, MultipleRegression? Simulating Data - Requirements regarding regression?"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
-    "section": "",
-    "text": "📑 Course Brief\nNearly all scientists are writing research software for their analyses - but most did not receive any training for it. We will teach the basics of such research software engineering, of visualization and statistics in JuliaLang - a scientific programming language.\n\n\n\n\n\n\nWe will have a healthy mix of keynotes from invited lecturers and hands-on sessions.\n\n\n\n\n\n🎯 Learning Objectives\n\nLearn the basics of the scientific programming language Julia\nFrom git to continuous integration: Reearch Software Engineering, with and without Julia\nHow to generate complex multipanel visualizations and use interactive plots efficiently\n\n\n\n💶 Costs\n\nsmall course fee, including lunch + dinner\nYou have to pay for Hotel + Travel + Breakfast\n\n\n\n💬 Typical questions that will be answered\n\nHow can I use git beyond “git clone” and “rm * + git clone”?\nWhat is continuous integration - and why should I care as a researcher?\nHow do I use unit-testing?\nWhat kinds of documentation should I write?\nWhy are these skills that will boost my reproducibility in my projects?\nWhy is Julia so great for RSE?\nHow can I run quick interactive visualizations?\nIs bootstrapping really all I need to know for statistics?\n\n\n\nAbstract\nThe development of research software has become an important part of research projects in many areas of science and engineering. At the same time, increasing computational power in the area of high performance computing has made computationally challenging statistical tasks feasible and highly desirable in many application fields. In this week-long summer school, we will therefore address these different aspects and familiarize you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research. Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty. You are invited to bring your own problem to apply the skills you learn in this summer school."
-  },
-  {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teachers",
-    "section": "",
-    "text": "Prof. Lisa DeBruine - Julia, Statistics, Simulation\nProf. Doug Bates - Julia, Statistics, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
-  },
-  {
-    "objectID": "teaching.html#invited-speakers",
-    "href": "teaching.html#invited-speakers",
-    "title": "Teachers",
-    "section": "",
-    "text": "Prof. Lisa DeBruine - Julia, Statistics, Simulation\nProf. Doug Bates - Julia, Statistics, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
-  },
-  {
-    "objectID": "teaching.html#organizers-and-teachers",
-    "href": "teaching.html#organizers-and-teachers",
-    "title": "Teachers",
-    "section": "Organizers and Teachers",
-    "text": "Organizers and Teachers\nMarco Oesting - Statistics\nBenjamin Uekermann - RSE\nBenedikt Ehinger - Julia, Visualization, RSE"
   },
   {
     "objectID": "material/2_tue/git/standards_slides.html",
@@ -252,6 +140,160 @@
     "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
+    "section": "",
+    "text": "📑 Course Brief\nNearly all scientists are writing research software for their analyses - but most did not receive any training for it. We will teach the basics of such research software engineering, of visualization and statistics in JuliaLang - a scientific programming language.\n\n\n\n\n\n\nWe will have a healthy mix of keynotes from invited lecturers and hands-on sessions.\n\n\n\n\n\n🎯 Learning Objectives\n\nLearn the basics of the scientific programming language Julia\nFrom git to continuous integration: Reearch Software Engineering, with and without Julia\nHow to generate complex multipanel visualizations and use interactive plots efficiently\n\n\n\n💶 Costs\n\nsmall course fee, including lunch + dinner\nYou have to pay for Hotel + Travel + Breakfast\n\n\n\n💬 Typical questions that will be answered\n\nHow can I use git beyond “git clone” and “rm * + git clone”?\nWhat is continuous integration - and why should I care as a researcher?\nHow do I use unit-testing?\nWhat kinds of documentation should I write?\nWhy are these skills that will boost my reproducibility in my projects?\nWhy is Julia so great for RSE?\nHow can I run quick interactive visualizations?\nIs bootstrapping really all I need to know for statistics?\n\n\n\nAbstract\nThe development of research software has become an important part of research projects in many areas of science and engineering. At the same time, increasing computational power in the area of high performance computing has made computationally challenging statistical tasks feasible and highly desirable in many application fields. In this week-long summer school, we will therefore address these different aspects and familiarize you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research. Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty. You are invited to bring your own problem to apply the skills you learn in this summer school."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Note\n\n\n\nThe schedule is very preliminary and will most likely change drastically :)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\n\nArrival\nBasics of RSE and Julia\nJulia+RSE\nJulia+Viz+Simulation\nStats + Projects\nOptimization + Project\n\n\n\n\n\n\n\n\n\n\n\n09.00\n\n\nBenjamin: Advanced Git / Contributing (1+1)\nHendrik: All the nice Julia Features (1+1)?\nMarco Resampling: Bootstrap & Permutation tests (2+2)\nDoug: Optimized (bootstrap) code (1)?\n\n\n10.00\n\nBenjamin: Welcome / What and why RSE? (1)\nBenjamin/Bene: Unittests (1+1)\nBene Vizualization in Julia (1+1)\n~~~\nProject Work\n\n\n11.00\n\nHendrik: Why Julia? (1)?\n~~~~\n~~~\n\ncont.\n\n\n12.00\n\nBene: First Steps - “Hello World” + Types (1+1)\n~~~~\n~~~\n\n\n\n\n13.00\n\nLunch\nLunch\nLunch\nLunch\nLunch\n\n\n14.00\n\n~~~\nBenjamin: Continuous Integration (1+1)\nLisa: Simulating Data (1+1)\nProject Work\nProject Work\n\n\n15.00\n\nBene: Julia + Git + Packages/Environments (1+1)\nLisa: Code-Review (1+1)?\n~~~\n\ncont.\n\n\n16.00\n\n~~~\n~~~\nDoug: Things to keep in mind for datastorage (1+1)?\n\n\n\n\n17.00\n\nBene: MyFirstPackage.jl (1+1)\n~~~\n~~~\n\nFarewell\n\n\n18.00\n\n~~~\nBene: PkgTemplates.jl (0.5+0.5) =&gt; wed/hendrik?\n~~~\n\n\n\n\n19.00\nPre-Get-together\nWelcome-BBQ @ SimTech\nSocial 1\nSocial 2\nSocial 3\n\n\n\n\nMissing Topics right now: Documentation, License, MultipleRegression? Simulating Data - Requirements regarding regression?"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html",
+    "href": "material/1_mon/firststeps/firststeps_handout.html",
+    "title": "First Steps",
+    "section": "",
+    "text": "Tip\n\n\n\nThe julia manual is excellent!\n\n\nAt this point we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia plugin. There are some more recommended settings in VSCode which are not necessary, but helpful.\nWe further recommend to not use the small “play” button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (ctrl+shift+p =&gt; &gt;Julia: Start Repl) which you keep open as long as possible.\n\n\n\n\n\n\nTip\n\n\n\nVSCode automatically loads the Revise.jl package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to %autorelad 2 in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.\n\n\n\n\n\n\n\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN\n\n\n\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets\nPython User? We don’t need no intendation, and we also have 1-index\n1    myarray = zeros(6)\n2    for k = 1:length(myarray)\n        if iseven(k)\n3            myarray[k] = sum(myarray[1:k])\n        elseif k == 5\n41            myarray = myarray .- 1\n        else \n            myarray[k] = 5\n5        end\n    end\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\n\n1    function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n        if keyword1 == \"defaultkeyword\"\n            c = a+b\n        else\n            c= a*b\n        end\n        return c\n    end\n2    methods(myfunction)\n    myfunction(0)\n    myfunction(1;keyword1 = \"notdefault\")\n    myfunction(0,5)\n    myfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nreturns two functions, due to the b=123 optional positional argument\n\n\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\n\n\nJulia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of an Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (matlab, python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though)\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))./5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: by doing this, we get rid of any specialized “serialized” function e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in python/matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed.\n\n\n\n\n\n\n\n\n\n\nvariables\nlowercase, lower_case\n\n\nTypes,Modules\nUpperCamelCase\n\n\nfunctions, macro\nlowercase\n\n\ninplace / side-effects\nendwith!()"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
+    "title": "First Steps",
+    "section": "",
+    "text": "Tip\n\n\n\nThe julia manual is excellent!\n\n\nAt this point we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia plugin. There are some more recommended settings in VSCode which are not necessary, but helpful.\nWe further recommend to not use the small “play” button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (ctrl+shift+p =&gt; &gt;Julia: Start Repl) which you keep open as long as possible.\n\n\n\n\n\n\nTip\n\n\n\nVSCode automatically loads the Revise.jl package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to %autorelad 2 in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
+    "title": "First Steps",
+    "section": "",
+    "text": "nothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN\n\n\n\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets\nPython User? We don’t need no intendation, and we also have 1-index\n1    myarray = zeros(6)\n2    for k = 1:length(myarray)\n        if iseven(k)\n3            myarray[k] = sum(myarray[1:k])\n        elseif k == 5\n41            myarray = myarray .- 1\n        else \n            myarray[k] = 5\n5        end\n    end\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\n\n1    function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n        if keyword1 == \"defaultkeyword\"\n            c = a+b\n        else\n            c= a*b\n        end\n        return c\n    end\n2    methods(myfunction)\n    myfunction(0)\n    myfunction(1;keyword1 = \"notdefault\")\n    myfunction(0,5)\n    myfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nreturns two functions, due to the b=123 optional positional argument\n\n\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\n\n\nJulia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of an Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (matlab, python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though)\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))./5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: by doing this, we get rid of any specialized “serialized” function e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in python/matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
+    "title": "First Steps",
+    "section": "",
+    "text": "variables\nlowercase, lower_case\n\n\nTypes,Modules\nUpperCamelCase\n\n\nfunctions, macro\nlowercase\n\n\ninplace / side-effects\nendwith!()"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "title": "First Steps",
+    "section": "Wait - how do I even run things in Julia/VScode?",
+    "text": "Wait - how do I even run things in Julia/VScode?\nTypically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#scopes",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#scopes",
+    "title": "First Steps",
+    "section": "Scopes",
+    "text": "Scopes\nAll things (excepts modules) are in local scope (in scripts)\na = 0\nfor k = 1:10\n    a = 1\nend\n1a\n\n1\n\na = 0! - in a script; but a = 1 in the REPL!\n\n\nVariables are in global scope in the REPL for debugging convenience\n\n\n\n\n\n\nTip\n\n\n\nPutting this code into a function automatically resolves this issue\n  function myfun()\n  a = 0\n    for k = 1:10\n        a = 1\n    end\n    a\n    return a\n  end\n  myfun()\n\n1\n\nreturns 1 now in both REPL and include(“myscript.jl”)\n\n\n\n\n\nexplicit global / local\na = 0\nglobal b\nb = 0\nfor k = 1:10\n    local a \n    global b\n    a = 1\n    b = 1\nend\n1a\n2b\n\n1\n\na = 0\n\n2\n\nb = 1\n\n\n\n\nModifying containers works in any case\na = zeros(10)\nfor k = 1:10\n    \n    a[k] = k\nend\n1a\n\n1\n\nThis works “correctly” in the REPL as well as in a script, because we modify the content of a, not a itself"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#types",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#types",
+    "title": "First Steps",
+    "section": "Types",
+    "text": "Types\nTypes play a super important role in Julia for several main reasons:\n\nThe allow for specialization e.g. +(a::Int64,b::Float64) might have a different (faster?) implementation compared to +(a::Float64,b::Float64)\nThey allow for generalization using abstract types\nThey act as containers, structuring your programs and tools\n\nEverything in julia has a type! Check this out:\ntypeof(1)\ntypeof(1.0)\ntypeof(sum)\ntypeof([1])\ntypeof([(1,2),\"5\"])\n\nWe will discuss two types of types:\n\ncomposite types\nabstract types.\n\n\n\n\n\n\n\nClick me for even more types!\n\n\n\n\n\nThere is a third type, primitive type - but we will practically never use them Not much to say at this level, they are types like Float64. You could define your own one, e.g.\nprimitive type Float128 &lt;: AbstractFloat 128 end\nAnd there are two more, Singleton types and Parametric types - which (at least the latter), you might use at some point. But not in this tutorial.\n\n\n\n\ncomposite types\nYou can think of these types as containers for your variables, which allows you for specialization.\n    struct SimulationResults\n        parameters::Vector\n        results::Vector\n    end\n\n    s = SimulationResults([1,2,3],[5,6,7,8,9,10,NaN])\n\n   function print(s::SimulationResults)\n        println(\"The following simulation was run:\")\n        println(\"Parameters: \",s.parameters)\n        println(\"And we got results!\")\n        println(\"Results: \",s.results)\n    end\n\n    print(s)\n\n1    function SimulationResults(parameters)\n        results = run_simulation(parameters)\n        return SimulationResults(parameters,results)\n    end\n\n    function run_simulation(x)\n        return cumsum(repeat(x,2))\n    end\n\n    s = SimulationResults([1,2,3])\n    print(s)\n\n\n1\n\nin case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)\n\n\n\n\n\n\n\n\nWarning\n\n\n\nonce defined, a type-definition in the global scope of the REPL cannot be re-defined without restarting the julia REPL! This is annoying, there are some tricks arround it (e.g. defining the type in a module (see below), and then reloading the module)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#modules",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#modules",
+    "title": "First Steps",
+    "section": "Modules",
+    "text": "Modules\nmodule MyStatsPackage\n    include(\"src/statistic_functions.jl\")\n1    export SimulationResults\n    export rse_tstat\nend\n\nusing MyStatsPackage\n\n1\n\nThis makes the SimulationResults type immediately available after running using MyStatsPackage. To use the other “internal” functions, one would use MyStatsPackage.rse_sum.\n\n\n    import MyStatsPackage\n    \n    MyStatsPackage.rse_tstat(1:10)\n\n    import MyStatsPackage: rse_sum\n    rse_sum(1:10)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#macros",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#macros",
+    "title": "First Steps",
+    "section": "Macros",
+    "text": "Macros\nMacros allow to programmers to edit the actual code before it is run. We will pretty much just use them, without learning how they work.\n    @which cumsum\n    @which(cumsum)\n    a = \"123\"\n    @show a"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#meta-tools",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#meta-tools",
+    "title": "First Steps",
+    "section": "meta-tools",
+    "text": "meta-tools\n\n\n\n\n\n\n\n\n\n\nJulia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#debugging",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#debugging",
+    "title": "First Steps",
+    "section": "debugging",
+    "text": "debugging\n\n\n\n\n\n\n\n@run sum(5+1)\nrun debugger, stop at error/breakpoints\n\n\n@enter sum(5+1)\nenter debugger, dont start code yet\n\n\n@show variable\nprints: variable = variablecontent\n\n\n@debug variable\nprints only to debugger, very convient in combination with &gt;ENV[\"JULIA_DEBUG\"] = ToBeDebuggedModule (could be Main as well)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
+    "title": "First Steps",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nrse = research software engineering, we could use sum in a principled way, but it requires some knowledge you likely don’t have right now↩︎"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "href": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "title": "Research Software Engineering Summer School",
+    "section": "Most important link",
+    "text": "Most important link\nwww.simtech-summerschool.de\nFind all slides, all materials, and the schedule"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
+    "href": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
+    "title": "Research Software Engineering Summer School",
+    "section": "Last minute organization issues",
+    "text": "Last minute organization issues"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "title": "Research Software Engineering Summer School",
+    "section": "Structure of the summer school",
+    "text": "Structure of the summer school\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "title": "Research Software Engineering Summer School",
+    "section": "Your teaching staff I",
+    "text": "Your teaching staff I\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "title": "Research Software Engineering Summer School",
+    "section": "Your teaching Staff II",
+    "text": "Your teaching Staff II\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#starting-points",
+    "href": "material/1_mon/rse/rse_basics_slides.html#starting-points",
+    "title": "Research Software Engineering Summer School",
+    "section": "Starting Points",
+    "text": "Starting Points\n\nDORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
+    "href": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
+    "title": "Research Software Engineering Summer School",
+    "section": "RSE Movement",
+    "text": "RSE Movement\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
+    "href": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
+    "title": "Research Software Engineering Summer School",
+    "section": "Do I need this in Industry?",
+    "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
+  },
+  {
     "objectID": "material/2_tue/git/merge_rebase_slides.html",
     "href": "material/2_tue/git/merge_rebase_slides.html",
     "title": "Merge vs. Rebase",
@@ -329,17 +371,73 @@
     "text": "Bitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
   },
   {
-    "objectID": "application.html",
-    "href": "application.html",
-    "title": "Applications",
+    "objectID": "material/2_tue/git/intro_slides.html",
+    "href": "material/2_tue/git/intro_slides.html",
+    "title": "Introduction to version control",
     "section": "",
-    "text": "Note\n\n\n\nApplication (most likely) opens in mid-June 2023"
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
   },
   {
-    "objectID": "application.html#footnotes",
-    "href": "application.html#footnotes",
-    "title": "Applications",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nWhile we know it is near impossible to gauge skills adequately, we still want to have some assurance on the minimal programming experience/skill level. We will ask to self-identify as Beginner (e.g. experience from courses, knows basic syntax), Advanced Beginner (did some analyses, basic plotting is no longer a problem), Intermediate (used it to complete a project/paper, can decode many of the error messages), Advanced (developed packages, can debug 90% of problems, helps others).↩︎"
+    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+  },
+  {
+    "objectID": "missing.html",
+    "href": "missing.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "This content is not yet included in the website - check at another time!"
   }
 ]
