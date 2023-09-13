@@ -14,13 +14,25 @@ website:
     location: navbar
     type: textbox
   sidebar:
-    collapse-level: 3
+    collapse-level: 2
     style: docked
     contents:
       - href: index.qmd
         text: "🏠 Home"
+      - href: installation.qmd
+        text: "Installation"
       - href: schedule.qmd
         text: "📓 Schedule"
+      - href: social.qmd
+        text: ":fire: Social"
+      - section: "Cheatsheets"
+        contents:
+          - href: cheatsheets/julia.qmd
+            text: Julia 
+          - href: cheatsheets/git.qmd
+            text: Git
+          - href: cheatsheets/githubactions.qmd
+            text: GitHub actions
       - section: "Slides / Handouts"
         contents:
           - section: "Monday"
@@ -28,7 +40,7 @@ website:
               - href: material/1_mon/rse/rse_basics_slides.qmd
                 text: "📊 1 - RSE"
               - href: "missing.md"
-                text: "2 - Why Julia"
+                text: "📝 2 - Why Julia"
               - href: "material/1_mon/firststeps/firststeps_handout.qmd"
                 text: "📝 3 - First Steps"
               - href: "material/1_mon/envs/envs_handout.qmd"
@@ -66,7 +78,7 @@ website:
             contents:
               - href: material/5_fri/highlightsOptim/missing.qmd
                 text: "📝 1 - Highlights + Optimization"
-              
+          
   navbar:
     background: primary
   page-footer:
