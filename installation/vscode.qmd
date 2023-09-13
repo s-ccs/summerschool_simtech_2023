@@ -1,0 +1,44 @@
+# Julia VSCode Extension
+Documentation on the Julia VSCode extension can be found [here](https://www.julia-vscode.org/docs/stable/)
+
+## Recommended Settings
+
+
+`File`->`Preferences`->`Settings`
+
+Put into the search bar  `Julia Exection`
+
+
+
+Julia › Execution: Code In REPL
+
+- [x] Print executed code in REPL and append it to the REPL history.
+
+Make sure that `x` is there!
+
+
+## VSCode blocks
+
+```julia
+this = 1
+is = 2
+# a code block
+
+#---
+and = 1
+this =2
+# is another 
+one = 3
+```
+
+
+`Ctrl+Enter` executes the currently marked line/segment
+
+`Alt+Enter` If you are within one code-block, executes it
+
++`Shift` Adding a shift to the previous commands executes them, and then moves to next line/block
+
+find more [keybindings here](https://www.julia-vscode.org/docs/stable/userguide/keybindings/)
+
+## VSCode autoformat
+`Ctrl+Shift+I` to automatically format your code
