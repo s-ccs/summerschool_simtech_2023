@@ -56,3 +56,7 @@ format:
         - styles.scss # I use this just to change the default colour
 
     toc: true
+    from: markdown+emoji
+    toc-expand: 3
+    grid:
+      body-width: 1000px

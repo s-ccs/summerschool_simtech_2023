@@ -1,0 +1,289 @@
+---
+
+---
+
+
+
+
+# Environments
+### What is a environment**
+- A list of "installed" packages^[libraries, dlls, .so etc.] at certain versions
+- sometimes includes the operation system
+
+### **Reproducible** vs. **Replicable**
+    Reproducible: Someone else can get the same results given your code + data
+    Replicable: Someone else can repeat the whole study on new data
+
+### Why do I need it?
+- Version control
+    - managing multiple projects
+    - testing out things
+    - your Toolbox needs other packages than e.g. your test-environemnt
+- Reproducibility
+    - other researchers want to know what packages to install
+- Collaboration
+    - you want to work on the same data / codebase
+
+
+
+
+## Environemnts in Julia
+Every folder with an `Project.toml` file has it's own environment (see below)
+
+The "base" environment is active by default:
+
+``` julia
+(@v1.9) pkg>
+```
+
+Keep this as empty+tidy as possible! 
+
+Tip: (you could also start julia by `julia --project="."`)
+
+
+### Typical commands
+
+##### `activate`
+
+Use `activate .` or `activate ./path/to` creates a new `Project.toml` in the selected folder (`.` means current folder), or activates it, if it already exists.
+
+##### `status` (`st`)
+
+Shows the currently installed packages
+
+##### `add`
+
+Multiple ways to add packages to the `Project.toml`:
+
+-   `add UnicodePlots`
+-   `add https://github.com/JuliaPlots/UnicodePlots.jl`
+-   specify branch: `add UnicodePlots#unicodeplots-docs`
+-   specify version `add UnicodePlots@3.3`
+-   `add ./path/to/localPackage`
+
+::: callout-note
+Folders have to be git-repositories, see below. Probably better use `develop`
+:::
+
+##### `remove` (`rm`)
+
+remove package from `Project.toml` (not from `~/.julia`, use `gc` - garbage collect for this)
+
+##### `develop`
+
+-   `dev --local UnicodePlots`
+-   `dev ./Path/To/LocalPackage/`
+
+::: callout-note
+You can't select a branch with `dev` and need to do it manually
+:::
+
+::: callout-note
+You are asking for the difference of `dev ./Path/Package` and `add ./Path/Package`? Good question! `dev` will always track the actual content of the folder - whereas `add` will make a "snapshot" of the last commit in that folder (has to be an git for `add`!). And you have to use `]up` to actually update to new changes
+:::
+
+
+
+##### `pin` / `free`
+
+You can pin versions of packages, so that they are not updated. Unpin with `free` - also undo `develop` by using `free`
+
+##### `instantiate` / `resolve`
+
+`instantiate` setup all dependencies in the given `Project.toml`+`Manifest.toml`
+
+`resolve` update the `Manifest.toml` to respect the local setup
+
+
+# Project vs. Package
+
+| | Project |  Package |
+| --- | --- | ---- |
+|  installable/reuse?   |   :white_check_mark:  |   :negative_squared_cross_mark:    |
+| should be reproducible | :white_check_mark: | :negative_squared_cross_mark:   |
+| produces something? | :white_check_mark:   | :negative_squared_cross_mark:  |
+| compatabilities declared? | :negative_squared_cross_mark:   | :white_check_mark: |
+| formal requirements in julia? | :negative_squared_cross_mark:  | :white_check_mark: |
+
+## `Project.toml` & `Manifest.toml`
+#### 📄Project.toml
+The "big picture": keeps track of user-added dependencies (+ compatabilities + header)
+
+```
+[deps]
+PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
+RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
+```
+
+
+#### 📄Manifest.toml
+The "details": keeps track of all versions of all dependencies, and dependencies of dependencies
+```
+julia_version = "1.9.2"
+
+[[deps.AbstractPlutoDingetjes]]
+deps = ["Pkg"]
+git-tree-sha1 = "8eaf9f1b4921132a4cff3f36a1d9ba923b14a481"
+uuid = "6e696c72-6542-2067-7265-42206c756150"
+version = "1.1.4"
+
+[[deps.ArgTools]]
+uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
+version = "1.1.1"
+
+[[deps.BibInternal]]
+git-tree-sha1 = "3a760b38ba8da19e64d29244f06104823ff26f25"
+uuid = "2027ae74-3657-4b95-ae00-e2f7d55c3e64"
+version = "0.3.4"
+
+[...]
+```
+
+## Packages in Julia
+Several thousand packages exist in Julia already. Take a thorough look before starting something new!
+
+
+
+### Minimal requirements for `]add` to work
+
+Minimal structure
+
+One git-repository containing:
+
+-   `./src/MyStatsPackage.jl`
+    -   (`module MyStatsPackage`)
+-   `./Project.toml`
+    -   `name = "MyStatsPackage"`
+    -   `uuid ="b4cd1eb8-1e24-11e8-3319-93036a3eb9f3"`
+    -   (`[compat]` entries)
+    -   (`version= "0.1.0"`)
+
+
+### Additional requirements to register
+
+Julia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.
+
+The default registry is [JuliaRegistries/General](https://github.com/JuliaRegistries/General).
+
+[To register at the general registiry, you need additionally:](https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/):
+
+- `[compat]` entries for all dependencies
+- a `version=`
+- a supported license
+- Some restrictions on the name (e.g. nothing with `Julia`, only ASCII, etc.)
+
+
+## Let's generate our first package!
+
+```julia
+] generate MyStatsPackage
+```
+### Adding dependencies
+```julia
+]activate ./path/to/MyStatsPackage
+]add UnicodePlots
+]compat # <1>
+```
+1. let's directly add a compat entry for UnicodePlots
+
+### Semantic Versioning
+Following `semver` - three parts:
+
+`v2.7.5`
+
+means:
+- **Major** 2
+- **Minor** 7
+- **Bugfix** 5
+
+Bump **Major** if you propose backward-breaking changes
+Bump **Minor** if you only introduce new features
+Bump **Bugfix** if you, well, fix bugs
+
+**Special case:**
+
+`v0.37.1`
+
+Means package is in development and not stable.
+Bump **Major** if you release it
+Bump **Minor** for breaking changes
+Bump **Bugfix** if you fix bugs or release new features
+
+### Compat entries
+compat entries define with what versions your package is compatible with
+
+```julia
+[compat]
+AllMinorReleases1 = "1" # <1> 
+AllMinorReleases2 = "1.5" #<2>
+AllMinorReleases3 = "1.5.3" #<3>
+ExactPackage = "=1.5.6" #<4>
+MultiVersionexample = "0.5,1.2,2"
+DevelopPackage = "0.2.3" # <5>
+```
+1. [1.0.0-2)
+2. [1.5.0-2)
+3. [1.5.3-2)
+4. [1.5.6]
+5. [0.2.3 - 0.3)
+
+As you can see, develop version (`version < 1`) are treated a bit special in Julia, and different to `semver`. [Read more here](https://pkgdocs.julialang.org/v1/compatibility/#compat-pre-1.0)
+
+::: callout-warning
+keep the compat list in alphabetical order - github-actions might behave very strange else.
+:::
+
+## Projects in Julia
+
+Formally, projects don't have specific requirements. You should activate an environment (`Project.toml`+`Manifest.toml`) in the main folder though. I recommend the following minimal structure:
+
+-   `./src/` - all functions should go there
+-   `./scripts/` - all actual scripts should go here,
+-   `./README.md` - Write what this is about, who you are etc.
+-   `./Project.toml` - Your explicit dependencies
+-   `./Manifest.toml` - Your implicit dependencies + versions <-- this makes it reproducible!
+
+::: callout-tip
+One recommendation is to use `DrWatson.initialize_project([path])` to start a new project - it will generate a nice folder structure + provide some other helpful `DrWatson.jl` features.
+
+(click the following tipp to expand the full datastructure)
+
+:::
+
+
+:::{.callout-tip collapse="true"}
+```
+│projectdir          <- Project's main folder. It is initialized as a Git
+│                       repository with a reasonable .gitignore file.
+│
+├── _research        <- WIP scripts, code, notes, comments,
+│   |                   to-dos and anything in an alpha state.
+│   └── tmp          <- Temporary data folder.
+│
+├── data             <- **Immutable and add-only!**
+│   ├── sims         <- Data resulting directly from simulations.
+│   ├── exp_pro      <- Data from processing experiments.
+│   └── exp_raw      <- Raw experimental data.
+│
+├── plots            <- Self-explanatory.
+├── notebooks        <- Jupyter, Weave or any other mixed media notebooks.
+│
+├── papers           <- Scientific papers resulting from the project.
+│
+├── scripts          <- Various scripts, e.g. simulations, plotting, analysis,
+│   │                   The scripts use the `src` folder for their base code.
+│   └── intro.jl     <- Simple file that uses DrWatson and uses its greeting.
+│
+├── src              <- Source code for use in this project. Contains functions,
+│                       structures and modules that are used throughout
+│                       the project and in multiple scripts.
+│
+├── README.md        <- Optional top-level README for anyone using this project.
+├── .gitignore       <- by default ignores _research, data, plots, videos,
+│                       notebooks and latex-compilation related files.
+│
+├── Manifest.toml    <- Contains full list of exact package versions used currently.
+└── Project.toml     <- Main project file, allows activation and installation.
+                        Includes DrWatson by default.
+```
+:::
