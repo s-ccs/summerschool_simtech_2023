@@ -19,7 +19,7 @@ website:
     contents:
       - href: index.qmd
         text: "🏠 Home"
-      - href: installation.qmd
+      - href: installation/julia.qmd
         text: "Installation"
       - href: schedule.qmd
         text: "📓 Schedule"
@@ -83,7 +83,7 @@ website:
     background: primary
   page-footer:
     background: light
-    left: "CC-By Benedikt Ehinger" 
+    left: "CC-By Ehinger, Oesting, Uekerman" 
 resources:
   - CNAME
 

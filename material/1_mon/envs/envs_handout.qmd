@@ -192,13 +192,14 @@ Following `semver` - three parts:
 `v2.7.5`
 
 means:
+
 - **Major** 2
 - **Minor** 7
 - **Bugfix** 5
 
-Bump **Major** if you propose backward-breaking changes
-Bump **Minor** if you only introduce new features
-Bump **Bugfix** if you, well, fix bugs
+- Bump **Major** if you propose backward-breaking changes
+- Bump **Minor** if you only introduce new features
+-Bump **Bugfix** if you, well, fix bugs
 
 **Special case:**
 

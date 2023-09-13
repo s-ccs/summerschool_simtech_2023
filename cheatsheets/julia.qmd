@@ -1,0 +1,22 @@
+## "meta"-tools
+
+
+|                                         | Julia                   | Python                      |
+|------------------------|------------------------|------------------------|
+| Documentation                           | `?obj`                  | `help(obj)`                 |
+| Object content                          | `dump(obj)`             | `print(repr(obj))`          |
+| Exported functions                      | `names(FooModule)`      | `dir(foo_module)`           |
+| List function signatures with that name | `methods(myFun)`        |                             |
+| List functions for specific type        | `methodswith(SomeType)` | `dir(SomeType)`             |
+| Where is ...?                           | `@which func`           | `func.__module__`           |
+| What is ...?                            | `typeof(obj)`           | `type(obj)`                 |
+| Is it really a ...?                     | `isa(obj, SomeType)`    | `isinstance(obj, SomeType)` |
+
+## debugging
+|||
+|--|--|
+`@run sum(5+1)`| run debugger, stop at error/breakpoints
+`@enter sum(5+1)` | enter debugger, dont start code yet
+`@show variable` | prints: variable = variablecontent
+`@debug variable` | prints only to debugger, very convient in combination with `>ENV["JULIA_DEBUG"] = ToBeDebuggedModule` (could be `Main` as well)
+

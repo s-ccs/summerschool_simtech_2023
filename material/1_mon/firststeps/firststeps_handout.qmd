@@ -152,6 +152,30 @@ And a nice sideeffect: By doing this, we get rid of any specialized "serialized"
 :::
 
 
+## Linear Algebra
+```julia
+import LinearAlgebra # <1>
+import LinearAlgebra: qr
+using LinearAlgebra # <2>
+
+```
+1. Requires to write `LinearAlgebra.QR(...)` to access a function
+2. `LinearAlgebra` is a `Base` package, and always available
+
+:: callout
+Julia typically recommends to use `using PackageNames`. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened)
+::
+
+```julia
+A = Matrix{Float64}(undef,11,22) # <1>
+B = Array{Float64,2}(undef,22,33) # <2>
+qr(A*B)
+```
+1. equivalent to `Array`, as `Matrix` is a convenience type-alias for `Array` with 2 dimensions. Same thing for `Vector`.
+2. the `2` of `{Float64,2}` is not mandatory
+
+
+Much more on wednesday in the lecture `LinearAlgebra`!
 
 ## Style-conventions
 
@@ -389,28 +413,5 @@ Macros allow to programmers to edit the actual code **before** it is run. We wil
     a = "123"
     @show a
 ```
-# Cheatsheets
-
-## meta-tools
-
-<!-- maybe move to own file "cheatsheets?" -->
-
-|                                         | Julia                   | Python                      |
-|------------------------|------------------------|------------------------|
-| Documentation                           | `?obj`                  | `help(obj)`                 |
-| Object content                          | `dump(obj)`             | `print(repr(obj))`          |
-| Exported functions                      | `names(FooModule)`      | `dir(foo_module)`           |
-| List function signatures with that name | `methods(myFun)`        |                             |
-| List functions for specific type        | `methodswith(SomeType)` | `dir(SomeType)`             |
-| Where is ...?                           | `@which func`           | `func.__module__`           |
-| What is ...?                            | `typeof(obj)`           | `type(obj)`                 |
-| Is it really a ...?                     | `isa(obj, SomeType)`    | `isinstance(obj, SomeType)` |
-
-## debugging
-|||
-|--|--|
-`@run sum(5+1)`| run debugger, stop at error/breakpoints
-`@enter sum(5+1)` | enter debugger, dont start code yet
-`@show variable` | prints: variable = variablecontent
-`@debug variable` | prints only to debugger, very convient in combination with `>ENV["JULIA_DEBUG"] = ToBeDebuggedModule` (could be `Main` as well)
-
+## Debugging
+XXX
