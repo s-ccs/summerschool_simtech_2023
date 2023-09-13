@@ -96,8 +96,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -209,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -224,10 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#style-conventions" id="toc-style-conventions" class="nav-link" data-scroll-target="#style-conventions">Style-conventions</a></li>
   </ul></li>
-  <li><a href="#task-1." id="toc-task-1." class="nav-link" data-scroll-target="#task-1.">Task 1.</a>
-  <ul class="collapse">
-  <li><a href="#wait---how-do-i-even-run-things-in-juliavscode" id="toc-wait---how-do-i-even-run-things-in-juliavscode" class="nav-link" data-scroll-target="#wait---how-do-i-even-run-things-in-juliavscode">Wait - how do I even run things in Julia/VScode?</a></li>
-  </ul></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1">Task 1</a></li>
   <li><a href="#julia-basics---ii" id="toc-julia-basics---ii" class="nav-link" data-scroll-target="#julia-basics---ii">Julia Basics - II</a>
   <ul class="collapse">
   <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
@@ -237,10 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#composite-types" id="toc-composite-types" class="nav-link" data-scroll-target="#composite-types">composite types</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#task-2" id="toc-task-2" class="nav-link" data-scroll-target="#task-2">Task 2</a></li>
-  <li><a href="#julia-basics-iii" id="toc-julia-basics-iii" class="nav-link" data-scroll-target="#julia-basics-iii">Julia Basics III</a>
+  <li><a href="#task-2" id="toc-task-2" class="nav-link" data-scroll-target="#task-2">Task 2</a>
   <ul class="collapse">
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
   <li><a href="#macros" id="toc-macros" class="nav-link" data-scroll-target="#macros">Macros</a></li>
   </ul></li>
   <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets">Cheatsheets</a>
@@ -314,23 +307,23 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-1">Control-Structure for-loop. 1-index!</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">Control-Structure for-loop. 1-index!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="4" data-code-annotation="3" data-code-cell="annotated-cell-1"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
+<span data-code-lines="4" data-code-cell="annotated-cell-1" data-code-annotation="3"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="6" data-code-annotation="4" data-code-cell="annotated-cell-1"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-1" data-code-annotation="4"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="9" data-code-annotation="5" data-code-cell="annotated-cell-1"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
+<span data-code-lines="9" data-code-cell="annotated-cell-1" data-code-annotation="5"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
 </dd>
 </dl>
 </section>
@@ -352,11 +345,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-2">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
+<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="9" data-code-annotation="2" data-code-cell="annotated-cell-2">returns two functions, due to the <code>b=123</code> optional positional argument</span>
+<span data-code-lines="9" data-code-cell="annotated-cell-2" data-code-annotation="2">returns two functions, due to the <code>b=123</code> optional positional argument</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> anonym <span class="op">=</span> (x,y) <span class="op">-&gt;</span> x<span class="op">+</span>y</span>
@@ -374,11 +367,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-5">Error - there is no method defined for the <code>sqrt</code> of an <code>Vector</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-5" data-code-annotation="1">Error - there is no method defined for the <code>sqrt</code> of an <code>Vector</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-5">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-5" data-code-annotation="2">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -413,7 +406,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-3">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
+<span data-code-lines="1" data-code-cell="annotated-cell-3" data-code-annotation="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
 </dd>
 </dl>
 <p>The <code>temp</code> memory we need at each iteration is simply <code>c[k]</code>. And a nice sideeffect: by doing this, we get rid of any specialized “serialized” function e.g.&nbsp;to do sum, or + or whatever. Those are typically the inbuilt <code>C</code> functions in python/matlab/R, that really speed up things. In Julia <strong>we do not need inbuilt functions for speed</strong>.</p>
@@ -446,23 +439,9 @@ Important
 </table>
 </section>
 </section>
-<section id="task-1." class="level1">
-<h1>Task 1.</h1>
-<p>Ok - lot of introduction, but I think you are ready for your first interactive task.</p>
-<section id="wait---how-do-i-even-run-things-in-juliavscode" class="level2">
-<h2 class="anchored" data-anchor-id="wait---how-do-i-even-run-things-in-juliavscode">Wait - how do I even run things in Julia/VScode?</h2>
-<p>Typically, you work in a Julia script ending in <code>scriptname.jl</code></p>
-<p>You concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have <code>Revise.jl</code> running in the background to automatically update your custom Packages / Modules (more to that later).</p>
-<p>You can mark some code and execute it using <code>ctrl</code> + <code>enter</code> - you can also generate code-blocks using <code>#---</code> and run a whole code-block using <code>alt</code>+<code>enter</code></p>
-<ol type="1">
-<li><p>Open a new script <code>statistic_functions.jl</code> in VSCode in a folder of your choice.</p></li>
-<li><p>implement a function called <code>rse_sum</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This function should return <code>true</code> if provided with the following test: <code>res_sum(1:36) == 666</code>. You should further make use of a for-loop.</p></li>
-<li><p>implement a second function called <code>rse_mean</code>, which calculates the mean of the provided vector. Make sure to use the <code>rse_sum</code> function! Test it using <code>res_mean(-15:17) == 1</code></p></li>
-<li><p>Next implement a standard deviation function <code>rse_std</code>: <span class="math inline">\(\sqrt{\frac{\sum(x-mean(x))}{n-1}}\)</span>, this time you should use elementwise/broadcasting operators. Test it with <code>rse_std(1:3) == 1</code></p></li>
-<li><p>Finally, we will implement <code>rse_tstat</code>, returning the t-value with <code>length(x)-1</code> DF, that the provided Array actually has a mean of 0. Test it with <code>rse_tstat(2:3) == 5</code>. Add the keyword argument <code>σ</code> that allows the user to optionally provide a pre-calculated standard deviation.</p></li>
-</ol>
-<p>Well done! You now have all functions defined with which we will continue our journey.</p>
-</section>
+<section id="task-1" class="level1">
+<h1>Task 1</h1>
+<p>Ok - lot of introduction, but I think you are ready for your first interactive task. Follow <a href="../../../material/1_mon/firststeps/tasks.html#1">Task 1 here</a> )</p>
 </section>
 <section id="julia-basics---ii" class="level1">
 <h1>Julia Basics - II</h1>
@@ -474,7 +453,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-6">returns <code>c</code></span>
+<span data-code-lines="3" data-code-cell="annotated-cell-6" data-code-annotation="1">returns <code>c</code></span>
 </dd>
 </dl>
 <section id="characters" class="level5">
@@ -485,15 +464,15 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-7">a <code>StepRange</code> between characters</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-7" data-code-annotation="1">a <code>StepRange</code> between characters</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-7">a <code>Array{Chars}</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="2">a <code>Array{Chars}</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-7">a <code>String</code></span>
+<span data-code-lines="3" data-code-cell="annotated-cell-7" data-code-annotation="3">a <code>String</code></span>
 </dd>
 </dl>
 </section>
@@ -505,7 +484,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-8">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-8" data-code-annotation="1">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
 </dd>
 </dl>
 </section>
@@ -523,11 +502,11 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-10">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-10" data-code-annotation="1">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-10">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-10" data-code-annotation="2">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
 </dd>
 </dl>
 </section>
@@ -548,7 +527,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="5" data-code-annotation="1" data-code-cell="annotated-cell-12">a = 0! - in a script; but a = 1 in the REPL!</span>
+<span data-code-lines="5" data-code-cell="annotated-cell-12" data-code-annotation="1">a = 0! - in a script; but a = 1 in the REPL!</span>
 </dd>
 </dl>
 <p>Variables are in global scope in the REPL for debugging convenience</p>
@@ -575,7 +554,7 @@ Tip
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6,9" data-code-annotation="1" data-code-cell="annotated-cell-1">returns 1 now in both REPL and include(“myscript.jl”)</span>
+<span data-code-lines="6,9" data-code-cell="annotated-cell-1" data-code-annotation="1">returns 1 now in both REPL and include(“myscript.jl”)</span>
 </dd>
 </dl>
 </div>
@@ -596,11 +575,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="1" data-code-cell="annotated-cell-13">a = 0</span>
+<span data-code-lines="10" data-code-cell="annotated-cell-13" data-code-annotation="1">a = 0</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="11" data-code-annotation="2" data-code-cell="annotated-cell-13">b = 1</span>
+<span data-code-lines="11" data-code-cell="annotated-cell-13" data-code-annotation="2">b = 1</span>
 </dd>
 </dl>
 </section>
@@ -615,7 +594,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6" data-code-annotation="1" data-code-cell="annotated-cell-14">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-14" data-code-annotation="1">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
 </dd>
 </dl>
 </section>
@@ -692,7 +671,7 @@ Click me for even more types!
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="17" data-code-annotation="1" data-code-cell="annotated-cell-16">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
+<span data-code-lines="17" data-code-cell="annotated-cell-16" data-code-annotation="1">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -713,17 +692,7 @@ Warning
 </section>
 <section id="task-2" class="level1">
 <h1>Task 2</h1>
-<ol type="1">
-<li>Implement a type <code>StatResult</code> with fields for <code>x</code>, <code>n</code>, <code>std</code> and <code>tvalue</code></li>
-<li>Implement an outer constructor that can run <code>StatResult(2:10)</code> and return the full type including the calculated t-values.</li>
-<li>Implement a function <code>length</code> for <code>StatResult</code> to multiple-dispatch on</li>
-<li><strong>Optional:</strong> If you have time, optimize the functions, so that mean, sum, length, std etc. is not calculated multiple times - you might want to rewrite your type. Note: This is a bit tricky :)</li>
-</ol>
-</section>
-<section id="julia-basics-iii" class="level1">
-<h1>Julia Basics III</h1>
-<section id="modules" class="level2">
-<h2 class="anchored" data-anchor-id="modules">Modules</h2>
+<p>Follow <a href="../../../material/1_mon/firststeps/tasks.html#2">Task 2 here</a> ) # Julia Basics III ## Modules</p>
 <div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> MyStatsPackage</span>
 <span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">include</span>(<span class="st">"src/statistic_functions.jl"</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> SimulationResults</span>
@@ -734,7 +703,7 @@ Warning
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-17">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-17" data-code-annotation="1">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> <span class="bu">MyStatsPackage</span></span>
@@ -743,7 +712,6 @@ Warning
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> <span class="bu">MyStatsPackage</span>: rse_sum</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rse_sum</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 <section id="macros" class="level2">
 <h2 class="anchored" data-anchor-id="macros">Macros</h2>
 <p>Macros allow to programmers to edit the actual code <strong>before</strong> it is run. We will pretty much just use them, without learning how they work.</p>
@@ -846,13 +814,7 @@ Warning
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>rse = research software engineering, we could use <code>sum</code> in a principled way, but it requires some knowledge you likely don’t have right now<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
