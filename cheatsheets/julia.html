@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../installation/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
@@ -324,15 +324,108 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#meta-tools" id="toc-meta-tools" class="nav-link active" data-scroll-target="#meta-tools">“meta”-tools</a></li>
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">debugging</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<section id="meta-tools" class="level2">
+<h2 class="anchored" data-anchor-id="meta-tools">“meta”-tools</h2>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Julia</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Documentation</td>
+<td><code>?obj</code></td>
+<td><code>help(obj)</code></td>
+</tr>
+<tr class="even">
+<td>Object content</td>
+<td><code>dump(obj)</code></td>
+<td><code>print(repr(obj))</code></td>
+</tr>
+<tr class="odd">
+<td>Exported functions</td>
+<td><code>names(FooModule)</code></td>
+<td><code>dir(foo_module)</code></td>
+</tr>
+<tr class="even">
+<td>List function signatures with that name</td>
+<td><code>methods(myFun)</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>List functions for specific type</td>
+<td><code>methodswith(SomeType)</code></td>
+<td><code>dir(SomeType)</code></td>
+</tr>
+<tr class="even">
+<td>Where is …?</td>
+<td><code>@which func</code></td>
+<td><code>func.__module__</code></td>
+</tr>
+<tr class="odd">
+<td>What is …?</td>
+<td><code>typeof(obj)</code></td>
+<td><code>type(obj)</code></td>
+</tr>
+<tr class="even">
+<td>Is it really a …?</td>
+<td><code>isa(obj, SomeType)</code></td>
+<td><code>isinstance(obj, SomeType)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="debugging" class="level2">
+<h2 class="anchored" data-anchor-id="debugging">debugging</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>@run sum(5+1)</code></td>
+<td>run debugger, stop at error/breakpoints</td>
+</tr>
+<tr class="even">
+<td><code>@enter sum(5+1)</code></td>
+<td>enter debugger, dont start code yet</td>
+</tr>
+<tr class="odd">
+<td><code>@show variable</code></td>
+<td>prints: variable = variablecontent</td>
+</tr>
+<tr class="even">
+<td><code>@debug variable</code></td>
+<td>prints only to debugger, very convient in combination with <code>&gt;ENV["JULIA_DEBUG"] = ToBeDebuggedModule</code> (could be <code>Main</code> as well)</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -664,7 +757,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">CC-By Benedikt Ehinger</div>   
+    <div class="nav-footer-left">CC-By Ehinger, Oesting, Uekerman</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

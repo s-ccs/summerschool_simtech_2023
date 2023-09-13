@@ -145,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../installation.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../installation/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
@@ -643,7 +643,7 @@ version = "0.3.4"
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-5">let’s directly add a compat entry for UnicodePlots</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-5">let’s directly add a compat entry for UnicodePlots</span>
 </dd>
 </dl>
 </section>
@@ -651,8 +651,14 @@ version = "0.3.4"
 <h3 class="anchored" data-anchor-id="semantic-versioning">Semantic Versioning</h3>
 <p>Following <code>semver</code> - three parts:</p>
 <p><code>v2.7.5</code></p>
-<p>means: - <strong>Major</strong> 2 - <strong>Minor</strong> 7 - <strong>Bugfix</strong> 5</p>
-<p>Bump <strong>Major</strong> if you propose backward-breaking changes Bump <strong>Minor</strong> if you only introduce new features Bump <strong>Bugfix</strong> if you, well, fix bugs</p>
+<p>means:</p>
+<ul>
+<li><p><strong>Major</strong> 2</p></li>
+<li><p><strong>Minor</strong> 7</p></li>
+<li><p><strong>Bugfix</strong> 5</p></li>
+<li><p>Bump <strong>Major</strong> if you propose backward-breaking changes</p></li>
+<li><p>Bump <strong>Minor</strong> if you only introduce new features -Bump <strong>Bugfix</strong> if you, well, fix bugs</p></li>
+</ul>
 <p><strong>Special case:</strong></p>
 <p><code>v0.37.1</code></p>
 <p>Means package is in development and not stable. Bump <strong>Major</strong> if you release it Bump <strong>Minor</strong> for breaking changes Bump <strong>Bugfix</strong> if you fix bugs or release new features</p>
@@ -670,23 +676,23 @@ version = "0.3.4"
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="2" data-code-cell="annotated-cell-6">[1.0.0-2)</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-6">[1.0.0-2)</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-6">[1.5.0-2)</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-6">[1.5.0-2)</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="4" data-code-cell="annotated-cell-6">[1.5.3-2)</span>
+<span data-code-lines="4" data-code-annotation="3" data-code-cell="annotated-cell-6">[1.5.3-2)</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="5" data-code-cell="annotated-cell-6">[1.5.6]</span>
+<span data-code-lines="5" data-code-annotation="4" data-code-cell="annotated-cell-6">[1.5.6]</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="7" data-code-cell="annotated-cell-6">[0.2.3 - 0.3)</span>
+<span data-code-lines="7" data-code-annotation="5" data-code-cell="annotated-cell-6">[0.2.3 - 0.3)</span>
 </dd>
 </dl>
 <p>As you can see, develop version (<code>version &lt; 1</code>) are treated a bit special in Julia, and different to <code>semver</code>. <a href="https://pkgdocs.julialang.org/v1/compatibility/#compat-pre-1.0">Read more here</a></p>
@@ -1117,7 +1123,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">CC-By Benedikt Ehinger</div>   
+    <div class="nav-footer-left">CC-By Ehinger, Oesting, Uekerman</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

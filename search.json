@@ -231,6 +231,13 @@
     "text": "Syntax differences Python/R/MatLab\n\nIn the beginning there was nothing\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN.\n\n\nControl Structures\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets.\nPython User? We don’t need no intendation, and we also have 1-index.\n1myarray = zeros(6)\n2for k = 1:length(myarray)\n    if iseven(k)\n3        myarray[k] = sum(myarray[1:k])\n    elseif k == 5\n41        myarray = myarray .- 1\n    else \n        myarray[k] = 5\n5    end\nend\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\nFunctions\n1function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n    if keyword1 == \"defaultkeyword\"\n        c = a+b\n    else\n        c = a*b\n    end\n    return c\nend\n2methods(myfunction)\nmyfunction(0)\nmyfunction(1;keyword1 = \"notdefault\")\nmyfunction(0,5)\nmyfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nList all methods with that function name - returns two functions, due to the b=123 optional positional argument\n\n\n:: callout-tip ## Terminology function vs. method Methods are instantiations of a abstract function\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\nmyfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)\n\nExcourse: splatting & slurping\nThink of it as unpacking / collecting something\na = [1,2,3]\n+(a)\n1+(a...)\n\n1\n\nequivalent to +(1,2,3)\n\n\n\n\nelementwise-function / broadcasting\nJulia is very neat in regards of applying functions elementwise (also called broadcasting).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of a Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (Matlab, Python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though).\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in Python/Matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
   },
   {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
+    "title": "First Steps",
+    "section": "Linear Algebra",
+    "text": "Linear Algebra\n1import LinearAlgebra\nimport LinearAlgebra: qr\n2using LinearAlgebra\n\n1\n\nRequires to write LinearAlgebra.QR(...) to access a function\n\n2\n\nLinearAlgebra is a Base package, and always available\n\n\n:: callout Julia typically recommends to use using PackageNames. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened) ::\n1A = Matrix{Float64}(undef,11,22)\n2B = Array{Float64,2}(undef,22,33)\nqr(A*B)\n\n1\n\nequivalent to Array, as Matrix is a convenience type-alias for Array with 2 dimensions. Same thing for Vector.\n\n2\n\nthe 2 of {Float64,2} is not mandatory\n\n\nMuch more on wednesday in the lecture LinearAlgebra!"
+  },
+  {
     "objectID": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
     "href": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
     "title": "First Steps",
@@ -266,18 +273,11 @@
     "text": "Macros\nMacros allow to programmers to edit the actual code before it is run. We will pretty much just use them, without learning how they work.\n    @which cumsum\n    @which(cumsum)\n    a = \"123\"\n    @show a"
   },
   {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#meta-tools",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#meta-tools",
-    "title": "First Steps",
-    "section": "meta-tools",
-    "text": "meta-tools\n\n\n\n\n\n\n\n\n\n\nJulia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
-  },
-  {
     "objectID": "material/1_mon/firststeps/firststeps_handout.html#debugging",
     "href": "material/1_mon/firststeps/firststeps_handout.html#debugging",
     "title": "First Steps",
-    "section": "debugging",
-    "text": "debugging\n\n\n\n\n\n\n\n@run sum(5+1)\nrun debugger, stop at error/breakpoints\n\n\n@enter sum(5+1)\nenter debugger, dont start code yet\n\n\n@show variable\nprints: variable = variablecontent\n\n\n@debug variable\nprints only to debugger, very convient in combination with &gt;ENV[\"JULIA_DEBUG\"] = ToBeDebuggedModule (could be Main as well)"
+    "section": "Debugging",
+    "text": "Debugging\nXXX"
   },
   {
     "objectID": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
@@ -292,6 +292,34 @@
     "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
     "section": "",
     "text": "📑 Course Brief\nNearly all scientists are writing research software for their analyses - but most did not receive any training for it. We will teach the basics of such research software engineering, of visualization and statistics in JuliaLang - a scientific programming language.\n\n\n\n\n\n\nWe will have a healthy mix of keynotes from invited lecturers and hands-on sessions.\n\n\n\n\n\n🎯 Learning Objectives\n\nLearn the basics of the scientific programming language Julia\nFrom git to continuous integration: Reearch Software Engineering, with and without Julia\nHow to generate complex multipanel visualizations and use interactive plots efficiently\n\n\n\n💶 Costs\n\nsmall course fee, including lunch + dinner\nYou have to pay for Hotel + Travel + Breakfast\n\n\n\n💬 Typical questions that will be answered\n\nHow can I use git beyond “git clone” and “rm * + git clone”?\nWhat is continuous integration - and why should I care as a researcher?\nHow do I use unit-testing?\nWhat kinds of documentation should I write?\nWhy are these skills that will boost my reproducibility in my projects?\nWhy is Julia so great for RSE?\nHow can I run quick interactive visualizations?\nIs bootstrapping really all I need to know for statistics?\n\n\n\nAbstract\nThe development of research software has become an important part of research projects in many areas of science and engineering. At the same time, increasing computational power in the area of high performance computing has made computationally challenging statistical tasks feasible and highly desirable in many application fields. In this week-long summer school, we will therefore address these different aspects and familiarize you with the most essential paradigms of software development, which support the design of efficient, user-friendly, and sustainable software. In particular, we will focus on the scientific programming language Julia. The summer school is organized around keynote presentations by invited Julia experts and many hands-on tutorials. First, a gentle introduction including packaging, testing, virtualization, interaction, and visualization will supply you with the essential skills you need to use Julia in your research. Afterwards, we build on these skills to implement computationally expensive statistical methods. In particular, we will focus on methods for regression and resampling using bootstrap and permutations. That is, methods addressing two of the most common challenges in statistics: estimation of the relationship between variables of interest and the quantification of uncertainty. You are invited to bring your own problem to apply the skills you learn in this summer school."
+  },
+  {
+    "objectID": "installation/julia.html",
+    "href": "installation/julia.html",
+    "title": "Installing Julia",
+    "section": "",
+    "text": "Installing Julia\nThe recommended way to install julia is juliaup. It allows you toe.g. easily update Julia at a later point, but also test out alpha/beta versions etc.\nTLDR; If you dont want to read the explicit instructions, just copy the following command\n\nWindows\nAppStore -&gt; JuliaUp, or winget install julia -s msstore in CMD\n\n\nMac & Linux\ncurl -fsSL https://install.julialang.org | sh in any shell\n\n\n\nVSCode\nTo install VSCode (the recommended IDE), go to this link and download + install the correct package.\nNext, install the Julia extension\n (thanks to https://juliateachingctu.github.io for providing us with the nice graphics)\nFinally press Ctrl + Shift + P to get VSCodes command palette, and type in Julia: Start REPL"
+  },
+  {
+    "objectID": "cheatsheets/julia.html",
+    "href": "cheatsheets/julia.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "Julia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
+  },
+  {
+    "objectID": "cheatsheets/julia.html#meta-tools",
+    "href": "cheatsheets/julia.html#meta-tools",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "Julia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
+  },
+  {
+    "objectID": "cheatsheets/julia.html#debugging",
+    "href": "cheatsheets/julia.html#debugging",
+    "title": "Research Software Engineering Summer School",
+    "section": "debugging",
+    "text": "debugging\n\n\n\n\n\n\n\n@run sum(5+1)\nrun debugger, stop at error/breakpoints\n\n\n@enter sum(5+1)\nenter debugger, dont start code yet\n\n\n@show variable\nprints: variable = variablecontent\n\n\n@debug variable\nprints only to debugger, very convient in combination with &gt;ENV[\"JULIA_DEBUG\"] = ToBeDebuggedModule (could be Main as well)"
   },
   {
     "objectID": "schedule.html",
@@ -347,7 +375,7 @@
     "href": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
     "title": "Environments",
     "section": "Let’s generate our first package!",
-    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans: - Major 2 - Minor 7 - Bugfix 5\nBump Major if you propose backward-breaking changes Bump Minor if you only introduce new features Bump Bugfix if you, well, fix bugs\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
+    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans:\n\nMajor 2\nMinor 7\nBugfix 5\nBump Major if you propose backward-breaking changes\nBump Minor if you only introduce new features -Bump Bugfix if you, well, fix bugs\n\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
   },
   {
     "objectID": "material/1_mon/envs/envs_handout.html#projects-in-julia",

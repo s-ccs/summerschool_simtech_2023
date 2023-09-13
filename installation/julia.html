@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../schedule.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -89,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../installation/julia.html">Installation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -109,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../installation/julia.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
@@ -322,15 +324,46 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installing-julia" id="toc-installing-julia" class="nav-link active" data-scroll-target="#installing-julia">Installing Julia</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#mac-linux" id="toc-mac-linux" class="nav-link" data-scroll-target="#mac-linux">Mac &amp; Linux</a></li>
+  </ul></li>
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<section id="installing-julia" class="level1">
+<h1>Installing Julia</h1>
+<p>The recommended way to install julia is <a href="https://github.com/JuliaLang/juliaup">juliaup</a>. It allows you toe.g. easily update Julia at a later point, but also test out alpha/beta versions etc.</p>
+<p>TLDR; If you dont want to read the explicit instructions, just copy the following command</p>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<p>AppStore -&gt; JuliaUp, or <code>winget install julia -s msstore</code> in CMD</p>
+</section>
+<section id="mac-linux" class="level3">
+<h3 class="anchored" data-anchor-id="mac-linux">Mac &amp; Linux</h3>
+<p><code>curl -fsSL https://install.julialang.org | sh</code> in any shell</p>
+</section>
+</section>
+<section id="vscode" class="level1">
+<h1>VSCode</h1>
+<p>To install VSCode (the recommended IDE), go to <a href="https://code.visualstudio.com/download">this link</a> and download + install the correct package.</p>
+<p>Next, install the Julia extension</p>
+<p><img src="https://juliateachingctu.github.io/Julia-for-Optimization-and-Learning/stable/installation/vscodeext_1.png" class="img-fluid"> (thanks to https://juliateachingctu.github.io for providing us with the nice graphics)</p>
+<p>Finally press <code>Ctrl + Shift + P</code> to get VSCodes command palette, and type in <code>Julia: Start REPL</code> <img src="https://juliateachingctu.github.io/Julia-for-Optimization-and-Learning/stable/installation/vscodeext_2.png" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -647,10 +680,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">🏠 Home</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../schedule.html" class="pagination-link">
+        <span class="nav-page-text">📓 Schedule</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">CC-By Benedikt Ehinger</div>   
+    <div class="nav-footer-left">CC-By Ehinger, Oesting, Uekerman</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

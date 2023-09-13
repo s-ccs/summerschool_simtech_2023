@@ -145,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../installation.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../installation/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
@@ -371,6 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control Structures</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   </ul></li>
+  <li><a href="#linear-algebra" id="toc-linear-algebra" class="nav-link" data-scroll-target="#linear-algebra">Linear Algebra</a></li>
   <li><a href="#style-conventions" id="toc-style-conventions" class="nav-link" data-scroll-target="#style-conventions">Style-conventions</a></li>
   </ul></li>
   <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1">Task 1</a></li>
@@ -388,11 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
   <li><a href="#macros" id="toc-macros" class="nav-link" data-scroll-target="#macros">Macros</a></li>
-  </ul></li>
-  <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets">Cheatsheets</a>
-  <ul class="collapse">
-  <li><a href="#meta-tools" id="toc-meta-tools" class="nav-link" data-scroll-target="#meta-tools">meta-tools</a></li>
-  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">debugging</a></li>
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -462,23 +459,23 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">Control-Structure for-loop. 1-index!</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-1">Control-Structure for-loop. 1-index!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-1" data-code-annotation="3"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
+<span data-code-lines="4" data-code-annotation="3" data-code-cell="annotated-cell-1"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-1" data-code-annotation="4"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
+<span data-code-lines="6" data-code-annotation="4" data-code-cell="annotated-cell-1"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="9" data-code-cell="annotated-cell-1" data-code-annotation="5"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
+<span data-code-lines="9" data-code-annotation="5" data-code-cell="annotated-cell-1"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
 </dd>
 </dl>
 </section>
@@ -500,11 +497,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-2">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="9" data-code-cell="annotated-cell-2" data-code-annotation="2">List all methods with that function name - returns two functions, due to the <code>b=123</code> optional positional argument</span>
+<span data-code-lines="9" data-code-annotation="2" data-code-cell="annotated-cell-2">List all methods with that function name - returns two functions, due to the <code>b=123</code> optional positional argument</span>
 </dd>
 </dl>
 <p>:: callout-tip ## Terminology function vs.&nbsp;method Methods are instantiations of a abstract <code>function</code></p>
@@ -524,7 +521,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-6" data-code-annotation="1">equivalent to <code>+(1,2,3)</code></span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-6">equivalent to <code>+(1,2,3)</code></span>
 </dd>
 </dl>
 </section>
@@ -537,11 +534,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="1">Error - there is no method defined for the <code>sqrt</code> of a <code>Vector</code></span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-7">Error - there is no method defined for the <code>sqrt</code> of a <code>Vector</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-7" data-code-annotation="2">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-7">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -576,7 +573,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-3" data-code-annotation="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-3">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
 </dd>
 </dl>
 <p>The <code>temp</code> memory we need at each iteration is simply <code>c[k]</code>. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g.&nbsp;to do sum, or + or whatever. Those are typically the inbuilt <code>C</code> functions in Python/Matlab/R, that really speed up things. In Julia <strong>we do not need inbuilt functions for speed</strong>.</p>
@@ -584,6 +581,37 @@ Important
 </div>
 </section>
 </section>
+</section>
+<section id="linear-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="linear-algebra">Linear Algebra</h2>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">LinearAlgebra</span></span>
+<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">LinearAlgebra</span>: qr</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-8">Requires to write <code>LinearAlgebra.QR(...)</code> to access a function</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-8"><code>LinearAlgebra</code> is a <code>Base</code> package, and always available</span>
+</dd>
+</dl>
+<p>:: callout Julia typically recommends to use <code>using PackageNames</code>. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened) ::</p>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Matrix</span><span class="dt">{Float64}</span>(<span class="cn">undef</span>,<span class="fl">11</span>,<span class="fl">22</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Array</span><span class="dt">{Float64,2}</span>(<span class="cn">undef</span>,<span class="fl">22</span>,<span class="fl">33</span>)</span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qr</span>(A<span class="op">*</span>B)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-9">equivalent to <code>Array</code>, as <code>Matrix</code> is a convenience type-alias for <code>Array</code> with 2 dimensions. Same thing for <code>Vector</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-9">the <code>2</code> of <code>{Float64,2}</code> is not mandatory</span>
+</dd>
+</dl>
+<p>Much more on wednesday in the lecture <code>LinearAlgebra</code>!</p>
 </section>
 <section id="style-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="style-conventions">Style-conventions</h2>
@@ -621,44 +649,44 @@ Important
 <h1>Julia Basics - II</h1>
 <section id="strings" class="level3">
 <h3 class="anchored" data-anchor-id="strings">Strings</h3>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>    character <span class="op">=</span> <span class="ch">'a'</span></span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"abc"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>    str[<span class="fl">3</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>    character <span class="op">=</span> <span class="ch">'a'</span></span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"abc"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>    str[<span class="fl">3</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-8" data-code-annotation="1">returns <code>c</code></span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-10">returns <code>c</code></span>
 </dd>
 </dl>
 <section id="characters" class="level5">
 <h5 class="anchored" data-anchor-id="characters">characters</h5>
-<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>    <span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">join</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">join</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-9" data-code-annotation="1">a <code>StepRange</code> between characters</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-11">a <code>StepRange</code> between characters</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-9" data-code-annotation="2">a <code>Array{Chars}</code></span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-11">a <code>Array{Chars}</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-9" data-code-annotation="3">a <code>String</code></span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-11">a <code>String</code></span>
 </dd>
 </dl>
 </section>
 <section id="concatenation" class="level5">
 <h5 class="anchored" data-anchor-id="concatenation">concatenation</h5>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="st">"one"</span></span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="st">"two"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>    ab <span class="op">=</span> a <span class="op">*</span> b</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="st">"one"</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="st">"two"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>    ab <span class="op">=</span> a <span class="op">*</span> b</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-10" data-code-annotation="1">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-12">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
 </dd>
 </dl>
 </section>
@@ -670,17 +698,17 @@ Important
 </section>
 <section id="regexp" class="level5">
 <h5 class="anchored" data-anchor-id="regexp">regexp</h5>
-<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"any WORD written in CAPITAL?"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">occursin</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>, str)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="fu">match</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>,str)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"any WORD written in CAPITAL?"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">occursin</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>, str)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="fu">match</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>,str)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-12" data-code-annotation="1">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-14">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
 </dd>
-<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-12" data-code-annotation="2">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-14">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
 </dd>
 </dl>
 </section>
@@ -693,15 +721,15 @@ Important
 <section id="scopes" class="level2">
 <h2 class="anchored" data-anchor-id="scopes">Scopes</h2>
 <p>All things (excepts modules) are in local scope (in scripts)</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">1</span></span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a>a</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">1</span></span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>a</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-14" data-code-annotation="1">a = 0! - in a script; but a = 1 in the REPL!</span>
+<span data-code-lines="5" data-code-annotation="1" data-code-cell="annotated-cell-16">a = 0! - in a script; but a = 1 in the REPL!</span>
 </dd>
 </dl>
 <p>Variables are in global scope in the REPL for debugging convenience</p>
@@ -728,47 +756,47 @@ Tip
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6,9" data-code-cell="annotated-cell-1" data-code-annotation="1">returns 1 now in both REPL and include(“myscript.jl”)</span>
+<span data-code-lines="6,9" data-code-annotation="1" data-code-cell="annotated-cell-1">returns 1 now in both REPL and include(“myscript.jl”)</span>
 </dd>
 </dl>
 </div>
 </div>
 <section id="explicit-global-local" class="level4">
 <h4 class="anchored" data-anchor-id="explicit-global-local">explicit global / local</h4>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> b</span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0</span></span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> a </span>
-<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> b</span>
-<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">1</span></span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="fl">1</span></span>
-<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-10" class="code-annotation-target"><a href="#annotated-cell-15-10" aria-hidden="true" tabindex="-1"></a>a</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-11" class="code-annotation-target"><a href="#annotated-cell-15-11" aria-hidden="true" tabindex="-1"></a>b</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> b</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0</span></span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> a </span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> b</span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">1</span></span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="fl">1</span></span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-10" class="code-annotation-target"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a>a</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-11" class="code-annotation-target"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>b</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-15" data-code-annotation="1">a = 0</span>
+<span data-code-lines="10" data-code-annotation="1" data-code-cell="annotated-cell-17">a = 0</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="11" data-code-cell="annotated-cell-15" data-code-annotation="2">b = 1</span>
+<span data-code-lines="11" data-code-annotation="2" data-code-cell="annotated-cell-17">b = 1</span>
 </dd>
 </dl>
 </section>
 <section id="modifying-containers-works-in-any-case" class="level4">
 <h4 class="anchored" data-anchor-id="modifying-containers-works-in-any-case">Modifying containers works in any case</h4>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">10</span>)</span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>    a[k] <span class="op">=</span> k</span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a>a</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">10</span>)</span>
+<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>    a[k] <span class="op">=</span> k</span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-6" class="code-annotation-target"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>a</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-16" data-code-annotation="1">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
+<span data-code-lines="6" data-code-annotation="1" data-code-cell="annotated-cell-18">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
 </dd>
 </dl>
 </section>
@@ -814,38 +842,38 @@ Click me for even more types!
 <section id="composite-types" class="level3">
 <h3 class="anchored" data-anchor-id="composite-types">composite types</h3>
 <p>You can think of these types as containers for your variables, which allows you for specialization.</p>
-<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> SimulationResults</span>
-<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>        parameters<span class="op">::</span><span class="dt">Vector</span></span>
-<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>        results<span class="op">::</span><span class="dt">Vector</span></span>
-<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fu">SimulationResults</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>],[<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span>,<span class="cn">NaN</span>])</span>
-<span id="annotated-cell-18-7"><a href="#annotated-cell-18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">function</span> <span class="fu">print</span>(s<span class="op">::</span><span class="dt">SimulationResults</span>)</span>
-<span id="annotated-cell-18-9"><a href="#annotated-cell-18-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"The following simulation was run:"</span>)</span>
-<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"Parameters: "</span>,s.parameters)</span>
-<span id="annotated-cell-18-11"><a href="#annotated-cell-18-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"And we got results!"</span>)</span>
-<span id="annotated-cell-18-12"><a href="#annotated-cell-18-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"Results: "</span>,s.results)</span>
-<span id="annotated-cell-18-13"><a href="#annotated-cell-18-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<span id="annotated-cell-18-14"><a href="#annotated-cell-18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-18-15"><a href="#annotated-cell-18-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(s)</span>
-<span id="annotated-cell-18-16"><a href="#annotated-cell-18-16" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-17" class="code-annotation-target"><a href="#annotated-cell-18-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">SimulationResults</span>(parameters)</span>
-<span id="annotated-cell-18-18"><a href="#annotated-cell-18-18" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> <span class="fu">run_simulation</span>(parameters)</span>
-<span id="annotated-cell-18-19"><a href="#annotated-cell-18-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">SimulationResults</span>(parameters,results)</span>
-<span id="annotated-cell-18-20"><a href="#annotated-cell-18-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<span id="annotated-cell-18-21"><a href="#annotated-cell-18-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-18-22"><a href="#annotated-cell-18-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">run_simulation</span>(x)</span>
-<span id="annotated-cell-18-23"><a href="#annotated-cell-18-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">cumsum</span>(<span class="fu">repeat</span>(x,<span class="fl">2</span>))</span>
-<span id="annotated-cell-18-24"><a href="#annotated-cell-18-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<span id="annotated-cell-18-25"><a href="#annotated-cell-18-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-18-26"><a href="#annotated-cell-18-26" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fu">SimulationResults</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>])</span>
-<span id="annotated-cell-18-27"><a href="#annotated-cell-18-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(s)</span>
-<span id="annotated-cell-18-28"><a href="#annotated-cell-18-28" aria-hidden="true" tabindex="-1"></a></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> SimulationResults</span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>        parameters<span class="op">::</span><span class="dt">Vector</span></span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>        results<span class="op">::</span><span class="dt">Vector</span></span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fu">SimulationResults</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>],[<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span>,<span class="cn">NaN</span>])</span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">function</span> <span class="fu">print</span>(s<span class="op">::</span><span class="dt">SimulationResults</span>)</span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"The following simulation was run:"</span>)</span>
+<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"Parameters: "</span>,s.parameters)</span>
+<span id="annotated-cell-20-11"><a href="#annotated-cell-20-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"And we got results!"</span>)</span>
+<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"Results: "</span>,s.results)</span>
+<span id="annotated-cell-20-13"><a href="#annotated-cell-20-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="annotated-cell-20-14"><a href="#annotated-cell-20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-20-15"><a href="#annotated-cell-20-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(s)</span>
+<span id="annotated-cell-20-16"><a href="#annotated-cell-20-16" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-17" class="code-annotation-target"><a href="#annotated-cell-20-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">SimulationResults</span>(parameters)</span>
+<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> <span class="fu">run_simulation</span>(parameters)</span>
+<span id="annotated-cell-20-19"><a href="#annotated-cell-20-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">SimulationResults</span>(parameters,results)</span>
+<span id="annotated-cell-20-20"><a href="#annotated-cell-20-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="annotated-cell-20-21"><a href="#annotated-cell-20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-20-22"><a href="#annotated-cell-20-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">run_simulation</span>(x)</span>
+<span id="annotated-cell-20-23"><a href="#annotated-cell-20-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">cumsum</span>(<span class="fu">repeat</span>(x,<span class="fl">2</span>))</span>
+<span id="annotated-cell-20-24"><a href="#annotated-cell-20-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="annotated-cell-20-25"><a href="#annotated-cell-20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-20-26"><a href="#annotated-cell-20-26" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fu">SimulationResults</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>])</span>
+<span id="annotated-cell-20-27"><a href="#annotated-cell-20-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(s)</span>
+<span id="annotated-cell-20-28"><a href="#annotated-cell-20-28" aria-hidden="true" tabindex="-1"></a></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="17" data-code-cell="annotated-cell-18" data-code-annotation="1">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
+<span data-code-lines="17" data-code-annotation="1" data-code-cell="annotated-cell-20">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -872,17 +900,17 @@ Warning
 <h1>Julia Basics III</h1>
 <section id="modules" class="level2">
 <h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> MyStatsPackage</span>
-<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">include</span>(<span class="st">"src/statistic_functions.jl"</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-3" class="code-annotation-target"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> SimulationResults</span>
-<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> rse_tstat</span>
-<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-19-7"><a href="#annotated-cell-19-7" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyStatsPackage</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> MyStatsPackage</span>
+<span id="annotated-cell-21-2"><a href="#annotated-cell-21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">include</span>(<span class="st">"src/statistic_functions.jl"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-3" class="code-annotation-target"><a href="#annotated-cell-21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> SimulationResults</span>
+<span id="annotated-cell-21-4"><a href="#annotated-cell-21-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">export</span> rse_tstat</span>
+<span id="annotated-cell-21-5"><a href="#annotated-cell-21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="annotated-cell-21-6"><a href="#annotated-cell-21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-21-7"><a href="#annotated-cell-21-7" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyStatsPackage</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-19" data-code-annotation="1">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-21">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> <span class="bu">MyStatsPackage</span></span>
@@ -900,95 +928,9 @@ Warning
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="st">"123"</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@show</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="cheatsheets" class="level1">
-<h1>Cheatsheets</h1>
-<section id="meta-tools" class="level2">
-<h2 class="anchored" data-anchor-id="meta-tools">meta-tools</h2>
-<!-- maybe move to own file "cheatsheets?" -->
-<table class="table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Julia</th>
-<th>Python</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Documentation</td>
-<td><code>?obj</code></td>
-<td><code>help(obj)</code></td>
-</tr>
-<tr class="even">
-<td>Object content</td>
-<td><code>dump(obj)</code></td>
-<td><code>print(repr(obj))</code></td>
-</tr>
-<tr class="odd">
-<td>Exported functions</td>
-<td><code>names(FooModule)</code></td>
-<td><code>dir(foo_module)</code></td>
-</tr>
-<tr class="even">
-<td>List function signatures with that name</td>
-<td><code>methods(myFun)</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>List functions for specific type</td>
-<td><code>methodswith(SomeType)</code></td>
-<td><code>dir(SomeType)</code></td>
-</tr>
-<tr class="even">
-<td>Where is …?</td>
-<td><code>@which func</code></td>
-<td><code>func.__module__</code></td>
-</tr>
-<tr class="odd">
-<td>What is …?</td>
-<td><code>typeof(obj)</code></td>
-<td><code>type(obj)</code></td>
-</tr>
-<tr class="even">
-<td>Is it really a …?</td>
-<td><code>isa(obj, SomeType)</code></td>
-<td><code>isinstance(obj, SomeType)</code></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="debugging" class="level2">
-<h2 class="anchored" data-anchor-id="debugging">debugging</h2>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><code>@run sum(5+1)</code></td>
-<td>run debugger, stop at error/breakpoints</td>
-</tr>
-<tr class="even">
-<td><code>@enter sum(5+1)</code></td>
-<td>enter debugger, dont start code yet</td>
-</tr>
-<tr class="odd">
-<td><code>@show variable</code></td>
-<td>prints: variable = variablecontent</td>
-</tr>
-<tr class="even">
-<td><code>@debug variable</code></td>
-<td>prints only to debugger, very convient in combination with <code>&gt;ENV["JULIA_DEBUG"] = ToBeDebuggedModule</code> (could be <code>Main</code> as well)</td>
-</tr>
-</tbody>
-</table>
+<h2 class="anchored" data-anchor-id="debugging">Debugging</h2>
+<p>XXX</p>
 
 
 </section>
@@ -1330,7 +1272,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">CC-By Benedikt Ehinger</div>   
+    <div class="nav-footer-left">CC-By Ehinger, Oesting, Uekerman</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
