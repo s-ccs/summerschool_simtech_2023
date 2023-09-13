@@ -35,6 +35,17 @@ website:
                 text: "📝 3 - First Steps"
               - href: "material/1_mon/envs/envs_handout.qmd"
                 text: "📝 4 - Environments & Packages"
+                  - section: "Monday"
+          - section: "Tuesday"
+              - href: material/2_tues/git/intro_slides.md
+                text: "📊 1 - GIT"
+              
+          - section: "Wednesday"
+              - href: material/3_wed/docs/handout.qmd
+                text: "📝 1 - Docs"
+              - href: material/3_wed/vis/slides.jl
+                text: "📊 2 - Visualizations"
+
   navbar:
     background: primary
   page-footer:
