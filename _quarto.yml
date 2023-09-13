@@ -71,3 +71,4 @@ format:
     toc-expand: 3
     grid:
       body-width: 1000px
+    code-annotations: hover
