@@ -105,3 +105,5 @@ format:
     grid:
       body-width: 1000px
     code-annotations: hover
+    margin-header: |
+      ![](https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Zeichenflaeche-3-Kopie-42x.png?__scale=w:150,h:150)
