@@ -37,7 +37,7 @@ website:
                 text: "📝 4 - Environments & Packages"
           - section: "Tuesday"
             contents: 
-              - href: material/2_tues/git/intro_slides.md
+              - href: material/2_tue/git/intro_slides.md
                 text: "📊 1 - GIT"    
           - section: "Wednesday"
             contents:
