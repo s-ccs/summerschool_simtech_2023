@@ -329,6 +329,34 @@
     "text": "Summerschool Schedule"
   },
   {
+    "objectID": "installation/vscode.html",
+    "href": "installation/vscode.html",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "Documentation on the Julia VSCode extension can be found here\n\n\nFile-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!\n\n\n\nthis = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here\n\n\n\nCtrl+Shift+I to automatically format your code"
+  },
+  {
+    "objectID": "installation/vscode.html#recommended-settings",
+    "href": "installation/vscode.html#recommended-settings",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "File-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!"
+  },
+  {
+    "objectID": "installation/vscode.html#vscode-blocks",
+    "href": "installation/vscode.html#vscode-blocks",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "this = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here"
+  },
+  {
+    "objectID": "installation/vscode.html#vscode-autoformat",
+    "href": "installation/vscode.html#vscode-autoformat",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "Ctrl+Shift+I to automatically format your code"
+  },
+  {
     "objectID": "material/1_mon/firststeps/tasks.html",
     "href": "material/1_mon/firststeps/tasks.html",
     "title": "Task 1",
