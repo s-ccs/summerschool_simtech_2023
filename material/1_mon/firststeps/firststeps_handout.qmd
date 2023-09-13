@@ -9,12 +9,12 @@
 The [julia manual](https://docs.julialang.org/en/v1/manual/getting-started/) is excellent!
 :::
 
-At this point we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia plugin. There are some more [recommended settings in VSCode](vscode.qmd) which are not necessary, but helpful.
+At this point we assume that you have [Julia 1.9 installed](../../../installation/vscode.qmd), VSCode ready, and installed the VSCode Julia plugin. There are some more [recommended settings in VSCode](../../../installation/vscode.qmd) which are not necessary, but helpful.
 
 We further recommend to not use the small "play" button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (`ctrl`+`shift`+`p` => `>Julia: Start Repl`) which you keep open as long as possible.
 
 ::: callout-tip
-VSCode automatically loads the `Revise.jl` package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to `%autorelad 2` in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.
+VSCode automatically loads the `Revise.jl` package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to `%autorelad 2` in ipython. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.
 :::
 
 
@@ -69,7 +69,11 @@ Each of those has a specific purpose, but most likely we will only need `a = not
     myfunction(0,5;keyword1 = "notdefault")
 ```
 1. everything before the `;` => positional, after => `kwargs`
-2. returns two functions, due to the `b=123` optional positional argument
+2. List all methods with that function name - returns two functions, due to the `b=123` optional positional argument
+
+:: callout-tip
+## Terminology function vs. method
+Methods are instantiations of a abstract `function`
 
 ```julia
  anonym = (x,y) -> x+y
@@ -83,8 +87,22 @@ function mylongfunction(x)
 end
 ```
 
+```julia
+myfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)
+```
+
+#### Excourse: splatting & slurping
+Think of it as unpacking / collecting something
+
+```julia
+a = [1,2,3]
++(a)
++(a...) # <1>
+```
+1. equivalent to `+(1,2,3)`
+
 #### elementwise-function / broadcasting
-Julia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already).
+Julia is very neat in regards of applying functions elementwise (also called broadcasting).
 
 ```julia
     a = [1,2,3,4]
@@ -139,7 +157,7 @@ And a nice sideeffect: by doing this, we get rid of any specialized "serialized"
 | variables | lowercase, lower_case|
 | Types,Modules | UpperCamelCase|
 | functions, macro | lowercase |
-| inplace / side-effects | `endwith!()` |
+| inplace / side-effects | `endwith!()`^[A functionname ending with a `!` indicates that inplace operations will occur / side-effects are possible. This is convention only, but in 99% of cases adopted] |
 
 # Task 1
 Ok - lot of introduction, but I think you are ready for your first interactive task.
@@ -335,7 +353,8 @@ once defined, a type-definition in the global scope of the REPL cannot be re-def
 :::
 
 # Task 2
-Follow [Task 2 here](tasks.qmd#2)    )
+Follow [Task 2 here](tasks.qmd#2) 
+
 # Julia Basics III
 ## Modules
 ```julia

@@ -6,13 +6,13 @@
 
 
 # Environments
-### What is a environment**
+### What is a environment
 - A list of "installed" packages^[libraries, dlls, .so etc.] at certain versions
 - sometimes includes the operation system
 
 ### **Reproducible** vs. **Replicable**
-    Reproducible: Someone else can get the same results given your code + data
-    Replicable: Someone else can repeat the whole study on new data
+- **Reproducible**: Someone else can get the same results given your code + data
+- **Replicable**: Someone else can repeat the whole study on new data
 
 ### Why do I need it?
 - Version control
@@ -27,7 +27,7 @@
 
 
 
-## Environemnts in Julia
+## Environments in Julia
 Every folder with an `Project.toml` file has it's own environment (see below)
 
 The "base" environment is active by default:

@@ -1,27 +1,4 @@
 ---
 title: "Schedule"
 ---
-
-::: callout-note
-The schedule is very preliminary and will most likely change drastically :)
-:::
-
-|       | Sunday           | Monday                                              | Tuesday                                              | Wednesday                                               | Thursday                                                  | Friday                                    |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-|       | Arrival          | Basics of RSE and Julia                             | Julia+RSE                                            | Julia+Viz+Simulation                                    | Stats + Projects                                          | Optimization + Project                    |
-|       |                  |                                                     |                                                      |                                                         |                                                           |                                           |
-| 09.00 |                  |                                                     | **Benjamin**: Advanced Git / Contributing (1+1)      | **Hendrik**: All the nice Julia Features (1+1)?         | **Marco** Resampling: Bootstrap & Permutation tests (2+2) | **Doug**: Optimized (bootstrap) code (1)? |
-| 10.00 |                  | **Benjamin**: Welcome / What and why RSE? (1)       | **Benjamin/Bene**: Unittests (1+1)                   | **Bene** Vizualization in Julia (1+1)                   | \~\~\~                                                    | Project Work                              |
-| 11.00 |                  | **Hendrik**: Why Julia? (1)?                        | \~\~\~\~                                             | \~\~\~                                                  |                                                           | cont.                                     |
-| 12.00 |                  | **Bene**: First Steps - "Hello World" + Types (1+1) | \~\~\~\~                                             | \~\~\~                                                  |                                                           |                                           |
-| 13.00 |                  | **Lunch**                                           | **Lunch**                                            | **Lunch**                                               | **Lunch**                                                 | **Lunch**                                 |
-| 14.00 |                  | \~\~\~                                              | **Benjamin**: Continuous Integration (1+1)           | **Lisa**: Simulating Data (1+1)                         | Project Work                                              | Project Work                              |
-| 15.00 |                  | **Bene**: Julia + Git + Packages/Environments (1+1) | **Lisa**: Code-Review (1+1)?                         | \~\~\~                                                  |                                                           | cont.                                     |
-| 16.00 |                  | \~\~\~                                              | \~\~\~                                               | **Doug**: Things to keep in mind for datastorage (1+1)? |                                                           |                                           |
-| 17.00 |                  | **Bene**: MyFirstPackage.jl (1+1)                   | \~\~\~                                               | \~\~\~                                                  |                                                           | Farewell                                  |
-| 18.00 |                  | \~\~\~                                              | **Bene**: PkgTemplates.jl (0.5+0.5) =\> wed/hendrik? | \~\~\~                                                  |                                                           |                                           |
-| 19.00 | Pre-Get-together | Welcome-BBQ \@ SimTech                              | Social 1                                             | Social 2                                                | Social 3                                                  |                                           |
-
-: {.striped .hover}
-
-Missing Topics right now: Documentation, License, MultipleRegression? Simulating Data - Requirements regarding regression?
+![Summerschool Schedule](https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Flyer_Programm_langes_Format_2308010.png)
