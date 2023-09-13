@@ -308,7 +308,7 @@ Tip
 <p>The <a href="https://docs.julialang.org/en/v1/manual/getting-started/">julia manual</a> is excellent!</p>
 </div>
 </div>
-<p>At this point we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia plugin. There are some more <a href="vscode.qmd">recommended settings in VSCode</a> which are not necessary, but helpful.</p>
+<p>At this point, we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia Language Support extension. There are some more <a href="vscode.qmd">recommended settings in VSCode</a> which are not necessary, but helpful.</p>
 <p>We further recommend to not use the small “play” button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (<code>ctrl</code>+<code>shift</code>+<code>p</code> =&gt; <code>&gt;Julia: Start Repl</code>) which you keep open as long as possible.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -320,7 +320,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>VSCode automatically loads the <code>Revise.jl</code> package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to <code>%autorelad 2</code> in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.</p>
+<p>VSCode automatically loads the <code>Revise.jl</code> package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to <code>%autoreload 2</code> in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.</p>
 </div>
 </div>
 </section>
@@ -329,69 +329,69 @@ Tip
 <section id="in-the-beginning-there-was-nothing" class="level3">
 <h3 class="anchored" data-anchor-id="in-the-beginning-there-was-nothing">In the beginning there was <code>nothing</code></h3>
 <p><code>nothing</code>- but also <code>NaN</code> and also <code>Missing</code>.</p>
-<p>Each of those has a specific purpose, but most likely we will only need <code>a = nothing</code> and <code>b = NaN</code></p>
+<p>Each of those has a specific purpose, but most likely we will only need <code>a = nothing</code> and <code>b = NaN</code>.</p>
 </section>
 <section id="control-structures" class="level3">
 <h3 class="anchored" data-anchor-id="control-structures">Control Structures</h3>
 <p><strong>Matlab User?</strong> Syntax will be <em>very</em> familiar.</p>
-<p><strong>R User?</strong> Forget about all the <code>{}</code> brackets</p>
-<p><strong>Python User?</strong> We don’t need no intendation, and we also have 1-index</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>    myarray <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">6</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(myarray)</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="fu">iseven</span>(k)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>            myarray[k] <span class="op">=</span> <span class="fu">sum</span>(myarray[<span class="fl">1</span><span class="op">:</span>k])</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span> k <span class="op">==</span> <span class="fl">5</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>            myarray <span class="op">=</span> myarray <span class="op">.-</span> <span class="fl">1</span></span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> </span>
-<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>            myarray[k] <span class="op">=</span> <span class="fl">5</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>R User?</strong> Forget about all the <code>{}</code> brackets.</p>
+<p><strong>Python User?</strong> We don’t need no intendation, and we also have 1-index.</p>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>myarray <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">6</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(myarray)</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">iseven</span>(k)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>        myarray[k] <span class="op">=</span> <span class="fu">sum</span>(myarray[<span class="fl">1</span><span class="op">:</span>k])</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elseif</span> k <span class="op">==</span> <span class="fl">5</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>        myarray <span class="op">=</span> myarray <span class="op">.-</span> <span class="fl">1</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> </span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>        myarray[k] <span class="op">=</span> <span class="fl">5</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="2">Control-Structure for-loop. 1-index!</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="2">Control-Structure for-loop. 1-index!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="4"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="4"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-1" data-code-lines="6"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="6"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-1" data-code-lines="9"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="5" data-code-lines="9"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
 </dd>
 </dl>
 </section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">myfunction</span>(a,b<span class="op">=</span><span class="fl">123</span>;keyword1<span class="op">=</span><span class="st">"defaultkeyword"</span>)</span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keyword1 <span class="op">==</span> <span class="st">"defaultkeyword"</span></span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>            c <span class="op">=</span> a<span class="op">+</span>b</span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>            c<span class="op">=</span> a<span class="op">*</span>b</span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> c</span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">methods</span>(myfunction)</span>
-<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">myfunction</span>(<span class="fl">0</span>)</span>
-<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">myfunction</span>(<span class="fl">1</span>;keyword1 <span class="op">=</span> <span class="st">"notdefault"</span>)</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">myfunction</span>(<span class="fl">0</span>,<span class="fl">5</span>)</span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">myfunction</span>(<span class="fl">0</span>,<span class="fl">5</span>;keyword1 <span class="op">=</span> <span class="st">"notdefault"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myfunction</span>(a,b<span class="op">=</span><span class="fl">123</span>;keyword1<span class="op">=</span><span class="st">"defaultkeyword"</span>)</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keyword1 <span class="op">==</span> <span class="st">"defaultkeyword"</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> a<span class="op">+</span>b</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> a<span class="op">*</span>b</span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> c</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(myfunction)</span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>(<span class="fl">0</span>)</span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>(<span class="fl">1</span>;keyword1 <span class="op">=</span> <span class="st">"notdefault"</span>)</span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>(<span class="fl">0</span>,<span class="fl">5</span>)</span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>(<span class="fl">0</span>,<span class="fl">5</span>;keyword1 <span class="op">=</span> <span class="st">"notdefault"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="9">returns two functions, due to the <code>b=123</code> optional positional argument</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="9">returns two functions, due to the <code>b=123</code> optional positional argument</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> anonym <span class="op">=</span> (x,y) <span class="op">-&gt;</span> x<span class="op">+</span>y</span>
@@ -400,20 +400,20 @@ Tip
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">mylongfunction</span>(x)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="elementwise-function-broadcasting" class="level4">
-<h4 class="anchored" data-anchor-id="elementwise-function-broadcasting">elementwise-function / broadcasting</h4>
-<p>Julia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already).</p>
+<section id="elementwise-functions-broadcasting" class="level4">
+<h4 class="anchored" data-anchor-id="elementwise-functions-broadcasting">Elementwise functions / broadcasting</h4>
+<p>Julia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already.)</p>
 <div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>]</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="fu">sqrt</span>(a)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fu">sqrt</span>.(a)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="2">Error - there is no method defined for the <code>sqrt</code> of an <code>Vector</code></span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="2">Error - there is no method defined for the <code>sqrt</code> of a <code>Vector</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-5" data-code-lines="3">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="2" data-code-lines="3">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -426,12 +426,12 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Broadcasting is very powerful, as julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:</p>
+<p>Broadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> [<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (a<span class="op">.^</span><span class="fl">2</span> <span class="op">.+</span> <span class="fu">sqrt</span>.(a) <span class="op">.+</span> <span class="fu">log</span>.(a<span class="op">.*</span>b))<span class="op">./</span><span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In many languages (matlab, python, R) you would need to do the following:</p>
+<p>In many languages (Matlab, Python, R) you would need to do the following:</p>
 <pre><code>1. temp1 = a.*b
 2. temp2 = log.(temp1)
 3. temp3 = a.^2
@@ -439,19 +439,19 @@ Important
 5. temp5 = temp3 .+ temp4
 6. temp6 = temp5 + temp2
 7. output = temp6./5</code></pre>
-<p>Thus, we need to allocate ~7x the memory of the vector (not at the same time though)</p>
+<p>Thus, we need to allocate ~7x the memory of the vector (not at the same time though).</p>
 <p>In Julia, the elementwise code above rather translates to:</p>
 <div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fu">similar</span>(a)</span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(a)</span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>        c[k] <span class="op">=</span> (a[k]<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu">sqrt</span>(a[k]) <span class="op">+</span> <span class="fu">log</span>(a[k]<span class="op">*</span>b[k]))<span class="op">./</span><span class="fl">5</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>        c[k] <span class="op">=</span> (a[k]<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu">sqrt</span>(a[k]) <span class="op">+</span> <span class="fu">log</span>(a[k]<span class="op">*</span>b[k]))<span class="op">/</span><span class="fl">5</span></span>
 <span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
 </dd>
 </dl>
-<p>The <code>temp</code> memory we need at each iteration is simply <code>c[k]</code>. And a nice sideeffect: by doing this, we get rid of any specialized “serialized” function e.g.&nbsp;to do sum, or + or whatever. Those are typically the inbuilt <code>C</code> functions in python/matlab/R, that really speed up things. In Julia <strong>we do not need inbuilt functions for speed</strong>.</p>
+<p>The <code>temp</code> memory we need at each iteration is simply <code>c[k]</code>. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g.&nbsp;to do sum, or + or whatever. Those are typically the inbuilt <code>C</code> functions in Python/Matlab/R, that really speed up things. In Julia <strong>we do not need inbuilt functions for speed</strong>.</p>
 </div>
 </div>
 </section>
@@ -495,7 +495,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="3">returns <code>c</code></span>
+<span data-code-cell="annotated-cell-6" data-code-annotation="1" data-code-lines="3">returns <code>c</code></span>
 </dd>
 </dl>
 <section id="characters" class="level5">
@@ -506,15 +506,15 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="1">a <code>StepRange</code> between characters</span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="1">a <code>StepRange</code> between characters</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-7" data-code-lines="2">a <code>Array{Chars}</code></span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="2">a <code>Array{Chars}</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-7" data-code-lines="3">a <code>String</code></span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="3" data-code-lines="3">a <code>String</code></span>
 </dd>
 </dl>
 </section>
@@ -526,7 +526,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-8" data-code-lines="3">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
+<span data-code-cell="annotated-cell-8" data-code-annotation="1" data-code-lines="3">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
 </dd>
 </dl>
 </section>
@@ -544,11 +544,11 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-10" data-code-lines="2">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
+<span data-code-cell="annotated-cell-10" data-code-annotation="1" data-code-lines="2">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-10" data-code-lines="3">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
+<span data-code-cell="annotated-cell-10" data-code-annotation="2" data-code-lines="3">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
 </dd>
 </dl>
 </section>
@@ -569,7 +569,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="5">a = 0! - in a script; but a = 1 in the REPL!</span>
+<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="5">a = 0! - in a script; but a = 1 in the REPL!</span>
 </dd>
 </dl>
 <p>Variables are in global scope in the REPL for debugging convenience</p>
@@ -596,7 +596,7 @@ Tip
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="6,9">returns 1 now in both REPL and include(“myscript.jl”)</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="6,9">returns 1 now in both REPL and include(“myscript.jl”)</span>
 </dd>
 </dl>
 </div>
@@ -617,11 +617,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-13" data-code-lines="10">a = 0</span>
+<span data-code-cell="annotated-cell-13" data-code-annotation="1" data-code-lines="10">a = 0</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-13" data-code-lines="11">b = 1</span>
+<span data-code-cell="annotated-cell-13" data-code-annotation="2" data-code-lines="11">b = 1</span>
 </dd>
 </dl>
 </section>
@@ -636,7 +636,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-14" data-code-lines="6">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
+<span data-code-cell="annotated-cell-14" data-code-annotation="1" data-code-lines="6">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
 </dd>
 </dl>
 </section>
@@ -713,7 +713,7 @@ Click me for even more types!
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-16" data-code-lines="17">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="17">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -745,7 +745,7 @@ Warning
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-17" data-code-lines="3">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
+<span data-code-cell="annotated-cell-17" data-code-annotation="1" data-code-lines="3">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> <span class="bu">MyStatsPackage</span></span>
