@@ -21,8 +21,6 @@ website:
         text: "🏠 Home"
       - href: schedule.qmd
         text: "📓 Schedule"
-      - href: teaching.qmd
-        text: "📟 Teachers"
       - section: "Slides / Handouts"
         contents:
           - section: "Monday"
@@ -38,14 +36,37 @@ website:
           - section: "Tuesday"
             contents: 
               - href: material/2_tue/git/intro_slides.md
-                text: "📊 1 - GIT"    
+                text: "📝 1 - GIT"    
+              - href: "material/2_tue/unittest/missing.qmd"
+                text: "📝 2 - Unit Testing"
+              - href: "material/3_tue/CI/missing.qmd"
+                text: "📝 3 - Continuous Integration"
+              - href: "material/4_tue/codereview/missing.qmd"
+                text: "📝 4 - Code Review"
           - section: "Wednesday"
             contents:
               - href: material/3_wed/docs/handout.qmd
                 text: "📝 1 - Docs"
               - href: material/3_wed/vis/slides.jl
-                text: "📊 2 - Visualizations"
-
+                text: "📝 2 - Visualizations"
+              - href: material/3_wed/linearalgebra/missing.qmd
+                text: "📝 3 - LinearAlgebra"
+              - href: material/3_wed/regression/missing.jl
+                text: "📝 4 - Multiple Regression"
+          
+          - section: "Thursday"
+            contents:
+              - href: material/4_thu/sim/missing.qmd
+                text: "📝 1 - Simulation"
+              - href: material/4_thu/stats/missing.jl
+                text: "📝 2 - Stats"
+              - href: material/4_thu/parallel/missing.qmd
+                text: "📝 3 - Parallelization"
+          - section: "Friday"
+            contents:
+              - href: material/5_fri/highlightsOptim/missing.qmd
+                text: "📝 1 - Highlights + Optimization"
+              
   navbar:
     background: primary
   page-footer:
