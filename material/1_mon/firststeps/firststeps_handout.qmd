@@ -9,12 +9,12 @@ code-annotations: select
 The [julia manual](https://docs.julialang.org/en/v1/manual/getting-started/) is excellent!
 :::
 
-At this point we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia plugin. There are some more [recommended settings in VSCode](vscode.qmd) which are not necessary, but helpful.
+At this point, we assume that you have Julia 1.9 installed, VSCode ready, and installed the VSCode Julia Language Support extension. There are some more [recommended settings in VSCode](vscode.qmd) which are not necessary, but helpful.
 
 We further recommend to not use the small "play" button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (`ctrl`+`shift`+`p` => `>Julia: Start Repl`) which you keep open as long as possible.
 
 ::: callout-tip
-VSCode automatically loads the `Revise.jl` package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to `%autorelad 2` in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.
+VSCode automatically loads the `Revise.jl` package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to `%autoreload 2` in python. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file.
 :::
 
 
@@ -23,27 +23,27 @@ VSCode automatically loads the `Revise.jl` package, which screens all your activ
 ### In the beginning there was `nothing`
 `nothing`- but also  `NaN` and also `Missing`.
 
-Each of those has a specific purpose, but most likely we will only need `a = nothing` and `b = NaN`
+Each of those has a specific purpose, but most likely we will only need `a = nothing` and `b = NaN`.
 
 ### Control Structures
 
 **Matlab User?** Syntax will be *very* familiar.
 
-**R User?** Forget about all the `{}` brackets
+**R User?** Forget about all the `{}` brackets.
 
-**Python User?** We don't need no intendation, and we also have 1-index
+**Python User?** We don't need no intendation, and we also have 1-index.
 
 ``` julia
-    myarray = zeros(6)                     # <1>
-    for k = 1:length(myarray)               # <2>
-        if iseven(k)
-            myarray[k] = sum(myarray[1:k]) # <3>
-        elseif k == 5
-            myarray = myarray .- 1          # <4>    
-        else 
-            myarray[k] = 5
-        end                                 # <5>
-    end
+myarray = zeros(6)                     # <1>
+for k = 1:length(myarray)               # <2>
+    if iseven(k)
+        myarray[k] = sum(myarray[1:k]) # <3>
+    elseif k == 5
+        myarray = myarray .- 1          # <4>   
+    else 
+        myarray[k] = 5
+    end                                 # <5>
+end
 ```
 
 1.  initialize a vector (check with `typeof(myArray)`)
@@ -53,21 +53,23 @@ Each of those has a specific purpose, but most likely we will only need `a = not
 5.  **Python/R**: `end` after each control sequence
 
 ### Functions
+
 ```julia
-    function myfunction(a,b=123;keyword1="defaultkeyword") #<1>
-        if keyword1 == "defaultkeyword"
-            c = a+b
-        else
-            c= a*b
-        end
-        return c
+function myfunction(a,b=123;keyword1="defaultkeyword") #<1>
+    if keyword1 == "defaultkeyword"
+        c = a+b
+    else
+        c = a*b
     end
-    methods(myfunction) # <2>
-    myfunction(0)
-    myfunction(1;keyword1 = "notdefault")
-    myfunction(0,5)
-    myfunction(0,5;keyword1 = "notdefault")
+    return c
+end
+methods(myfunction) # <2>
+myfunction(0)
+myfunction(1;keyword1 = "notdefault")
+myfunction(0,5)
+myfunction(0,5;keyword1 = "notdefault")
 ```
+
 1. everything before the `;` => positional, after => `kwargs`
 2. returns two functions, due to the `b=123` optional positional argument
 
@@ -83,19 +85,20 @@ function mylongfunction(x)
 end
 ```
 
-#### elementwise-function / broadcasting
-Julia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already).
+#### Elementwise functions / broadcasting
+
+Julia is very neat in regards of applying functions elementwise (also called broadcasting). (Matlab users know this already.)
 
 ```julia
     a = [1,2,3,4]
     b = sqrt(a) # <1>
     c = sqrt.(a) # <2>
 ```
-1. Error - there is no method defined for the `sqrt` of an `Vector`
+1. Error - there is no method defined for the `sqrt` of a `Vector`
 2. the small `.` applies  the function to all elements of the container `a` - this works as "expected"
 
 ::: callout-important
-Broadcasting is very powerful, as julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:
+Broadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:
 ```julia
     a = [1,2,3,4,5]
     b = [6,7,8,9,10]
@@ -103,7 +106,7 @@ Broadcasting is very powerful, as julia can get a huge performance boost in chai
     c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5
 ```
 
-In many languages (matlab, python, R) you would need to do the following:
+In many languages (Matlab, Python, R) you would need to do the following:
 ```
 1. temp1 = a.*b
 2. temp2 = log.(temp1)
@@ -113,21 +116,21 @@ In many languages (matlab, python, R) you would need to do the following:
 6. temp6 = temp5 + temp2
 7. output = temp6./5
 ```
-Thus, we need to allocate ~7x the memory of the vector (not at the same time though)
+Thus, we need to allocate ~7x the memory of the vector (not at the same time though).
 
 In Julia, the elementwise code above rather translates to:
 
 ```julia
     c = similar(a) # <1>
     for k = 1:length(a)
-        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))./5
+        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5
     end
 
 ```
 1. Function to initialize an `undef` array with the same size as `a`
 
 The `temp` memory we need at each iteration is simply `c[k]`.
-And a nice sideeffect: by doing this, we get rid of any specialized "serialized" function e.g. to do sum, or + or whatever. Those are typically the inbuilt `C` functions in python/matlab/R, that really speed up things. In Julia **we do not need inbuilt functions for speed**.
+And a nice sideeffect: By doing this, we get rid of any specialized "serialized" function, e.g. to do sum, or + or whatever. Those are typically the inbuilt `C` functions in Python/Matlab/R, that really speed up things. In Julia **we do not need inbuilt functions for speed**.
 :::
 
 
