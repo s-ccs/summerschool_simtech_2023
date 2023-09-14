@@ -305,14 +305,14 @@
     "href": "cheatsheets/julia.html",
     "title": "Research Software Engineering Summer School",
     "section": "",
-    "text": "Julia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
+    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
   },
   {
     "objectID": "cheatsheets/julia.html#meta-tools",
     "href": "cheatsheets/julia.html#meta-tools",
     "title": "Research Software Engineering Summer School",
     "section": "",
-    "text": "Julia\nPython\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\n\n\nList function signatures with that name\nmethods(myFun)\n\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)"
+    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
   },
   {
     "objectID": "cheatsheets/julia.html#debugging",

@@ -344,15 +344,17 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="meta-tools">“meta”-tools</h2>
 <table class="table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 27%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
 <th></th>
 <th>Julia</th>
 <th>Python</th>
+<th>R</th>
 </tr>
 </thead>
 <tbody>
@@ -360,41 +362,49 @@ ul.task-list li input[type="checkbox"] {
 <td>Documentation</td>
 <td><code>?obj</code></td>
 <td><code>help(obj)</code></td>
+<td><code>?obj</code> , <code>help(obj)</code></td>
 </tr>
 <tr class="even">
 <td>Object content</td>
 <td><code>dump(obj)</code></td>
 <td><code>print(repr(obj))</code></td>
+<td><code>str(obj)</code></td>
 </tr>
 <tr class="odd">
 <td>Exported functions</td>
 <td><code>names(FooModule)</code></td>
 <td><code>dir(foo_module)</code></td>
+<td><code>ls("package:foo_module")</code></td>
 </tr>
 <tr class="even">
 <td>List function signatures with that name</td>
 <td><code>methods(myFun)</code></td>
 <td></td>
+<td><code>methods(myFun)</code></td>
 </tr>
 <tr class="odd">
 <td>List functions for specific type</td>
 <td><code>methodswith(SomeType)</code></td>
 <td><code>dir(SomeType)</code></td>
+<td><code>methods(SomeType)</code></td>
 </tr>
 <tr class="even">
 <td>Where is …?</td>
 <td><code>@which func</code></td>
 <td><code>func.__module__</code></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>What is …?</td>
 <td><code>typeof(obj)</code></td>
 <td><code>type(obj)</code></td>
+<td><code>class(obj)</code></td>
 </tr>
 <tr class="even">
 <td>Is it really a …?</td>
 <td><code>isa(obj, SomeType)</code></td>
 <td><code>isinstance(obj, SomeType)</code></td>
+<td><code>is(obj, SomeType)</code></td>
 </tr>
 </tbody>
 </table>
