@@ -1,0 +1,7 @@
+---
+title: "Project Work"
+---
+
+A considerable of time will be dedicated to project work allowing you to apply the skills you have learnt during the summer school.
+
+We encourage you to bring your own problem (e.g. something related to your own research) and try to build a small software package for that problem. Moreover, we will provide alternative problems to be solved.
