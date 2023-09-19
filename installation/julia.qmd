@@ -1,6 +1,7 @@
 # Installing Julia
 
-The recommended way to install julia is [juliaup](https://github.com/JuliaLang/juliaup). It allows you toe.g.  easily update Julia at a later point, but also test out alpha/beta versions etc.
+The recommended way to install julia is [juliaup](https://github.com/JuliaLang/juliaup).
+It allows you to, e.g., easily update Julia at a later point, but also test out alpha/beta versions etc.
 
 TLDR; If you dont want to read the explicit instructions, just copy the following command
 
