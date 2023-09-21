@@ -35,6 +35,538 @@
     "text": "Classical linear model\n\\[\n\\mathbf{y} = \\mathbf{X} \\beta + \\varepsilon\n\\]\nimplies that \\[ \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathcal{N}(\\mathbf{X} \\mathbf{\\beta}, \\sigma^2\\mathbf{I}).\\]\nIn particular, the conditional expectation satisfies \\(\\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\mathbf{X} \\beta\\).\nHowever, the assumption of a normal distribution is unrealistic for non-continuous data. Popular alternatives include:\n\nfor counting data: \\[\n   \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathrm{Poisson}(\\exp(\\mathbf{X}\\mathbf{\\beta})) \\qquad \\leadsto  \\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\exp(\\mathbf{X} \\beta)\n  \\]\nHere, the components are considered to be independent and the exponential function is applied componentwise.\nfor binary data: \\[\n   \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathrm{Bernoulli}\\left( \\frac{\\exp(\\mathbf{X}\\mathbf{\\beta})}{1 + \\exp(\\mathbf{X}\\mathbf{\\beta})} \\right) \\qquad \\leadsto  \\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\frac{\\exp(\\mathbf{X}\\mathbf{\\beta})}{1 + \\exp(\\mathbf{X}\\mathbf{\\beta})}\n  \\]\nAgain, the components are considered to be independent and all the operations are applied componentwise.\n\nAll these models are defined by the choice of a family of distributions and a function \\(g\\) (the so-called link function) such that\n\\[\n\\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = g^{-1}(\\mathbf{X} \\beta).\n\\]\nFor the models above, these are:\n\n\n\n\n\n\n\n\nType of Data\nDistribution Family\nLink Function\n\n\n\n\ncontinuous\nNormal\nidentity:\n\\[\ng(x)=x\n\\]\n\n\ncount\nPoisson\nlog:\n\\[\ng(x) = \\log(x)\n\\]\n\n\nbinary\nBernoulli\nlogit:\n\\[\ng(x) = \\log\\left\n(\n\\frac{x}{1-x}\\right)\n\\]\n\n\n\nIn general, the parameter vector \\(\\beta\\) is estimated via maximizing the likelihood, i.e.,\n\\[\n\\hat \\beta = \\mathrm{argmax} \\prod_{i=1}^n f(y_i \\mid \\mathbf{X}_{\\cdot i}),\n\\]\nwhich is equivalent to the maximization of the log-likelihood, i.e.,\n\\[\n\\hat \\beta = \\mathrm{argmax} \\sum_{i=1}^n \\log f(y_i \\mid \\mathbf{X}_{\\cdot i}),\n\\]\nIn the Gaussian case, the maximum likelihood estimator is identical to the least squares estimator considered above.\n[[ Example in Julia: maybe SwissLabor ]]\nTask 3: Reproduce the results of our data analysis of the tree data set using a generalized linear model with normal distribution family."
   },
   {
+    "objectID": "material/3_wed/docs/slides.html#what-should-documentation-be-like",
+    "href": "material/3_wed/docs/slides.html#what-should-documentation-be-like",
+    "title": "Research Software Engineering Summer School",
+    "section": "What should documentation be like?",
+    "text": "What should documentation be like?\n\nARID (“Accept (some) Repetition in Documentation”)\n\nNot like code (for code: DRY - “don’t repeat yourself”)\nRepetition from code to docs is OK\n\nSkimmable\n\nHeadings: descriptive, concise\nRather use listings / “wall of text”\nAdd examples\n\nBest: Link to other functions (discoverability)"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#readme.md",
+    "href": "material/3_wed/docs/slides.html#readme.md",
+    "title": "Research Software Engineering Summer School",
+    "section": "README.md",
+    "text": "README.md\n\nalways have a README file\nWhat problem the project solves\nCode example (best with screenshot)\nSupport / Issue-tracker\nContribution Guide\nInstallation instruction\nLicense\n(Roadmap)\n(Acknowledgement)\n\nA template Readme"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#changelog.md",
+    "href": "material/3_wed/docs/slides.html#changelog.md",
+    "title": "Research Software Engineering Summer School",
+    "section": "Changelog.md",
+    "text": "Changelog.md\n# Changelog\n\n## v1.0.0\n### Breaking \n- *Removed* function X (@behinger)\n- *Deprecated* Y (@contributor)\n- *Changed* input to Z (#143)\n\n### Minor\n- *Fixed* typos in docs\n- *Added* new feature :tada:\n- *Security* issue found. No fix yet"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#errormessages",
+    "href": "material/3_wed/docs/slides.html#errormessages",
+    "title": "Research Software Engineering Summer School",
+    "section": "Errormessages",
+    "text": "Errormessages\n\n\n\n\n\n\n\ndont\nrather\n\n\n\n\nInput Error\nInput Error: x was not a Float64, please check you didn’t provide an integer\n\n\nThis should never have happened\nXYZ was not fullfilled, please reach out as this should not have happened\n\n\n\n\nProvide context\nProvide advice\nCheck your tone\n\nmore advise on writethedocs.org"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#docstrings",
+    "href": "material/3_wed/docs/slides.html#docstrings",
+    "title": "Research Software Engineering Summer School",
+    "section": "Docstrings",
+    "text": "Docstrings\n\"\"\"\n    radius(H::Hyperrectangle, [p]::Real=Inf)::Real\n\nReturn the radius of a hyperrectangle.\n\n# Arguments\n\n- `H` -- hyperrectangle\n- `p` -- (optional, default: `Inf`) norm\n\n# Output\n\nA real number representing the radius.\n\n# Notes\n\nThe radius is defined as the radius of the enclosing ball of the given\n`p`-norm of minimal volume with the same center.\n\n# Examples\n\n```julia-repl\njulia&gt; bar([1, 2], [1, 2])\n1\n\\```\n\nSee also [`bar!`](@ref), [`baz`](@ref), [`baaz`](@ref).\n\"\"\"\nfunction radius(H::Hyperrectangle, p::Real=Inf)::Real\n    ...\nend\nUse a template and add it to all your functions\nJulia Documentation Guide"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#the-manual",
+    "href": "material/3_wed/docs/slides.html#the-manual",
+    "title": "Research Software Engineering Summer School",
+    "section": "The Manual",
+    "text": "The Manual\nA recommended system for documentation"
+  },
+  {
+    "objectID": "material/3_wed/docs/slides.html#example-a-cookbook-toolbox",
+    "href": "material/3_wed/docs/slides.html#example-a-cookbook-toolbox",
+    "title": "Research Software Engineering Summer School",
+    "section": "Example: A cookbook-toolbox",
+    "text": "Example: A cookbook-toolbox\n\n\n\n\n\n\n\n\n\nTutorials\nHow-To\nReference\nExplanation\n\n\n\n\nteaching a child to cook\nseveral recipes\nhow ginger is added to the pot\nwhy garlic is needed in all cookingh\n\n\na lesson\na series of steps\ndry description\ndiscursive explanation\n\n\nbeginners/users\nusers\ndevelopers\nusers/developers\n\n\n\nCheck out the extended guide on divio.com"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html",
+    "href": "material/2_tue/git/workflow_slides.html",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches).\n\n\n\n\n\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity.\n\n\n\n\n\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line\n\n\n\n\n\n\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow\n\n\n\n\n\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO\n\n\n\n\n\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)\n\n\n\n\n\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash\n\n\n\n\n\n\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#why-workflows",
+    "href": "material/2_tue/git/workflow_slides.html#why-workflows",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#which-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#which-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "There are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#centralized-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#centralized-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Only one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Each feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#gitflow",
+    "href": "material/2_tue/git/workflow_slides.html#gitflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Visualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#forking-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#forking-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Gitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#do-small-prs",
+    "href": "material/2_tue/git/workflow_slides.html#do-small-prs",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "For all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#quick-reads",
+    "href": "material/2_tue/git/workflow_slides.html#quick-reads",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html",
+    "href": "material/2_tue/git/git_basics_demo.html",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick\n\n\n\n\nStarting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote\n\n\n\n\n\n\n\n\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
+    "href": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
+    "href": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Starting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#further-reading",
+    "href": "material/2_tue/git/git_basics_demo.html#further-reading",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "href": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "title": "Research Software Engineering Summer School",
+    "section": "Most important link",
+    "text": "Most important link\nwww.simtech-summerschool.de\nFind all slides, all materials, and the schedule"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
+    "href": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
+    "title": "Research Software Engineering Summer School",
+    "section": "Last minute organization issues",
+    "text": "Last minute organization issues"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "title": "Research Software Engineering Summer School",
+    "section": "Structure of the summer school",
+    "text": "Structure of the summer school\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "title": "Research Software Engineering Summer School",
+    "section": "Your teaching staff I",
+    "text": "Your teaching staff I\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "title": "Research Software Engineering Summer School",
+    "section": "Your teaching Staff II",
+    "text": "Your teaching Staff II\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#starting-points",
+    "href": "material/1_mon/rse/rse_basics_slides.html#starting-points",
+    "title": "Research Software Engineering Summer School",
+    "section": "Starting Points",
+    "text": "Starting Points\n\nDORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
+    "href": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
+    "title": "Research Software Engineering Summer School",
+    "section": "RSE Movement",
+    "text": "RSE Movement\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
+    "href": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
+    "title": "Research Software Engineering Summer School",
+    "section": "Do I need this in Industry?",
+    "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
+    "title": "First Steps",
+    "section": "Getting started",
+    "text": "Getting started\n\n\n\n\n\n\nTip\n\n\n\nThe julia manual is excellent!\n\n\nAt this point we assume that you have Julia 1.9 installed, VSCode language extension ready, and installed the VSCode Julia plugin. There are some more recommended settings in VSCode which are not necessary, but helpful.\nWe further recommend to not use the small “play” button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (ctrl+shift+p =&gt; &gt;Julia: Start Repl) which you keep open as long as possible.\n\n\n\n\n\n\nTip\n\n\n\nVSCode automatically loads the Revise.jl package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to %autoreload 2 in ipython. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
+    "title": "First Steps",
+    "section": "Syntax differences Python/R/MatLab",
+    "text": "Syntax differences Python/R/MatLab\n\nIn the beginning there was nothing\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN.\n\n\nControl Structures\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets.\nPython User? We don’t need no intendation, and we also have 1-index.\n1myarray = zeros(6)\n2for k = 1:length(myarray)\n    if iseven(k)\n3        myarray[k] = sum(myarray[1:k])\n    elseif k == 5\n41        myarray = myarray .- 1\n    else \n        myarray[k] = 5\n5    end\nend\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\nFunctions\n1function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n    if keyword1 == \"defaultkeyword\"\n        c = a+b\n    else\n        c = a*b\n    end\n    return c\nend\n2methods(myfunction)\nmyfunction(0)\nmyfunction(1;keyword1 = \"notdefault\")\nmyfunction(0,5)\nmyfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nList all methods with that function name - returns two functions, due to the b=123 optional positional argument\n\n\n:: callout-tip ## Terminology function vs. method Methods are instantiations of a abstract function\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\nmyfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)\n\nExcourse: splatting & slurping\nThink of it as unpacking / collecting something\na = [1,2,3]\n+(a)\n1+(a...)\n\n1\n\nequivalent to +(1,2,3)\n\n\n\n\nelementwise-function / broadcasting\nJulia is very neat in regards of applying functions elementwise (also called broadcasting).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of a Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (Matlab, Python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though).\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in Python/Matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
+    "title": "First Steps",
+    "section": "Linear Algebra",
+    "text": "Linear Algebra\n1import LinearAlgebra\nimport LinearAlgebra: qr\n2using LinearAlgebra\n\n1\n\nRequires to write LinearAlgebra.QR(...) to access a function\n\n2\n\nLinearAlgebra is a Base package, and always available\n\n\n:: callout Julia typically recommends to use using PackageNames. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened) ::\n1A = Matrix{Float64}(undef,11,22)\n2B = Array{Float64,2}(undef,22,33)\nqr(A*B)\n\n1\n\nequivalent to Array, as Matrix is a convenience type-alias for Array with 2 dimensions. Same thing for Vector.\n\n2\n\nthe 2 of {Float64,2} is not mandatory\n\n\nMuch more on wednesday in the lecture LinearAlgebra!"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
+    "title": "First Steps",
+    "section": "Style-conventions",
+    "text": "Style-conventions\n\n\n\n\n\n\n\nvariables\nlowercase, lower_case\n\n\nTypes,Modules\nUpperCamelCase\n\n\nfunctions, macro\nlowercase\n\n\ninplace / side-effects\nendwith!()1"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#scopes",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#scopes",
+    "title": "First Steps",
+    "section": "Scopes",
+    "text": "Scopes\nAll things (excepts modules) are in local scope (in scripts)\na = 0\nfor k = 1:10\n    a = 1\nend\n1a\n\n1\n\na = 0! - in a script; but a = 1 in the REPL!\n\n\nVariables are in global scope in the REPL for debugging convenience\n\n\n\n\n\n\nTip\n\n\n\nPutting this code into a function automatically resolves this issue\n  function myfun()\n  a = 0\n    for k = 1:10\n        a = 1\n    end\n    a\n    return a\n  end\n  myfun()\n\n1\n\nreturns 1 now in both REPL and include(“myscript.jl”)\n\n\n\n\n\nexplicit global / local\na = 0\nglobal b\nb = 0\nfor k = 1:10\n    local a \n    global b\n    a = 1\n    b = 1\nend\n1a\n2b\n\n1\n\na = 0\n\n2\n\nb = 1\n\n\n\n\nModifying containers works in any case\na = zeros(10)\nfor k = 1:10\n    \n    a[k] = k\nend\n1a\n\n1\n\nThis works “correctly” in the REPL as well as in a script, because we modify the content of a, not a itself"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#types",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#types",
+    "title": "First Steps",
+    "section": "Types",
+    "text": "Types\nTypes play a super important role in Julia for several main reasons:\n\nThe allow for specialization e.g. +(a::Int64,b::Float64) might have a different (faster?) implementation compared to +(a::Float64,b::Float64)\nThey allow for generalization using abstract types\nThey act as containers, structuring your programs and tools\n\nEverything in julia has a type! Check this out:\ntypeof(1)\ntypeof(1.0)\ntypeof(sum)\ntypeof([1])\ntypeof([(1,2),\"5\"])\n\nWe will discuss two types of types:\n\ncomposite types\nabstract types.\n\n\n\n\n\n\n\nClick me for even more types!\n\n\n\n\n\nThere is a third type, primitive type - but we will practically never use them Not much to say at this level, they are types like Float64. You could define your own one, e.g.\nprimitive type Float128 &lt;: AbstractFloat 128 end\nAnd there are two more, Singleton types and Parametric types - which (at least the latter), you might use at some point. But not in this tutorial.\n\n\n\n\ncomposite types\nYou can think of these types as containers for your variables, which allows you for specialization.\n    struct SimulationResults\n        parameters::Vector\n        results::Vector\n    end\n\n    s = SimulationResults([1,2,3],[5,6,7,8,9,10,NaN])\n\n   function print(s::SimulationResults)\n        println(\"The following simulation was run:\")\n        println(\"Parameters: \",s.parameters)\n        println(\"And we got results!\")\n        println(\"Results: \",s.results)\n    end\n\n    print(s)\n\n1    function SimulationResults(parameters)\n        results = run_simulation(parameters)\n        return SimulationResults(parameters,results)\n    end\n\n    function run_simulation(x)\n        return cumsum(repeat(x,2))\n    end\n\n    s = SimulationResults([1,2,3])\n    print(s)\n\n\n1\n\nin case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)\n\n\n\n\n\n\n\n\nWarning\n\n\n\nonce defined, a type-definition in the global scope of the REPL cannot be re-defined without restarting the julia REPL! This is annoying, there are some tricks arround it (e.g. defining the type in a module (see below), and then reloading the module)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#modules",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#modules",
+    "title": "First Steps",
+    "section": "Modules",
+    "text": "Modules\nmodule MyStatsPackage\n    include(\"src/statistic_functions.jl\")\n1    export SimulationResults\n    export rse_tstat\nend\n\nusing MyStatsPackage\n\n1\n\nThis makes the SimulationResults type immediately available after running using MyStatsPackage. To use the other “internal” functions, one would use MyStatsPackage.rse_sum.\n\n\n    import MyStatsPackage\n    \n    MyStatsPackage.rse_tstat(1:10)\n\n    import MyStatsPackage: rse_sum\n    rse_sum(1:10)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#macros",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#macros",
+    "title": "First Steps",
+    "section": "Macros",
+    "text": "Macros\nMacros allow to programmers to edit the actual code before it is run. We will pretty much just use them, without learning how they work.\n    @which cumsum\n    @which(cumsum)\n    a = \"123\"\n    @show a"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#debugging",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#debugging",
+    "title": "First Steps",
+    "section": "Debugging",
+    "text": "Debugging\nXXX"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
+    "href": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
+    "title": "First Steps",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA functionname ending with a ! indicates that inplace operations will occur / side-effects are possible. This is convention only, but in 99% of cases adopted↩︎"
+  },
+  {
+    "objectID": "missing.html",
+    "href": "missing.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "This content is not yet included in the website - check at another time!"
+  },
+  {
+    "objectID": "installation/julia.html",
+    "href": "installation/julia.html",
+    "title": "Installing Julia",
+    "section": "",
+    "text": "Installing Julia\nThe recommended way to install julia is juliaup. It allows you to, e.g., easily update Julia at a later point, but also test out alpha/beta versions etc.\nTLDR; If you dont want to read the explicit instructions, just copy the following command\n\nWindows\nAppStore -&gt; JuliaUp, or winget install julia -s msstore in CMD\n\n\nMac & Linux\ncurl -fsSL https://install.julialang.org | sh in any shell\n\n\n\nVSCode\nTo install VSCode (the recommended IDE), go to this link and download + install the correct package.\nNext, install the Julia extension\n (thanks to https://juliateachingctu.github.io for providing us with the nice graphics)\nFinally press Ctrl + Shift + P to get VSCodes command palette, and type in Julia: Start REPL \n\n\nOptional: OhMyREPL\nOptionally you cann install a package to give you nicer syntax highlighting in the REPL.\n\nInstall the package: ]activate (without a path after activate, you activate the “global” environment) ]add OhMyREPL\nAdd it to your startup.jl Open .julia/config/startup.jl or c:/users/USERNAME/.julia/config/startup.jl on windows and add\n\natreplinit() do repl\n    try\n        @eval using OhMyREPL\n    catch e\n        @warn \"error while importing OhMyREPL\" e\n    end\nend\n🎉"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Summerschool Schedule"
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teachers",
+    "section": "",
+    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
+  },
+  {
+    "objectID": "teaching.html#invited-speakers",
+    "href": "teaching.html#invited-speakers",
+    "title": "Teachers",
+    "section": "",
+    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
+  },
+  {
+    "objectID": "teaching.html#organizers-and-teachers",
+    "href": "teaching.html#organizers-and-teachers",
+    "title": "Teachers",
+    "section": "Organizers and Teachers",
+    "text": "Organizers and Teachers\nAssistant Prof. Marco Oesting - Statistics\nAssistant Prof. Benjamin Uekermann - RSE\nAssistant Prof. Benedikt Ehinger - Julia, Visualization, RSE"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
+    "section": "",
+    "text": "This websites links all materials (slides + exercises) for the 2023 RSE+Julia Summerschool at SimTech, Stuttgart University\nGeneral information about the summer school can be found here."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf there are problem with him, please contact Marco Oesting↩︎"
+  },
+  {
+    "objectID": "projectwork.html",
+    "href": "projectwork.html",
+    "title": "Project Work",
+    "section": "",
+    "text": "A considerable of time will be dedicated to project work allowing you to apply the skills you have learnt during the summer school.\nWe encourage you to bring your own problem (e.g. something related to your own research) and try to build a small software package for that problem. Moreover, we will provide alternative problems to be solved."
+  },
+  {
+    "objectID": "installation/vscode.html",
+    "href": "installation/vscode.html",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "Documentation on the Julia VSCode extension can be found here\n\n\nFile-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!\n\n\n\nthis = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here\n\n\n\nCtrl+Shift+I to automatically format your code"
+  },
+  {
+    "objectID": "installation/vscode.html#recommended-settings",
+    "href": "installation/vscode.html#recommended-settings",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "File-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!"
+  },
+  {
+    "objectID": "installation/vscode.html#vscode-blocks",
+    "href": "installation/vscode.html#vscode-blocks",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "this = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here"
+  },
+  {
+    "objectID": "installation/vscode.html#vscode-autoformat",
+    "href": "installation/vscode.html#vscode-autoformat",
+    "title": "Julia VSCode Extension",
+    "section": "",
+    "text": "Ctrl+Shift+I to automatically format your code"
+  },
+  {
+    "objectID": "cheatsheets/julia.html",
+    "href": "cheatsheets/julia.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
+  },
+  {
+    "objectID": "cheatsheets/julia.html#meta-tools",
+    "href": "cheatsheets/julia.html#meta-tools",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
+  },
+  {
+    "objectID": "cheatsheets/julia.html#debugging",
+    "href": "cheatsheets/julia.html#debugging",
+    "title": "Research Software Engineering Summer School",
+    "section": "debugging",
+    "text": "debugging\n\n\n\n\n\n\n\n@run sum(5+1)\nrun debugger, stop at error/breakpoints\n\n\n@enter sum(5+1)\nenter debugger, dont start code yet\n\n\n@show variable\nprints: variable = variablecontent\n\n\n@debug variable\nprints only to debugger, very convient in combination with &gt;ENV[\"JULIA_DEBUG\"] = ToBeDebuggedModule (could be Main as well)"
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html",
+    "href": "material/1_mon/firststeps/tasks.html",
+    "title": "Task 1",
+    "section": "",
+    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "href": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "title": "Task 1",
+    "section": "",
+    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html#footnotes",
+    "href": "material/1_mon/firststeps/tasks.html#footnotes",
+    "title": "Task 1",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nrse = research software engineering, we could use sum in a principled way, but it requires some knowledge you likely don’t have right now↩︎"
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#environments-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#environments-in-julia",
+    "title": "Environments",
+    "section": "Environments in Julia",
+    "text": "Environments in Julia\nEvery folder with an Project.toml file has it’s own environment (see below)\nThe “base” environment is active by default:\n(@v1.9) pkg&gt;\nKeep this as empty+tidy as possible!\nTip: (you could also start julia by julia --project=\".\")\n\nTypical commands\n\nactivate\nUse activate . or activate ./path/to creates a new Project.toml in the selected folder (. means current folder), or activates it, if it already exists.\n\n\nstatus (st)\nShows the currently installed packages\n\n\nadd\nMultiple ways to add packages to the Project.toml:\n\nadd UnicodePlots\nadd https://github.com/JuliaPlots/UnicodePlots.jl\nspecify branch: add UnicodePlots#unicodeplots-docs\nspecify version add UnicodePlots@3.3\nadd ./path/to/localPackage\n\n\n\n\n\n\n\nNote\n\n\n\nFolders have to be git-repositories, see below. Probably better use develop\n\n\n\n\nremove (rm)\nremove package from Project.toml (not from ~/.julia, use gc - garbage collect for this)\n\n\ndevelop\n\ndev --local UnicodePlots\ndev ./Path/To/LocalPackage/\n\n\n\n\n\n\n\nNote\n\n\n\nYou can’t select a branch with dev and need to do it manually\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou are asking for the difference of dev ./Path/Package and add ./Path/Package? Good question! dev will always track the actual content of the folder - whereas add will make a “snapshot” of the last commit in that folder (has to be an git for add!). And you have to use ]up to actually update to new changes\n\n\n\n\npin / free\nYou can pin versions of packages, so that they are not updated. Unpin with free - also undo develop by using free\n\n\ninstantiate / resolve\ninstantiate setup all dependencies in the given Project.toml+Manifest.toml\nresolve update the Manifest.toml to respect the local setup"
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
+    "href": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
+    "title": "Environments",
+    "section": "Project.toml & Manifest.toml",
+    "text": "Project.toml & Manifest.toml\n\n📄Project.toml\nThe “big picture”: keeps track of user-added dependencies (+ compatabilities + header)\n[deps]\nPythonCall = \"6099a3de-0909-46bc-b1f4-468b9a2dfc0d\"\nRCall = \"6f49c342-dc21-5d91-9882-a32aef131414\"\n\n\n📄Manifest.toml\nThe “details”: keeps track of all versions of all dependencies, and dependencies of dependencies\njulia_version = \"1.9.2\"\n\n[[deps.AbstractPlutoDingetjes]]\ndeps = [\"Pkg\"]\ngit-tree-sha1 = \"8eaf9f1b4921132a4cff3f36a1d9ba923b14a481\"\nuuid = \"6e696c72-6542-2067-7265-42206c756150\"\nversion = \"1.1.4\"\n\n[[deps.ArgTools]]\nuuid = \"0dad84c5-d112-42e6-8d28-ef12dabb789f\"\nversion = \"1.1.1\"\n\n[[deps.BibInternal]]\ngit-tree-sha1 = \"3a760b38ba8da19e64d29244f06104823ff26f25\"\nuuid = \"2027ae74-3657-4b95-ae00-e2f7d55c3e64\"\nversion = \"0.3.4\"\n\n[...]"
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#packages-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#packages-in-julia",
+    "title": "Environments",
+    "section": "Packages in Julia",
+    "text": "Packages in Julia\nSeveral thousand packages exist in Julia already. Take a thorough look before starting something new!\n\nMinimal requirements for ]add to work\nMinimal structure\nOne git-repository containing:\n\n./src/MyStatsPackage.jl\n\n(module MyStatsPackage)\n\n./Project.toml\n\nname = \"MyStatsPackage\"\nuuid =\"b4cd1eb8-1e24-11e8-3319-93036a3eb9f3\"\n([compat] entries)\n(version= \"0.1.0\")\n\n\n\n\nAdditional requirements to register\nJulia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.\nThe default registry is JuliaRegistries/General.\nTo register at the general registiry, you need additionally::\n\n[compat] entries for all dependencies\na version=\na supported license\nSome restrictions on the name (e.g. nothing with Julia, only ASCII, etc.)"
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
+    "href": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
+    "title": "Environments",
+    "section": "Let’s generate our first package!",
+    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans:\n\nMajor 2\nMinor 7\nBugfix 5\nBump Major if you propose backward-breaking changes\nBump Minor if you only introduce new features -Bump Bugfix if you, well, fix bugs\n\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#projects-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#projects-in-julia",
+    "title": "Environments",
+    "section": "Projects in Julia",
+    "text": "Projects in Julia\nFormally, projects don’t have specific requirements. You should activate an environment (Project.toml+Manifest.toml) in the main folder though. I recommend the following minimal structure:\n\n./src/ - all functions should go there\n./scripts/ - all actual scripts should go here,\n./README.md - Write what this is about, who you are etc.\n./Project.toml - Your explicit dependencies\n./Manifest.toml - Your implicit dependencies + versions &lt;– this makes it reproducible!\n\n\n\n\n\n\n\nTip\n\n\n\nOne recommendation is to use DrWatson.initialize_project([path]) to start a new project - it will generate a nice folder structure + provide some other helpful DrWatson.jl features.\n(click the following tipp to expand the full datastructure)\n\n\n\n\n\n\n\n\nTip\n\n\n\n\n\n│projectdir          &lt;- Project's main folder. It is initialized as a Git\n│                       repository with a reasonable .gitignore file.\n│\n├── _research        &lt;- WIP scripts, code, notes, comments,\n│   |                   to-dos and anything in an alpha state.\n│   └── tmp          &lt;- Temporary data folder.\n│\n├── data             &lt;- **Immutable and add-only!**\n│   ├── sims         &lt;- Data resulting directly from simulations.\n│   ├── exp_pro      &lt;- Data from processing experiments.\n│   └── exp_raw      &lt;- Raw experimental data.\n│\n├── plots            &lt;- Self-explanatory.\n├── notebooks        &lt;- Jupyter, Weave or any other mixed media notebooks.\n│\n├── papers           &lt;- Scientific papers resulting from the project.\n│\n├── scripts          &lt;- Various scripts, e.g. simulations, plotting, analysis,\n│   │                   The scripts use the `src` folder for their base code.\n│   └── intro.jl     &lt;- Simple file that uses DrWatson and uses its greeting.\n│\n├── src              &lt;- Source code for use in this project. Contains functions,\n│                       structures and modules that are used throughout\n│                       the project and in multiple scripts.\n│\n├── README.md        &lt;- Optional top-level README for anyone using this project.\n├── .gitignore       &lt;- by default ignores _research, data, plots, videos,\n│                       notebooks and latex-compilation related files.\n│\n├── Manifest.toml    &lt;- Contains full list of exact package versions used currently.\n└── Project.toml     &lt;- Main project file, allows activation and installation.\n                        Includes DrWatson by default."
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#footnotes",
+    "href": "material/1_mon/envs/envs_handout.html#footnotes",
+    "title": "Environments",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nlibraries, dlls, .so etc.↩︎"
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html",
+    "href": "material/2_tue/git/standards_slides.html",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them.\n\n\n\n\n\n\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar.\n\n\n\n\n\n\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
+    "href": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#special-files",
+    "href": "material/2_tue/git/standards_slides.html#special-files",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "Certain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#issues-and-prs",
+    "href": "material/2_tue/git/standards_slides.html#issues-and-prs",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "Templates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html",
+    "href": "material/2_tue/git/intro_slides.html",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+  },
+  {
     "objectID": "material/2_tue/git/merge_rebase_slides.html",
     "href": "material/2_tue/git/merge_rebase_slides.html",
     "title": "Merge vs. Rebase",
@@ -112,486 +644,10 @@
     "text": "Bitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html",
-    "href": "material/2_tue/git/intro_slides.html",
-    "title": "Introduction to version control",
+    "objectID": "material/3_wed/docs/handout.html",
+    "href": "material/3_wed/docs/handout.html",
+    "title": "Documenter.jl",
     "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html",
-    "href": "material/2_tue/git/standards_slides.html",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them.\n\n\n\n\n\n\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar.\n\n\n\n\n\n\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "href": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#special-files",
-    "href": "material/2_tue/git/standards_slides.html#special-files",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Certain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "href": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Templates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#environments-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#environments-in-julia",
-    "title": "Environments",
-    "section": "Environments in Julia",
-    "text": "Environments in Julia\nEvery folder with an Project.toml file has it’s own environment (see below)\nThe “base” environment is active by default:\n(@v1.9) pkg&gt;\nKeep this as empty+tidy as possible!\nTip: (you could also start julia by julia --project=\".\")\n\nTypical commands\n\nactivate\nUse activate . or activate ./path/to creates a new Project.toml in the selected folder (. means current folder), or activates it, if it already exists.\n\n\nstatus (st)\nShows the currently installed packages\n\n\nadd\nMultiple ways to add packages to the Project.toml:\n\nadd UnicodePlots\nadd https://github.com/JuliaPlots/UnicodePlots.jl\nspecify branch: add UnicodePlots#unicodeplots-docs\nspecify version add UnicodePlots@3.3\nadd ./path/to/localPackage\n\n\n\n\n\n\n\nNote\n\n\n\nFolders have to be git-repositories, see below. Probably better use develop\n\n\n\n\nremove (rm)\nremove package from Project.toml (not from ~/.julia, use gc - garbage collect for this)\n\n\ndevelop\n\ndev --local UnicodePlots\ndev ./Path/To/LocalPackage/\n\n\n\n\n\n\n\nNote\n\n\n\nYou can’t select a branch with dev and need to do it manually\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou are asking for the difference of dev ./Path/Package and add ./Path/Package? Good question! dev will always track the actual content of the folder - whereas add will make a “snapshot” of the last commit in that folder (has to be an git for add!). And you have to use ]up to actually update to new changes\n\n\n\n\npin / free\nYou can pin versions of packages, so that they are not updated. Unpin with free - also undo develop by using free\n\n\ninstantiate / resolve\ninstantiate setup all dependencies in the given Project.toml+Manifest.toml\nresolve update the Manifest.toml to respect the local setup"
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
-    "href": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
-    "title": "Environments",
-    "section": "Project.toml & Manifest.toml",
-    "text": "Project.toml & Manifest.toml\n\n📄Project.toml\nThe “big picture”: keeps track of user-added dependencies (+ compatabilities + header)\n[deps]\nPythonCall = \"6099a3de-0909-46bc-b1f4-468b9a2dfc0d\"\nRCall = \"6f49c342-dc21-5d91-9882-a32aef131414\"\n\n\n📄Manifest.toml\nThe “details”: keeps track of all versions of all dependencies, and dependencies of dependencies\njulia_version = \"1.9.2\"\n\n[[deps.AbstractPlutoDingetjes]]\ndeps = [\"Pkg\"]\ngit-tree-sha1 = \"8eaf9f1b4921132a4cff3f36a1d9ba923b14a481\"\nuuid = \"6e696c72-6542-2067-7265-42206c756150\"\nversion = \"1.1.4\"\n\n[[deps.ArgTools]]\nuuid = \"0dad84c5-d112-42e6-8d28-ef12dabb789f\"\nversion = \"1.1.1\"\n\n[[deps.BibInternal]]\ngit-tree-sha1 = \"3a760b38ba8da19e64d29244f06104823ff26f25\"\nuuid = \"2027ae74-3657-4b95-ae00-e2f7d55c3e64\"\nversion = \"0.3.4\"\n\n[...]"
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#packages-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#packages-in-julia",
-    "title": "Environments",
-    "section": "Packages in Julia",
-    "text": "Packages in Julia\nSeveral thousand packages exist in Julia already. Take a thorough look before starting something new!\n\nMinimal requirements for ]add to work\nMinimal structure\nOne git-repository containing:\n\n./src/MyStatsPackage.jl\n\n(module MyStatsPackage)\n\n./Project.toml\n\nname = \"MyStatsPackage\"\nuuid =\"b4cd1eb8-1e24-11e8-3319-93036a3eb9f3\"\n([compat] entries)\n(version= \"0.1.0\")\n\n\n\n\nAdditional requirements to register\nJulia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.\nThe default registry is JuliaRegistries/General.\nTo register at the general registiry, you need additionally::\n\n[compat] entries for all dependencies\na version=\na supported license\nSome restrictions on the name (e.g. nothing with Julia, only ASCII, etc.)"
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
-    "href": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
-    "title": "Environments",
-    "section": "Let’s generate our first package!",
-    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans:\n\nMajor 2\nMinor 7\nBugfix 5\nBump Major if you propose backward-breaking changes\nBump Minor if you only introduce new features -Bump Bugfix if you, well, fix bugs\n\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#projects-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#projects-in-julia",
-    "title": "Environments",
-    "section": "Projects in Julia",
-    "text": "Projects in Julia\nFormally, projects don’t have specific requirements. You should activate an environment (Project.toml+Manifest.toml) in the main folder though. I recommend the following minimal structure:\n\n./src/ - all functions should go there\n./scripts/ - all actual scripts should go here,\n./README.md - Write what this is about, who you are etc.\n./Project.toml - Your explicit dependencies\n./Manifest.toml - Your implicit dependencies + versions &lt;– this makes it reproducible!\n\n\n\n\n\n\n\nTip\n\n\n\nOne recommendation is to use DrWatson.initialize_project([path]) to start a new project - it will generate a nice folder structure + provide some other helpful DrWatson.jl features.\n(click the following tipp to expand the full datastructure)\n\n\n\n\n\n\n\n\nTip\n\n\n\n\n\n│projectdir          &lt;- Project's main folder. It is initialized as a Git\n│                       repository with a reasonable .gitignore file.\n│\n├── _research        &lt;- WIP scripts, code, notes, comments,\n│   |                   to-dos and anything in an alpha state.\n│   └── tmp          &lt;- Temporary data folder.\n│\n├── data             &lt;- **Immutable and add-only!**\n│   ├── sims         &lt;- Data resulting directly from simulations.\n│   ├── exp_pro      &lt;- Data from processing experiments.\n│   └── exp_raw      &lt;- Raw experimental data.\n│\n├── plots            &lt;- Self-explanatory.\n├── notebooks        &lt;- Jupyter, Weave or any other mixed media notebooks.\n│\n├── papers           &lt;- Scientific papers resulting from the project.\n│\n├── scripts          &lt;- Various scripts, e.g. simulations, plotting, analysis,\n│   │                   The scripts use the `src` folder for their base code.\n│   └── intro.jl     &lt;- Simple file that uses DrWatson and uses its greeting.\n│\n├── src              &lt;- Source code for use in this project. Contains functions,\n│                       structures and modules that are used throughout\n│                       the project and in multiple scripts.\n│\n├── README.md        &lt;- Optional top-level README for anyone using this project.\n├── .gitignore       &lt;- by default ignores _research, data, plots, videos,\n│                       notebooks and latex-compilation related files.\n│\n├── Manifest.toml    &lt;- Contains full list of exact package versions used currently.\n└── Project.toml     &lt;- Main project file, allows activation and installation.\n                        Includes DrWatson by default."
-  },
-  {
-    "objectID": "material/1_mon/envs/envs_handout.html#footnotes",
-    "href": "material/1_mon/envs/envs_handout.html#footnotes",
-    "title": "Environments",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nlibraries, dlls, .so etc.↩︎"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/tasks.html",
-    "href": "material/1_mon/firststeps/tasks.html",
-    "title": "Task 1",
-    "section": "",
-    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
-  },
-  {
-    "objectID": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
-    "href": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
-    "title": "Task 1",
-    "section": "",
-    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
-  },
-  {
-    "objectID": "material/1_mon/firststeps/tasks.html#footnotes",
-    "href": "material/1_mon/firststeps/tasks.html#footnotes",
-    "title": "Task 1",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nrse = research software engineering, we could use sum in a principled way, but it requires some knowledge you likely don’t have right now↩︎"
-  },
-  {
-    "objectID": "cheatsheets/julia.html",
-    "href": "cheatsheets/julia.html",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
-  },
-  {
-    "objectID": "cheatsheets/julia.html#meta-tools",
-    "href": "cheatsheets/julia.html#meta-tools",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "Julia\nPython\nR\n\n\n\n\nDocumentation\n?obj\nhelp(obj)\n?obj , help(obj)\n\n\nObject content\ndump(obj)\nprint(repr(obj))\nstr(obj)\n\n\nExported functions\nnames(FooModule)\ndir(foo_module)\nls(\"package:foo_module\")\n\n\nList function signatures with that name\nmethods(myFun)\n\nmethods(myFun)\n\n\nList functions for specific type\nmethodswith(SomeType)\ndir(SomeType)\nmethods(SomeType)\n\n\nWhere is …?\n@which func\nfunc.__module__\n\n\n\nWhat is …?\ntypeof(obj)\ntype(obj)\nclass(obj)\n\n\nIs it really a …?\nisa(obj, SomeType)\nisinstance(obj, SomeType)\nis(obj, SomeType)"
-  },
-  {
-    "objectID": "cheatsheets/julia.html#debugging",
-    "href": "cheatsheets/julia.html#debugging",
-    "title": "Research Software Engineering Summer School",
-    "section": "debugging",
-    "text": "debugging\n\n\n\n\n\n\n\n@run sum(5+1)\nrun debugger, stop at error/breakpoints\n\n\n@enter sum(5+1)\nenter debugger, dont start code yet\n\n\n@show variable\nprints: variable = variablecontent\n\n\n@debug variable\nprints only to debugger, very convient in combination with &gt;ENV[\"JULIA_DEBUG\"] = ToBeDebuggedModule (could be Main as well)"
-  },
-  {
-    "objectID": "installation/vscode.html",
-    "href": "installation/vscode.html",
-    "title": "Julia VSCode Extension",
-    "section": "",
-    "text": "Documentation on the Julia VSCode extension can be found here\n\n\nFile-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!\n\n\n\nthis = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here\n\n\n\nCtrl+Shift+I to automatically format your code"
-  },
-  {
-    "objectID": "installation/vscode.html#recommended-settings",
-    "href": "installation/vscode.html#recommended-settings",
-    "title": "Julia VSCode Extension",
-    "section": "",
-    "text": "File-&gt;Preferences-&gt;Settings\nPut into the search bar Julia Exection\nJulia › Execution: Code In REPL\n\nPrint executed code in REPL and append it to the REPL history.\n\nMake sure that x is there!"
-  },
-  {
-    "objectID": "installation/vscode.html#vscode-blocks",
-    "href": "installation/vscode.html#vscode-blocks",
-    "title": "Julia VSCode Extension",
-    "section": "",
-    "text": "this = 1\nis = 2\n# a code block\n\n#---\nand = 1\nthis =2\n# is another \none = 3\nCtrl+Enter executes the currently marked line/segment\nAlt+Enter If you are within one code-block, executes it\n+Shift Adding a shift to the previous commands executes them, and then moves to next line/block\nfind more keybindings here"
-  },
-  {
-    "objectID": "installation/vscode.html#vscode-autoformat",
-    "href": "installation/vscode.html#vscode-autoformat",
-    "title": "Julia VSCode Extension",
-    "section": "",
-    "text": "Ctrl+Shift+I to automatically format your code"
-  },
-  {
-    "objectID": "projectwork.html",
-    "href": "projectwork.html",
-    "title": "Project Work",
-    "section": "",
-    "text": "A considerable of time will be dedicated to project work allowing you to apply the skills you have learnt during the summer school.\nWe encourage you to bring your own problem (e.g. something related to your own research) and try to build a small software package for that problem. Moreover, we will provide alternative problems to be solved."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
-    "section": "",
-    "text": "This websites links all materials (slides + exercises) for the 2023 RSE+Julia Summerschool at SimTech, Stuttgart University\nGeneral information about the summer school can be found here."
-  },
-  {
-    "objectID": "index.html#footnotes",
-    "href": "index.html#footnotes",
-    "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nIf there are problem with him, please contact Marco Oesting↩︎"
-  },
-  {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teachers",
-    "section": "",
-    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
-  },
-  {
-    "objectID": "teaching.html#invited-speakers",
-    "href": "teaching.html#invited-speakers",
-    "title": "Teachers",
-    "section": "",
-    "text": "Prof. Lisa DeBruine - Statistics, Simulation\nProf. Przemysław Szufel - Julia, Optimization\nProf. Hendrik Ranocha - Julia, RSE, Optimization"
-  },
-  {
-    "objectID": "teaching.html#organizers-and-teachers",
-    "href": "teaching.html#organizers-and-teachers",
-    "title": "Teachers",
-    "section": "Organizers and Teachers",
-    "text": "Organizers and Teachers\nAssistant Prof. Marco Oesting - Statistics\nAssistant Prof. Benjamin Uekermann - RSE\nAssistant Prof. Benedikt Ehinger - Julia, Visualization, RSE"
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Summerschool Schedule"
-  },
-  {
-    "objectID": "installation/julia.html",
-    "href": "installation/julia.html",
-    "title": "Installing Julia",
-    "section": "",
-    "text": "Installing Julia\nThe recommended way to install julia is juliaup. It allows you to, e.g., easily update Julia at a later point, but also test out alpha/beta versions etc.\nTLDR; If you dont want to read the explicit instructions, just copy the following command\n\nWindows\nAppStore -&gt; JuliaUp, or winget install julia -s msstore in CMD\n\n\nMac & Linux\ncurl -fsSL https://install.julialang.org | sh in any shell\n\n\n\nVSCode\nTo install VSCode (the recommended IDE), go to this link and download + install the correct package.\nNext, install the Julia extension\n (thanks to https://juliateachingctu.github.io for providing us with the nice graphics)\nFinally press Ctrl + Shift + P to get VSCodes command palette, and type in Julia: Start REPL"
-  },
-  {
-    "objectID": "missing.html",
-    "href": "missing.html",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "This content is not yet included in the website - check at another time!"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
-    "title": "First Steps",
-    "section": "Getting started",
-    "text": "Getting started\n\n\n\n\n\n\nTip\n\n\n\nThe julia manual is excellent!\n\n\nAt this point we assume that you have Julia 1.9 installed, VSCode language extension ready, and installed the VSCode Julia plugin. There are some more recommended settings in VSCode which are not necessary, but helpful.\nWe further recommend to not use the small “play” button on the top right (which opens a new julia process everytime you change something), but rather open a new Julia repl (ctrl+shift+p =&gt; &gt;Julia: Start Repl) which you keep open as long as possible.\n\n\n\n\n\n\nTip\n\n\n\nVSCode automatically loads the Revise.jl package, which screens all your actively loaded packages/files and updates the methods instances whenever it detects a change. This is quite similar to %autoreload 2 in ipython. If you use VSCode, you dont need to think about it, if you prefer a command line, you should put Revise.jl in your startup.jl file."
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
-    "title": "First Steps",
-    "section": "Syntax differences Python/R/MatLab",
-    "text": "Syntax differences Python/R/MatLab\n\nIn the beginning there was nothing\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN.\n\n\nControl Structures\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets.\nPython User? We don’t need no intendation, and we also have 1-index.\n1myarray = zeros(6)\n2for k = 1:length(myarray)\n    if iseven(k)\n3        myarray[k] = sum(myarray[1:k])\n    elseif k == 5\n41        myarray = myarray .- 1\n    else \n        myarray[k] = 5\n5    end\nend\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\nFunctions\n1function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n    if keyword1 == \"defaultkeyword\"\n        c = a+b\n    else\n        c = a*b\n    end\n    return c\nend\n2methods(myfunction)\nmyfunction(0)\nmyfunction(1;keyword1 = \"notdefault\")\nmyfunction(0,5)\nmyfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nList all methods with that function name - returns two functions, due to the b=123 optional positional argument\n\n\n:: callout-tip ## Terminology function vs. method Methods are instantiations of a abstract function\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\nmyfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)\n\nExcourse: splatting & slurping\nThink of it as unpacking / collecting something\na = [1,2,3]\n+(a)\n1+(a...)\n\n1\n\nequivalent to +(1,2,3)\n\n\n\n\nelementwise-function / broadcasting\nJulia is very neat in regards of applying functions elementwise (also called broadcasting).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of a Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (Matlab, Python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though).\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in Python/Matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
-    "title": "First Steps",
-    "section": "Linear Algebra",
-    "text": "Linear Algebra\n1import LinearAlgebra\nimport LinearAlgebra: qr\n2using LinearAlgebra\n\n1\n\nRequires to write LinearAlgebra.QR(...) to access a function\n\n2\n\nLinearAlgebra is a Base package, and always available\n\n\n:: callout Julia typically recommends to use using PackageNames. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened) ::\n1A = Matrix{Float64}(undef,11,22)\n2B = Array{Float64,2}(undef,22,33)\nqr(A*B)\n\n1\n\nequivalent to Array, as Matrix is a convenience type-alias for Array with 2 dimensions. Same thing for Vector.\n\n2\n\nthe 2 of {Float64,2} is not mandatory\n\n\nMuch more on wednesday in the lecture LinearAlgebra!"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#style-conventions",
-    "title": "First Steps",
-    "section": "Style-conventions",
-    "text": "Style-conventions\n\n\n\n\n\n\n\nvariables\nlowercase, lower_case\n\n\nTypes,Modules\nUpperCamelCase\n\n\nfunctions, macro\nlowercase\n\n\ninplace / side-effects\nendwith!()1"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#scopes",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#scopes",
-    "title": "First Steps",
-    "section": "Scopes",
-    "text": "Scopes\nAll things (excepts modules) are in local scope (in scripts)\na = 0\nfor k = 1:10\n    a = 1\nend\n1a\n\n1\n\na = 0! - in a script; but a = 1 in the REPL!\n\n\nVariables are in global scope in the REPL for debugging convenience\n\n\n\n\n\n\nTip\n\n\n\nPutting this code into a function automatically resolves this issue\n  function myfun()\n  a = 0\n    for k = 1:10\n        a = 1\n    end\n    a\n    return a\n  end\n  myfun()\n\n1\n\nreturns 1 now in both REPL and include(“myscript.jl”)\n\n\n\n\n\nexplicit global / local\na = 0\nglobal b\nb = 0\nfor k = 1:10\n    local a \n    global b\n    a = 1\n    b = 1\nend\n1a\n2b\n\n1\n\na = 0\n\n2\n\nb = 1\n\n\n\n\nModifying containers works in any case\na = zeros(10)\nfor k = 1:10\n    \n    a[k] = k\nend\n1a\n\n1\n\nThis works “correctly” in the REPL as well as in a script, because we modify the content of a, not a itself"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#types",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#types",
-    "title": "First Steps",
-    "section": "Types",
-    "text": "Types\nTypes play a super important role in Julia for several main reasons:\n\nThe allow for specialization e.g. +(a::Int64,b::Float64) might have a different (faster?) implementation compared to +(a::Float64,b::Float64)\nThey allow for generalization using abstract types\nThey act as containers, structuring your programs and tools\n\nEverything in julia has a type! Check this out:\ntypeof(1)\ntypeof(1.0)\ntypeof(sum)\ntypeof([1])\ntypeof([(1,2),\"5\"])\n\nWe will discuss two types of types:\n\ncomposite types\nabstract types.\n\n\n\n\n\n\n\nClick me for even more types!\n\n\n\n\n\nThere is a third type, primitive type - but we will practically never use them Not much to say at this level, they are types like Float64. You could define your own one, e.g.\nprimitive type Float128 &lt;: AbstractFloat 128 end\nAnd there are two more, Singleton types and Parametric types - which (at least the latter), you might use at some point. But not in this tutorial.\n\n\n\n\ncomposite types\nYou can think of these types as containers for your variables, which allows you for specialization.\n    struct SimulationResults\n        parameters::Vector\n        results::Vector\n    end\n\n    s = SimulationResults([1,2,3],[5,6,7,8,9,10,NaN])\n\n   function print(s::SimulationResults)\n        println(\"The following simulation was run:\")\n        println(\"Parameters: \",s.parameters)\n        println(\"And we got results!\")\n        println(\"Results: \",s.results)\n    end\n\n    print(s)\n\n1    function SimulationResults(parameters)\n        results = run_simulation(parameters)\n        return SimulationResults(parameters,results)\n    end\n\n    function run_simulation(x)\n        return cumsum(repeat(x,2))\n    end\n\n    s = SimulationResults([1,2,3])\n    print(s)\n\n\n1\n\nin case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)\n\n\n\n\n\n\n\n\nWarning\n\n\n\nonce defined, a type-definition in the global scope of the REPL cannot be re-defined without restarting the julia REPL! This is annoying, there are some tricks arround it (e.g. defining the type in a module (see below), and then reloading the module)"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#modules",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#modules",
-    "title": "First Steps",
-    "section": "Modules",
-    "text": "Modules\nmodule MyStatsPackage\n    include(\"src/statistic_functions.jl\")\n1    export SimulationResults\n    export rse_tstat\nend\n\nusing MyStatsPackage\n\n1\n\nThis makes the SimulationResults type immediately available after running using MyStatsPackage. To use the other “internal” functions, one would use MyStatsPackage.rse_sum.\n\n\n    import MyStatsPackage\n    \n    MyStatsPackage.rse_tstat(1:10)\n\n    import MyStatsPackage: rse_sum\n    rse_sum(1:10)"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#macros",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#macros",
-    "title": "First Steps",
-    "section": "Macros",
-    "text": "Macros\nMacros allow to programmers to edit the actual code before it is run. We will pretty much just use them, without learning how they work.\n    @which cumsum\n    @which(cumsum)\n    a = \"123\"\n    @show a"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#debugging",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#debugging",
-    "title": "First Steps",
-    "section": "Debugging",
-    "text": "Debugging\nXXX"
-  },
-  {
-    "objectID": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
-    "href": "material/1_mon/firststeps/firststeps_handout.html#footnotes",
-    "title": "First Steps",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA functionname ending with a ! indicates that inplace operations will occur / side-effects are possible. This is convention only, but in 99% of cases adopted↩︎"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
-    "href": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
-    "title": "Research Software Engineering Summer School",
-    "section": "Most important link",
-    "text": "Most important link\nwww.simtech-summerschool.de\nFind all slides, all materials, and the schedule"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
-    "href": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
-    "title": "Research Software Engineering Summer School",
-    "section": "Last minute organization issues",
-    "text": "Last minute organization issues"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
-    "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
-    "title": "Research Software Engineering Summer School",
-    "section": "Structure of the summer school",
-    "text": "Structure of the summer school\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
-    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
-    "title": "Research Software Engineering Summer School",
-    "section": "Your teaching staff I",
-    "text": "Your teaching staff I\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
-    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
-    "title": "Research Software Engineering Summer School",
-    "section": "Your teaching Staff II",
-    "text": "Your teaching Staff II\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#starting-points",
-    "href": "material/1_mon/rse/rse_basics_slides.html#starting-points",
-    "title": "Research Software Engineering Summer School",
-    "section": "Starting Points",
-    "text": "Starting Points\n\nDORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
-    "href": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
-    "title": "Research Software Engineering Summer School",
-    "section": "RSE Movement",
-    "text": "RSE Movement\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
-  },
-  {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
-    "href": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
-    "title": "Research Software Engineering Summer School",
-    "section": "Do I need this in Industry?",
-    "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html",
-    "href": "material/2_tue/git/git_basics_demo.html",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick\n\n\n\n\nStarting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote\n\n\n\n\n\n\n\n\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "href": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "href": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Starting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "href": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html",
-    "href": "material/2_tue/git/workflow_slides.html",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches).\n\n\n\n\n\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity.\n\n\n\n\n\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line\n\n\n\n\n\n\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow\n\n\n\n\n\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO\n\n\n\n\n\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)\n\n\n\n\n\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash\n\n\n\n\n\n\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "href": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "There are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Only one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Each feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#gitflow",
-    "href": "material/2_tue/git/workflow_slides.html#gitflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Visualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Gitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "href": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "For all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "href": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+    "text": "Documenter.jl\n\nFile-structure overview\nExample/\n├── Project.toml\n├── README.md\n├── LICENSE.md\n├── src\n│   ├── Example.jl\n│   └── utilities.jl\n└── docs\n    ├── Project.toml\n    ├── src\n    │   ├── assets\n    │   │   ├── favicon.ico\n    │   │   └── logo.svg\n    │   ├── index.md\n    │   └── showcase.md\n    └── make.jl\n\n\nThe make.jl file\nusing Documenter, Example\nmakedocs(\n    sitename = \"Example.jl\",\n    modules = [Example],\n    pages = Any[\n        \"Home\" =&gt; \"index.md\",\n        \"Showcase\" =&gt; \"showcase.md\",\n    ],\n)\n\n\nHow to generate\njulia --project=docs/ docs/make.jl or ]activate docs/; include(\"make.jl\") or use LiveServer.jl"
   }
 ]

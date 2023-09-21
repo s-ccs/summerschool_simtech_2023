@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -119,6 +153,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📓 Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projectwork.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 Projects</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -336,6 +376,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mac-linux" id="toc-mac-linux" class="nav-link" data-scroll-target="#mac-linux">Mac &amp; Linux</a></li>
   </ul></li>
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a></li>
+  <li><a href="#optional-ohmyrepl" id="toc-optional-ohmyrepl" class="nav-link" data-scroll-target="#optional-ohmyrepl">Optional: OhMyREPL</a></li>
   </ul>
 </nav>
     </div>
@@ -363,6 +404,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Next, install the Julia extension</p>
 <p><img src="https://juliateachingctu.github.io/Julia-for-Optimization-and-Learning/stable/installation/vscodeext_1.png" class="img-fluid"> (thanks to https://juliateachingctu.github.io for providing us with the nice graphics)</p>
 <p>Finally press <code>Ctrl + Shift + P</code> to get VSCodes command palette, and type in <code>Julia: Start REPL</code> <img src="https://juliateachingctu.github.io/Julia-for-Optimization-and-Learning/stable/installation/vscodeext_2.png" class="img-fluid"></p>
+</section>
+<section id="optional-ohmyrepl" class="level1">
+<h1>Optional: OhMyREPL</h1>
+<p>Optionally you cann install a package to give you nicer syntax highlighting in the REPL.</p>
+<ol type="1">
+<li><p>Install the package: <code>]activate</code> (without a path after activate, you activate the “global” environment) <code>]add OhMyREPL</code></p></li>
+<li><p>Add it to your <code>startup.jl</code> Open <code>.julia/config/startup.jl</code> or <code>c:/users/USERNAME/.julia/config/startup.jl</code> on windows and add</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">atreplinit</span>() <span class="cf">do</span> repl</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@eval</span> <span class="im">using</span> <span class="bu">OhMyREPL</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">catch</span> <span class="cn">e</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@warn</span> <span class="st">"error while importing OhMyREPL"</span> <span class="cn">e</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="emoji" data-emoji="tada">🎉</span> <img src="https://kristofferc.github.io/OhMyREPL.jl/latest/features/rainbow_brackets.png" class="img-fluid"></p>
 
 
 </section>
