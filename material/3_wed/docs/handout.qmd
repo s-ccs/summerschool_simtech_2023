@@ -1,0 +1,38 @@
+
+# Documenter.jl
+
+### File-structure overview
+
+```
+Example/
+├── Project.toml
+├── README.md
+├── LICENSE.md
+├── src
+│   ├── Example.jl
+│   └── utilities.jl
+└── docs
+    ├── Project.toml
+    ├── src
+    │   ├── assets
+    │   │   ├── favicon.ico
+    │   │   └── logo.svg
+    │   ├── index.md
+    │   └── showcase.md
+    └── make.jl
+```
+
+### The `make.jl` file 
+```julia
+using Documenter, Example
+makedocs(
+	sitename = "Example.jl",
+	modules = [Example],
+	pages = Any[
+	    "Home" => "index.md",
+	    "Showcase" => "showcase.md",
+	],
+)
+```
+### How to generate
+ `julia --project=docs/ docs/make.jl` or `]activate docs/; include("make.jl")` or use `LiveServer.jl`

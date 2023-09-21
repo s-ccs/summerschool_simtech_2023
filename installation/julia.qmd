@@ -20,3 +20,25 @@ Next, install the Julia extension
 
 Finally press `Ctrl + Shift + P` to get VSCodes command palette, and type in `Julia: Start REPL`
 ![](https://juliateachingctu.github.io/Julia-for-Optimization-and-Learning/stable/installation/vscodeext_2.png)
+
+
+# Optional: OhMyREPL
+Optionally you cann install a package to give you nicer syntax highlighting in the REPL.
+
+1. Install the package:
+`]activate` (without a path after activate, you activate the "global" environment)
+`]add OhMyREPL`
+
+2. Add it to your `startup.jl`
+Open `.julia/config/startup.jl` or `c:/users/USERNAME/.julia/config/startup.jl` on windows and add
+```julia
+atreplinit() do repl
+    try
+        @eval using OhMyREPL
+    catch e
+        @warn "error while importing OhMyREPL" e
+    end
+end
+```
+
+:tada: ![](https://kristofferc.github.io/OhMyREPL.jl/latest/features/rainbow_brackets.png)

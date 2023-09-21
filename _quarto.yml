@@ -23,6 +23,8 @@ website:
         text: "Installation"
       - href: schedule.qmd
         text: "📓 Schedule"
+      - href: projectwork.qmd
+        text: "🛠 Projects"
       - href: social.qmd
         text: ":fire: Social"
       - section: "Cheatsheets"

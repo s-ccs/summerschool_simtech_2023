@@ -1,0 +1,127 @@
+---
+format: revealjs
+---
+
+# Why documentation?
+
+> If people don't know why your project exists, they won't use it. If people can't figure out how to install your code, they won't use it. If people can't figure out how to use your code, they won't use it.
+
+## What should documentation be like?
+
+-   ARID ("Accept (some) Repetition in Documentation")
+    -   Not like code (for code: DRY - "don't repeat yourself")
+    -   Repetition from code to docs is OK
+-   Skimmable
+    -   Headings: descriptive, concise
+    -   Rather use listings / "wall of text"
+    -   Add examples
+-   Best: Link to other functions (discoverability)
+
+# Types of Documentation
+
+## README.md
+
+-   **always** have a README file
+
+-   What problem the project solves
+
+-   Code example (best with screenshot)
+
+-   Support / Issue-tracker
+
+-   Contribution Guide
+
+-   Installation instruction
+
+-   License
+
+-   (Roadmap)
+
+-   (Acknowledgement)
+
+[A template Readme](https://github.com/othneildrew/Best-README-Template/tree/master)
+
+## Changelog.md
+
+```         
+# Changelog
+
+## v1.0.0
+### Breaking 
+- *Removed* function X (@behinger)
+- *Deprecated* Y (@contributor)
+- *Changed* input to Z (#143)
+
+### Minor
+- *Fixed* typos in docs
+- *Added* new feature :tada:
+- *Security* issue found. No fix yet
+```
+
+## Errormessages
+
+|dont|rather
+|---|---|
+| Input Error | Input Error: `x` was not a `Float64`, please check you didn't provide an integer |
+| This should never have happened | `XYZ` was not fullfilled, please reach out as this should not have happened|
+
+- Provide context
+- Provide advice
+- Check your tone
+
+[more advise on writethedocs.org](https://www.writethedocs.org/guide/writing/style-guides/#error-messages)
+
+
+## Docstrings
+
+``` julia
+"""
+    radius(H::Hyperrectangle, [p]::Real=Inf)::Real
+
+Return the radius of a hyperrectangle.
+
+# Arguments
+
+- `H` -- hyperrectangle
+- `p` -- (optional, default: `Inf`) norm
+
+# Output
+
+A real number representing the radius.
+
+# Notes
+
+The radius is defined as the radius of the enclosing ball of the given
+`p`-norm of minimal volume with the same center.
+
+# Examples
+
+```julia-repl
+julia> bar([1, 2], [1, 2])
+1
+\```
+
+See also [`bar!`](@ref), [`baz`](@ref), [`baaz`](@ref).
+"""
+function radius(H::Hyperrectangle, p::Real=Inf)::Real
+    ...
+end
+```
+
+Use a template and add it to all your functions
+
+[Julia Documentation Guide](https://docs.julialang.org/en/v1/manual/documentation/#Writing-Documentation)
+
+## The Manual
+
+A recommended system for documentation ![](https://documentation.divio.com/_images/overview.png)
+
+## Example: A cookbook-toolbox
+
+| Tutorials                | How-To            | Reference                      | Explanation                          |
+|------------------|------------------|------------------|------------------|
+| teaching a child to cook | several recipes   | how ginger is added to the pot | why garlic is needed in all cookingh |
+| a lesson                 | a series of steps | dry description                | discursive explanation               |
+| beginners/users          | users             | developers                     | users/developers                     |
+
+Check out the [extended guide on divio.com](https://documentation.divio.com/)
