@@ -34,5 +34,71 @@ makedocs(
 	],
 )
 ```
+
 ### How to generate
  `julia --project=docs/ docs/make.jl` or `]activate docs/; include("make.jl")` or use `LiveServer.jl`
+
+### How to write
+
+```julia
+# Normal Markdown is great
+Also write lots of text
+
+```@example Main
+a = 1
+    ```
+
+More text!
+
+```@example Main
+b = a
+    ```
+
+
+```@example NewScope
+a = 3 # a new a appears!
+    ```
+ 
+```
+
+# Bonus: Literate.jl 
+Using `Literate.jl` one does not need to write `.md` files - but rather can use `.jl` files that are translated to `.md` files.
+
+```julia
+# # This is markdown headline
+# This is normal markdown code
+1 ==1
+
+# Be careful in forloops with comments, Literate
+## this is a comment
+```
+
+# PkgTemplate.jl 
+```julia
+]activate --temp
+]add PkgTemplates
+using PkgTemplates
+tpl = Template(user="yourGithubUser",
+            dir="./PkgTemplate", # the new package will appear in this folder
+            plugins=[GitHubActions(;extra_versions=["nightly"]),Documenter{GitHubActions}()])
+tpl("MyStatisticsPackage") # created in ./PkgTemplate/MyStatisticsPackage/Project.toml
+```
+
+
+This will create the Project+Git, but also setup github-actions / ContinuousIntegration with tests and docs.
+
+You still need to go to [github.com](https://github.com) (or use `gh repo create` with the [gh-command line interface](https://cli.github.com/)) and create an not-initialized / empty repository with the same name (but .jl added), and run 
+```julia
+git remote add origin https://github.com/behinger/MyStatisticsPackage.jl
+git push -u origin main
+```
+
+Finally, to activate documentation being deployed, you need to go to your Github-Repo, go to Settings, Pages and select the gh_page branch to be deployed.
+
+::: callout-tip
+You can also run the PkgTemplate interactively using
+```julia
+  Template(interactive=true)("MyPkg")
+```
+Which will ask you a hundred million questions ;-)
+::: 
