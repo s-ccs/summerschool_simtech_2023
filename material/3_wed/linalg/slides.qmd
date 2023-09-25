@@ -1,0 +1,7 @@
+## Slides
+
+The slides are available [in pptx format here](Julia_Matrices_Optimization_JuMP_Stuttgart2023.pptx). Note that there are a few extra slides in case you are motivated to learn more!
+
+## Exercise
+
+The exercise is available [as a jupyter-notebook here](Julia_Matrices_Optimization_JuMP_Stuttgart2023.ipynb). 

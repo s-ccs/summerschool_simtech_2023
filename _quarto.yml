@@ -63,7 +63,7 @@ website:
                 text: "📝 1 - Docs"
               - href: material/3_wed/vis/slides.jl
                 text: "📝 2 - Visualizations"
-              - href: material/3_wed/linearalgebra/missing.qmd
+              - href: material/3_wed/linalg/slides.qmd
                 text: "📝 3 - LinearAlgebra"
               - href: material/3_wed/regression/missing.jl
                 text: "📝 4 - Multiple Regression"
@@ -74,7 +74,7 @@ website:
                 text: "📝 1 - Simulation"
               - href: material/4_thu/stats/missing.jl
                 text: "📝 2 - Stats"
-              - href: material/4_thu/parallel/missing.qmd
+              - href: material/4_thu/parallel/slides.qmd
                 text: "📝 3 - Parallelization"
           - section: "Friday"
             contents:
