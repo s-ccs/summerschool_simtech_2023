@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Research Software Engineering Summer School – multipleregressionbasics</title>
+<title>Research Software Engineering Summer School – slides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../material/3_wed/regression/missing.jl" rel="next">
+<link href="../../../material/3_wed/vis/slides.jl" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,8 +62,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Research Software Engineering Summer School</span>
     </a>
   </div>
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Slides / Handouts</li><li class="breadcrumb-item"><a href="../../../material/3_wed/docs/handout.html">Wednesday</a></li><li class="breadcrumb-item"><a href="../../../material/3_wed/linalg/slides.html">📝 3 - LinearAlgebra</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -105,31 +105,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🏠 Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../installation/julia.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../installation/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📓 Schedule</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projectwork.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../projectwork.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🛠 Projects</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../social.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../social.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="emoji" data-emoji="fire">🔥</span> Social</span></a>
   </div>
 </li>
@@ -144,19 +144,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/julia.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/git.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/githubactions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/githubactions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub actions</span></a>
   </div>
 </li>
@@ -182,25 +182,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/1_mon/rse/rse_basics_slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/1_mon/rse/rse_basics_slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📊 1 - RSE</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../missing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../missing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 2 - Why Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/1_mon/firststeps/firststeps_handout.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/1_mon/firststeps/firststeps_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 3 - First Steps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/1_mon/envs/envs_handout.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/1_mon/envs/envs_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Environments &amp; Packages</span></a>
   </div>
 </li>
@@ -217,25 +217,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/2_tue/git/intro_slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/2_tue/git/intro_slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 1 - GIT</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/2_tue/unittest/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/2_tue/unittest/missing.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 2 - Unit Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/3_tue/CI/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_tue/CI/missing.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 3 - Continuous Integration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/4_tue/codereview/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/4_tue/codereview/missing.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Code Review</span></a>
   </div>
 </li>
@@ -243,34 +243,34 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Wednesday</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/3_wed/docs/handout.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/docs/handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 1 - Docs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/3_wed/vis/slides.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/vis/slides.jl" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 2 - Visualizations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/3_wed/linearalgebra/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/linalg/slides.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">📝 3 - LinearAlgebra</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/3_wed/regression/missing.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/regression/missing.jl" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Multiple Regression</span></a>
   </div>
 </li>
@@ -287,19 +287,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/4_thu/sim/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/4_thu/sim/missing.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 1 - Simulation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/4_thu/stats/missing.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/4_thu/stats/missing.jl" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 2 - Stats</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/4_thu/parallel/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/4_thu/parallel/slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 3 - Parallelization</span></a>
   </div>
 </li>
@@ -316,7 +316,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../material/5_fri/highlightsOptim/missing.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/5_fri/highlightsOptim/missing.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 1 - Highlights + Optimization</span></a>
   </div>
 </li>
@@ -336,16 +336,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#multiple-regression-basics" id="toc-multiple-regression-basics" class="nav-link active" data-scroll-target="#multiple-regression-basics">Multiple Regression Basics</a>
-  <ul class="collapse">
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a>
-  <ul class="collapse">
-  <li><a href="#introductory-example-tree-dataset-from-r" id="toc-introductory-example-tree-dataset-from-r" class="nav-link" data-scroll-target="#introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</a></li>
-  </ul></li>
-  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
-  <li><a href="#multiple-regression-model" id="toc-multiple-regression-model" class="nav-link" data-scroll-target="#multiple-regression-model">Multiple Regression Model</a></li>
-  <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link" data-scroll-target="#generalized-linear-models">Generalized Linear Models</a></li>
-  </ul></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -354,175 +346,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="multiple-regression-basics" class="level1">
-<h1>Multiple Regression Basics</h1>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<section id="introductory-example-tree-dataset-from-r" class="level3">
-<h3 class="anchored" data-anchor-id="introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</h3>
-<p>[figure of raw data]</p>
-<p><em>Aim:</em> Find relationship between the <em>response variable</em> <code>volume</code> and the <em>explanatory variable/covariate</em> <code>girth</code>? Can we predict the volume of a tree given its girth?</p>
-<p>[figure including a straight line]</p>
-<p>First Guess: There is a linear relation!</p>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p>The slides are available <a href="Julia_Matrices_Optimization_JuMP_Stuttgart2023.pptx">in pptx format here</a>. Note that there are a few extra slides in case you are motivated to learn more!</p>
 </section>
-</section>
-<section id="simple-linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="simple-linear-regression">Simple Linear Regression</h2>
-<p>Main assumption: up to some error term, each measurement of the response variable <span class="math inline">\(y_i\)</span> depends linearly on the corresponding value <span class="math inline">\(x_i\)</span> of the covariate</p>
-<p><span class="math inline">\(\leadsto\)</span> <strong>(Simple) Linear Model:</strong> <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \varepsilon_i,   \qquad  i=1,...,n,\]</span> where <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,\sigma^2)\)</span> are independent normally distributed errors with unknown variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p><em>Task:</em> Find the straight line that fits best, i.e., find the <em>optimal</em> estimators for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
-<p><em>Typical choice</em>: Least squares estimator (= maximum likelihood estimator for normal errors)</p>
-<p><span class="math display">\[ (\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{1} \beta_0 - \mathbf{x} \beta_1\|^2 \]</span></p>
-<p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector of responses, <span class="math inline">\(\mathbf{x}\)</span> is the vector of covariates and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
-<p>Written in matrix style:</p>
-<p><span class="math display">\[
-(\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \left\| \mathbf{y} - (\mathbf{1},\mathbf{x}) \left( \begin{array}{c} \beta_0\\ \beta_1\end{array}\right) \right\|^2
-\]</span></p>
-<p>Note: There is a closed-form expression for <span class="math inline">\((\hat \beta_0, \hat \beta_1)\)</span>. We will not make use of it here, but rather use Julia to solve the problem.</p>
-<p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth</code>]</p>
-<p><em>Interpretation of the Julia output:</em></p>
-<ul>
-<li><p>column <code>estimate</code> : least square estimates for <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span></p></li>
-<li><p>column <code>Std. Error</code> : estimated standard deviation <span class="math inline">\(\hat s_{\hat \beta_i}\)</span> of the estimator <span class="math inline">\(\hat \beta_i\)</span></p></li>
-<li><p>column <code>t value</code> : value of the <span class="math inline">\(t\)</span>-statistics</p>
-<p><span class="math display">\[ t_i = {\hat \beta_i \over \hat s_{\hat \beta_i}}, \quad i=0,1, \]</span></p>
-<p>Under the hypothesis <span class="math inline">\(\beta_i=0\)</span>, the test statistics <span class="math inline">\(t_i\)</span> would follow a <span class="math inline">\(t\)</span>-distribution.</p></li>
-<li><p>column <code>Pr(&gt;|t|)</code>: <span class="math inline">\(p\)</span>-values for the hyptheses <span class="math inline">\(\beta_i=0\)</span> for <span class="math inline">\(i=0,1\)</span></p></li>
-</ul>
-<p><strong>Task 1</strong>: Generate a random set of covariates <span class="math inline">\(\mathbf{x}\)</span>. Given these covariates and true parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> (you can choose them)), simulate responses from a linear model and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Play with different choices of the parameters to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</p>
-</section>
-<section id="multiple-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-regression-model">Multiple Regression Model</h2>
-<p><em>Idea</em>: Generalize the simple linear regression model to multiple covariates, w.g., predict <code>volume</code> using <code>girth</code> and `height``.</p>
-<p><span class="math inline">\(\leadsto\)</span> <strong>Linear Model:</strong> <span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \varepsilon_i,   \qquad  i=1,...,n,\]</span>where</p>
-<ul>
-<li><p><span class="math inline">\(y_i\)</span>: <span class="math inline">\(i\)</span>-th measurement of the response,</p></li>
-<li><p><span class="math inline">\(x_{i1}\)</span>: <span class="math inline">\(i\)</span> th value of first covariate,</p></li>
-<li><p>…</p></li>
-<li><p><span class="math inline">\(x_{ip}\)</span>: <span class="math inline">\(i\)</span>-th value of <span class="math inline">\(p\)</span>-th covariate,</p></li>
-<li><p><span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,\sigma^2)\)</span>: independent normally distributed errors with unknown variance <span class="math inline">\(\sigma^2\)</span>.</p></li>
-</ul>
-<p><em>Task:</em> Find the <em>optimal</em> estimators for <span class="math inline">\(\mathbf{\beta} = (\beta_0, \beta_1, \ldots, \beta_p)\)</span>.</p>
-<p><em>Our choice again:</em> Least squares estimator (= maximum likelihood estimator for normal errors)</p>
-<p><span class="math display">\[
-\hat \beta = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{1} \beta_0 - \mathbf{x}_1 \beta_1 - \ldots - \mathbf{x}_p \beta_p\|^2
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector of responses, <span class="math inline">\(\mathbf{x}\)</span>_j is the vector of the <span class="math inline">\(j\)</span> th covariate and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
-<p>Written in matrix style:</p>
-<p><span class="math display">\[
-\mathbf{\hat \beta} = \mathrm{argmin} \ \left\| \mathbf{y} - (\mathbf{1},\mathbf{x}_1,\ldots,\mathbf{x}_p) \left( \begin{array}{c} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p\end{array} \right) \right\|^2
-\]</span></p>
-<p>Defining the <em>design matrix</em></p>
-<p><span class="math display">\[ \mathbf{X} = \left( \begin{array}{cccc}
-                1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
-                \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-                1 &amp; x_{11} &amp; \ldots &amp; x_{1p}
-                \end{array}\right) \qquad
-  (\text{size } n \times (p+1)), \]</span></p>
-<p>we get the short form</p>
-<p><span class="math display">\[
-\mathbf{\hat \beta} = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{X} \mathbf{\beta}  \|^2 = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
-\]</span></p>
-<p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth + height</code>]</p>
-<p>The interpretation of the Julia output is similar to the simple linear regression model, but we provide explicit formulas now:</p>
-<ul>
-<li><p>parameter estimates:</p>
-<p><span class="math display">\[
-(\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
-\]</span></p></li>
-<li><p>estimated standard errors:</p>
-<p><span class="math display">\[
-\hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p} \|\mathbf{y} - \mathbf{X} \beta\|^2}
-\]</span></p></li>
-<li><p><span class="math inline">\(t\)</span>-statistics:</p>
-<p><span class="math display">\[ t_i = \frac{\hat \beta_i}{\hat s_{\hat \beta_i}}, \qquad i=0,\ldots,p. \]</span></p></li>
-<li><p><span class="math inline">\(p\)</span>-values:</p>
-<p><span class="math display">\[
-p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
-\]</span></p></li>
-</ul>
-<p><strong>Task 2</strong>: Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics. Test your functions with the ```tree’’’ data set and try to reproduce the output above.</p>
-</section>
-<section id="generalized-linear-models" class="level2">
-<h2 class="anchored" data-anchor-id="generalized-linear-models">Generalized Linear Models</h2>
-<p>Classical linear model</p>
-<p><span class="math display">\[
-\mathbf{y} = \mathbf{X} \beta + \varepsilon
-\]</span></p>
-<p>implies that <span class="math display">\[ \mathbf{y} \mid \mathbf{X} \sim \mathcal{N}(\mathbf{X} \mathbf{\beta}, \sigma^2\mathbf{I}).\]</span></p>
-<p>In particular, the conditional expectation satisfies <span class="math inline">\(\mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \mathbf{X} \beta\)</span>.</p>
-<p>However, the assumption of a normal distribution is unrealistic for non-continuous data. Popular alternatives include:</p>
-<ul>
-<li><p>for counting data: <span class="math display">\[
-   \mathbf{y} \mid \mathbf{X} \sim \mathrm{Poisson}(\exp(\mathbf{X}\mathbf{\beta})) \qquad \leadsto  \mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \exp(\mathbf{X} \beta)
-  \]</span></p>
-<p>Here, the components are considered to be independent and the exponential function is applied componentwise.</p></li>
-<li><p>for binary data: <span class="math display">\[
-   \mathbf{y} \mid \mathbf{X} \sim \mathrm{Bernoulli}\left( \frac{\exp(\mathbf{X}\mathbf{\beta})}{1 + \exp(\mathbf{X}\mathbf{\beta})} \right) \qquad \leadsto  \mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \frac{\exp(\mathbf{X}\mathbf{\beta})}{1 + \exp(\mathbf{X}\mathbf{\beta})}
-  \]</span></p>
-<p>Again, the components are considered to be independent and all the operations are applied componentwise.</p></li>
-</ul>
-<p>All these models are defined by the choice of a family of distributions and a function <span class="math inline">\(g\)</span> (the so-called <em>link function</em>) such that</p>
-<p><span class="math display">\[
-\mathbb{E}(\mathbf{y} \mid \mathbf{X}) = g^{-1}(\mathbf{X} \beta).
-\]</span></p>
-<p>For the models above, these are:</p>
-<table class="table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 30%">
-<col style="width: 31%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type of Data</th>
-<th>Distribution Family</th>
-<th>Link Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>continuous</td>
-<td>Normal</td>
-<td><p>identity:</p>
-<p><span class="math display">\[
-g(x)=x
-\]</span></p></td>
-</tr>
-<tr class="even">
-<td>count</td>
-<td>Poisson</td>
-<td><p>log:</p>
-<p><span class="math display">\[
-g(x) = \log(x)
-\]</span></p></td>
-</tr>
-<tr class="odd">
-<td>binary</td>
-<td>Bernoulli</td>
-<td><p>logit:</p>
-<p><span class="math display">\[
-g(x) = \log\left
-(
-\frac{x}{1-x}\right)
-\]</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>In general, the parameter vector <span class="math inline">\(\beta\)</span> is estimated via maximizing the likelihood, i.e.,</p>
-<p><span class="math display">\[
-\hat \beta = \mathrm{argmax} \prod_{i=1}^n f(y_i \mid \mathbf{X}_{\cdot i}),
-\]</span></p>
-<p>which is equivalent to the maximization of the log-likelihood, i.e.,</p>
-<p><span class="math display">\[
-\hat \beta = \mathrm{argmax} \sum_{i=1}^n \log f(y_i \mid \mathbf{X}_{\cdot i}),
-\]</span></p>
-<p>In the Gaussian case, the maximum likelihood estimator is identical to the least squares estimator considered above.</p>
-<p>[[ Example in Julia: maybe <code>SwissLabor</code> ]]</p>
-<p><strong>Task 3:</strong> Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</p>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<p>The exercise is available <a href="../../../material/3_wed/linalg/Julia_Matrices_Optimization_JuMP_Stuttgart2023.html">as a jupyter-notebook here</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -840,6 +672,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../material/3_wed/vis/slides.jl" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">📝 2 - Visualizations</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../material/3_wed/regression/missing.jl" class="pagination-link">
+        <span class="nav-page-text">📝 4 - Multiple Regression</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

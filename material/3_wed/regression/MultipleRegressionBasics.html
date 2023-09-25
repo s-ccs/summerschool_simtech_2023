@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Research Software Engineering Summer School – envs_handout</title>
+<title>Research Software Engineering Summer School – multipleregressionbasics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../material/2_tue/git/intro_slides.html" rel="next">
-<link href="../../../material/1_mon/firststeps/firststeps_handout.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,6 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -125,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Slides / Handouts</li><li class="breadcrumb-item"><a href="../../../material/1_mon/rse/rse_basics_slides.html">Monday</a></li><li class="breadcrumb-item"><a href="../../../material/1_mon/envs/envs_handout.html">📝 4 - Environments &amp; Packages</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -207,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Monday</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../material/1_mon/rse/rse_basics_slides.html" class="sidebar-item-text sidebar-link">
@@ -234,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/1_mon/envs/envs_handout.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../material/1_mon/envs/envs_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Environments &amp; Packages</span></a>
   </div>
 </li>
@@ -370,31 +336,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environments" id="toc-environments" class="nav-link active" data-scroll-target="#environments">Environments</a>
+  <li><a href="#multiple-regression-basics" id="toc-multiple-regression-basics" class="nav-link active" data-scroll-target="#multiple-regression-basics">Multiple Regression Basics</a>
   <ul class="collapse">
-  <li><a href="#what-is-a-environment" id="toc-what-is-a-environment" class="nav-link" data-scroll-target="#what-is-a-environment">What is a environment</a></li>
-  <li><a href="#reproducible-vs.-replicable" id="toc-reproducible-vs.-replicable" class="nav-link" data-scroll-target="#reproducible-vs.-replicable"><strong>Reproducible</strong> vs.&nbsp;<strong>Replicable</strong></a></li>
-  <li><a href="#why-do-i-need-it" id="toc-why-do-i-need-it" class="nav-link" data-scroll-target="#why-do-i-need-it">Why do I need it?</a></li>
-  <li><a href="#environments-in-julia" id="toc-environments-in-julia" class="nav-link" data-scroll-target="#environments-in-julia">Environments in Julia</a>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a>
   <ul class="collapse">
-  <li><a href="#typical-commands" id="toc-typical-commands" class="nav-link" data-scroll-target="#typical-commands">Typical commands</a></li>
+  <li><a href="#introductory-example-tree-dataset-from-r" id="toc-introductory-example-tree-dataset-from-r" class="nav-link" data-scroll-target="#introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#project-vs.-package" id="toc-project-vs.-package" class="nav-link" data-scroll-target="#project-vs.-package">Project vs.&nbsp;Package</a>
-  <ul class="collapse">
-  <li><a href="#project.toml-manifest.toml" id="toc-project.toml-manifest.toml" class="nav-link" data-scroll-target="#project.toml-manifest.toml"><code>Project.toml</code> &amp; <code>Manifest.toml</code></a></li>
-  <li><a href="#packages-in-julia" id="toc-packages-in-julia" class="nav-link" data-scroll-target="#packages-in-julia">Packages in Julia</a>
-  <ul class="collapse">
-  <li><a href="#minimal-requirements-for-add-to-work" id="toc-minimal-requirements-for-add-to-work" class="nav-link" data-scroll-target="#minimal-requirements-for-add-to-work">Minimal requirements for <code>]add</code> to work</a></li>
-  <li><a href="#additional-requirements-to-register" id="toc-additional-requirements-to-register" class="nav-link" data-scroll-target="#additional-requirements-to-register">Additional requirements to register</a></li>
-  </ul></li>
-  <li><a href="#lets-generate-our-first-package" id="toc-lets-generate-our-first-package" class="nav-link" data-scroll-target="#lets-generate-our-first-package">Let’s generate our first package!</a>
-  <ul class="collapse">
-  <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding dependencies</a></li>
-  <li><a href="#semantic-versioning" id="toc-semantic-versioning" class="nav-link" data-scroll-target="#semantic-versioning">Semantic Versioning</a></li>
-  <li><a href="#compat-entries" id="toc-compat-entries" class="nav-link" data-scroll-target="#compat-entries">Compat entries</a></li>
-  </ul></li>
-  <li><a href="#projects-in-julia" id="toc-projects-in-julia" class="nav-link" data-scroll-target="#projects-in-julia">Projects in Julia</a></li>
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
+  <li><a href="#multiple-regression-model" id="toc-multiple-regression-model" class="nav-link" data-scroll-target="#multiple-regression-model">Multiple Regression Model</a></li>
+  <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link" data-scroll-target="#generalized-linear-models">Generalized Linear Models</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -404,404 +354,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<hr>
-<hr>
-<section id="environments" class="level1">
-<h1>Environments</h1>
-<section id="what-is-a-environment" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-a-environment">What is a environment</h3>
+<section id="multiple-regression-basics" class="level1">
+<h1>Multiple Regression Basics</h1>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<section id="introductory-example-tree-dataset-from-r" class="level3">
+<h3 class="anchored" data-anchor-id="introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</h3>
+<p>[figure of raw data]</p>
+<p><em>Aim:</em> Find relationship between the <em>response variable</em> <code>volume</code> and the <em>explanatory variable/covariate</em> <code>girth</code>? Can we predict the volume of a tree given its girth?</p>
+<p>[figure including a straight line]</p>
+<p>First Guess: There is a linear relation!</p>
+</section>
+</section>
+<section id="simple-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="simple-linear-regression">Simple Linear Regression</h2>
+<p>Main assumption: up to some error term, each measurement of the response variable <span class="math inline">\(y_i\)</span> depends linearly on the corresponding value <span class="math inline">\(x_i\)</span> of the covariate</p>
+<p><span class="math inline">\(\leadsto\)</span> <strong>(Simple) Linear Model:</strong> <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \varepsilon_i,   \qquad  i=1,...,n,\]</span> where <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,\sigma^2)\)</span> are independent normally distributed errors with unknown variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><em>Task:</em> Find the straight line that fits best, i.e., find the <em>optimal</em> estimators for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+<p><em>Typical choice</em>: Least squares estimator (= maximum likelihood estimator for normal errors)</p>
+<p><span class="math display">\[ (\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{1} \beta_0 - \mathbf{x} \beta_1\|^2 \]</span></p>
+<p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector of responses, <span class="math inline">\(\mathbf{x}\)</span> is the vector of covariates and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
+<p>Written in matrix style:</p>
+<p><span class="math display">\[
+(\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \left\| \mathbf{y} - (\mathbf{1},\mathbf{x}) \left( \begin{array}{c} \beta_0\\ \beta_1\end{array}\right) \right\|^2
+\]</span></p>
+<p>Note: There is a closed-form expression for <span class="math inline">\((\hat \beta_0, \hat \beta_1)\)</span>. We will not make use of it here, but rather use Julia to solve the problem.</p>
+<p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth</code>]</p>
+<p><em>Interpretation of the Julia output:</em></p>
 <ul>
-<li>A list of “installed” packages<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> at certain versions</li>
-<li>sometimes includes the operation system</li>
+<li><p>column <code>estimate</code> : least square estimates for <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span></p></li>
+<li><p>column <code>Std. Error</code> : estimated standard deviation <span class="math inline">\(\hat s_{\hat \beta_i}\)</span> of the estimator <span class="math inline">\(\hat \beta_i\)</span></p></li>
+<li><p>column <code>t value</code> : value of the <span class="math inline">\(t\)</span>-statistics</p>
+<p><span class="math display">\[ t_i = {\hat \beta_i \over \hat s_{\hat \beta_i}}, \quad i=0,1, \]</span></p>
+<p>Under the hypothesis <span class="math inline">\(\beta_i=0\)</span>, the test statistics <span class="math inline">\(t_i\)</span> would follow a <span class="math inline">\(t\)</span>-distribution.</p></li>
+<li><p>column <code>Pr(&gt;|t|)</code>: <span class="math inline">\(p\)</span>-values for the hyptheses <span class="math inline">\(\beta_i=0\)</span> for <span class="math inline">\(i=0,1\)</span></p></li>
 </ul>
+<p><strong>Task 1</strong>: Generate a random set of covariates <span class="math inline">\(\mathbf{x}\)</span>. Given these covariates and true parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> (you can choose them)), simulate responses from a linear model and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Play with different choices of the parameters to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</p>
 </section>
-<section id="reproducible-vs.-replicable" class="level3">
-<h3 class="anchored" data-anchor-id="reproducible-vs.-replicable"><strong>Reproducible</strong> vs.&nbsp;<strong>Replicable</strong></h3>
+<section id="multiple-regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-regression-model">Multiple Regression Model</h2>
+<p><em>Idea</em>: Generalize the simple linear regression model to multiple covariates, w.g., predict <code>volume</code> using <code>girth</code> and `height``.</p>
+<p><span class="math inline">\(\leadsto\)</span> <strong>Linear Model:</strong> <span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \varepsilon_i,   \qquad  i=1,...,n,\]</span>where</p>
 <ul>
-<li><strong>Reproducible</strong>: Someone else can get the same results given your code + data</li>
-<li><strong>Replicable</strong>: Someone else can repeat the whole study on new data</li>
+<li><p><span class="math inline">\(y_i\)</span>: <span class="math inline">\(i\)</span>-th measurement of the response,</p></li>
+<li><p><span class="math inline">\(x_{i1}\)</span>: <span class="math inline">\(i\)</span> th value of first covariate,</p></li>
+<li><p>…</p></li>
+<li><p><span class="math inline">\(x_{ip}\)</span>: <span class="math inline">\(i\)</span>-th value of <span class="math inline">\(p\)</span>-th covariate,</p></li>
+<li><p><span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,\sigma^2)\)</span>: independent normally distributed errors with unknown variance <span class="math inline">\(\sigma^2\)</span>.</p></li>
 </ul>
-</section>
-<section id="why-do-i-need-it" class="level3">
-<h3 class="anchored" data-anchor-id="why-do-i-need-it">Why do I need it?</h3>
+<p><em>Task:</em> Find the <em>optimal</em> estimators for <span class="math inline">\(\mathbf{\beta} = (\beta_0, \beta_1, \ldots, \beta_p)\)</span>.</p>
+<p><em>Our choice again:</em> Least squares estimator (= maximum likelihood estimator for normal errors)</p>
+<p><span class="math display">\[
+\hat \beta = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{1} \beta_0 - \mathbf{x}_1 \beta_1 - \ldots - \mathbf{x}_p \beta_p\|^2
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector of responses, <span class="math inline">\(\mathbf{x}\)</span>_j is the vector of the <span class="math inline">\(j\)</span> th covariate and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
+<p>Written in matrix style:</p>
+<p><span class="math display">\[
+\mathbf{\hat \beta} = \mathrm{argmin} \ \left\| \mathbf{y} - (\mathbf{1},\mathbf{x}_1,\ldots,\mathbf{x}_p) \left( \begin{array}{c} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p\end{array} \right) \right\|^2
+\]</span></p>
+<p>Defining the <em>design matrix</em></p>
+<p><span class="math display">\[ \mathbf{X} = \left( \begin{array}{cccc}
+                1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
+                \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+                1 &amp; x_{11} &amp; \ldots &amp; x_{1p}
+                \end{array}\right) \qquad
+  (\text{size } n \times (p+1)), \]</span></p>
+<p>we get the short form</p>
+<p><span class="math display">\[
+\mathbf{\hat \beta} = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{X} \mathbf{\beta}  \|^2 = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
+\]</span></p>
+<p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth + height</code>]</p>
+<p>The interpretation of the Julia output is similar to the simple linear regression model, but we provide explicit formulas now:</p>
 <ul>
-<li>Version control
-<ul>
-<li>managing multiple projects</li>
-<li>testing out things</li>
-<li>your Toolbox needs other packages than e.g.&nbsp;your test-environemnt</li>
-</ul></li>
-<li>Reproducibility
-<ul>
-<li>other researchers want to know what packages to install</li>
-</ul></li>
-<li>Collaboration
-<ul>
-<li>you want to work on the same data / codebase</li>
-</ul></li>
+<li><p>parameter estimates:</p>
+<p><span class="math display">\[
+(\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
+\]</span></p></li>
+<li><p>estimated standard errors:</p>
+<p><span class="math display">\[
+\hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p} \|\mathbf{y} - \mathbf{X} \beta\|^2}
+\]</span></p></li>
+<li><p><span class="math inline">\(t\)</span>-statistics:</p>
+<p><span class="math display">\[ t_i = \frac{\hat \beta_i}{\hat s_{\hat \beta_i}}, \qquad i=0,\ldots,p. \]</span></p></li>
+<li><p><span class="math inline">\(p\)</span>-values:</p>
+<p><span class="math display">\[
+p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
+\]</span></p></li>
 </ul>
+<p><strong>Task 2</strong>: Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics. Test your functions with the ```tree’’’ data set and try to reproduce the output above.</p>
 </section>
-<section id="environments-in-julia" class="level2">
-<h2 class="anchored" data-anchor-id="environments-in-julia">Environments in Julia</h2>
-<p>Every folder with an <code>Project.toml</code> file has it’s own environment (see below)</p>
-<p>The “base” environment is active by default:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="pp">@v1</span><span class="fl">.9</span>) pkg<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Keep this as empty+tidy as possible!</p>
-<p>Tip: (you could also start julia by <code>julia --project="."</code>)</p>
-<section id="typical-commands" class="level3">
-<h3 class="anchored" data-anchor-id="typical-commands">Typical commands</h3>
-<section id="activate" class="level5">
-<h5 class="anchored" data-anchor-id="activate"><code>activate</code></h5>
-<p>Use <code>activate .</code> or <code>activate ./path/to</code> creates a new <code>Project.toml</code> in the selected folder (<code>.</code> means current folder), or activates it, if it already exists.</p>
-</section>
-<section id="status-st" class="level5">
-<h5 class="anchored" data-anchor-id="status-st"><code>status</code> (<code>st</code>)</h5>
-<p>Shows the currently installed packages</p>
-</section>
-<section id="add" class="level5">
-<h5 class="anchored" data-anchor-id="add"><code>add</code></h5>
-<p>Multiple ways to add packages to the <code>Project.toml</code>:</p>
+<section id="generalized-linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-linear-models">Generalized Linear Models</h2>
+<p>Classical linear model</p>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X} \beta + \varepsilon
+\]</span></p>
+<p>implies that <span class="math display">\[ \mathbf{y} \mid \mathbf{X} \sim \mathcal{N}(\mathbf{X} \mathbf{\beta}, \sigma^2\mathbf{I}).\]</span></p>
+<p>In particular, the conditional expectation satisfies <span class="math inline">\(\mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \mathbf{X} \beta\)</span>.</p>
+<p>However, the assumption of a normal distribution is unrealistic for non-continuous data. Popular alternatives include:</p>
 <ul>
-<li><code>add UnicodePlots</code></li>
-<li><code>add https://github.com/JuliaPlots/UnicodePlots.jl</code></li>
-<li>specify branch: <code>add UnicodePlots#unicodeplots-docs</code></li>
-<li>specify version <code>add UnicodePlots@3.3</code></li>
-<li><code>add ./path/to/localPackage</code></li>
+<li><p>for counting data: <span class="math display">\[
+   \mathbf{y} \mid \mathbf{X} \sim \mathrm{Poisson}(\exp(\mathbf{X}\mathbf{\beta})) \qquad \leadsto  \mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \exp(\mathbf{X} \beta)
+  \]</span></p>
+<p>Here, the components are considered to be independent and the exponential function is applied componentwise.</p></li>
+<li><p>for binary data: <span class="math display">\[
+   \mathbf{y} \mid \mathbf{X} \sim \mathrm{Bernoulli}\left( \frac{\exp(\mathbf{X}\mathbf{\beta})}{1 + \exp(\mathbf{X}\mathbf{\beta})} \right) \qquad \leadsto  \mathbb{E}(\mathbf{y} \mid \mathbf{X}) = \frac{\exp(\mathbf{X}\mathbf{\beta})}{1 + \exp(\mathbf{X}\mathbf{\beta})}
+  \]</span></p>
+<p>Again, the components are considered to be independent and all the operations are applied componentwise.</p></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Folders have to be git-repositories, see below. Probably better use <code>develop</code></p>
-</div>
-</div>
-</section>
-<section id="remove-rm" class="level5">
-<h5 class="anchored" data-anchor-id="remove-rm"><code>remove</code> (<code>rm</code>)</h5>
-<p>remove package from <code>Project.toml</code> (not from <code>~/.julia</code>, use <code>gc</code> - garbage collect for this)</p>
-</section>
-<section id="develop" class="level5">
-<h5 class="anchored" data-anchor-id="develop"><code>develop</code></h5>
-<ul>
-<li><code>dev --local UnicodePlots</code></li>
-<li><code>dev ./Path/To/LocalPackage/</code></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can’t select a branch with <code>dev</code> and need to do it manually</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You are asking for the difference of <code>dev ./Path/Package</code> and <code>add ./Path/Package</code>? Good question! <code>dev</code> will always track the actual content of the folder - whereas <code>add</code> will make a “snapshot” of the last commit in that folder (has to be an git for <code>add</code>!). And you have to use <code>]up</code> to actually update to new changes</p>
-</div>
-</div>
-</section>
-<section id="pin-free" class="level5">
-<h5 class="anchored" data-anchor-id="pin-free"><code>pin</code> / <code>free</code></h5>
-<p>You can pin versions of packages, so that they are not updated. Unpin with <code>free</code> - also undo <code>develop</code> by using <code>free</code></p>
-</section>
-<section id="instantiate-resolve" class="level5">
-<h5 class="anchored" data-anchor-id="instantiate-resolve"><code>instantiate</code> / <code>resolve</code></h5>
-<p><code>instantiate</code> setup all dependencies in the given <code>Project.toml</code>+<code>Manifest.toml</code></p>
-<p><code>resolve</code> update the <code>Manifest.toml</code> to respect the local setup</p>
-</section>
-</section>
-</section>
-</section>
-<section id="project-vs.-package" class="level1">
-<h1>Project vs.&nbsp;Package</h1>
+<p>All these models are defined by the choice of a family of distributions and a function <span class="math inline">\(g\)</span> (the so-called <em>link function</em>) such that</p>
+<p><span class="math display">\[
+\mathbb{E}(\mathbf{y} \mid \mathbf{X}) = g^{-1}(\mathbf{X} \beta).
+\]</span></p>
+<p>For the models above, these are:</p>
 <table class="table">
 <colgroup>
+<col style="width: 31%">
 <col style="width: 30%">
-<col style="width: 30%">
-<col style="width: 40%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th>Project</th>
-<th>Package</th>
+<th>Type of Data</th>
+<th>Distribution Family</th>
+<th>Link Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>installable/reuse?</td>
-<td><span class="emoji" data-emoji="white_check_mark">✅</span></td>
-<td><span class="emoji" data-emoji="negative_squared_cross_mark">❎</span></td>
+<td>continuous</td>
+<td>Normal</td>
+<td><p>identity:</p>
+<p><span class="math display">\[
+g(x)=x
+\]</span></p></td>
 </tr>
 <tr class="even">
-<td>should be reproducible</td>
-<td><span class="emoji" data-emoji="white_check_mark">✅</span></td>
-<td><span class="emoji" data-emoji="negative_squared_cross_mark">❎</span></td>
+<td>count</td>
+<td>Poisson</td>
+<td><p>log:</p>
+<p><span class="math display">\[
+g(x) = \log(x)
+\]</span></p></td>
 </tr>
 <tr class="odd">
-<td>produces something?</td>
-<td><span class="emoji" data-emoji="white_check_mark">✅</span></td>
-<td><span class="emoji" data-emoji="negative_squared_cross_mark">❎</span></td>
-</tr>
-<tr class="even">
-<td>compatabilities declared?</td>
-<td><span class="emoji" data-emoji="negative_squared_cross_mark">❎</span></td>
-<td><span class="emoji" data-emoji="white_check_mark">✅</span></td>
-</tr>
-<tr class="odd">
-<td>formal requirements in julia?</td>
-<td><span class="emoji" data-emoji="negative_squared_cross_mark">❎</span></td>
-<td><span class="emoji" data-emoji="white_check_mark">✅</span></td>
+<td>binary</td>
+<td>Bernoulli</td>
+<td><p>logit:</p>
+<p><span class="math display">\[
+g(x) = \log\left
+(
+\frac{x}{1-x}\right)
+\]</span></p></td>
 </tr>
 </tbody>
 </table>
-<section id="project.toml-manifest.toml" class="level2">
-<h2 class="anchored" data-anchor-id="project.toml-manifest.toml"><code>Project.toml</code> &amp; <code>Manifest.toml</code></h2>
-<section id="project.toml" class="level4">
-<h4 class="anchored" data-anchor-id="project.toml">📄Project.toml</h4>
-<p>The “big picture”: keeps track of user-added dependencies (+ compatabilities + header)</p>
-<pre><code>[deps]
-PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
-RCall = "6f49c342-dc21-5d91-9882-a32aef131414"</code></pre>
-</section>
-<section id="manifest.toml" class="level4">
-<h4 class="anchored" data-anchor-id="manifest.toml">📄Manifest.toml</h4>
-<p>The “details”: keeps track of all versions of all dependencies, and dependencies of dependencies</p>
-<pre><code>julia_version = "1.9.2"
-
-[[deps.AbstractPlutoDingetjes]]
-deps = ["Pkg"]
-git-tree-sha1 = "8eaf9f1b4921132a4cff3f36a1d9ba923b14a481"
-uuid = "6e696c72-6542-2067-7265-42206c756150"
-version = "1.1.4"
-
-[[deps.ArgTools]]
-uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
-version = "1.1.1"
-
-[[deps.BibInternal]]
-git-tree-sha1 = "3a760b38ba8da19e64d29244f06104823ff26f25"
-uuid = "2027ae74-3657-4b95-ae00-e2f7d55c3e64"
-version = "0.3.4"
-
-[...]</code></pre>
-</section>
-</section>
-<section id="packages-in-julia" class="level2">
-<h2 class="anchored" data-anchor-id="packages-in-julia">Packages in Julia</h2>
-<p>Several thousand packages exist in Julia already. Take a thorough look before starting something new!</p>
-<section id="minimal-requirements-for-add-to-work" class="level3">
-<h3 class="anchored" data-anchor-id="minimal-requirements-for-add-to-work">Minimal requirements for <code>]add</code> to work</h3>
-<p>Minimal structure</p>
-<p>One git-repository containing:</p>
-<ul>
-<li><code>./src/MyStatsPackage.jl</code>
-<ul>
-<li>(<code>module MyStatsPackage</code>)</li>
-</ul></li>
-<li><code>./Project.toml</code>
-<ul>
-<li><code>name = "MyStatsPackage"</code></li>
-<li><code>uuid ="b4cd1eb8-1e24-11e8-3319-93036a3eb9f3"</code></li>
-<li>(<code>[compat]</code> entries)</li>
-<li>(<code>version= "0.1.0"</code>)</li>
-</ul></li>
-</ul>
-</section>
-<section id="additional-requirements-to-register" class="level3">
-<h3 class="anchored" data-anchor-id="additional-requirements-to-register">Additional requirements to register</h3>
-<p>Julia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.</p>
-<p>The default registry is <a href="https://github.com/JuliaRegistries/General">JuliaRegistries/General</a>.</p>
-<p><a href="https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/">To register at the general registiry, you need additionally:</a>:</p>
-<ul>
-<li><code>[compat]</code> entries for all dependencies</li>
-<li>a <code>version=</code></li>
-<li>a supported license</li>
-<li>Some restrictions on the name (e.g.&nbsp;nothing with <code>Julia</code>, only ASCII, etc.)</li>
-</ul>
-</section>
-</section>
-<section id="lets-generate-our-first-package" class="level2">
-<h2 class="anchored" data-anchor-id="lets-generate-our-first-package">Let’s generate our first package!</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>] generate MyStatsPackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="adding-dependencies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-dependencies">Adding dependencies</h3>
-<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>]activate <span class="op">./</span>path<span class="op">/</span>to<span class="op">/</span>MyStatsPackage</span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>]add UnicodePlots</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>]compat</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">let’s directly add a compat entry for UnicodePlots</span>
-</dd>
-</dl>
-</section>
-<section id="semantic-versioning" class="level3">
-<h3 class="anchored" data-anchor-id="semantic-versioning">Semantic Versioning</h3>
-<p>Following <code>semver</code> - three parts:</p>
-<p><code>v2.7.5</code></p>
-<p>means:</p>
-<ul>
-<li><p><strong>Major</strong> 2</p></li>
-<li><p><strong>Minor</strong> 7</p></li>
-<li><p><strong>Bugfix</strong> 5</p></li>
-<li><p>Bump <strong>Major</strong> if you propose backward-breaking changes</p></li>
-<li><p>Bump <strong>Minor</strong> if you only introduce new features -Bump <strong>Bugfix</strong> if you, well, fix bugs</p></li>
-</ul>
-<p><strong>Special case:</strong></p>
-<p><code>v0.37.1</code></p>
-<p>Means package is in development and not stable. Bump <strong>Major</strong> if you release it Bump <strong>Minor</strong> for breaking changes Bump <strong>Bugfix</strong> if you fix bugs or release new features</p>
-</section>
-<section id="compat-entries" class="level3">
-<h3 class="anchored" data-anchor-id="compat-entries">Compat entries</h3>
-<p>compat entries define with what versions your package is compatible with</p>
-<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>[compat]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>AllMinorReleases1 <span class="op">=</span> <span class="st">"1"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>AllMinorReleases2 <span class="op">=</span> <span class="st">"1.5"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>AllMinorReleases3 <span class="op">=</span> <span class="st">"1.5.3"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a>ExactPackage <span class="op">=</span> <span class="st">"=1.5.6"</span></span>
-<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a>MultiVersionexample <span class="op">=</span> <span class="st">"0.5,1.2,2"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a>DevelopPackage <span class="op">=</span> <span class="st">"0.2.3"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="1">[1.0.0-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2">[1.5.0-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">[1.5.3-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="4">[1.5.6]</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="5">[0.2.3 - 0.3)</span>
-</dd>
-</dl>
-<p>As you can see, develop version (<code>version &lt; 1</code>) are treated a bit special in Julia, and different to <code>semver</code>. <a href="https://pkgdocs.julialang.org/v1/compatibility/#compat-pre-1.0">Read more here</a></p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>keep the compat list in alphabetical order - github-actions might behave very strange else.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="projects-in-julia" class="level2">
-<h2 class="anchored" data-anchor-id="projects-in-julia">Projects in Julia</h2>
-<p>Formally, projects don’t have specific requirements. You should activate an environment (<code>Project.toml</code>+<code>Manifest.toml</code>) in the main folder though. I recommend the following minimal structure:</p>
-<ul>
-<li><code>./src/</code> - all functions should go there</li>
-<li><code>./scripts/</code> - all actual scripts should go here,</li>
-<li><code>./README.md</code> - Write what this is about, who you are etc.</li>
-<li><code>./Project.toml</code> - Your explicit dependencies</li>
-<li><code>./Manifest.toml</code> - Your implicit dependencies + versions &lt;– this makes it reproducible!</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One recommendation is to use <code>DrWatson.initialize_project([path])</code> to start a new project - it will generate a nice folder structure + provide some other helpful <code>DrWatson.jl</code> features.</p>
-<p>(click the following tipp to expand the full datastructure)</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>│projectdir          &lt;- Project's main folder. It is initialized as a Git
-│                       repository with a reasonable .gitignore file.
-│
-├── _research        &lt;- WIP scripts, code, notes, comments,
-│   |                   to-dos and anything in an alpha state.
-│   └── tmp          &lt;- Temporary data folder.
-│
-├── data             &lt;- **Immutable and add-only!**
-│   ├── sims         &lt;- Data resulting directly from simulations.
-│   ├── exp_pro      &lt;- Data from processing experiments.
-│   └── exp_raw      &lt;- Raw experimental data.
-│
-├── plots            &lt;- Self-explanatory.
-├── notebooks        &lt;- Jupyter, Weave or any other mixed media notebooks.
-│
-├── papers           &lt;- Scientific papers resulting from the project.
-│
-├── scripts          &lt;- Various scripts, e.g. simulations, plotting, analysis,
-│   │                   The scripts use the `src` folder for their base code.
-│   └── intro.jl     &lt;- Simple file that uses DrWatson and uses its greeting.
-│
-├── src              &lt;- Source code for use in this project. Contains functions,
-│                       structures and modules that are used throughout
-│                       the project and in multiple scripts.
-│
-├── README.md        &lt;- Optional top-level README for anyone using this project.
-├── .gitignore       &lt;- by default ignores _research, data, plots, videos,
-│                       notebooks and latex-compilation related files.
-│
-├── Manifest.toml    &lt;- Contains full list of exact package versions used currently.
-└── Project.toml     &lt;- Main project file, allows activation and installation.
-                        Includes DrWatson by default.</code></pre>
-</div>
-</div>
-</div>
+<p>In general, the parameter vector <span class="math inline">\(\beta\)</span> is estimated via maximizing the likelihood, i.e.,</p>
+<p><span class="math display">\[
+\hat \beta = \mathrm{argmax} \prod_{i=1}^n f(y_i \mid \mathbf{X}_{\cdot i}),
+\]</span></p>
+<p>which is equivalent to the maximization of the log-likelihood, i.e.,</p>
+<p><span class="math display">\[
+\hat \beta = \mathrm{argmax} \sum_{i=1}^n \log f(y_i \mid \mathbf{X}_{\cdot i}),
+\]</span></p>
+<p>In the Gaussian case, the maximum likelihood estimator is identical to the least squares estimator considered above.</p>
+<p>[[ Example in Julia: maybe <code>SwissLabor</code> ]]</p>
+<p><strong>Task 3:</strong> Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</p>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>libraries, dlls, .so etc.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1116,18 +840,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../material/1_mon/firststeps/firststeps_handout.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">📝 3 - First Steps</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../material/2_tue/git/intro_slides.html" class="pagination-link">
-        <span class="nav-page-text">📝 1 - GIT</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
