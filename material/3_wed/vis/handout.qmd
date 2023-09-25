@@ -1,0 +1,116 @@
+---
+
+jupyter: julia-1.9
+---
+# Makie.jl
+
+## Backends
+Four backends:
+1. `CairoMakie` - SVG
+2. `GLMakie` - 2D/3D/fast interactivity
+3. `WGLMakie` - Same as GLMakie, but in browser
+4. `RPRMakie` - experimental raytracing
+
+I will use `GLMakie` or `CairoMakie`. To switch use `CairoMakie.activate!()`
+
+## Layouts for scientific figures
+
+# Pluto.jl for easy interactivity
+
+# Grammar of Graphics
+
+The grammar of graphics is a convenient way to build common explorative plots.
+
+For example:
+
+
+#### For ggplot enthusiasts:
+You could use [TidierPlots.jl - a ggplot clone](https://github.com/TidierOrg/TidierPlots.jl)
+
+Check out the [../../../../cheatsheets/ggplotAOG.qmd]:
+
+## AlgebraOfGraphics.jl
+
+### Loading data
+```{julia}
+using GLMakie # backend
+using AlgebraOfGraphics
+using PalmerPenguins, DataFrames  # example dataset
+
+penguins = dropmissing(DataFrame(PalmerPenguins.load()))
+first(penguins, 6)
+``` 
+
+::: callout-note
+A `tidy dataframe` is a dataframe that follows these three rules:
+
+
+1. Every column is a variable.
+2. Every row is an observation.
+3. Every cell is a single value.
+
+Tidy data make your visualization life much easier as you will see!
+:::
+
+
+### AoG basics
+
+
+`data * mapping * visual`
+
+```{julia}
+  vis_pen = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * visual(Scatter) 
+  draw(vis_pen)
+```
+
+### Adding color
+
+```{julia}
+vis_pencolor = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color = :species) * visual(Scatter)
+draw(vis_pencolor)
+
+```
+But that is a bit redundant, you can shortcut this, by reusing existing mappings / inputs:
+```{julia}
+vis_pencolor2 = vis_pen * mapping(color=:species)
+draw(vis_pencolor2)
+
+```
+
+### Why `Algebra`OfGraphics?
+
+Follows some algebraic rules of multiplying out sums
+
+`data * mapping * (visual(Scatter)+visual(Lines))`
+
+```{julia}
+
+data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * (visual(Scatter)+visual(Lines)) |> draw
+```
+
+### Faceting
+```{julia}
+data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex) |> draw
+
+```
+```{julia}
+data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex,row=:body_mass_g => x-> x>3500) |> draw
+
+```
+
+### Linear & Non-linear summaries
+```{julia}
+data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (linear() + visual(Scatter)) |> draw
+```
+```{julia}
+data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |> draw
+```
+
+
+# Interactivity
+
+With Makie.jl, two ways of interactivity:
+
+**Observables** - very general way, a little bit more verbose
+
+**Pluto.jl Sliders** - very simple, need to redraw plot everytime^[it is technically possible t combine Pluto with Observables, but it is a bit buggy]
