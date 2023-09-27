@@ -336,6 +336,41 @@
     "text": "Summerschool Schedule"
   },
   {
+    "objectID": "social.html",
+    "href": "social.html",
+    "title": "Social Program",
+    "section": "",
+    "text": "On monday there will be a BBQ provided for you on campus, close to the SimTech building."
+  },
+  {
+    "objectID": "social.html#monday",
+    "href": "social.html#monday",
+    "title": "Social Program",
+    "section": "",
+    "text": "On monday there will be a BBQ provided for you on campus, close to the SimTech building."
+  },
+  {
+    "objectID": "social.html#tuesday",
+    "href": "social.html#tuesday",
+    "title": "Social Program",
+    "section": "Tuesday",
+    "text": "Tuesday\nOn Tuesday we planned an easy hike (around 30-45 min.; no elevation) through the forest towards Bärenschlössle. Here, we will have time for dinner and drinks together (individually payed), after which we will head back towards campus.\nArriving on campus you can decide to either head off for the night, or you join our group to go to Unithekle, a student pub on campus with cheap drinks and good boardgames!"
+  },
+  {
+    "objectID": "social.html#wednesday",
+    "href": "social.html#wednesday",
+    "title": "Social Program",
+    "section": "Wednesday",
+    "text": "Wednesday"
+  },
+  {
+    "objectID": "social.html#thursday",
+    "href": "social.html#thursday",
+    "title": "Social Program",
+    "section": "Thursday",
+    "text": "Thursday\nOn Thursday we will meet at the bowling alley Möhringen (Google Maps location ) for a friendly tournament between groups."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Research Software Engineering with Julia: Basics, Visualization, and Statistics",
