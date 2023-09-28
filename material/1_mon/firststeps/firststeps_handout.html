@@ -385,8 +385,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1">Task 1</a></li>
   <li><a href="#julia-basics---ii" id="toc-julia-basics---ii" class="nav-link" data-scroll-target="#julia-basics---ii">Julia Basics - II</a>
   <ul class="collapse">
-  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
-  <li><a href="#scopes" id="toc-scopes" class="nav-link" data-scroll-target="#scopes">Scopes</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a>
+  <ul class="collapse">
+  <li><a href="#characters" id="toc-characters" class="nav-link" data-scroll-target="#characters">characters</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation">concatenation</a></li>
+  <li><a href="#substrings" id="toc-substrings" class="nav-link" data-scroll-target="#substrings">substrings</a></li>
+  </ul></li>
+  <li><a href="#regexp" id="toc-regexp" class="nav-link" data-scroll-target="#regexp">regexp</a></li>
+  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">Interpolation</a></li>
+  <li><a href="#scopes" id="toc-scopes" class="nav-link" data-scroll-target="#scopes">Scopes</a>
+  <ul class="collapse">
+  <li><a href="#explicit-global-local" id="toc-explicit-global-local" class="nav-link" data-scroll-target="#explicit-global-local">explicit global / local</a></li>
+  <li><a href="#modifying-containers-works-in-any-case" id="toc-modifying-containers-works-in-any-case" class="nav-link" data-scroll-target="#modifying-containers-works-in-any-case">Modifying containers works in any case</a></li>
+  </ul></li>
   <li><a href="#types" id="toc-types" class="nav-link" data-scroll-target="#types">Types</a>
   <ul class="collapse">
   <li><a href="#composite-types" id="toc-composite-types" class="nav-link" data-scroll-target="#composite-types">composite types</a></li>
@@ -516,7 +527,19 @@ Tip
 <span data-code-cell="annotated-cell-2" data-code-lines="9" data-code-annotation="2">List all methods with that function name - returns two functions, due to the <code>b=123</code> optional positional argument</span>
 </dd>
 </dl>
-<p>:: callout-tip ## Terminology function vs.&nbsp;method Methods are instantiations of a abstract <code>function</code></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Terminology function vs.&nbsp;method: Methods are instantiations of an abstract <code>function</code></p>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> anonym <span class="op">=</span> (x,y) <span class="op">-&gt;</span> x<span class="op">+</span>y</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">anonym</span>(<span class="fl">3</span>,<span class="fl">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">myshortfunction</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
@@ -609,7 +632,19 @@ Important
 <span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2"><code>LinearAlgebra</code> is a <code>Base</code> package, and always available</span>
 </dd>
 </dl>
-<p>:: callout Julia typically recommends to use <code>using PackageNames</code>. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened) ::</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Julia typically recommends to use <code>using PackageNames</code>. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always ask the user to specify in those cases (different to R: shows a warning, or Python: just goes on with life as if nothing happened)</p>
+</div>
+</div>
 <div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Matrix</span><span class="dt">{Float64}</span>(<span class="cn">undef</span>,<span class="fl">11</span>,<span class="fl">22</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Array</span><span class="dt">{Float64,2}</span>(<span class="cn">undef</span>,<span class="fl">22</span>,<span class="fl">33</span>)</span>
 <span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qr</span>(A<span class="op">*</span>B)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -623,7 +658,7 @@ Important
 <span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">the <code>2</code> of <code>{Float64,2}</code> is not mandatory</span>
 </dd>
 </dl>
-<p>Much more on wednesday in the lecture <code>LinearAlgebra</code>!</p>
+<p>Much more on Wednesday in the lecture <code>LinearAlgebra</code>!</p>
 </section>
 <section id="style-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="style-conventions">Style-conventions</h2>
@@ -655,12 +690,12 @@ Important
 </section>
 <section id="task-1" class="level1">
 <h1>Task 1</h1>
-<p>Ok - lot of introduction, but I think you are ready for your first interactive task. Follow <a href="../../../material/1_mon/firststeps/tasks.html#1">Task 1 here</a> )</p>
+<p>Ok - lot of introduction, but I think you are ready for your first interactive task. Follow <a href="../../../material/1_mon/firststeps/tasks.html#1">Task 1 here</a>.</p>
 </section>
 <section id="julia-basics---ii" class="level1">
 <h1>Julia Basics - II</h1>
-<section id="strings" class="level3">
-<h3 class="anchored" data-anchor-id="strings">Strings</h3>
+<section id="strings" class="level2">
+<h2 class="anchored" data-anchor-id="strings">Strings</h2>
 <div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>    character <span class="op">=</span> <span class="ch">'a'</span></span>
 <span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"abc"</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>    str[<span class="fl">3</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -670,8 +705,8 @@ Important
 <span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="1">returns <code>c</code></span>
 </dd>
 </dl>
-<section id="characters" class="level5">
-<h5 class="anchored" data-anchor-id="characters">characters</h5>
+<section id="characters" class="level3">
+<h3 class="anchored" data-anchor-id="characters">characters</h3>
 <div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">join</span>(<span class="ch">'a'</span><span class="op">:</span><span class="ch">'f'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -690,8 +725,8 @@ Important
 </dd>
 </dl>
 </section>
-<section id="concatenation" class="level5">
-<h5 class="anchored" data-anchor-id="concatenation">concatenation</h5>
+<section id="concatenation" class="level3">
+<h3 class="anchored" data-anchor-id="concatenation">concatenation</h3>
 <div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="st">"one"</span></span>
 <span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="st">"two"</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>    ab <span class="op">=</span> a <span class="op">*</span> b</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -702,14 +737,15 @@ Important
 </dd>
 </dl>
 </section>
-<section id="substrings" class="level5">
-<h5 class="anchored" data-anchor-id="substrings">substrings</h5>
+<section id="substrings" class="level3">
+<h3 class="anchored" data-anchor-id="substrings">substrings</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"long string"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    substr <span class="op">=</span> <span class="fu">SubString</span>(str, <span class="fl">1</span>, <span class="fl">4</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    whereis_str <span class="op">=</span> <span class="fu">findfirst</span>(<span class="st">"str"</span>,str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="regexp" class="level5">
-<h5 class="anchored" data-anchor-id="regexp">regexp</h5>
+</section>
+<section id="regexp" class="level2">
+<h2 class="anchored" data-anchor-id="regexp">regexp</h2>
 <div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"any WORD written in CAPITAL?"</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">occursin</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>, str)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="fu">match</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">A-Z</span><span class="ch">]</span><span class="sc">+</span><span class="st">"</span>,str)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -724,11 +760,10 @@ Important
 </dd>
 </dl>
 </section>
-<section id="interpolation" class="level5">
-<h5 class="anchored" data-anchor-id="interpolation">Interpolation</h5>
+<section id="interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="interpolation">Interpolation</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">123</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    str <span class="op">=</span> <span class="st">"this is a: </span><span class="sc">$</span>a<span class="st">; this 2*a: </span><span class="sc">$</span>(<span class="fl">2</span><span class="op">*</span>a)<span class="st">"</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 </section>
 <section id="scopes" class="level2">
 <h2 class="anchored" data-anchor-id="scopes">Scopes</h2>
@@ -773,8 +808,8 @@ Tip
 </dl>
 </div>
 </div>
-<section id="explicit-global-local" class="level4">
-<h4 class="anchored" data-anchor-id="explicit-global-local">explicit global / local</h4>
+<section id="explicit-global-local" class="level3">
+<h3 class="anchored" data-anchor-id="explicit-global-local">explicit global / local</h3>
 <div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
 <span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> b</span>
 <span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0</span></span>
@@ -797,8 +832,8 @@ Tip
 </dd>
 </dl>
 </section>
-<section id="modifying-containers-works-in-any-case" class="level4">
-<h4 class="anchored" data-anchor-id="modifying-containers-works-in-any-case">Modifying containers works in any case</h4>
+<section id="modifying-containers-works-in-any-case" class="level3">
+<h3 class="anchored" data-anchor-id="modifying-containers-works-in-any-case">Modifying containers works in any case</h3>
 <div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">10</span>)</span>
 <span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -834,7 +869,7 @@ Tip
 <li><code>abstract</code> types.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -843,7 +878,7 @@ Click me for even more types!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>There is a third type, <code>primitive type</code> - but we will practically never use them Not much to say at this level, they are types like <code>Float64</code>. You could define your own one, e.g.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">primitive type</span> Float128 <span class="op">&lt;:</span><span class="dt"> AbstractFloat </span><span class="fl">128</span> <span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
