@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/1_mon/envs/envs_tasks.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/1_mon/envs/tasks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🛠 4 - Envs &amp; Pkgs: Exercises</span></a>
   </div>
 </li>
@@ -301,13 +301,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../material/3_wed/docs/handout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">📝 1 - Docs</span></a>
+ <span class="menu-text">📝 1 - Docs: Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/docs/tasks.qmd&quot;" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 1 - Docs: Exercises</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../material/3_wed/vis/handout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">📝 2 - Visualizations</span></a>
+ <span class="menu-text">📝 2 - Visualizations: Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/vis/tasks.qmd&quot;" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 2 - Visualizations: Exercises</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -387,7 +399,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#1" id="toc-1" class="nav-link active" data-scroll-target="#1">Task 1</a>
   <ul class="collapse">
   <li><a href="#wait---how-do-i-even-run-things-in-juliavscode" id="toc-wait---how-do-i-even-run-things-in-juliavscode" class="nav-link" data-scroll-target="#wait---how-do-i-even-run-things-in-juliavscode">Wait - how do I even run things in Julia/VScode?</a></li>
+  <li><a href="#the-exercise" id="toc-the-exercise" class="nav-link" data-scroll-target="#the-exercise">The exercise</a></li>
   </ul></li>
+  <li><a href="#2" id="toc-2" class="nav-link" data-scroll-target="#2">Task 2</a></li>
   </ul>
 </nav>
     </div>
@@ -403,6 +417,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Typically, you work in a Julia script ending in <code>scriptname.jl</code></p>
 <p>You concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have <code>Revise.jl</code> running in the background to automatically update your custom Packages / Modules (more to that later).</p>
 <p>You can mark some code and execute it using <code>ctrl</code> + <code>enter</code> - you can also generate code-blocks using <code>#---</code> and run a whole code-block using <code>alt</code>+<code>enter</code></p>
+</section>
+<section id="the-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="the-exercise">The exercise</h2>
 <ol type="1">
 <li><p>Open a new script <code>statistic_functions.jl</code> in VSCode in a folder of your choice.</p></li>
 <li><p>implement a function called <code>rse_sum</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This function should return <code>true</code> if provided with the following test: <code>res_sum(1:36) == 666</code>. You should further make use of a for-loop.</p></li>
@@ -411,12 +428,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Finally, we will implement <code>rse_tstat</code>, returning the t-value with <code>length(x)-1</code> DF, that the provided Array actually has a mean of 0. Test it with <code>rse_tstat(2:3) == 5</code>. Add the keyword argument <code>σ</code> that allows the user to optionally provide a pre-calculated standard deviation.</p></li>
 </ol>
 <p>Well done! You now have all functions defined with which we will continue our journey.</p>
-<p>::: callout ## Bonus Task ProgressMeter for very large sums we might want to add a progressmeter. To do so:</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus Task ProgressMeter
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>for very large sums we might want to add a progressmeter. To do so:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>]add ProgressMeter</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ProgressMeter</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@showprogress</span> <span class="cf">for</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And that’s it! You should have a nice progress bar now # Task 2 {#2}</p>
+</div>
+</div>
+<p>And that’s it! You should have a nice progress bar now</p>
+</section>
+</section>
+<section id="2" class="level1">
+<h1>Task 2</h1>
 <ol type="1">
 <li>Implement a type <code>StatResult</code> with fields for <code>x</code>, <code>n</code>, <code>std</code> and <code>tvalue</code></li>
 <li>Implement an outer constructor that can run <code>StatResult(2:10)</code> and return the full type including the calculated t-values.</li>
@@ -425,7 +458,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 
 
-</section>
 </section>
 
 
