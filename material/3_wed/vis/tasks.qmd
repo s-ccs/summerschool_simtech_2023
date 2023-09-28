@@ -1,0 +1,161 @@
+# Setting up Pluto.jl
+
+Pluto is nice as you can prototype pretty fast.
+
+::: callout-important
+Pluto.jl has its own dependency management included!
+
+If you want to add packages that are not registered, you have to activate your own environment. For example
+
+```julia
+using Pkg
+Pkg.activate(mktempdir())
+Pkg.add("/path/to/your/package/CoolPackage")
+Pkg.add(url="https://github.com/username/MyPackage.jl")
+
+using CoolPackage,MyPackage
+```
+
+::: 
+
+To run pluto in the first place use:
+
+``` julia
+]add Pluto
+Pluto.run()
+```
+
+
+# Task 1: Visualize some statistic properties {#1}
+
+## 1. Data
+
+### Generate 500 normally distributed samples
+
+::: callout-tip
+You might want to make your results reproducible by fixing some seeds for the random generators. The two most common random generators used in julia are `Random.MersenneTwister` and `StableRNGs.StableRNG` - For this execrise I would recommend the latter (even though MersenneTwister is much more common to be used), thus run:
+
+``` julia
+using StableRNGs
+randn(StableRNG(1),100)
+```
+
+to get 100 random numbers.
+:::
+
+Scale the random numbers to fullfill `std(x) ≈ 10`
+
+### functionize it
+Next wrap that code in a function `simulate` which takes two arguments, a random seed and the number of samples
+
+## 2. cumulative mean
+Calculate the cumulative mean of a single simulation. save it to a variable
+
+Note that there is no `cummean` function, but clever element-wise division in combination with `cumsum` should lead you there - or you just use a loop :shrug:
+
+::: {.callout-tip collapse="true"}
+## click to show solution
+
+ `cumsum(x) ./ 1:length(x)` 
+:::
+
+## 3. Plotting!
+Now for your first plot. Use a `scatter` plot to visualize the cummulative mean output, if you do not generate a `Figure()` + `ax = f[1,1] = Axis(f)` manually, you can get it back by the scatter call. `f,ax,s = scatter()`. This is helpful as we later want to extend the `Axis` and `Figure` with other plot elements
+
+Use `hlines!` to add a horizontal line at your "true" value
+
+## 4. Subplot
+### simulate repeatedly
+Let's simulate 1000x datasets, each with a  different seed, and take the mean over all simulated values
+
+::: {.callout-tip collapse="true"}
+## click to show tip
+An easy way to call a function many times is to broadcast it on an array e.g. `1:1000` - you could also use `map` to do it, but I don't think it is as clear :)
+:::
+
+
+
+::: {.callout-tip collapse="true"}
+## click to show solution
+
+ `simulate.(1:1000,nmax)`
+:::
+
+### Mean it
+calculate the mean of each simulation 
+
+::: {.callout-tip collapse="true"}
+## click to show solution
+
+ ```julia
+using Statistics
+mean.(simulate.(1:1000,nmax))
+
+# or 
+sum.(...) ./ nmax
+ ```
+:::
+
+### Add it as a subplot
+We want to add a histogram of the 1000 means to the plot.
+
+1. Add a new Axis to `f[1,2]`
+2. use it to plot the histogram of the means via `hist!` - don't forget to change the `direction=:x` to flip the histogram
+3. link the axes using `linkaxes`
+
+## 5. Prettify it
+There are some simple tricks to make a plot look nicer:
+
+- remove the "box" using `hidespines!(ax,:r,:t)
+- resize the right sub-plot to be smaller `colsize!` and `Relative(X)`
+- hide the x-grid (type `ax.`+ `TAB` to find all possible attributes)
+- hide the `xlabels` + `xticks` + `bottomspine` from the right subplot
+- add two Labels `(A)` and `(B)` to the plot
+- Bonus: use `color` to color the cummulative sum samples according to how many samples went into that sum. `colormap=:Reds` looks good to me!
+
+::: {.callout-tip collapse="true"}
+## Bonus: Click for more fancy labels
+
+You can create a slightly fancier label by adding a circle around it :)
+```julia
+	Label(f[1,2,TopLeft()],"B",padding=[0,0,5,0])
+	Label(f[1,2,TopLeft()],"⭕",padding=[0,0,8,0],fontsize=30)
+```
+:::
+
+# Task 2: Interactivity! {#2}
+
+
+Using the `Pluto.jl` reactive backend, changing a value in some cell will automatically update all other cells - including plots.
+
+We can use Sliders instead of fixing the parameters of the simulation
+
+A slider is defined like this:
+```julia
+@bind yourVarName PlutoUI.Slider(from:to) # from:step:to is optional, step by def 1
+```
+
+## Adding interactivity via sliders
+
+1. Define a slider that controls the number of samples from 1:500
+2. Define a second slider that adds a constant offset to all values of the simulation simulation
+3. make sure to fix the x/y-limits to get a nice looking plot :-)
+
+:::{.callout-tip collapse="true"}
+## Bonus: Advanced slider management
+
+After understanding the slightly awkward syntax, the following gives a nice collection of Sliders, Checkboxes, Widgets etc. with at the same time being drag-and-dropable and in a sidebar. Neat!
+
+```julia
+using PlutoExtras
+
+PlutoExtras.BondTable([
+    PlutoExtras.@BondsList "Sliders" let 
+        "name A" = @bind(varA,PlutoUI.Slider(1:500))
+        "name B" = @bind(varB, PlutoUI.Slider(-5:5))
+    end
+    ])
+```
+:::
+
+# Task 3: AlgebraOfGraphics

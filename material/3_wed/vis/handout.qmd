@@ -1,7 +1,4 @@
----
 
-jupyter: julia-1.9
----
 # Makie.jl
 
 ## Backends
@@ -13,9 +10,135 @@ Four backends:
 
 I will use `GLMakie` or `CairoMakie`. To switch use `CairoMakie.activate!()`
 
+## Standard plotting 
+
+```julia
+f = Figure()
+x = rand(100)
+y = rand(100)
+
+scatter(f[1,1],x,y)
+lines(f[1,2],x,y)
+hist(f[2,1],x)
+density!(f[2,1],x) # inplace -> add to current plot
+stem(f[2,2],x)
+```
+
 ## Layouts for scientific figures
 
-# Pluto.jl for easy interactivity
+Makie has the best layouting tool I have ever used. [full tutorial here](https://docs.makie.org/stable/tutorials/layout-tutorial/)
+
+```julia
+f = Figure()
+
+# we plan to generate two subfigures (with subplots each) - better to generate two "separate" layouts
+ga = f[1, 1] = GridLayout()
+gb = f[2, 1] = GridLayout()
+
+axtop   = Axis(ga[1,1])
+axmain  = Axis(ga[2, 1], xlabel = "before", ylabel = "after")
+axright = Axis(ga[2, 2])
+
+
+labels = ["treatment", "placebo", "control"]
+d = randn(3, 100, 2) .+ [1, 3, 5]
+
+for (label, col) in zip(labels, eachslice(d, dims = 1))
+    scatter!(axmain, col, label = label)
+    density!(axtop, col[:, 1])
+    density!(axright, col[:, 2], direction = :y)
+end
+
+linkyaxes!(axmain, axright)
+linkxaxes!(axmain, axtop)
+hidedecorations!(axtop, grid = false)
+hidedecorations!(axright, grid = false)
+
+#--- add a legend
+leg = Legend(ga[1, 2], axmain)
+
+# absolute size for now :shrug:
+leg.width =100
+leg.height =100
+
+leg.tellwidth = true
+leg.tellheight = true
+
+#----
+# second plot
+ax,h = heatmap(gb[1,1],rand(100,10),colorrange = [0,1])
+ax2,h2 = heatmap(gb[1,2],rand(100,10),colorrange = [0,1])
+cb = Colorbar(gb[1,3],h)
+cb.alignmode = Mixed(right=0)
+
+#----
+# Labels
+Label(ga[1, 1, TopLeft()], "A1", font = :bold, padding = (0, 0, 5, 0))
+Label(ga[2, 1, TopLeft()], "A2", font = :bold, padding = (0, 0, 5, 0))
+Label(ga[2, 2, TopLeft()], "A3", font = :bold, padding = (0, 0, 5, 0))
+
+Label(gb[1, 1, TopLeft()], "B", font = :bold, padding = (0, 0, 5, 0))
+
+#---
+# top plot needs more space
+rowsize!(f.layout,2,Relative(0.3))
+
+#---
+f
+```
+# Interactivity
+
+With Makie.jl, two ways of interactivity:
+
+**Observables** - very general way, a little bit more verbose
+
+**Pluto.jl Sliders** - very simple, need to redraw plot everytime^[it is technically possible to combine Pluto with Observables, but it is a bit buggy]  
+
+
+## Pluto.jl
+
+### Installation / Start
+```julia
+]add Pluto
+Pluto.run()
+```
+::: {.callout-tip}
+If you need remote access, run it via `Pluto.run(host="0.0.0.0")`
+:::
+
+### Sliders
+
+A slider is defined like this:
+```julia
+@bind yourVarName PlutoUI.Slider(from:to) # from:step:to is optional, step by def 1
+```
+
+if you move the slider, `yourVarName` + all cells that depend on that variable are automatically recalculated. Quick & dirty way to generate an interactive plot
+
+## Bonus: Makie Interactivity
+
+There is another way to get to interactivity. Using `Observables.jl`
+
+To provide a simple example of the logic:
+```julia
+using GLMakie
+
+x = rand(10_000)
+obs_ix = Observable(1) # index to plot until
+scatter(@lift(x[1:obs_ix])) # non-interactive example # <1>
+
+f = Figure()
+obs_sl = GLMakie.Slider(f[2,1],range=1:length(x))
+y = @lift(x[1:$(obs_sl.value)])
+ax,s = scatter(f[1,1],y)
+xlims!(ax,0,length(x))
+
+```
+1. `@lift` does the heavy lifting (hrhr) here. It adds a listener to `obs_ix`, whenever that value is changed, the value of the output of `@lift` is changed as well
+## Task 2: Interactivity
+[Click here for the next task](tasks.qmd#2)
+
+
 
 # Grammar of Graphics
 
@@ -24,15 +147,15 @@ The grammar of graphics is a convenient way to build common explorative plots.
 For example:
 
 
-#### For ggplot enthusiasts:
+## For ggplot enthusiasts
 You could use [TidierPlots.jl - a ggplot clone](https://github.com/TidierOrg/TidierPlots.jl)
 
-Check out the [../../../../cheatsheets/ggplotAOG.qmd]:
+Check out the [AoG/GGplot cheatsheet](../../../../cheatsheets/ggplotAOG.qmd):
 
 ## AlgebraOfGraphics.jl
 
 ### Loading data
-```{julia}
+```julia
 using GLMakie # backend
 using AlgebraOfGraphics
 using PalmerPenguins, DataFrames  # example dataset
@@ -58,20 +181,20 @@ Tidy data make your visualization life much easier as you will see!
 
 `data * mapping * visual`
 
-```{julia}
+```julia
   vis_pen = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * visual(Scatter) 
   draw(vis_pen)
 ```
 
 ### Adding color
 
-```{julia}
+```julia
 vis_pencolor = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color = :species) * visual(Scatter)
 draw(vis_pencolor)
 
 ```
 But that is a bit redundant, you can shortcut this, by reusing existing mappings / inputs:
-```{julia}
+```julia
 vis_pencolor2 = vis_pen * mapping(color=:species)
 draw(vis_pencolor2)
 
@@ -83,34 +206,30 @@ Follows some algebraic rules of multiplying out sums
 
 `data * mapping * (visual(Scatter)+visual(Lines))`
 
-```{julia}
+```julia
 
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * (visual(Scatter)+visual(Lines)) |> draw
 ```
 
 ### Faceting
-```{julia}
+```julia
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex) |> draw
 
 ```
-```{julia}
+```julia
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex,row=:body_mass_g => x-> x>3500) |> draw
 
 ```
 
 ### Linear & Non-linear summaries
-```{julia}
+```julia
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (linear() + visual(Scatter)) |> draw
 ```
-```{julia}
+```julia
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |> draw
 ```
 
 
-# Interactivity
+## Task 3
 
-With Makie.jl, two ways of interactivity:
-
-**Observables** - very general way, a little bit more verbose
-
-**Pluto.jl Sliders** - very simple, need to redraw plot everytime^[it is technically possible t combine Pluto with Observables, but it is a bit buggy]
+[Click here for the next task](tasks.qmd#3)

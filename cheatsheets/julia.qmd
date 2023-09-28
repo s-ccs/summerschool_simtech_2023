@@ -11,7 +11,7 @@
 | What is ...?                            | `typeof(obj)`           | `type(obj)`                 | `class(obj)`               |
 | Is it really a ...?                     | `isa(obj, SomeType)`    | `isinstance(obj, SomeType)` | `is(obj, SomeType)`        |
 
-## debugging
+## debugging {#debugging}
 
 |                   |                                                                                                                                 |
 |------------------------------------|------------------------------------|
