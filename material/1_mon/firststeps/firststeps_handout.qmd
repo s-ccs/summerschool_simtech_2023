@@ -413,5 +413,19 @@ Macros allow to programmers to edit the actual code **before** it is run. We wil
     a = "123"
     @show a
 ```
+
+
 ## Debugging
-XXX
+
+### Debug messages
+```julia
+@debug "my debug message"
+ENV["JULIA_DEBUG"] = Main
+ENV["JULIA_DEBUG"] = MyPackage
+
+```
+
+### Debugger proper:
+[Cheatsheet for debugging](../../../cheatsheets/julia.qmd#debugging)
+
+In most cases, `@run myFunction(1,2,3)` is sufficient.
