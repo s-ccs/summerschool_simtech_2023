@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../material/1_mon/envs/envs_handout.html" rel="next">
-<link href="../../../material/1_mon/firststeps/firststeps_handout.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,8 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -127,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Slides / Handouts</li><li class="breadcrumb-item"><a href="../../../material/1_mon/rse/rse_basics_slides.html">Monday</a></li><li class="breadcrumb-item"><a href="../../../material/1_mon/firststeps/tasks.html">🛠 3 - First Steps: Exercises</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -209,13 +171,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Monday</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../material/1_mon/rse/rse_basics_slides.html" class="sidebar-item-text sidebar-link">
@@ -236,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/1_mon/firststeps/tasks.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../material/1_mon/firststeps/tasks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🛠 3 - First Steps: Exercises</span></a>
   </div>
 </li>
@@ -384,10 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#1" id="toc-1" class="nav-link active" data-scroll-target="#1">Task 1</a>
-  <ul class="collapse">
-  <li><a href="#wait---how-do-i-even-run-things-in-juliavscode" id="toc-wait---how-do-i-even-run-things-in-juliavscode" class="nav-link" data-scroll-target="#wait---how-do-i-even-run-things-in-juliavscode">Wait - how do I even run things in Julia/VScode?</a></li>
-  </ul></li>
+  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task">Task</a></li>
   </ul>
 </nav>
     </div>
@@ -396,45 +355,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="1" class="level1">
-<h1>Task 1</h1>
-<section id="wait---how-do-i-even-run-things-in-juliavscode" class="level2">
-<h2 class="anchored" data-anchor-id="wait---how-do-i-even-run-things-in-juliavscode">Wait - how do I even run things in Julia/VScode?</h2>
-<p>Typically, you work in a Julia script ending in <code>scriptname.jl</code></p>
-<p>You concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have <code>Revise.jl</code> running in the background to automatically update your custom Packages / Modules (more to that later).</p>
-<p>You can mark some code and execute it using <code>ctrl</code> + <code>enter</code> - you can also generate code-blocks using <code>#---</code> and run a whole code-block using <code>alt</code>+<code>enter</code></p>
+<section id="task" class="level1">
+<h1>Task</h1>
 <ol type="1">
-<li><p>Open a new script <code>statistic_functions.jl</code> in VSCode in a folder of your choice.</p></li>
-<li><p>implement a function called <code>rse_sum</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This function should return <code>true</code> if provided with the following test: <code>res_sum(1:36) == 666</code>. You should further make use of a for-loop.</p></li>
-<li><p>implement a second function called <code>rse_mean</code>, which calculates the mean of the provided vector. Make sure to use the <code>rse_sum</code> function! Test it using <code>res_mean(-15:17) == 1</code></p></li>
-<li><p>Next implement a standard deviation function <code>rse_std</code>: <span class="math inline">\(\sqrt{\frac{\sum(x-mean(x))}{n-1}}\)</span>, this time you should use elementwise/broadcasting operators. Test it with <code>rse_std(1:3) == 1</code></p></li>
-<li><p>Finally, we will implement <code>rse_tstat</code>, returning the t-value with <code>length(x)-1</code> DF, that the provided Array actually has a mean of 0. Test it with <code>rse_tstat(2:3) == 5</code>. Add the keyword argument <code>σ</code> that allows the user to optionally provide a pre-calculated standard deviation.</p></li>
-</ol>
-<p>Well done! You now have all functions defined with which we will continue our journey.</p>
-<p>::: callout ## Bonus Task ProgressMeter for very large sums we might want to add a progressmeter. To do so:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>]add ProgressMeter</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ProgressMeter</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@showprogress</span> <span class="cf">for</span> <span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And that’s it! You should have a nice progress bar now # Task 2 {#2}</p>
-<ol type="1">
-<li>Implement a type <code>StatResult</code> with fields for <code>x</code>, <code>n</code>, <code>std</code> and <code>tvalue</code></li>
-<li>Implement an outer constructor that can run <code>StatResult(2:10)</code> and return the full type including the calculated t-values.</li>
-<li>Implement a function <code>length</code> for <code>StatResult</code> to multiple-dispatch on</li>
-<li><strong>Optional:</strong> If you have time, optimize the functions, so that mean, sum, length, std etc. is not calculated multiple times - you might want to rewrite your type. Note: This is a bit tricky :)</li>
+<li>Create a new package <code>MyStatsPackage</code> using <code>generate</code></li>
+<li>Add your <code>statistic.jl</code> &amp; “include” it.</li>
+<li>Export all functions</li>
+<li>Create a new environment in a separate folder and add the package.</li>
+<li>Does <code>using MyStatsPackage</code> work now? <span class="emoji" data-emoji="tada">🎉</span> congratulations!</li>
+<li>Go back to your package environment. Now add a dependency (e.g.&nbsp;ProgressMeter) and a <code>compat</code>-entry</li>
+<li>Go back to your project environment, has the dependency been updated? Think: should you use <code>resolve</code> or <code>instantiate</code>?</li>
 </ol>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>rse = research software engineering, we could use <code>sum</code> in a principled way, but it requires some knowledge you likely don’t have right now<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -749,18 +685,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../material/1_mon/firststeps/firststeps_handout.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">📝 3 - First Steps: Handout</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../material/1_mon/envs/envs_handout.html" class="pagination-link">
-        <span class="nav-page-text">📝 4 - Envs &amp; Pkgs : Handout</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

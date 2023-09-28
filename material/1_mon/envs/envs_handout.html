@@ -395,6 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#project-vs.-package" id="toc-project-vs.-package" class="nav-link" data-scroll-target="#project-vs.-package">Project vs.&nbsp;Package</a>
   <ul class="collapse">
   <li><a href="#project.toml-manifest.toml" id="toc-project.toml-manifest.toml" class="nav-link" data-scroll-target="#project.toml-manifest.toml"><code>Project.toml</code> &amp; <code>Manifest.toml</code></a></li>
+  <li><a href="#projects-in-julia" id="toc-projects-in-julia" class="nav-link" data-scroll-target="#projects-in-julia">Projects in Julia</a></li>
   <li><a href="#packages-in-julia" id="toc-packages-in-julia" class="nav-link" data-scroll-target="#packages-in-julia">Packages in Julia</a>
   <ul class="collapse">
   <li><a href="#minimal-requirements-for-add-to-work" id="toc-minimal-requirements-for-add-to-work" class="nav-link" data-scroll-target="#minimal-requirements-for-add-to-work">Minimal requirements for <code>]add</code> to work</a></li>
@@ -405,8 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding dependencies</a></li>
   <li><a href="#semantic-versioning" id="toc-semantic-versioning" class="nav-link" data-scroll-target="#semantic-versioning">Semantic Versioning</a></li>
   <li><a href="#compat-entries" id="toc-compat-entries" class="nav-link" data-scroll-target="#compat-entries">Compat entries</a></li>
+  <li><a href="#internals-of-a-package" id="toc-internals-of-a-package" class="nav-link" data-scroll-target="#internals-of-a-package">Internals of a package</a></li>
   </ul></li>
-  <li><a href="#projects-in-julia" id="toc-projects-in-julia" class="nav-link" data-scroll-target="#projects-in-julia">Projects in Julia</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -618,119 +619,6 @@ version = "0.3.4"
 [...]</code></pre>
 </section>
 </section>
-<section id="packages-in-julia" class="level2">
-<h2 class="anchored" data-anchor-id="packages-in-julia">Packages in Julia</h2>
-<p>Several thousand packages exist in Julia already. Take a thorough look before starting something new!</p>
-<section id="minimal-requirements-for-add-to-work" class="level3">
-<h3 class="anchored" data-anchor-id="minimal-requirements-for-add-to-work">Minimal requirements for <code>]add</code> to work</h3>
-<p>Minimal structure</p>
-<p>One git-repository containing:</p>
-<ul>
-<li><code>./src/MyStatsPackage.jl</code>
-<ul>
-<li>(<code>module MyStatsPackage</code>)</li>
-</ul></li>
-<li><code>./Project.toml</code>
-<ul>
-<li><code>name = "MyStatsPackage"</code></li>
-<li><code>uuid ="b4cd1eb8-1e24-11e8-3319-93036a3eb9f3"</code></li>
-<li>(<code>[compat]</code> entries)</li>
-<li>(<code>version= "0.1.0"</code>)</li>
-</ul></li>
-</ul>
-</section>
-<section id="additional-requirements-to-register" class="level3">
-<h3 class="anchored" data-anchor-id="additional-requirements-to-register">Additional requirements to register</h3>
-<p>Julia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.</p>
-<p>The default registry is <a href="https://github.com/JuliaRegistries/General">JuliaRegistries/General</a>.</p>
-<p><a href="https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/">To register at the general registiry, you need additionally:</a>:</p>
-<ul>
-<li><code>[compat]</code> entries for all dependencies</li>
-<li>a <code>version=</code></li>
-<li>a supported license</li>
-<li>Some restrictions on the name (e.g.&nbsp;nothing with <code>Julia</code>, only ASCII, etc.)</li>
-</ul>
-</section>
-</section>
-<section id="lets-generate-our-first-package" class="level2">
-<h2 class="anchored" data-anchor-id="lets-generate-our-first-package">Let’s generate our first package!</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>] generate MyStatsPackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="adding-dependencies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-dependencies">Adding dependencies</h3>
-<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>]activate <span class="op">./</span>path<span class="op">/</span>to<span class="op">/</span>MyStatsPackage</span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>]add UnicodePlots</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>]compat</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="3">let’s directly add a compat entry for UnicodePlots</span>
-</dd>
-</dl>
-</section>
-<section id="semantic-versioning" class="level3">
-<h3 class="anchored" data-anchor-id="semantic-versioning">Semantic Versioning</h3>
-<p>Following <code>semver</code> - three parts:</p>
-<p><code>v2.7.5</code></p>
-<p>means:</p>
-<ul>
-<li><p><strong>Major</strong> 2</p></li>
-<li><p><strong>Minor</strong> 7</p></li>
-<li><p><strong>Bugfix</strong> 5</p></li>
-<li><p>Bump <strong>Major</strong> if you propose backward-breaking changes</p></li>
-<li><p>Bump <strong>Minor</strong> if you only introduce new features -Bump <strong>Bugfix</strong> if you, well, fix bugs</p></li>
-</ul>
-<p><strong>Special case:</strong></p>
-<p><code>v0.37.1</code></p>
-<p>Means package is in development and not stable. Bump <strong>Major</strong> if you release it Bump <strong>Minor</strong> for breaking changes Bump <strong>Bugfix</strong> if you fix bugs or release new features</p>
-</section>
-<section id="compat-entries" class="level3">
-<h3 class="anchored" data-anchor-id="compat-entries">Compat entries</h3>
-<p>compat entries define with what versions your package is compatible with</p>
-<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>[compat]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>AllMinorReleases1 <span class="op">=</span> <span class="st">"1"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>AllMinorReleases2 <span class="op">=</span> <span class="st">"1.5"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>AllMinorReleases3 <span class="op">=</span> <span class="st">"1.5.3"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a>ExactPackage <span class="op">=</span> <span class="st">"=1.5.6"</span></span>
-<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a>MultiVersionexample <span class="op">=</span> <span class="st">"0.5,1.2,2"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a>DevelopPackage <span class="op">=</span> <span class="st">"0.2.3"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="2">[1.0.0-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-6" data-code-lines="3">[1.5.0-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-6" data-code-lines="4">[1.5.3-2)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-6" data-code-lines="5">[1.5.6]</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-6" data-code-lines="7">[0.2.3 - 0.3)</span>
-</dd>
-</dl>
-<p>As you can see, develop version (<code>version &lt; 1</code>) are treated a bit special in Julia, and different to <code>semver</code>. <a href="https://pkgdocs.julialang.org/v1/compatibility/#compat-pre-1.0">Read more here</a></p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>keep the compat list in alphabetical order - github-actions might behave very strange else.</p>
-</div>
-</div>
-</section>
-</section>
 <section id="projects-in-julia" class="level2">
 <h2 class="anchored" data-anchor-id="projects-in-julia">Projects in Julia</h2>
 <p>Formally, projects don’t have specific requirements. You should activate an environment (<code>Project.toml</code>+<code>Manifest.toml</code>) in the main folder though. I recommend the following minimal structure:</p>
@@ -752,20 +640,19 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>One recommendation is to use <code>DrWatson.initialize_project([path])</code> to start a new project - it will generate a nice folder structure + provide some other helpful <code>DrWatson.jl</code> features.</p>
-<p>(click the following tipp to expand the full datastructure)</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Click to expand the full datastructure
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>│projectdir          &lt;- Project's main folder. It is initialized as a Git
 │                       repository with a reasonable .gitignore file.
@@ -802,8 +689,141 @@ Tip
 </div>
 </div>
 </div>
+</section>
+<section id="packages-in-julia" class="level2">
+<h2 class="anchored" data-anchor-id="packages-in-julia">Packages in Julia</h2>
+<p>Several thousand packages exist in Julia already. Take a thorough look before starting something new!</p>
+<section id="minimal-requirements-for-add-to-work" class="level3">
+<h3 class="anchored" data-anchor-id="minimal-requirements-for-add-to-work">Minimal requirements for <code>]add</code> to work</h3>
+<p>Minimal structure</p>
+<p>One git-repository containing:</p>
+<ul>
+<li><code>./src/MyStatsPackage.jl</code>
+<ul>
+<li>(<code>module MyStatsPackage</code>)</li>
+</ul></li>
+<li><code>./Project.toml</code>
+<ul>
+<li><code>name = "MyStatsPackage"</code></li>
+<li><code>uuid ="b4cd1eb8-1e24-11e8-3319-93036a3eb9f3"</code></li>
+<li>(<code>[compat]</code> entries)</li>
+<li>(<code>version= "0.1.0"</code>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="additional-requirements-to-register" class="level3">
+<h3 class="anchored" data-anchor-id="additional-requirements-to-register">Additional requirements to register</h3>
+<p>Julia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.</p>
+<p>The default registry is <a href="https://github.com/JuliaRegistries/General">JuliaRegistries/General</a>.</p>
+<p><a href="https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/">To register at the general registiry, you need additionally:</a>:</p>
+<ul>
+<li><code>[compat]</code> entries for all dependencies</li>
+<li>a <code>version=</code></li>
+<li>a supported license</li>
+<li>Some restrictions on the name (e.g.&nbsp;nothing with <code>Julia</code>, only ASCII, etc.)</li>
+</ul>
+</section>
+</section>
+<section id="lets-generate-our-first-package" class="level2">
+<h2 class="anchored" data-anchor-id="lets-generate-our-first-package">Let’s generate our first package!</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>] generate MyStatsPackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="adding-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="adding-dependencies">Adding dependencies</h3>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>]activate <span class="op">./</span>path<span class="op">/</span>to<span class="op">/</span>MyStatsPackage</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>]add ProgressMeter</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>]compat</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="3">let’s directly add a compat entry for ProgressMeter</span>
+</dd>
+</dl>
+</section>
+<section id="semantic-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-versioning">Semantic Versioning</h3>
+<p>Following <code>semver</code> - three parts:</p>
+<p><code>v2.7.5</code></p>
+<p>means:</p>
+<ul>
+<li><p><strong>Major</strong> 2</p></li>
+<li><p><strong>Minor</strong> 7</p></li>
+<li><p><strong>Bugfix</strong> 5</p></li>
+<li><p>Bump <strong>Major</strong> if you propose backward-breaking changes</p></li>
+<li><p>Bump <strong>Minor</strong> if you only introduce new features -Bump <strong>Bugfix</strong> if you, well, fix bugs</p></li>
+</ul>
+<p><strong>Special case:</strong></p>
+<p><code>v0.37.1</code></p>
+<p>Means package is in development and not stable. Bump <strong>Major</strong> if you release it Bump <strong>Minor</strong> for breaking changes Bump <strong>Bugfix</strong> if you fix bugs or release new features</p>
+</section>
+<section id="compat-entries" class="level3">
+<h3 class="anchored" data-anchor-id="compat-entries">Compat entries</h3>
+<p>compat entries define with what versions your package is compatible with</p>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>[compat]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>AllMinorReleases1 <span class="op">=</span> <span class="st">"1"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>AllMinorReleases2 <span class="op">=</span> <span class="st">"1.5"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>AllMinorReleases3 <span class="op">=</span> <span class="st">"1.5.3"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a>ExactPackage <span class="op">=</span> <span class="st">"=1.5.6"</span></span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a>MultiVersionexample <span class="op">=</span> <span class="st">"0.5,1.2,2"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a>DevelopPackage <span class="op">=</span> <span class="st">"0.2.3"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-annotation="1" data-code-lines="2">[1.0.0-2)</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-annotation="2" data-code-lines="3">[1.5.0-2)</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-annotation="3" data-code-lines="4">[1.5.3-2)</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-annotation="4" data-code-lines="5">[1.5.6]</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-annotation="5" data-code-lines="7">[0.2.3 - 0.3)</span>
+</dd>
+</dl>
+<p>As you can see, develop version (<code>version &lt; 1</code>) are treated a bit special in Julia, and different to <code>semver</code>. <a href="https://pkgdocs.julialang.org/v1/compatibility/#compat-pre-1.0">Read more here</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>keep the compat list in alphabetical order - github-actions might behave very strange else.</p>
+</div>
+</div>
+</section>
+<section id="internals-of-a-package" class="level3">
+<h3 class="anchored" data-anchor-id="internals-of-a-package">Internals of a package</h3>
+<p>The file <code>./src/MyStatsPackage.jl</code> should contain:</p>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> MyStatsPackage</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ProgressMeter</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"src/stats_functions.jl"</span>)</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> sum</span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> mean, tstat</span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="2">We use GLMakie as a simple example as you need it on Wednesday again anyway - it does take a while to install though!</span>
+</dd>
+</dl>
+<p>Now we are ready to use the package from a different environment</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>]dev <span class="op">./</span>path<span class="op">/</span>to<span class="op">/</span>MyStatsPackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 
