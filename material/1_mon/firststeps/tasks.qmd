@@ -7,6 +7,7 @@ You concurrently have a REPL open, to not reload all packages etc. everytime. Fu
 
 You can mark some code and execute it using `ctrl` + `enter` - you can also generate code-blocks using `#---` and run a whole code-block using `alt`+`enter`
 
+## The exercise
 1. Open a new script `statistic_functions.jl` in VSCode in a folder of your choice.
 
 2. implement a function called `rse_sum`^[rse = research software engineering, we could use `sum` in a principled way, but it requires some knowledge you likely don't have right now]. This function should return `true` if provided with the following test: `res_sum(1:36) == 666`. You should further make use of a for-loop.
@@ -30,7 +31,11 @@ using ProgressMeter
 @showprogress for ...
 ```
 
+:::
+
 And that's it! You should have a nice progress bar now
+
+
 # Task 2 {#2}
 
 1. Implement a type `StatResult` with fields for `x`, `n`, `std` and `tvalue`
