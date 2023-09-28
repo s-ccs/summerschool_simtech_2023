@@ -1,27 +1,7 @@
 ---
-type: slide
-slideOptions:
-  transition: slide
-  width: 1400
-  height: 900
-  margin: 0.1
----
+format: revealjs
 
-<style>
-  .reveal strong {
-    font-weight: bold;
-    color: orange;
-  }
-  .reveal p {
-    text-align: left;
-  }
-  .reveal section h1 {
-    color: orange;
-  }
-  .reveal section h2 {
-    color: orange;
-  }
-</style>
+---
 
 # Introduction to Testing
 
@@ -127,7 +107,6 @@ slideOptions:
 ```julia
 @test 1 ≈ 0.999999  rtol=1e-5
 ```
-
 ---
 
 ## Test-driven Development (TDD)

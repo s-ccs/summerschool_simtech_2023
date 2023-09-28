@@ -1,0 +1,4 @@
+name = "MyTestPackage"
+uuid = "5a49bdff-dc99-4c0a-8062-dec1d6c69516"
+authors = ["behinger (s-ccs 001) <benedikt.ehinger@vis.uni-stuttgart.de>"]
+version = "0.1.0"
