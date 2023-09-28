@@ -19,7 +19,18 @@ You can mark some code and execute it using `ctrl` + `enter` - you can also gene
 
 Well done! You now have all functions defined with which we will continue our journey.
 
+::: callout
+## Bonus Task ProgressMeter
+for very large sums we might want to add a progressmeter. To do so:
 
+```julia
+]add ProgressMeter
+using ProgressMeter
+...
+@showprogress for ...
+```
+
+And that's it! You should have a nice progress bar now
 # Task 2 {#2}
 
 1. Implement a type `StatResult` with fields for `x`, `n`, `std` and `tvalue`
