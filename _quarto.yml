@@ -41,12 +41,16 @@ website:
             contents:
               - href: material/1_mon/rse/rse_basics_slides.qmd
                 text: "📊 1 - RSE"
-              - href: "missing.md"
-                text: "📝 2 - Why Julia"
+              - href: "material/1_mon/why_julia/page.qmd"
+                text: "📊 2 - Why Julia"
               - href: "material/1_mon/firststeps/firststeps_handout.qmd"
-                text: "📝 3 - First Steps"
+                text: "📝 3 - First Steps: Handout"
+              - href: "material/1_mon/firststeps/tasks.qmd"
+                text: "🛠 3 - First Steps: Exercises"
               - href: "material/1_mon/envs/envs_handout.qmd"
-                text: "📝 4 - Environments & Packages"
+                text: "📝 4 - Envs & Pkgs : Handout"
+              - href: "material/1_mon/envs/envs_tasks.qmd"
+                text: "🛠 4 - Envs & Pkgs: Exercises"
           - section: "Tuesday"
             contents: 
               - href: material/2_tue/git/intro_slides.md
