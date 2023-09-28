@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -330,15 +364,270 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
 <p><img src="https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Zeichenflaeche-3-Kopie-42x.png?__scale=w:150,h:150" class="img-fluid"></p>
 </div></div>
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setting-up-pluto.jl" id="toc-setting-up-pluto.jl" class="nav-link active" data-scroll-target="#setting-up-pluto.jl">Setting up Pluto.jl</a></li>
+  <li><a href="#1" id="toc-1" class="nav-link" data-scroll-target="#1">Task 1: Visualize some statistic properties</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">1. Data</a>
+  <ul class="collapse">
+  <li><a href="#generate-500-normally-distributed-samples" id="toc-generate-500-normally-distributed-samples" class="nav-link" data-scroll-target="#generate-500-normally-distributed-samples">Generate 500 normally distributed samples</a></li>
+  <li><a href="#functionize-it" id="toc-functionize-it" class="nav-link" data-scroll-target="#functionize-it">functionize it</a></li>
+  </ul></li>
+  <li><a href="#cumulative-mean" id="toc-cumulative-mean" class="nav-link" data-scroll-target="#cumulative-mean">2. cumulative mean</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">3. Plotting!</a></li>
+  <li><a href="#subplot" id="toc-subplot" class="nav-link" data-scroll-target="#subplot">4. Subplot</a>
+  <ul class="collapse">
+  <li><a href="#simulate-repeatedly" id="toc-simulate-repeatedly" class="nav-link" data-scroll-target="#simulate-repeatedly">simulate repeatedly</a></li>
+  <li><a href="#mean-it" id="toc-mean-it" class="nav-link" data-scroll-target="#mean-it">Mean it</a></li>
+  <li><a href="#add-it-as-a-subplot" id="toc-add-it-as-a-subplot" class="nav-link" data-scroll-target="#add-it-as-a-subplot">Add it as a subplot</a></li>
+  </ul></li>
+  <li><a href="#prettify-it" id="toc-prettify-it" class="nav-link" data-scroll-target="#prettify-it">5. Prettify it</a></li>
+  </ul></li>
+  <li><a href="#2" id="toc-2" class="nav-link" data-scroll-target="#2">Task 2: Interactivity!</a>
+  <ul class="collapse">
+  <li><a href="#adding-interactivity-via-sliders" id="toc-adding-interactivity-via-sliders" class="nav-link" data-scroll-target="#adding-interactivity-via-sliders">Adding interactivity via sliders</a></li>
+  </ul></li>
+  <li><a href="#task-3-algebraofgraphics" id="toc-task-3-algebraofgraphics" class="nav-link" data-scroll-target="#task-3-algebraofgraphics">Task 3: AlgebraOfGraphics</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<section id="setting-up-pluto.jl" class="level1">
+<h1>Setting up Pluto.jl</h1>
+<p>Pluto is nice as you can prototype pretty fast.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pluto.jl has its own dependency management included!</p>
+<p>If you want to add packages that are not registered, you have to activate your own environment. For example</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="fu">mktempdir</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"/path/to/your/package/CoolPackage"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(url<span class="op">=</span><span class="st">"https://github.com/username/MyPackage.jl"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CoolPackage</span>,<span class="bu">MyPackage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>To run pluto in the first place use:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>]add Pluto</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Pluto.<span class="fu">run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="1" class="level1">
+<h1>Task 1: Visualize some statistic properties</h1>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">1. Data</h2>
+<section id="generate-500-normally-distributed-samples" class="level3">
+<h3 class="anchored" data-anchor-id="generate-500-normally-distributed-samples">Generate 500 normally distributed samples</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You might want to make your results reproducible by fixing some seeds for the random generators. The two most common random generators used in julia are <code>Random.MersenneTwister</code> and <code>StableRNGs.StableRNG</code> - For this execrise I would recommend the latter (even though MersenneTwister is much more common to be used), thus run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">StableRNGs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">randn</span>(<span class="fu">StableRNG</span>(<span class="fl">1</span>),<span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to get 100 random numbers.</p>
+</div>
+</div>
+<p>Scale the random numbers to fullfill <code>std(x) ≈ 10</code></p>
+</section>
+<section id="functionize-it" class="level3">
+<h3 class="anchored" data-anchor-id="functionize-it">functionize it</h3>
+<p>Next wrap that code in a function <code>simulate</code> which takes two arguments, a random seed and the number of samples</p>
+</section>
+</section>
+<section id="cumulative-mean" class="level2">
+<h2 class="anchored" data-anchor-id="cumulative-mean">2. cumulative mean</h2>
+<p>Calculate the cumulative mean of a single simulation. save it to a variable</p>
+<p>Note that there is no <code>cummean</code> function, but clever element-wise division in combination with <code>cumsum</code> should lead you there - or you just use a loop <span class="emoji" data-emoji="shrug">🤷</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click to show solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>cumsum(x) ./ 1:length(x)</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting" class="level2">
+<h2 class="anchored" data-anchor-id="plotting">3. Plotting!</h2>
+<p>Now for your first plot. Use a <code>scatter</code> plot to visualize the cummulative mean output, if you do not generate a <code>Figure()</code> + <code>ax = f[1,1] = Axis(f)</code> manually, you can get it back by the scatter call. <code>f,ax,s = scatter()</code>. This is helpful as we later want to extend the <code>Axis</code> and <code>Figure</code> with other plot elements</p>
+<p>Use <code>hlines!</code> to add a horizontal line at your “true” value</p>
+</section>
+<section id="subplot" class="level2">
+<h2 class="anchored" data-anchor-id="subplot">4. Subplot</h2>
+<section id="simulate-repeatedly" class="level3">
+<h3 class="anchored" data-anchor-id="simulate-repeatedly">simulate repeatedly</h3>
+<p>Let’s simulate 1000x datasets, each with a different seed, and take the mean over all simulated values</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click to show tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>An easy way to call a function many times is to broadcast it on an array e.g.&nbsp;<code>1:1000</code> - you could also use <code>map</code> to do it, but I don’t think it is as clear :)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click to show solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>simulate.(1:1000,nmax)</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-it" class="level3">
+<h3 class="anchored" data-anchor-id="mean-it">Mean it</h3>
+<p>calculate the mean of each simulation</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click to show solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>.(<span class="fu">simulate</span>.(<span class="fl">1</span><span class="op">:</span><span class="fl">1000</span>,nmax))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>.(<span class="op">...</span>) <span class="op">./</span> nmax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-it-as-a-subplot" class="level3">
+<h3 class="anchored" data-anchor-id="add-it-as-a-subplot">Add it as a subplot</h3>
+<p>We want to add a histogram of the 1000 means to the plot.</p>
+<ol type="1">
+<li>Add a new Axis to <code>f[1,2]</code></li>
+<li>use it to plot the histogram of the means via <code>hist!</code> - don’t forget to change the <code>direction=:x</code> to flip the histogram</li>
+<li>link the axes using <code>linkaxes</code></li>
+</ol>
+</section>
+</section>
+<section id="prettify-it" class="level2">
+<h2 class="anchored" data-anchor-id="prettify-it">5. Prettify it</h2>
+<p>There are some simple tricks to make a plot look nicer:</p>
+<ul>
+<li>remove the “box” using `hidespines!(ax,:r,:t)</li>
+<li>resize the right sub-plot to be smaller <code>colsize!</code> and <code>Relative(X)</code></li>
+<li>hide the x-grid (type <code>ax.</code>+ <code>TAB</code> to find all possible attributes)</li>
+<li>hide the <code>xlabels</code> + <code>xticks</code> + <code>bottomspine</code> from the right subplot</li>
+<li>add two Labels <code>(A)</code> and <code>(B)</code> to the plot</li>
+<li>Bonus: use <code>color</code> to color the cummulative sum samples according to how many samples went into that sum. <code>colormap=:Reds</code> looks good to me!</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus: Click for more fancy labels
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can create a slightly fancier label by adding a circle around it :)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Label</span>(f[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fu">TopLeft</span>()],<span class="st">"B"</span>,padding<span class="op">=</span>[<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">0</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Label</span>(f[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fu">TopLeft</span>()],<span class="st">"⭕"</span>,padding<span class="op">=</span>[<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">8</span>,<span class="fl">0</span>],fontsize<span class="op">=</span><span class="fl">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="2" class="level1">
+<h1>Task 2: Interactivity!</h1>
+<p>Using the <code>Pluto.jl</code> reactive backend, changing a value in some cell will automatically update all other cells - including plots.</p>
+<p>We can use Sliders instead of fixing the parameters of the simulation</p>
+<p>A slider is defined like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@bind</span> yourVarName PlutoUI.<span class="fu">Slider</span>(from<span class="op">:</span>to) <span class="co"># from:step:to is optional, step by def 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="adding-interactivity-via-sliders" class="level2">
+<h2 class="anchored" data-anchor-id="adding-interactivity-via-sliders">Adding interactivity via sliders</h2>
+<ol type="1">
+<li>Define a slider that controls the number of samples from 1:500</li>
+<li>Define a second slider that adds a constant offset to all values of the simulation simulation</li>
+<li>make sure to fix the x/y-limits to get a nice looking plot :-)</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus: Advanced slider management
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>After understanding the slightly awkward syntax, the following gives a nice collection of Sliders, Checkboxes, Widgets etc. with at the same time being drag-and-dropable and in a sidebar. Neat!</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PlutoExtras</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>PlutoExtras.<span class="fu">BondTable</span>([</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    PlutoExtras.<span class="pp">@BondsList</span> <span class="st">"Sliders"</span> let </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name A"</span> <span class="op">=</span> <span class="pp">@bind</span>(varA,PlutoUI.<span class="fu">Slider</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">500</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name B"</span> <span class="op">=</span> <span class="pp">@bind</span>(varB, PlutoUI.<span class="fu">Slider</span>(<span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">5</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-3-algebraofgraphics" class="level1">
+<h1>Task 3: AlgebraOfGraphics</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

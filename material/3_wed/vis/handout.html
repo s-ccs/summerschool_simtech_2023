@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -336,11 +370,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#backends" id="toc-backends" class="nav-link active" data-scroll-target="#backends">Backends</a></li>
+  <li><a href="#makie.jl" id="toc-makie.jl" class="nav-link active" data-scroll-target="#makie.jl">Makie.jl</a>
+  <ul class="collapse">
+  <li><a href="#backends" id="toc-backends" class="nav-link" data-scroll-target="#backends">Backends</a></li>
+  <li><a href="#standard-plotting" id="toc-standard-plotting" class="nav-link" data-scroll-target="#standard-plotting">Standard plotting</a></li>
   <li><a href="#layouts-for-scientific-figures" id="toc-layouts-for-scientific-figures" class="nav-link" data-scroll-target="#layouts-for-scientific-figures">Layouts for scientific figures</a></li>
-  <li><a href="#pluto.jl-for-easy-interactivity" id="toc-pluto.jl-for-easy-interactivity" class="nav-link" data-scroll-target="#pluto.jl-for-easy-interactivity">Pluto.jl for easy interactivity</a></li>
+  </ul></li>
+  <li><a href="#interactivity" id="toc-interactivity" class="nav-link" data-scroll-target="#interactivity">Interactivity</a>
+  <ul class="collapse">
+  <li><a href="#pluto.jl" id="toc-pluto.jl" class="nav-link" data-scroll-target="#pluto.jl">Pluto.jl</a>
+  <ul class="collapse">
+  <li><a href="#installation-start" id="toc-installation-start" class="nav-link" data-scroll-target="#installation-start">Installation / Start</a></li>
+  <li><a href="#sliders" id="toc-sliders" class="nav-link" data-scroll-target="#sliders">Sliders</a></li>
+  </ul></li>
+  <li><a href="#bonus-makie-interactivity" id="toc-bonus-makie-interactivity" class="nav-link" data-scroll-target="#bonus-makie-interactivity">Bonus: Makie Interactivity</a></li>
+  </ul></li>
   <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link" data-scroll-target="#grammar-of-graphics">Grammar of Graphics</a>
   <ul class="collapse">
+  <li><a href="#for-ggplot-enthusiasts" id="toc-for-ggplot-enthusiasts" class="nav-link" data-scroll-target="#for-ggplot-enthusiasts">For ggplot enthusiasts</a></li>
   <li><a href="#algebraofgraphics.jl" id="toc-algebraofgraphics.jl" class="nav-link" data-scroll-target="#algebraofgraphics.jl">AlgebraOfGraphics.jl</a>
   <ul class="collapse">
   <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading data</a></li>
@@ -350,64 +397,170 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#faceting" id="toc-faceting" class="nav-link" data-scroll-target="#faceting">Faceting</a></li>
   <li><a href="#linear-non-linear-summaries" id="toc-linear-non-linear-summaries" class="nav-link" data-scroll-target="#linear-non-linear-summaries">Linear &amp; Non-linear summaries</a></li>
   </ul></li>
+  <li><a href="#task-3" id="toc-task-3" class="nav-link" data-scroll-target="#task-3">Task 3</a></li>
   </ul></li>
-  <li><a href="#interactivity" id="toc-interactivity" class="nav-link" data-scroll-target="#interactivity">Interactivity</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Makie.jl</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<hr>
-<p>jupyter: julia-1.9</p>
-<hr>
+<section id="makie.jl" class="level1">
+<h1>Makie.jl</h1>
 <section id="backends" class="level2">
 <h2 class="anchored" data-anchor-id="backends">Backends</h2>
 <p>Four backends: 1. <code>CairoMakie</code> - SVG 2. <code>GLMakie</code> - 2D/3D/fast interactivity 3. <code>WGLMakie</code> - Same as GLMakie, but in browser 4. <code>RPRMakie</code> - experimental raytracing</p>
 <p>I will use <code>GLMakie</code> or <code>CairoMakie</code>. To switch use <code>CairoMakie.activate!()</code></p>
 </section>
+<section id="standard-plotting" class="level2">
+<h2 class="anchored" data-anchor-id="standard-plotting">Standard plotting</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fu">Figure</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">100</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(f[<span class="fl">1</span>,<span class="fl">1</span>],x,y)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(f[<span class="fl">1</span>,<span class="fl">2</span>],x,y)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(f[<span class="fl">2</span>,<span class="fl">1</span>],x)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">density!</span>(f[<span class="fl">2</span>,<span class="fl">1</span>],x) <span class="co"># inplace -&gt; add to current plot</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(f[<span class="fl">2</span>,<span class="fl">2</span>],x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="layouts-for-scientific-figures" class="level2">
 <h2 class="anchored" data-anchor-id="layouts-for-scientific-figures">Layouts for scientific figures</h2>
+<p>Makie has the best layouting tool I have ever used. <a href="https://docs.makie.org/stable/tutorials/layout-tutorial/">full tutorial here</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fu">Figure</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we plan to generate two subfigures (with subplots each) - better to generate two "separate" layouts</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ga <span class="op">=</span> f[<span class="fl">1</span>, <span class="fl">1</span>] <span class="op">=</span> <span class="fu">GridLayout</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> f[<span class="fl">2</span>, <span class="fl">1</span>] <span class="op">=</span> <span class="fu">GridLayout</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>axtop   <span class="op">=</span> <span class="fu">Axis</span>(ga[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>axmain  <span class="op">=</span> <span class="fu">Axis</span>(ga[<span class="fl">2</span>, <span class="fl">1</span>], xlabel <span class="op">=</span> <span class="st">"before"</span>, ylabel <span class="op">=</span> <span class="st">"after"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>axright <span class="op">=</span> <span class="fu">Axis</span>(ga[<span class="fl">2</span>, <span class="fl">2</span>])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"treatment"</span>, <span class="st">"placebo"</span>, <span class="st">"control"</span>]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fu">randn</span>(<span class="fl">3</span>, <span class="fl">100</span>, <span class="fl">2</span>) <span class="op">.+</span> [<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (label, col) <span class="kw">in</span> <span class="fu">zip</span>(labels, <span class="fu">eachslice</span>(d, dims <span class="op">=</span> <span class="fl">1</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scatter!</span>(axmain, col, label <span class="op">=</span> label)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">density!</span>(axtop, col[<span class="op">:</span>, <span class="fl">1</span>])</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">density!</span>(axright, col[<span class="op">:</span>, <span class="fl">2</span>], direction <span class="op">=</span> <span class="op">:</span>y)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">linkyaxes!</span>(axmain, axright)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">linkxaxes!</span>(axmain, axtop)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">hidedecorations!</span>(axtop, grid <span class="op">=</span> <span class="cn">false</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">hidedecorations!</span>(axright, grid <span class="op">=</span> <span class="cn">false</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#--- add a legend</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>leg <span class="op">=</span> <span class="fu">Legend</span>(ga[<span class="fl">1</span>, <span class="fl">2</span>], axmain)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute size for now :shrug:</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>leg.width <span class="op">=</span><span class="fl">100</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>leg.height <span class="op">=</span><span class="fl">100</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>leg.tellwidth <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>leg.tellheight <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#----</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># second plot</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ax,h <span class="op">=</span> <span class="fu">heatmap</span>(gb[<span class="fl">1</span>,<span class="fl">1</span>],<span class="fu">rand</span>(<span class="fl">100</span>,<span class="fl">10</span>),colorrange <span class="op">=</span> [<span class="fl">0</span>,<span class="fl">1</span>])</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>ax2,h2 <span class="op">=</span> <span class="fu">heatmap</span>(gb[<span class="fl">1</span>,<span class="fl">2</span>],<span class="fu">rand</span>(<span class="fl">100</span>,<span class="fl">10</span>),colorrange <span class="op">=</span> [<span class="fl">0</span>,<span class="fl">1</span>])</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>cb <span class="op">=</span> <span class="fu">Colorbar</span>(gb[<span class="fl">1</span>,<span class="fl">3</span>],h)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>cb.alignmode <span class="op">=</span> <span class="fu">Mixed</span>(right<span class="op">=</span><span class="fl">0</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#----</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">Label</span>(ga[<span class="fl">1</span>, <span class="fl">1</span>, <span class="fu">TopLeft</span>()], <span class="st">"A1"</span>, font <span class="op">=</span> <span class="op">:</span>bold, padding <span class="op">=</span> (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span>))</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="fu">Label</span>(ga[<span class="fl">2</span>, <span class="fl">1</span>, <span class="fu">TopLeft</span>()], <span class="st">"A2"</span>, font <span class="op">=</span> <span class="op">:</span>bold, padding <span class="op">=</span> (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span>))</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">Label</span>(ga[<span class="fl">2</span>, <span class="fl">2</span>, <span class="fu">TopLeft</span>()], <span class="st">"A3"</span>, font <span class="op">=</span> <span class="op">:</span>bold, padding <span class="op">=</span> (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span>))</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">Label</span>(gb[<span class="fl">1</span>, <span class="fl">1</span>, <span class="fu">TopLeft</span>()], <span class="st">"B"</span>, font <span class="op">=</span> <span class="op">:</span>bold, padding <span class="op">=</span> (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0</span>))</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#---</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># top plot needs more space</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="fu">rowsize!</span>(f.layout,<span class="fl">2</span>,<span class="fu">Relative</span>(<span class="fl">0.3</span>))</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#---</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pluto.jl-for-easy-interactivity" class="level1">
-<h1>Pluto.jl for easy interactivity</h1>
+</section>
+<section id="interactivity" class="level1">
+<h1>Interactivity</h1>
+<p>With Makie.jl, two ways of interactivity:</p>
+<p><strong>Observables</strong> - very general way, a little bit more verbose</p>
+<p><strong>Pluto.jl Sliders</strong> - very simple, need to redraw plot everytime<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="pluto.jl" class="level2">
+<h2 class="anchored" data-anchor-id="pluto.jl">Pluto.jl</h2>
+<section id="installation-start" class="level3">
+<h3 class="anchored" data-anchor-id="installation-start">Installation / Start</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>]add Pluto</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Pluto.<span class="fu">run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need remote access, run it via <code>Pluto.run(host="0.0.0.0")</code></p>
+</div>
+</div>
+</section>
+<section id="sliders" class="level3">
+<h3 class="anchored" data-anchor-id="sliders">Sliders</h3>
+<p>A slider is defined like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@bind</span> yourVarName PlutoUI.<span class="fu">Slider</span>(from<span class="op">:</span>to) <span class="co"># from:step:to is optional, step by def 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>if you move the slider, <code>yourVarName</code> + all cells that depend on that variable are automatically recalculated. Quick &amp; dirty way to generate an interactive plot</p>
+</section>
+</section>
+<section id="bonus-makie-interactivity" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-makie-interactivity">Bonus: Makie Interactivity</h2>
+<p>There is another way to get to interactivity. Using <code>Observables.jl</code></p>
+<p>To provide a simple example of the logic:</p>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GLMakie</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">10_000</span>)</span>
+<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>obs_ix <span class="op">=</span> <span class="fu">Observable</span>(<span class="fl">1</span>) <span class="co"># index to plot until</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="pp">@lift</span>(x[<span class="fl">1</span><span class="op">:</span>obs_ix])) <span class="co"># non-interactive example</span></span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fu">Figure</span>()</span>
+<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8" aria-hidden="true" tabindex="-1"></a>obs_sl <span class="op">=</span> GLMakie.<span class="fu">Slider</span>(f[<span class="fl">2</span>,<span class="fl">1</span>],range<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(x))</span>
+<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="pp">@lift</span>(x[<span class="fl">1</span><span class="op">:$</span>(obs_sl.value)])</span>
+<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10" aria-hidden="true" tabindex="-1"></a>ax,s <span class="op">=</span> <span class="fu">scatter</span>(f[<span class="fl">1</span>,<span class="fl">1</span>],y)</span>
+<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">xlims!</span>(ax,<span class="fl">0</span>,<span class="fu">length</span>(x))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="5" data-code-cell="annotated-cell-5" data-code-annotation="1"><code>@lift</code> does the heavy lifting (hrhr) here. It adds a listener to <code>obs_ix</code>, whenever that value is changed, the value of the output of <code>@lift</code> is changed as well ## Task 2: Interactivity <a href="../../../material/3_wed/vis/tasks.html#2">Click here for the next task</a></span>
+</dd>
+</dl>
+</section>
 </section>
 <section id="grammar-of-graphics" class="level1">
 <h1>Grammar of Graphics</h1>
 <p>The grammar of graphics is a convenient way to build common explorative plots.</p>
 <p>For example:</p>
-<section id="for-ggplot-enthusiasts" class="level4">
-<h4 class="anchored" data-anchor-id="for-ggplot-enthusiasts">For ggplot enthusiasts:</h4>
+<section id="for-ggplot-enthusiasts" class="level2">
+<h2 class="anchored" data-anchor-id="for-ggplot-enthusiasts">For ggplot enthusiasts</h2>
 <p>You could use <a href="https://github.com/TidierOrg/TidierPlots.jl">TidierPlots.jl - a ggplot clone</a></p>
-<p>Check out the [../../../../cheatsheets/ggplotAOG.qmd]:</p>
+<p>Check out the <a href="../../../../cheatsheets/ggplotAOG.qmd">AoG/GGplot cheatsheet</a>:</p>
 </section>
 <section id="algebraofgraphics.jl" class="level2">
 <h2 class="anchored" data-anchor-id="algebraofgraphics.jl">AlgebraOfGraphics.jl</h2>
 <section id="loading-data" class="level3">
 <h3 class="anchored" data-anchor-id="loading-data">Loading data</h3>
-<pre class="{julia}"><code>using GLMakie # backend
-using AlgebraOfGraphics
-using PalmerPenguins, DataFrames  # example dataset
-
-penguins = dropmissing(DataFrame(PalmerPenguins.load()))
-first(penguins, 6)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GLMakie </span><span class="co"># backend</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">AlgebraOfGraphics</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PalmerPenguins</span>, <span class="bu">DataFrames  </span><span class="co"># example dataset</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> <span class="fu">dropmissing</span>(<span class="fu">DataFrame</span>(PalmerPenguins.<span class="fu">load</span>()))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(penguins, <span class="fl">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -431,54 +584,48 @@ Note
 <section id="aog-basics" class="level3">
 <h3 class="anchored" data-anchor-id="aog-basics">AoG basics</h3>
 <p><code>data * mapping * visual</code></p>
-<pre class="{julia}"><code>  vis_pen = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * visual(Scatter) 
-  draw(vis_pen)</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  vis_pen <span class="op">=</span> <span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm) <span class="op">*</span> <span class="fu">visual</span>(Scatter) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw</span>(vis_pen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="adding-color" class="level3">
 <h3 class="anchored" data-anchor-id="adding-color">Adding color</h3>
-<pre class="{julia}"><code>vis_pencolor = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color = :species) * visual(Scatter)
-draw(vis_pencolor)
-</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vis_pencolor <span class="op">=</span> <span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color <span class="op">=</span> <span class="op">:</span>species) <span class="op">*</span> <span class="fu">visual</span>(Scatter)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(vis_pencolor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But that is a bit redundant, you can shortcut this, by reusing existing mappings / inputs:</p>
-<pre class="{julia}"><code>vis_pencolor2 = vis_pen * mapping(color=:species)
-draw(vis_pencolor2)
-</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vis_pencolor2 <span class="op">=</span> vis_pen <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=:</span>species)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(vis_pencolor2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="why-algebraofgraphics" class="level3">
 <h3 class="anchored" data-anchor-id="why-algebraofgraphics">Why <code>Algebra</code>OfGraphics?</h3>
 <p>Follows some algebraic rules of multiplying out sums</p>
 <p><code>data * mapping * (visual(Scatter)+visual(Lines))</code></p>
-<pre class="{julia}"><code>
-data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * (visual(Scatter)+visual(Lines)) |&gt; draw</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm) <span class="op">*</span> (<span class="fu">visual</span>(Scatter)<span class="fu">+visual</span>(Lines)) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="faceting" class="level3">
 <h3 class="anchored" data-anchor-id="faceting">Faceting</h3>
-<pre class="{julia}"><code>data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex) |&gt; draw
-</code></pre>
-<pre class="{julia}"><code>data(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex,row=:body_mass_g =&gt; x-&gt; x&gt;3500) |&gt; draw
-</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm)  <span class="op">*</span> <span class="fu">mapping</span>(color <span class="op">=</span> <span class="op">:</span>species, col <span class="op">=</span> <span class="op">:</span>sex) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm)  <span class="op">*</span> <span class="fu">mapping</span>(color <span class="op">=</span> <span class="op">:</span>species, col <span class="op">=</span> <span class="op">:</span>sex,row<span class="op">=:</span>body_mass_g <span class="op">=&gt;</span> x<span class="op">-&gt;</span> x<span class="op">&gt;</span><span class="fl">3500</span>) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="linear-non-linear-summaries" class="level3">
 <h3 class="anchored" data-anchor-id="linear-non-linear-summaries">Linear &amp; Non-linear summaries</h3>
-<pre class="{julia}"><code>data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (linear() + visual(Scatter)) |&gt; draw</code></pre>
-<pre class="{julia}"><code>data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |&gt; draw</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color<span class="op">=:</span>species) <span class="op">*</span> (<span class="fu">linear</span>() <span class="op">+</span> <span class="fu">visual</span>(Scatter)) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color<span class="op">=:</span>species) <span class="op">*</span> (<span class="fu">smooth</span>() <span class="op">+</span> <span class="fu">visual</span>(Scatter)) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-</section>
-<section id="interactivity" class="level1">
-<h1>Interactivity</h1>
-<p>With Makie.jl, two ways of interactivity:</p>
-<p><strong>Observables</strong> - very general way, a little bit more verbose</p>
-<p><strong>Pluto.jl Sliders</strong> - very simple, need to redraw plot everytime<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+<p><a href="../../../material/3_wed/vis/tasks.html#3">Click here for the next task</a></p>
 
 
+</section>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>it is technically possible t combine Pluto with Observables, but it is a bit buggy<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>it is technically possible to combine Pluto with Observables, but it is a bit buggy<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
