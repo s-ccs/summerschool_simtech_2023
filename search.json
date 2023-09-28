@@ -266,347 +266,46 @@
     "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
   },
   {
-    "objectID": "material/1_mon/firststeps/tasks.html",
-    "href": "material/1_mon/firststeps/tasks.html",
-    "title": "Task 1",
-    "section": "",
-    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+    "objectID": "material/1_mon/envs/envs_handout.html#environments-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#environments-in-julia",
+    "title": "Environments",
+    "section": "Environments in Julia",
+    "text": "Environments in Julia\nEvery folder with an Project.toml file has it’s own environment (see below)\nThe “base” environment is active by default:\n(@v1.9) pkg&gt;\nKeep this as empty+tidy as possible!\nTip: (you could also start julia by julia --project=\".\")\n\nTypical commands\n\nactivate\nUse activate . or activate ./path/to creates a new Project.toml in the selected folder (. means current folder), or activates it, if it already exists.\n\n\nstatus (st)\nShows the currently installed packages\n\n\nadd\nMultiple ways to add packages to the Project.toml:\n\nadd UnicodePlots\nadd https://github.com/JuliaPlots/UnicodePlots.jl\nspecify branch: add UnicodePlots#unicodeplots-docs\nspecify version add UnicodePlots@3.3\nadd ./path/to/localPackage\n\n\n\n\n\n\n\nNote\n\n\n\nFolders have to be git-repositories, see below. Probably better use develop\n\n\n\n\nremove (rm)\nremove package from Project.toml (not from ~/.julia, use gc - garbage collect for this)\n\n\ndevelop\n\ndev --local UnicodePlots\ndev ./Path/To/LocalPackage/\n\n\n\n\n\n\n\nNote\n\n\n\nYou can’t select a branch with dev and need to do it manually\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou are asking for the difference of dev ./Path/Package and add ./Path/Package? Good question! dev will always track the actual content of the folder - whereas add will make a “snapshot” of the last commit in that folder (has to be an git for add!). And you have to use ]up to actually update to new changes\n\n\n\n\npin / free\nYou can pin versions of packages, so that they are not updated. Unpin with free - also undo develop by using free\n\n\ninstantiate / resolve\ninstantiate setup all dependencies in the given Project.toml+Manifest.toml\nresolve update the Manifest.toml to respect the local setup"
   },
   {
-    "objectID": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
-    "href": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
-    "title": "Task 1",
-    "section": "",
-    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+    "objectID": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
+    "href": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
+    "title": "Environments",
+    "section": "Project.toml & Manifest.toml",
+    "text": "Project.toml & Manifest.toml\n\n📄Project.toml\nThe “big picture”: keeps track of user-added dependencies (+ compatabilities + header)\n[deps]\nPythonCall = \"6099a3de-0909-46bc-b1f4-468b9a2dfc0d\"\nRCall = \"6f49c342-dc21-5d91-9882-a32aef131414\"\n\n\n📄Manifest.toml\nThe “details”: keeps track of all versions of all dependencies, and dependencies of dependencies\njulia_version = \"1.9.2\"\n\n[[deps.AbstractPlutoDingetjes]]\ndeps = [\"Pkg\"]\ngit-tree-sha1 = \"8eaf9f1b4921132a4cff3f36a1d9ba923b14a481\"\nuuid = \"6e696c72-6542-2067-7265-42206c756150\"\nversion = \"1.1.4\"\n\n[[deps.ArgTools]]\nuuid = \"0dad84c5-d112-42e6-8d28-ef12dabb789f\"\nversion = \"1.1.1\"\n\n[[deps.BibInternal]]\ngit-tree-sha1 = \"3a760b38ba8da19e64d29244f06104823ff26f25\"\nuuid = \"2027ae74-3657-4b95-ae00-e2f7d55c3e64\"\nversion = \"0.3.4\"\n\n[...]"
   },
   {
-    "objectID": "material/1_mon/firststeps/tasks.html#footnotes",
-    "href": "material/1_mon/firststeps/tasks.html#footnotes",
-    "title": "Task 1",
+    "objectID": "material/1_mon/envs/envs_handout.html#packages-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#packages-in-julia",
+    "title": "Environments",
+    "section": "Packages in Julia",
+    "text": "Packages in Julia\nSeveral thousand packages exist in Julia already. Take a thorough look before starting something new!\n\nMinimal requirements for ]add to work\nMinimal structure\nOne git-repository containing:\n\n./src/MyStatsPackage.jl\n\n(module MyStatsPackage)\n\n./Project.toml\n\nname = \"MyStatsPackage\"\nuuid =\"b4cd1eb8-1e24-11e8-3319-93036a3eb9f3\"\n([compat] entries)\n(version= \"0.1.0\")\n\n\n\n\nAdditional requirements to register\nJulia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.\nThe default registry is JuliaRegistries/General.\nTo register at the general registiry, you need additionally::\n\n[compat] entries for all dependencies\na version=\na supported license\nSome restrictions on the name (e.g. nothing with Julia, only ASCII, etc.)"
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
+    "href": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
+    "title": "Environments",
+    "section": "Let’s generate our first package!",
+    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans:\n\nMajor 2\nMinor 7\nBugfix 5\nBump Major if you propose backward-breaking changes\nBump Minor if you only introduce new features -Bump Bugfix if you, well, fix bugs\n\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#projects-in-julia",
+    "href": "material/1_mon/envs/envs_handout.html#projects-in-julia",
+    "title": "Environments",
+    "section": "Projects in Julia",
+    "text": "Projects in Julia\nFormally, projects don’t have specific requirements. You should activate an environment (Project.toml+Manifest.toml) in the main folder though. I recommend the following minimal structure:\n\n./src/ - all functions should go there\n./scripts/ - all actual scripts should go here,\n./README.md - Write what this is about, who you are etc.\n./Project.toml - Your explicit dependencies\n./Manifest.toml - Your implicit dependencies + versions &lt;– this makes it reproducible!\n\n\n\n\n\n\n\nTip\n\n\n\nOne recommendation is to use DrWatson.initialize_project([path]) to start a new project - it will generate a nice folder structure + provide some other helpful DrWatson.jl features.\n(click the following tipp to expand the full datastructure)\n\n\n\n\n\n\n\n\nTip\n\n\n\n\n\n│projectdir          &lt;- Project's main folder. It is initialized as a Git\n│                       repository with a reasonable .gitignore file.\n│\n├── _research        &lt;- WIP scripts, code, notes, comments,\n│   |                   to-dos and anything in an alpha state.\n│   └── tmp          &lt;- Temporary data folder.\n│\n├── data             &lt;- **Immutable and add-only!**\n│   ├── sims         &lt;- Data resulting directly from simulations.\n│   ├── exp_pro      &lt;- Data from processing experiments.\n│   └── exp_raw      &lt;- Raw experimental data.\n│\n├── plots            &lt;- Self-explanatory.\n├── notebooks        &lt;- Jupyter, Weave or any other mixed media notebooks.\n│\n├── papers           &lt;- Scientific papers resulting from the project.\n│\n├── scripts          &lt;- Various scripts, e.g. simulations, plotting, analysis,\n│   │                   The scripts use the `src` folder for their base code.\n│   └── intro.jl     &lt;- Simple file that uses DrWatson and uses its greeting.\n│\n├── src              &lt;- Source code for use in this project. Contains functions,\n│                       structures and modules that are used throughout\n│                       the project and in multiple scripts.\n│\n├── README.md        &lt;- Optional top-level README for anyone using this project.\n├── .gitignore       &lt;- by default ignores _research, data, plots, videos,\n│                       notebooks and latex-compilation related files.\n│\n├── Manifest.toml    &lt;- Contains full list of exact package versions used currently.\n└── Project.toml     &lt;- Main project file, allows activation and installation.\n                        Includes DrWatson by default."
+  },
+  {
+    "objectID": "material/1_mon/envs/envs_handout.html#footnotes",
+    "href": "material/1_mon/envs/envs_handout.html#footnotes",
+    "title": "Environments",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nrse = research software engineering, we could use sum in a principled way, but it requires some knowledge you likely don’t have right now↩︎"
-  },
-  {
-    "objectID": "material/4_thu/parallel/slides.html",
-    "href": "material/4_thu/parallel/slides.html",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
-  },
-  {
-    "objectID": "material/4_thu/parallel/slides.html#slides",
-    "href": "material/4_thu/parallel/slides.html#slides",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
-  },
-  {
-    "objectID": "material/4_thu/parallel/slides.html#exercise",
-    "href": "material/4_thu/parallel/slides.html#exercise",
-    "title": "Research Software Engineering Summer School",
-    "section": "Exercise",
-    "text": "Exercise\nThe exercise is available as a jupyter-notebook here."
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html",
-    "href": "material/2_tue/git/merge_rebase_slides.html",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent\n\n\n\n\n\n\ngit checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents\n\n\n\n\n\n\nWe use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4.\n\n\n\n\n\n\n\nReal conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch.\n\n\n\n\n\n\ngit checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)\n\n\n\n\n\n\nGitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?\n\n\n\n\n\n\n… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)\n\n\n\n\n\n\nBut what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature\n\n\n\n\n\n\nTry to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE\n\n\n\n\n\n\nBitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#linear-history",
-    "href": "material/2_tue/git/merge_rebase_slides.html#linear-history",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
-    "href": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "git checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
-    "href": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "We use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4."
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
-    "href": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Real conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch."
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#rebase",
-    "href": "material/2_tue/git/merge_rebase_slides.html#rebase",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "git checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
-    "href": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "GitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
-    "href": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#conflicts",
-    "href": "material/2_tue/git/merge_rebase_slides.html#conflicts",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "But what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
-    "href": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Try to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE"
-  },
-  {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#further-reading",
-    "href": "material/2_tue/git/merge_rebase_slides.html#further-reading",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Bitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html",
-    "href": "material/2_tue/git/intro_slides.html",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
-  },
-  {
-    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html",
-    "href": "material/2_tue/git/workflow_slides.html",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches).\n\n\n\n\n\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity.\n\n\n\n\n\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line\n\n\n\n\n\n\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow\n\n\n\n\n\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO\n\n\n\n\n\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)\n\n\n\n\n\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash\n\n\n\n\n\n\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "href": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "There are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Only one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Each feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#gitflow",
-    "href": "material/2_tue/git/workflow_slides.html#gitflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Visualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Gitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "href": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "For all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
-  },
-  {
-    "objectID": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "href": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html",
-    "href": "material/2_tue/git/git_basics_demo.html",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick\n\n\n\n\nStarting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote\n\n\n\n\n\n\n\n\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "href": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "href": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Starting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
-  },
-  {
-    "objectID": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "href": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html",
-    "href": "material/2_tue/git/standards_slides.html",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them.\n\n\n\n\n\n\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar.\n\n\n\n\n\n\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "href": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#special-files",
-    "href": "material/2_tue/git/standards_slides.html#special-files",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Certain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
-  },
-  {
-    "objectID": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "href": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Templates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "",
-    "text": "Przemysław Szufel\nBefore running Jupyter notebook set in Julia number of threads. This should be done before actually running the notebook() command. The number of threads can be also set up in Julia options in Visual Studio code (if this is used to run this notebook).\nprintln(\"Number of threads that your Julia is run: ## $(Threads.nthreads())\")\n\nNumber of threads that your Julia is run: ## 4\nusing BenchmarkTools, Distributed"
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#parallelize-via-single-instruction-multiple-data-simd",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#parallelize-via-single-instruction-multiple-data-simd",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "Parallelize via Single Instruction Multiple Data (SIMD)",
-    "text": "Parallelize via Single Instruction Multiple Data (SIMD)\n\nfunction dot1(x, y)\n    s = 0.0\n    for i in 1:length(x)\n        @inbounds s += x[i]*y[i]\n    end\n    s\nend\n\ndot1 (generic function with 1 method)\n\n\n\nfunction dot2(x, y)\n    s = 0.0\n    @simd for i in 1:length(x)\n        @inbounds s += x[i]*y[i]\n    end\n    s\nend\n\ndot2 (generic function with 1 method)\n\n\n\nx = 100*rand(10000)\ny = 100*rand(10000);\n\n#res1 = @btime dot1($x, $y)\n#res2 = @btime dot2($x, $y)\n\n#println(res1)\n#println(res2)\n\n\nres1 =  dot1(x, y)\n\n2.491428520518866e7\n\n\n\nres2 =  dot2(x, y)\n\n2.491428520518861e7\n\n\n\nres1 == res2\n\nfalse\n\n\n\n@show res1 \n@show res2\n\nres1 = 2.491428520518866e7\nres2 = 2.491428520518861e7\n\n\n2.491428520518861e7"
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#green-threading",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#green-threading",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "Green threading",
-    "text": "Green threading\n\n@time sleep(2)\n\n  2.009545 seconds (63 allocations: 1.625 KiB)\n\n\n\n@time t = @async sleep(2)\n\n  0.052863 seconds (10.22 k allocations: 646.190 KiB, 56.06% compilation time)\n\n\nTask (runnable) @0x000001fdbbb45f10\n\n\n\nt\n\nTask (runnable) @0x000001fdbbb45f10\n\n\n\nfunction dojob(i)\n    val = round(rand(), digits=2)\n    sleep(val)   # this could be external computations with I/O\n    i, val\nend\n\ndojob (generic function with 1 method)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8)\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2189270652080, 1.081643418665e-311)\n (2189270652176, 1.0816434187123e-311)\n (2189270652272, 1.08164341876e-311)\n (2189270652368, 1.081643418807e-311)\n (2189270652464, 1.0816434188546e-311)\n (2189270652560, 1.081643418902e-311)\n (2189270652752, 1.081643418997e-311)\n (2189270652848, 1.0816434190443e-311)\n\n\n\n@time for i=1:8\n    result[i] = dojob(i)\nend\nresult\n\n  4.136902 seconds (1.19 k allocations: 73.610 KiB, 0.52% compilation time)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (1, 0.65)\n (2, 0.31)\n (3, 0.75)\n (4, 0.3)\n (5, 0.67)\n (6, 0.64)\n (7, 0.25)\n (8, 0.46)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8);\n@time for i=1:8\n   @async result[i] = dojob(i)\nend\nresult\n\n  0.000174 seconds (85 allocations: 7.208 KiB)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2, 1.5e-323)\n (5, 8.0e-323)\n (18, 9.4e-323)\n (21, 1.2e-322)\n (25, 1.5e-322)\n (31, 1.6e-322)\n (33, 1.7e-322)\n (35, 1.9e-322)\n\n\n\nresult\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2, 1.5e-323)\n (5, 8.0e-323)\n (18, 9.4e-323)\n (21, 1.2e-322)\n (25, 1.5e-322)\n (31, 1.6e-322)\n (33, 1.7e-322)\n (35, 1.9e-322)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8);\n@time @sync for i=1:8\n   @async result[i] = dojob(i)\nend\nresult\n\n  0.793057 seconds (2.71 k allocations: 170.346 KiB, 9.69% compilation time)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (1, 0.1)\n (2, 0.91)\n (3, 0.71)\n (4, 0.72)\n (5, 0.63)\n (6, 0.05)\n (7, 0.01)\n (8, 0.76)\n\n\n\nProgramming a simple web server\nYou should be able to connect using the address http://localhost:9992/3+4\nTo stop web server click http://localhost:9992/stopme\n\nusing Sockets\nprintln(\"Starting the web server...\")\nserver = Sockets.listen(9992)\n\nStarting the web server...\n\n\nSockets.TCPServer(Base.Libc.WindowsRawSocket(0x00000000000003e4) active)\n\n\n\n@async begin\n    contt = Ref(true)\n    while contt[]\n        sock = Sockets.accept(server)\n        @async begin\n            data = readline(sock)\n            print(\"Got request:\\n\", data, \"\\n\")\n            cmd = split(data, \" \")[2][2:end]\n            println(sock, \"\\nHTTP/1.1 200 OK\\nContent-Type: text/html\\n\")\n            contt[] = contt[] && (!occursin(\"stopme\", data))\n            if contt[]\n                 println(sock, string(\"&lt;html&gt;&lt;body&gt;\", cmd, \"=\", \n                     eval(Meta.parse(cmd)), \"&lt;/body&gt;&lt;/html&gt;\"))\n            else\n                println(sock,\"&lt;html&gt;&lt;body&gt;stopping&lt;/body&gt;&lt;/html&gt;\")\n            end\n            close(sock)\n        end\n    end\n    println(\"Handling requests stopped\")\nend\n\nTask (runnable) @0x000001fdbb1eee90"
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multithreading",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multithreading",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "Multithreading",
-    "text": "Multithreading\n\nThreads.nthreads()\n\n4\n\n\n\nfunction ssum(x)\n    r, c = size(x)\n    y = zeros(c)\n    for i in 1:c\n        for j in 1:r\n            @inbounds y[i] += x[j, i]\n        end\n    end\n    y\nend\n\nssum (generic function with 1 method)\n\n\n\nfunction tsum(x)\n    r, c = size(x)\n    y = zeros(c)\n    Threads.@threads for i in 1:c\n        for j in 1:r\n            @inbounds y[i] += x[j, i]\n        end\n    end\n    y\nend\n\ntsum (generic function with 1 method)\n\n\n\nx = rand(1000,10000);\n\n\n@time ssum(x)\n@time ssum(x);\n\n  0.048094 seconds (13.70 k allocations: 1.009 MiB, 62.07% compilation time)\n  0.017480 seconds (2 allocations: 78.172 KiB)\n\n\n\n@time tsum(x)\n@time tsum(x);\n\n  0.253809 seconds (41.53 k allocations: 2.933 MiB, 230.17% compilation time)\n  0.011025 seconds (35 allocations: 81.469 KiB)\n\n\n\nLocking mechanism for threads\n\nfunction f_bad()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        x += 1\n    end\n    return x\nend\n\nf_bad (generic function with 1 method)\n\n\n\n@time f_bad()\n\n  0.168872 seconds (1.01 M allocations: 15.892 MiB, 90.33% compilation time)\n\n\n251079\n\n\n\nfunction f_add()\n    x = 0 \n    for i in 1:10^7\n        x += 1\n    end\n    x\nend\n@btime f_add()\n    \n\n  3.400 ns (0 allocations: 0 bytes)\n\n\n10000000\n\n\n\nfunction f_atomic()\n    x = Threads.Atomic{Int}(0)\n    Threads.@threads for i in 1:10^6\n        Threads.atomic_add!(x, 1)\n    end\n    return x[]\nend\nf_atomic()\n\n1000000\n\n\n\n\n\nfunction f_spin()\n    l = Threads.SpinLock()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        Threads.lock(l) do\n            x += 1\n        end\n    end\n    return x\nend\n\nfunction f_reentrant()\n    l = ReentrantLock()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        Threads.lock(l) do\n            x += 1\n        end\n    end\n    return x\nend\n\nf_reentrant (generic function with 1 method)\n\n\n\nusing DataFrames\nstats = DataFrame()\nfor f in [f_bad, f_atomic, f_spin, f_reentrant]\n    for i = 1:2\n        value, elapsedtime  = @timed f()\n        push!(stats, (f=string(f),i=i, value=value, timems=elapsedtime*1000))\n    end\nend\nprintln(stats)\n\n8×4 DataFrame\n Row │ f            i      value    timems   \n     │ String       Int64  Int64    Float64  \n─────┼───────────────────────────────────────\n   1 │ f_bad            1   507942   74.5333\n   2 │ f_bad            2   495913   50.5647\n   3 │ f_atomic         1  1000000   31.4744\n   4 │ f_atomic         2  1000000   33.8758\n   5 │ f_spin           1  1000000  693.007\n   6 │ f_spin           2  1000000  586.934\n   7 │ f_reentrant      1  1000000  847.592\n   8 │ f_reentrant      2  1000000  521.148"
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multi-processing-and-distributed-computing",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multi-processing-and-distributed-computing",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "Multi-processing and distributed computing",
-    "text": "Multi-processing and distributed computing\n\nusing Distributed\n\nThis code adds 4 workers (and avoids adding more)\n\naddprocs(max(0, 5-nprocs()));\n\n\nworkers()\n\n4-element Vector{Int64}:\n 2\n 3\n 4\n 5\n\n\n\nfunction s_rand()\n    n = 10^4\n    x = 0.0\n    for i in 1:n\n        x += sum(rand(10^4))\n    end\n    x / n\nend\n \n@time s_rand()\n@time s_rand()\n\n  1.206733 seconds (20.00 k allocations: 763.397 MiB, 18.47% gc time)\n  1.018381 seconds (20.00 k allocations: 763.397 MiB, 17.30% gc time)\n\n\n5000.101742284563\n\n\n\nusing Distributed\n \n \nfunction p_rand()\n    n = 10^4\n    x = @distributed (+) for i in 1:n\n        #line\n        # but the last line will be aggregated\n        sum(rand(10^4))\n    end\n    x / n\nend\n\n@time p_rand()\n@time p_rand()\n\n  7.204575 seconds (508.98 k allocations: 33.710 MiB, 24.34% compilation time)\n  0.784540 seconds (564 allocations: 34.305 KiB)\n\n\n4999.629326079839\n\n\n\nworkers()'\n\n1×4 adjoint(::Vector{Int64}) with eltype Int64:\n 2  3  4  5\n\n\n\nfetch(@spawnat 3 4+3)\n\n7\n\n\n\n@everywhere function f() \n    println(\"I am on worker \", myid())\n    rand()\nend\nf()\n\nI am on worker 1\n\n\n0.37079910289627693\n\n\n\nfetch(@spawnat 4 f())\n\n      From worker 4:    I am on worker 4\n\n\n0.22025454198281003\n\n\n\nvec(collect(Iterators.product(1:4, 1:5)))\n        \n\n20-element Vector{Tuple{Int64, Int64}}:\n (1, 1)\n (2, 1)\n (3, 1)\n (4, 1)\n (1, 2)\n (2, 2)\n (3, 2)\n (4, 2)\n (1, 3)\n (2, 3)\n (3, 3)\n (4, 3)\n (1, 4)\n (2, 4)\n (3, 4)\n (4, 4)\n (1, 5)\n (2, 5)\n (3, 5)\n (4, 5)\n\n\n\nusing Distributed\n@everywhere using Pkg\n@everywhere Pkg.activate(\".\")\n@everywhere using Distributed, Random, DataFrames\n\n@everywhere function calc(x, y)\n    2x + y\nend\n\n@everywhere function init_worker()    \n   Random.seed!(myid())\n    # readding CSV file\nend\n\n@sync for wid in workers()\n    @async fetch(@spawnat wid init_worker())\nend\n\n      From worker 5:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 3:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 4:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 2:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n\n\n  Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n\n\nTypically results are collected to a DataFrame\n\ndata = @distributed (append!) for (i, j) = vec(collect(Iterators.product(1:4, 1:5)))\n    a = rand(1:499)\n    b = rand(1:9)*1000\n    c = calc(a, b)\n    DataFrame(;i,j,a,b,c,procid = myid())\nend\n\n20×6 DataFrame\n\n\n\nRow\ni\nj\na\nb\nc\nprocid\n\n\n\nInt64\nInt64\nInt64\nInt64\nInt64\nInt64\n\n\n\n\n1\n1\n1\n143\n9000\n9286\n2\n\n\n2\n2\n1\n291\n4000\n4582\n2\n\n\n3\n3\n1\n320\n8000\n8640\n2\n\n\n4\n4\n1\n377\n3000\n3754\n2\n\n\n5\n1\n2\n30\n7000\n7060\n2\n\n\n6\n2\n2\n351\n3000\n3702\n3\n\n\n7\n3\n2\n118\n8000\n8236\n3\n\n\n8\n4\n2\n415\n9000\n9830\n3\n\n\n9\n1\n3\n397\n1000\n1794\n3\n\n\n10\n2\n3\n260\n9000\n9520\n3\n\n\n11\n3\n3\n132\n8000\n8264\n4\n\n\n12\n4\n3\n420\n1000\n1840\n4\n\n\n13\n1\n4\n304\n4000\n4608\n4\n\n\n14\n2\n4\n112\n3000\n3224\n4\n\n\n15\n3\n4\n349\n6000\n6698\n4\n\n\n16\n4\n4\n466\n8000\n8932\n5\n\n\n17\n1\n5\n413\n6000\n6826\n5\n\n\n18\n2\n5\n426\n5000\n5852\n5\n\n\n19\n3\n5\n326\n1000\n1652\n5\n\n\n20\n4\n5\n481\n8000\n8962\n5"
-  },
-  {
-    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#advanced-interprocess-communication---cellular-automaton-example",
-    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#advanced-interprocess-communication---cellular-automaton-example",
-    "title": "Parallel and Distributed Computing with Julia",
-    "section": "Advanced Interprocess communication - cellular automaton example",
-    "text": "Advanced Interprocess communication - cellular automaton example\n\nusing Distributed\n@everywhere using ParallelDataTransfer, Distributed\n\n\n@everywhere function rule30()\n    lastv = Main.caa[1]\n    for i in 2:(length(Main.caa)-1)\n        current = Main.caa[i]\n        Main.caa[i] = xor(lastv, Main.caa[i] || Main.caa[i+1])\n        lastv = current\n    end\nend\n\n\n@everywhere function getcaa()\n    Main.caa\nend\n@everywhere function getsetborder()\n    #println(myid(),\"gs\");flush(stdout)\n    Main.caa[1] = (@fetchfrom Main.neighbours[1] getcaa()[15+1])\n    #println(myid(),\"gs1\");flush(stdout)\n    Main.caa[end] = (@fetchfrom Main.neighbours[2] getcaa()[2])\n    #println(myid(),\"gse\");flush(stdout)\nend\n\nfunction printsimdist(workers::Array{Int})\n    for w in workers\n        dat = @fetchfrom w caa\n        for b in dat[2:end-1]\n            print(b ? \"#\" : \" \")\n        end\n    end\n    println()\n    flush(stdout)\nend\n\nfunction runca(steps::Int, visualize::Bool)\n    @sync for w in workers()\n        @async @fetchfrom w fill!(caa, false)\n    end\n    @fetchfrom wks[Int(nwks/2)+1] caa[2]=true\n    visualize && printsimdist(workers())\n    for i in 1:steps\n        @sync for w in workers()\n            @async @fetchfrom w getsetborder()\n        end\n        @sync for w in workers()\n            @async @fetchfrom w rule30()\n        end\n        visualize && printsimdist(workers())\n    end\nend\n\n\nrunca (generic function with 1 method)\n\n\n\nwks = workers()\nnwks = length(wks)\nfor i in 1:nwks\n    sendto(wks[i], neighbours = (i==1 ? wks[nwks] : wks[i-1],\n                                i==nwks ? wks[1] : wks[i+1]))\n    fetch(@defineat wks[i] const caa = zeros(Bool, 15+2));\nend\n\nrunca(20,true)\n\n                              #                             \n                             ###                            \n                            ##  #                           \n                           ## ####                          \n                          ##  #   #                         \n                         ## #### ###                        \n                        ##  #    #  #                       \n                       ## ####  ######                      \n                      ##  #   ###     #                     \n                     ## #### ##  #   ###                    \n                    ##  #    # #### ##  #                   \n                   ## ####  ## #    # ####                  \n                  ##  #   ###  ##  ## #   #                 \n                 ## #### ##  ### ###  ## ###                \n                ##  #    # ###   #  ###  #  #               \n               ## ####  ## #  # #####  #######              \n              ##  #   ###  #### #    ###      #             \n             ## #### ##  ###    ##  ##  #    ###            \n            ##  #    # ###  #  ## ### ####  ##  #           \n           ## ####  ## #  ######  #   #   ### ####          \n          ##  #   ###  ####     #### ### ##   #   #"
+    "text": "Footnotes\n\n\nlibraries, dlls, .so etc.↩︎"
   },
   {
     "objectID": "material/1_mon/firststeps/firststeps_handout.html#getting-started",
@@ -700,46 +399,354 @@
     "text": "Footnotes\n\n\nA functionname ending with a ! indicates that inplace operations will occur / side-effects are possible. This is convention only, but in 99% of cases adopted↩︎"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#environments-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#environments-in-julia",
-    "title": "Environments",
-    "section": "Environments in Julia",
-    "text": "Environments in Julia\nEvery folder with an Project.toml file has it’s own environment (see below)\nThe “base” environment is active by default:\n(@v1.9) pkg&gt;\nKeep this as empty+tidy as possible!\nTip: (you could also start julia by julia --project=\".\")\n\nTypical commands\n\nactivate\nUse activate . or activate ./path/to creates a new Project.toml in the selected folder (. means current folder), or activates it, if it already exists.\n\n\nstatus (st)\nShows the currently installed packages\n\n\nadd\nMultiple ways to add packages to the Project.toml:\n\nadd UnicodePlots\nadd https://github.com/JuliaPlots/UnicodePlots.jl\nspecify branch: add UnicodePlots#unicodeplots-docs\nspecify version add UnicodePlots@3.3\nadd ./path/to/localPackage\n\n\n\n\n\n\n\nNote\n\n\n\nFolders have to be git-repositories, see below. Probably better use develop\n\n\n\n\nremove (rm)\nremove package from Project.toml (not from ~/.julia, use gc - garbage collect for this)\n\n\ndevelop\n\ndev --local UnicodePlots\ndev ./Path/To/LocalPackage/\n\n\n\n\n\n\n\nNote\n\n\n\nYou can’t select a branch with dev and need to do it manually\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou are asking for the difference of dev ./Path/Package and add ./Path/Package? Good question! dev will always track the actual content of the folder - whereas add will make a “snapshot” of the last commit in that folder (has to be an git for add!). And you have to use ]up to actually update to new changes\n\n\n\n\npin / free\nYou can pin versions of packages, so that they are not updated. Unpin with free - also undo develop by using free\n\n\ninstantiate / resolve\ninstantiate setup all dependencies in the given Project.toml+Manifest.toml\nresolve update the Manifest.toml to respect the local setup"
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "",
+    "text": "Przemysław Szufel\nBefore running Jupyter notebook set in Julia number of threads. This should be done before actually running the notebook() command. The number of threads can be also set up in Julia options in Visual Studio code (if this is used to run this notebook).\nprintln(\"Number of threads that your Julia is run: ## $(Threads.nthreads())\")\n\nNumber of threads that your Julia is run: ## 4\nusing BenchmarkTools, Distributed"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
-    "href": "material/1_mon/envs/envs_handout.html#project.toml-manifest.toml",
-    "title": "Environments",
-    "section": "Project.toml & Manifest.toml",
-    "text": "Project.toml & Manifest.toml\n\n📄Project.toml\nThe “big picture”: keeps track of user-added dependencies (+ compatabilities + header)\n[deps]\nPythonCall = \"6099a3de-0909-46bc-b1f4-468b9a2dfc0d\"\nRCall = \"6f49c342-dc21-5d91-9882-a32aef131414\"\n\n\n📄Manifest.toml\nThe “details”: keeps track of all versions of all dependencies, and dependencies of dependencies\njulia_version = \"1.9.2\"\n\n[[deps.AbstractPlutoDingetjes]]\ndeps = [\"Pkg\"]\ngit-tree-sha1 = \"8eaf9f1b4921132a4cff3f36a1d9ba923b14a481\"\nuuid = \"6e696c72-6542-2067-7265-42206c756150\"\nversion = \"1.1.4\"\n\n[[deps.ArgTools]]\nuuid = \"0dad84c5-d112-42e6-8d28-ef12dabb789f\"\nversion = \"1.1.1\"\n\n[[deps.BibInternal]]\ngit-tree-sha1 = \"3a760b38ba8da19e64d29244f06104823ff26f25\"\nuuid = \"2027ae74-3657-4b95-ae00-e2f7d55c3e64\"\nversion = \"0.3.4\"\n\n[...]"
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#parallelize-via-single-instruction-multiple-data-simd",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#parallelize-via-single-instruction-multiple-data-simd",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "Parallelize via Single Instruction Multiple Data (SIMD)",
+    "text": "Parallelize via Single Instruction Multiple Data (SIMD)\n\nfunction dot1(x, y)\n    s = 0.0\n    for i in 1:length(x)\n        @inbounds s += x[i]*y[i]\n    end\n    s\nend\n\ndot1 (generic function with 1 method)\n\n\n\nfunction dot2(x, y)\n    s = 0.0\n    @simd for i in 1:length(x)\n        @inbounds s += x[i]*y[i]\n    end\n    s\nend\n\ndot2 (generic function with 1 method)\n\n\n\nx = 100*rand(10000)\ny = 100*rand(10000);\n\n#res1 = @btime dot1($x, $y)\n#res2 = @btime dot2($x, $y)\n\n#println(res1)\n#println(res2)\n\n\nres1 =  dot1(x, y)\n\n2.491428520518866e7\n\n\n\nres2 =  dot2(x, y)\n\n2.491428520518861e7\n\n\n\nres1 == res2\n\nfalse\n\n\n\n@show res1 \n@show res2\n\nres1 = 2.491428520518866e7\nres2 = 2.491428520518861e7\n\n\n2.491428520518861e7"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#packages-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#packages-in-julia",
-    "title": "Environments",
-    "section": "Packages in Julia",
-    "text": "Packages in Julia\nSeveral thousand packages exist in Julia already. Take a thorough look before starting something new!\n\nMinimal requirements for ]add to work\nMinimal structure\nOne git-repository containing:\n\n./src/MyStatsPackage.jl\n\n(module MyStatsPackage)\n\n./Project.toml\n\nname = \"MyStatsPackage\"\nuuid =\"b4cd1eb8-1e24-11e8-3319-93036a3eb9f3\"\n([compat] entries)\n(version= \"0.1.0\")\n\n\n\n\nAdditional requirements to register\nJulia supports many registries (you can host your own!), which are just fancy GITs that index what version is available at what git-url for each registered package.\nThe default registry is JuliaRegistries/General.\nTo register at the general registiry, you need additionally::\n\n[compat] entries for all dependencies\na version=\na supported license\nSome restrictions on the name (e.g. nothing with Julia, only ASCII, etc.)"
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#green-threading",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#green-threading",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "Green threading",
+    "text": "Green threading\n\n@time sleep(2)\n\n  2.009545 seconds (63 allocations: 1.625 KiB)\n\n\n\n@time t = @async sleep(2)\n\n  0.052863 seconds (10.22 k allocations: 646.190 KiB, 56.06% compilation time)\n\n\nTask (runnable) @0x000001fdbbb45f10\n\n\n\nt\n\nTask (runnable) @0x000001fdbbb45f10\n\n\n\nfunction dojob(i)\n    val = round(rand(), digits=2)\n    sleep(val)   # this could be external computations with I/O\n    i, val\nend\n\ndojob (generic function with 1 method)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8)\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2189270652080, 1.081643418665e-311)\n (2189270652176, 1.0816434187123e-311)\n (2189270652272, 1.08164341876e-311)\n (2189270652368, 1.081643418807e-311)\n (2189270652464, 1.0816434188546e-311)\n (2189270652560, 1.081643418902e-311)\n (2189270652752, 1.081643418997e-311)\n (2189270652848, 1.0816434190443e-311)\n\n\n\n@time for i=1:8\n    result[i] = dojob(i)\nend\nresult\n\n  4.136902 seconds (1.19 k allocations: 73.610 KiB, 0.52% compilation time)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (1, 0.65)\n (2, 0.31)\n (3, 0.75)\n (4, 0.3)\n (5, 0.67)\n (6, 0.64)\n (7, 0.25)\n (8, 0.46)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8);\n@time for i=1:8\n   @async result[i] = dojob(i)\nend\nresult\n\n  0.000174 seconds (85 allocations: 7.208 KiB)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2, 1.5e-323)\n (5, 8.0e-323)\n (18, 9.4e-323)\n (21, 1.2e-322)\n (25, 1.5e-322)\n (31, 1.6e-322)\n (33, 1.7e-322)\n (35, 1.9e-322)\n\n\n\nresult\n\n8-element Vector{Tuple{Int64, Float64}}:\n (2, 1.5e-323)\n (5, 8.0e-323)\n (18, 9.4e-323)\n (21, 1.2e-322)\n (25, 1.5e-322)\n (31, 1.6e-322)\n (33, 1.7e-322)\n (35, 1.9e-322)\n\n\n\nresult = Vector{Tuple{Int,Float64}}(undef, 8);\n@time @sync for i=1:8\n   @async result[i] = dojob(i)\nend\nresult\n\n  0.793057 seconds (2.71 k allocations: 170.346 KiB, 9.69% compilation time)\n\n\n8-element Vector{Tuple{Int64, Float64}}:\n (1, 0.1)\n (2, 0.91)\n (3, 0.71)\n (4, 0.72)\n (5, 0.63)\n (6, 0.05)\n (7, 0.01)\n (8, 0.76)\n\n\n\nProgramming a simple web server\nYou should be able to connect using the address http://localhost:9992/3+4\nTo stop web server click http://localhost:9992/stopme\n\nusing Sockets\nprintln(\"Starting the web server...\")\nserver = Sockets.listen(9992)\n\nStarting the web server...\n\n\nSockets.TCPServer(Base.Libc.WindowsRawSocket(0x00000000000003e4) active)\n\n\n\n@async begin\n    contt = Ref(true)\n    while contt[]\n        sock = Sockets.accept(server)\n        @async begin\n            data = readline(sock)\n            print(\"Got request:\\n\", data, \"\\n\")\n            cmd = split(data, \" \")[2][2:end]\n            println(sock, \"\\nHTTP/1.1 200 OK\\nContent-Type: text/html\\n\")\n            contt[] = contt[] && (!occursin(\"stopme\", data))\n            if contt[]\n                 println(sock, string(\"&lt;html&gt;&lt;body&gt;\", cmd, \"=\", \n                     eval(Meta.parse(cmd)), \"&lt;/body&gt;&lt;/html&gt;\"))\n            else\n                println(sock,\"&lt;html&gt;&lt;body&gt;stopping&lt;/body&gt;&lt;/html&gt;\")\n            end\n            close(sock)\n        end\n    end\n    println(\"Handling requests stopped\")\nend\n\nTask (runnable) @0x000001fdbb1eee90"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
-    "href": "material/1_mon/envs/envs_handout.html#lets-generate-our-first-package",
-    "title": "Environments",
-    "section": "Let’s generate our first package!",
-    "text": "Let’s generate our first package!\n] generate MyStatsPackage\n\nAdding dependencies\n]activate ./path/to/MyStatsPackage\n]add UnicodePlots\n1]compat\n\n1\n\nlet’s directly add a compat entry for UnicodePlots\n\n\n\n\nSemantic Versioning\nFollowing semver - three parts:\nv2.7.5\nmeans:\n\nMajor 2\nMinor 7\nBugfix 5\nBump Major if you propose backward-breaking changes\nBump Minor if you only introduce new features -Bump Bugfix if you, well, fix bugs\n\nSpecial case:\nv0.37.1\nMeans package is in development and not stable. Bump Major if you release it Bump Minor for breaking changes Bump Bugfix if you fix bugs or release new features\n\n\nCompat entries\ncompat entries define with what versions your package is compatible with\n[compat]\n1AllMinorReleases1 = \"1\"\n2AllMinorReleases2 = \"1.5\"\n3AllMinorReleases3 = \"1.5.3\"\n4ExactPackage = \"=1.5.6\"\nMultiVersionexample = \"0.5,1.2,2\"\n5DevelopPackage = \"0.2.3\"\n\n1\n\n[1.0.0-2)\n\n2\n\n[1.5.0-2)\n\n3\n\n[1.5.3-2)\n\n4\n\n[1.5.6]\n\n5\n\n[0.2.3 - 0.3)\n\n\nAs you can see, develop version (version &lt; 1) are treated a bit special in Julia, and different to semver. Read more here\n\n\n\n\n\n\nWarning\n\n\n\nkeep the compat list in alphabetical order - github-actions might behave very strange else."
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multithreading",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multithreading",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "Multithreading",
+    "text": "Multithreading\n\nThreads.nthreads()\n\n4\n\n\n\nfunction ssum(x)\n    r, c = size(x)\n    y = zeros(c)\n    for i in 1:c\n        for j in 1:r\n            @inbounds y[i] += x[j, i]\n        end\n    end\n    y\nend\n\nssum (generic function with 1 method)\n\n\n\nfunction tsum(x)\n    r, c = size(x)\n    y = zeros(c)\n    Threads.@threads for i in 1:c\n        for j in 1:r\n            @inbounds y[i] += x[j, i]\n        end\n    end\n    y\nend\n\ntsum (generic function with 1 method)\n\n\n\nx = rand(1000,10000);\n\n\n@time ssum(x)\n@time ssum(x);\n\n  0.048094 seconds (13.70 k allocations: 1.009 MiB, 62.07% compilation time)\n  0.017480 seconds (2 allocations: 78.172 KiB)\n\n\n\n@time tsum(x)\n@time tsum(x);\n\n  0.253809 seconds (41.53 k allocations: 2.933 MiB, 230.17% compilation time)\n  0.011025 seconds (35 allocations: 81.469 KiB)\n\n\n\nLocking mechanism for threads\n\nfunction f_bad()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        x += 1\n    end\n    return x\nend\n\nf_bad (generic function with 1 method)\n\n\n\n@time f_bad()\n\n  0.168872 seconds (1.01 M allocations: 15.892 MiB, 90.33% compilation time)\n\n\n251079\n\n\n\nfunction f_add()\n    x = 0 \n    for i in 1:10^7\n        x += 1\n    end\n    x\nend\n@btime f_add()\n    \n\n  3.400 ns (0 allocations: 0 bytes)\n\n\n10000000\n\n\n\nfunction f_atomic()\n    x = Threads.Atomic{Int}(0)\n    Threads.@threads for i in 1:10^6\n        Threads.atomic_add!(x, 1)\n    end\n    return x[]\nend\nf_atomic()\n\n1000000\n\n\n\n\n\nfunction f_spin()\n    l = Threads.SpinLock()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        Threads.lock(l) do\n            x += 1\n        end\n    end\n    return x\nend\n\nfunction f_reentrant()\n    l = ReentrantLock()\n    x = 0\n    Threads.@threads for i in 1:10^6\n        Threads.lock(l) do\n            x += 1\n        end\n    end\n    return x\nend\n\nf_reentrant (generic function with 1 method)\n\n\n\nusing DataFrames\nstats = DataFrame()\nfor f in [f_bad, f_atomic, f_spin, f_reentrant]\n    for i = 1:2\n        value, elapsedtime  = @timed f()\n        push!(stats, (f=string(f),i=i, value=value, timems=elapsedtime*1000))\n    end\nend\nprintln(stats)\n\n8×4 DataFrame\n Row │ f            i      value    timems   \n     │ String       Int64  Int64    Float64  \n─────┼───────────────────────────────────────\n   1 │ f_bad            1   507942   74.5333\n   2 │ f_bad            2   495913   50.5647\n   3 │ f_atomic         1  1000000   31.4744\n   4 │ f_atomic         2  1000000   33.8758\n   5 │ f_spin           1  1000000  693.007\n   6 │ f_spin           2  1000000  586.934\n   7 │ f_reentrant      1  1000000  847.592\n   8 │ f_reentrant      2  1000000  521.148"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#projects-in-julia",
-    "href": "material/1_mon/envs/envs_handout.html#projects-in-julia",
-    "title": "Environments",
-    "section": "Projects in Julia",
-    "text": "Projects in Julia\nFormally, projects don’t have specific requirements. You should activate an environment (Project.toml+Manifest.toml) in the main folder though. I recommend the following minimal structure:\n\n./src/ - all functions should go there\n./scripts/ - all actual scripts should go here,\n./README.md - Write what this is about, who you are etc.\n./Project.toml - Your explicit dependencies\n./Manifest.toml - Your implicit dependencies + versions &lt;– this makes it reproducible!\n\n\n\n\n\n\n\nTip\n\n\n\nOne recommendation is to use DrWatson.initialize_project([path]) to start a new project - it will generate a nice folder structure + provide some other helpful DrWatson.jl features.\n(click the following tipp to expand the full datastructure)\n\n\n\n\n\n\n\n\nTip\n\n\n\n\n\n│projectdir          &lt;- Project's main folder. It is initialized as a Git\n│                       repository with a reasonable .gitignore file.\n│\n├── _research        &lt;- WIP scripts, code, notes, comments,\n│   |                   to-dos and anything in an alpha state.\n│   └── tmp          &lt;- Temporary data folder.\n│\n├── data             &lt;- **Immutable and add-only!**\n│   ├── sims         &lt;- Data resulting directly from simulations.\n│   ├── exp_pro      &lt;- Data from processing experiments.\n│   └── exp_raw      &lt;- Raw experimental data.\n│\n├── plots            &lt;- Self-explanatory.\n├── notebooks        &lt;- Jupyter, Weave or any other mixed media notebooks.\n│\n├── papers           &lt;- Scientific papers resulting from the project.\n│\n├── scripts          &lt;- Various scripts, e.g. simulations, plotting, analysis,\n│   │                   The scripts use the `src` folder for their base code.\n│   └── intro.jl     &lt;- Simple file that uses DrWatson and uses its greeting.\n│\n├── src              &lt;- Source code for use in this project. Contains functions,\n│                       structures and modules that are used throughout\n│                       the project and in multiple scripts.\n│\n├── README.md        &lt;- Optional top-level README for anyone using this project.\n├── .gitignore       &lt;- by default ignores _research, data, plots, videos,\n│                       notebooks and latex-compilation related files.\n│\n├── Manifest.toml    &lt;- Contains full list of exact package versions used currently.\n└── Project.toml     &lt;- Main project file, allows activation and installation.\n                        Includes DrWatson by default."
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multi-processing-and-distributed-computing",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#multi-processing-and-distributed-computing",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "Multi-processing and distributed computing",
+    "text": "Multi-processing and distributed computing\n\nusing Distributed\n\nThis code adds 4 workers (and avoids adding more)\n\naddprocs(max(0, 5-nprocs()));\n\n\nworkers()\n\n4-element Vector{Int64}:\n 2\n 3\n 4\n 5\n\n\n\nfunction s_rand()\n    n = 10^4\n    x = 0.0\n    for i in 1:n\n        x += sum(rand(10^4))\n    end\n    x / n\nend\n \n@time s_rand()\n@time s_rand()\n\n  1.206733 seconds (20.00 k allocations: 763.397 MiB, 18.47% gc time)\n  1.018381 seconds (20.00 k allocations: 763.397 MiB, 17.30% gc time)\n\n\n5000.101742284563\n\n\n\nusing Distributed\n \n \nfunction p_rand()\n    n = 10^4\n    x = @distributed (+) for i in 1:n\n        #line\n        # but the last line will be aggregated\n        sum(rand(10^4))\n    end\n    x / n\nend\n\n@time p_rand()\n@time p_rand()\n\n  7.204575 seconds (508.98 k allocations: 33.710 MiB, 24.34% compilation time)\n  0.784540 seconds (564 allocations: 34.305 KiB)\n\n\n4999.629326079839\n\n\n\nworkers()'\n\n1×4 adjoint(::Vector{Int64}) with eltype Int64:\n 2  3  4  5\n\n\n\nfetch(@spawnat 3 4+3)\n\n7\n\n\n\n@everywhere function f() \n    println(\"I am on worker \", myid())\n    rand()\nend\nf()\n\nI am on worker 1\n\n\n0.37079910289627693\n\n\n\nfetch(@spawnat 4 f())\n\n      From worker 4:    I am on worker 4\n\n\n0.22025454198281003\n\n\n\nvec(collect(Iterators.product(1:4, 1:5)))\n        \n\n20-element Vector{Tuple{Int64, Int64}}:\n (1, 1)\n (2, 1)\n (3, 1)\n (4, 1)\n (1, 2)\n (2, 2)\n (3, 2)\n (4, 2)\n (1, 3)\n (2, 3)\n (3, 3)\n (4, 3)\n (1, 4)\n (2, 4)\n (3, 4)\n (4, 4)\n (1, 5)\n (2, 5)\n (3, 5)\n (4, 5)\n\n\n\nusing Distributed\n@everywhere using Pkg\n@everywhere Pkg.activate(\".\")\n@everywhere using Distributed, Random, DataFrames\n\n@everywhere function calc(x, y)\n    2x + y\nend\n\n@everywhere function init_worker()    \n   Random.seed!(myid())\n    # readding CSV file\nend\n\n@sync for wid in workers()\n    @async fetch(@spawnat wid init_worker())\nend\n\n      From worker 5:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 3:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 4:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n      From worker 2:      Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n\n\n  Activating project at `C:\\AAABIBLIOTEKA\\MIT_Boston\\Stuttgart`\n\n\nTypically results are collected to a DataFrame\n\ndata = @distributed (append!) for (i, j) = vec(collect(Iterators.product(1:4, 1:5)))\n    a = rand(1:499)\n    b = rand(1:9)*1000\n    c = calc(a, b)\n    DataFrame(;i,j,a,b,c,procid = myid())\nend\n\n20×6 DataFrame\n\n\n\nRow\ni\nj\na\nb\nc\nprocid\n\n\n\nInt64\nInt64\nInt64\nInt64\nInt64\nInt64\n\n\n\n\n1\n1\n1\n143\n9000\n9286\n2\n\n\n2\n2\n1\n291\n4000\n4582\n2\n\n\n3\n3\n1\n320\n8000\n8640\n2\n\n\n4\n4\n1\n377\n3000\n3754\n2\n\n\n5\n1\n2\n30\n7000\n7060\n2\n\n\n6\n2\n2\n351\n3000\n3702\n3\n\n\n7\n3\n2\n118\n8000\n8236\n3\n\n\n8\n4\n2\n415\n9000\n9830\n3\n\n\n9\n1\n3\n397\n1000\n1794\n3\n\n\n10\n2\n3\n260\n9000\n9520\n3\n\n\n11\n3\n3\n132\n8000\n8264\n4\n\n\n12\n4\n3\n420\n1000\n1840\n4\n\n\n13\n1\n4\n304\n4000\n4608\n4\n\n\n14\n2\n4\n112\n3000\n3224\n4\n\n\n15\n3\n4\n349\n6000\n6698\n4\n\n\n16\n4\n4\n466\n8000\n8932\n5\n\n\n17\n1\n5\n413\n6000\n6826\n5\n\n\n18\n2\n5\n426\n5000\n5852\n5\n\n\n19\n3\n5\n326\n1000\n1652\n5\n\n\n20\n4\n5\n481\n8000\n8962\n5"
   },
   {
-    "objectID": "material/1_mon/envs/envs_handout.html#footnotes",
-    "href": "material/1_mon/envs/envs_handout.html#footnotes",
-    "title": "Environments",
+    "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#advanced-interprocess-communication---cellular-automaton-example",
+    "href": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html#advanced-interprocess-communication---cellular-automaton-example",
+    "title": "Parallel and Distributed Computing with Julia",
+    "section": "Advanced Interprocess communication - cellular automaton example",
+    "text": "Advanced Interprocess communication - cellular automaton example\n\nusing Distributed\n@everywhere using ParallelDataTransfer, Distributed\n\n\n@everywhere function rule30()\n    lastv = Main.caa[1]\n    for i in 2:(length(Main.caa)-1)\n        current = Main.caa[i]\n        Main.caa[i] = xor(lastv, Main.caa[i] || Main.caa[i+1])\n        lastv = current\n    end\nend\n\n\n@everywhere function getcaa()\n    Main.caa\nend\n@everywhere function getsetborder()\n    #println(myid(),\"gs\");flush(stdout)\n    Main.caa[1] = (@fetchfrom Main.neighbours[1] getcaa()[15+1])\n    #println(myid(),\"gs1\");flush(stdout)\n    Main.caa[end] = (@fetchfrom Main.neighbours[2] getcaa()[2])\n    #println(myid(),\"gse\");flush(stdout)\nend\n\nfunction printsimdist(workers::Array{Int})\n    for w in workers\n        dat = @fetchfrom w caa\n        for b in dat[2:end-1]\n            print(b ? \"#\" : \" \")\n        end\n    end\n    println()\n    flush(stdout)\nend\n\nfunction runca(steps::Int, visualize::Bool)\n    @sync for w in workers()\n        @async @fetchfrom w fill!(caa, false)\n    end\n    @fetchfrom wks[Int(nwks/2)+1] caa[2]=true\n    visualize && printsimdist(workers())\n    for i in 1:steps\n        @sync for w in workers()\n            @async @fetchfrom w getsetborder()\n        end\n        @sync for w in workers()\n            @async @fetchfrom w rule30()\n        end\n        visualize && printsimdist(workers())\n    end\nend\n\n\nrunca (generic function with 1 method)\n\n\n\nwks = workers()\nnwks = length(wks)\nfor i in 1:nwks\n    sendto(wks[i], neighbours = (i==1 ? wks[nwks] : wks[i-1],\n                                i==nwks ? wks[1] : wks[i+1]))\n    fetch(@defineat wks[i] const caa = zeros(Bool, 15+2));\nend\n\nrunca(20,true)\n\n                              #                             \n                             ###                            \n                            ##  #                           \n                           ## ####                          \n                          ##  #   #                         \n                         ## #### ###                        \n                        ##  #    #  #                       \n                       ## ####  ######                      \n                      ##  #   ###     #                     \n                     ## #### ##  #   ###                    \n                    ##  #    # #### ##  #                   \n                   ## ####  ## #    # ####                  \n                  ##  #   ###  ##  ## #   #                 \n                 ## #### ##  ### ###  ## ###                \n                ##  #    # ###   #  ###  #  #               \n               ## ####  ## #  # #####  #######              \n              ##  #   ###  #### #    ###      #             \n             ## #### ##  ###    ##  ##  #    ###            \n            ##  #    # ###  #  ## ### ####  ##  #           \n           ## ####  ## #  ######  #   #   ### ####          \n          ##  #   ###  ####     #### ### ##   #   #"
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html",
+    "href": "material/2_tue/git/standards_slides.html",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them.\n\n\n\n\n\n\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar.\n\n\n\n\n\n\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
+    "href": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#special-files",
+    "href": "material/2_tue/git/standards_slides.html#special-files",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "Certain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
+  },
+  {
+    "objectID": "material/2_tue/git/standards_slides.html#issues-and-prs",
+    "href": "material/2_tue/git/standards_slides.html#issues-and-prs",
+    "title": "GitHub / GitLab Standards",
+    "section": "",
+    "text": "Templates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html",
+    "href": "material/2_tue/git/git_basics_demo.html",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick\n\n\n\n\nStarting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote\n\n\n\n\n\n\n\n\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
+    "href": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
+    "href": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Starting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
+  },
+  {
+    "objectID": "material/2_tue/git/git_basics_demo.html#further-reading",
+    "href": "material/2_tue/git/git_basics_demo.html#further-reading",
+    "title": "Git Demo",
+    "section": "",
+    "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html",
+    "href": "material/2_tue/git/workflow_slides.html",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches).\n\n\n\n\n\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity.\n\n\n\n\n\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line\n\n\n\n\n\n\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow\n\n\n\n\n\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO\n\n\n\n\n\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)\n\n\n\n\n\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash\n\n\n\n\n\n\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#why-workflows",
+    "href": "material/2_tue/git/workflow_slides.html#why-workflows",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#which-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#which-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "There are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#centralized-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#centralized-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Only one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Each feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#gitflow",
+    "href": "material/2_tue/git/workflow_slides.html#gitflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Visualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#forking-workflow",
+    "href": "material/2_tue/git/workflow_slides.html#forking-workflow",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Gitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#do-small-prs",
+    "href": "material/2_tue/git/workflow_slides.html#do-small-prs",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "For all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
+  },
+  {
+    "objectID": "material/2_tue/git/workflow_slides.html#quick-reads",
+    "href": "material/2_tue/git/workflow_slides.html#quick-reads",
+    "title": "Working in Teams / Git Workflows",
+    "section": "",
+    "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html",
+    "href": "material/2_tue/git/intro_slides.html",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
+  },
+  {
+    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html",
+    "href": "material/2_tue/git/merge_rebase_slides.html",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent\n\n\n\n\n\n\ngit checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents\n\n\n\n\n\n\nWe use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4.\n\n\n\n\n\n\n\nReal conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch.\n\n\n\n\n\n\ngit checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)\n\n\n\n\n\n\nGitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?\n\n\n\n\n\n\n… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)\n\n\n\n\n\n\nBut what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature\n\n\n\n\n\n\nTry to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE\n\n\n\n\n\n\nBitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#linear-history",
+    "href": "material/2_tue/git/merge_rebase_slides.html#linear-history",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
+    "href": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "git checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
+    "href": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "We use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4."
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
+    "href": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "Real conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch."
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#rebase",
+    "href": "material/2_tue/git/merge_rebase_slides.html#rebase",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "git checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
+    "href": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "GitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
+    "href": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#conflicts",
+    "href": "material/2_tue/git/merge_rebase_slides.html#conflicts",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "But what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
+    "href": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "Try to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE"
+  },
+  {
+    "objectID": "material/2_tue/git/merge_rebase_slides.html#further-reading",
+    "href": "material/2_tue/git/merge_rebase_slides.html#further-reading",
+    "title": "Merge vs. Rebase",
+    "section": "",
+    "text": "Bitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
+  },
+  {
+    "objectID": "material/4_thu/parallel/slides.html",
+    "href": "material/4_thu/parallel/slides.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
+  },
+  {
+    "objectID": "material/4_thu/parallel/slides.html#slides",
+    "href": "material/4_thu/parallel/slides.html#slides",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
+  },
+  {
+    "objectID": "material/4_thu/parallel/slides.html#exercise",
+    "href": "material/4_thu/parallel/slides.html#exercise",
+    "title": "Research Software Engineering Summer School",
+    "section": "Exercise",
+    "text": "Exercise\nThe exercise is available as a jupyter-notebook here."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html",
+    "href": "material/1_mon/firststeps/tasks.html",
+    "title": "Task 1",
+    "section": "",
+    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "href": "material/1_mon/firststeps/tasks.html#wait---how-do-i-even-run-things-in-juliavscode",
+    "title": "Task 1",
+    "section": "",
+    "text": "Typically, you work in a Julia script ending in scriptname.jl\nYou concurrently have a REPL open, to not reload all packages etc. everytime. Further you typically have Revise.jl running in the background to automatically update your custom Packages / Modules (more to that later).\nYou can mark some code and execute it using ctrl + enter - you can also generate code-blocks using #--- and run a whole code-block using alt+enter\n\nOpen a new script statistic_functions.jl in VSCode in a folder of your choice.\nimplement a function called rse_sum1. This function should return true if provided with the following test: res_sum(1:36) == 666. You should further make use of a for-loop.\nimplement a second function called rse_mean, which calculates the mean of the provided vector. Make sure to use the rse_sum function! Test it using res_mean(-15:17) == 1\nNext implement a standard deviation function rse_std: \\(\\sqrt{\\frac{\\sum(x-mean(x))}{n-1}}\\), this time you should use elementwise/broadcasting operators. Test it with rse_std(1:3) == 1\nFinally, we will implement rse_tstat, returning the t-value with length(x)-1 DF, that the provided Array actually has a mean of 0. Test it with rse_tstat(2:3) == 5. Add the keyword argument σ that allows the user to optionally provide a pre-calculated standard deviation.\n\nWell done! You now have all functions defined with which we will continue our journey."
+  },
+  {
+    "objectID": "material/1_mon/firststeps/tasks.html#footnotes",
+    "href": "material/1_mon/firststeps/tasks.html#footnotes",
+    "title": "Task 1",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nlibraries, dlls, .so etc.↩︎"
+    "text": "Footnotes\n\n\nrse = research software engineering, we could use sum in a principled way, but it requires some knowledge you likely don’t have right now↩︎"
+  },
+  {
+    "objectID": "material/1_mon/why_julia/page.html",
+    "href": "material/1_mon/why_julia/page.html",
+    "title": "Why Julia?",
+    "section": "",
+    "text": "Why Julia?\nIntroduction talk from Hendrik Ranocha.\nPlease find the slides here (pdf)"
   },
   {
     "objectID": "material/3_wed/vis/handout.html",
