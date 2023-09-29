@@ -2,134 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/installation/vscode.html</loc>
-    <lastmod>2023-09-28T14:20:03.743Z</lastmod>
+    <lastmod>2023-09-29T09:07:59.795Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/teaching.html</loc>
-    <lastmod>2023-09-28T14:20:02.971Z</lastmod>
+    <lastmod>2023-09-29T09:07:58.855Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/schedule.html</loc>
-    <lastmod>2023-09-28T14:20:02.187Z</lastmod>
+    <lastmod>2023-09-29T09:07:57.963Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/projectwork.html</loc>
-    <lastmod>2023-09-28T14:20:01.419Z</lastmod>
+    <lastmod>2023-09-29T09:07:57.075Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/cheatsheets/githubactions.html</loc>
-    <lastmod>2023-09-28T14:20:00.667Z</lastmod>
+    <lastmod>2023-09-29T09:07:56.171Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/cheatsheets/julia.html</loc>
-    <lastmod>2023-09-28T14:19:59.903Z</lastmod>
+    <lastmod>2023-09-29T09:07:55.327Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/docs/slides.html</loc>
-    <lastmod>2023-09-28T14:19:59.099Z</lastmod>
+    <lastmod>2023-09-29T09:07:54.427Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/docs/handout.html</loc>
-    <lastmod>2023-09-28T14:19:58.291Z</lastmod>
+    <lastmod>2023-09-29T09:07:52.527Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/linalg/Julia_Matrices_Optimization_JuMP_Stuttgart2023.html</loc>
-    <lastmod>2023-09-28T14:19:57.419Z</lastmod>
+    <lastmod>2023-09-29T09:07:51.535Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/vis/tasks.html</loc>
-    <lastmod>2023-09-28T14:19:53.283Z</lastmod>
+    <lastmod>2023-09-29T09:07:46.879Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/rse/rse_basics_slides.html</loc>
-    <lastmod>2023-09-28T14:19:51.511Z</lastmod>
+    <lastmod>2023-09-29T09:07:44.851Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/envs/envs_handout.html</loc>
-    <lastmod>2023-09-28T14:19:50.631Z</lastmod>
+    <lastmod>2023-09-29T09:07:43.807Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/firststeps/tasks.html</loc>
-    <lastmod>2023-09-28T14:19:49.439Z</lastmod>
+    <lastmod>2023-09-29T09:07:42.427Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/4_thu/parallel/slides.html</loc>
-    <lastmod>2023-09-28T14:19:47.887Z</lastmod>
+    <lastmod>2023-09-29T09:07:40.687Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/2_tue/git/merge_rebase_slides.html</loc>
-    <lastmod>2023-09-28T14:19:46.295Z</lastmod>
+    <lastmod>2023-09-29T09:07:38.890Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/2_tue/git/intro_slides.html</loc>
-    <lastmod>2023-09-28T14:19:45.279Z</lastmod>
+    <lastmod>2023-09-29T09:07:37.734Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/2_tue/git/workflow_slides.html</loc>
-    <lastmod>2023-09-28T14:19:43.799Z</lastmod>
+    <lastmod>2023-09-29T09:07:36.014Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/2_tue/git/git_basics_demo.html</loc>
-    <lastmod>2023-09-28T14:19:44.759Z</lastmod>
+    <lastmod>2023-09-29T09:07:37.102Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/2_tue/git/standards_slides.html</loc>
-    <lastmod>2023-09-28T14:19:45.731Z</lastmod>
+    <lastmod>2023-09-29T09:07:38.238Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html</loc>
-    <lastmod>2023-09-28T14:19:47.479Z</lastmod>
+    <lastmod>2023-09-29T09:07:40.223Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/firststeps/firststeps_handout.html</loc>
-    <lastmod>2023-09-28T14:19:48.971Z</lastmod>
+    <lastmod>2023-09-29T09:07:41.895Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/envs/tasks.html</loc>
-    <lastmod>2023-09-28T14:19:49.867Z</lastmod>
+    <lastmod>2023-09-29T09:07:42.875Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/1_mon/why_julia/page.html</loc>
-    <lastmod>2023-09-28T14:19:51.019Z</lastmod>
+    <lastmod>2023-09-29T09:07:44.243Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/vis/handout.html</loc>
-    <lastmod>2023-09-28T14:19:52.603Z</lastmod>
+    <lastmod>2023-09-29T09:07:46.139Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/regression/MultipleRegressionBasics.html</loc>
-    <lastmod>2023-09-28T14:19:53.831Z</lastmod>
+    <lastmod>2023-09-29T09:07:47.515Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/linalg/slides.html</loc>
-    <lastmod>2023-09-28T14:19:57.831Z</lastmod>
+    <lastmod>2023-09-29T09:07:52.003Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/material/3_wed/docs/tasks.html</loc>
-    <lastmod>2023-09-28T14:19:58.667Z</lastmod>
+    <lastmod>2023-09-29T09:07:52.943Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/cheatsheets/git.html</loc>
-    <lastmod>2023-09-28T14:19:59.463Z</lastmod>
+    <lastmod>2023-09-29T09:07:54.827Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/cheatsheets/ggplotAOG.html</loc>
-    <lastmod>2023-09-28T14:20:00.295Z</lastmod>
+    <lastmod>2023-09-29T09:07:55.763Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/social.html</loc>
-    <lastmod>2023-09-28T14:20:01.055Z</lastmod>
+    <lastmod>2023-09-29T09:07:56.635Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/missing.html</loc>
-    <lastmod>2023-09-28T14:20:01.815Z</lastmod>
+    <lastmod>2023-09-29T09:07:57.499Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/index.html</loc>
-    <lastmod>2023-09-28T14:20:02.595Z</lastmod>
+    <lastmod>2023-09-29T09:07:58.411Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/s-ccs/summerschool_simtech_2023/installation/julia.html</loc>
-    <lastmod>2023-09-28T14:20:03.363Z</lastmod>
+    <lastmod>2023-09-29T09:07:59.351Z</lastmod>
   </url>
 </urlset>
