@@ -3,6 +3,8 @@
     @testset "find_max" begin
         @test find_max([1,2,3]) == 3
         @test find_max([0,0,0]) == 0
+        
+        @test_throws AssertionError find_max([NaN,3,2])
     end
 
     @testset "find_mean" begin
