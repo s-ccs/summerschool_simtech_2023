@@ -1,3 +1,9 @@
+## List of Julia Cheetsheets
+
+[Matlab-Julia-Python](https://cheatsheets.quantecon.org/)
+[Julia Basic Commands (pdf)](https://images.datacamp.com/image/upload/v1667400319/Marketing/Blog/Julia_Cheat_Sheet.pdf)
+
+
 ## "meta"-tools
 
 |                                         | Julia                   | Python                      | R                          |
