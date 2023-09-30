@@ -1,0 +1,405 @@
+---
+title: "Code Review"
+author: "Lisa DeBruine  \n![](images/mastodon.png){width=60 style='vertical-align:middle;'} [tech.lgbt/@debruine](https://tech.lgbt/@debruine)"
+execute:
+  echo: true
+format: 
+  revealjs:
+    logo: images/psyteachr_hex.png
+    theme: [dark, style.scss]
+    transition: none
+    transition-speed: fast
+---
+
+# Abstract
+
+::: {style="font-size: smaller"}
+Research transparency and integrity benefit greatly from computationally reproducible code, and there is an increasing emphasis on learning the skills to code. However, there hasn't been as much emphasis on learning the skills to check code. People cite a lack of time, expertise, and incentives as reasons that they don't ask others to review their research code, but the most commonly cited reason was embarrassment for others to see their code.
+:::
+
+# Why Code?
+
+## Error Detection
+
+<div style="float:right;width:35%;margin-left: 1em;">
+![](images/statcheck.png)
+</div>
+
+An analysis by [Nuijten et al. (2016)](https://doi.org/10.3758/s13428-015-0664-2) of over 250K p-values reported in 8 major psych journals from 1985 to 2013 found that:
+
+* half the papers had at least one inconsistent p-value 
+* 1/8 of papers had errors that could affect conclusions
+* errors more likely to be erroneously significant than not
+
+## Analysis Reproducibility
+
+Of 35 articles published in *Cognition* with usable data (but no code, [Hardwicke et al. (2018)](https://doi.org/10.1098/rsos.180448) found:
+
+- only 11 could be reproduced independently 
+- 11 were reproducible with the original authors' help
+- 13 were not reproducible even by the original authors
+
+## Code Reproducibility
+
+Of 62 Registered Reports in psychology published from 2014--2018, 36 had data and analysis code, 31 could be run, and 21 reproduced all the main results ([Obels et al, 2020](https://doi.org/10.1177/2515245920918872))
+
+![](images/obels.png){alt-text="Flowchart of sample: starting from sampling frame of 188 paper, to 79 in psychology domian, to 62 in final data set, to 36 with data and code available, to 31 with runnable scripts, to 21 with reproducible results"}
+
+# What is Code Review?
+
+The process of methodically and systematically checking over code--your own or someone else's--after it has been written.
+
+-   Is the code legible and clear?
+-   Is the analysis reproducible?
+-   Are other outputs reproducible?
+-   Does the code do what was intended?
+-   Does the code follows best practices?
+
+## Barriers to Doing Code Review
+
+:::: columns
+::: {.column width="33%"}
+### 💻 Technical
+
+-   Lack of skill
+-   No guide
+:::
+::: {.column width="33%"}
+### ⏱ Incentive
+
+-   No time
+-   Not expected
+:::
+::: {.column width="33%"}
+### 😳 Social
+
+-   Expectations
+-   Fear of judgement
+:::
+:::
+
+![](images/xkcd-code-quality-1513.png)
+
+# Goals of Code Review
+
+The specific goals of any code review will depend on the stage in the research process at which it is being done, the expertise of the coder and reviewer, and the amount of time available.
+
+In this talk, we'll focus on pre-submission code review by colleagues.
+
+## Does it run?
+
+-   Requires the least expertise and time
+-   Can result in a substantial improvement
+-   Run on a different computer than coded on
+-   Ideally, access from the same place users or reviewers will
+-   Note if you get any errors
+-   If you have the expertise to fix them, make and note the fix, then try again
+
+
+::: notes
+Checking whether the code runs is the simplest goal, but one of the most important and it would be a substantial improvement if all research code had this single check. It requires only the expertise to run a script in the relevant language. The reviewer does not necessarily need to be able to diagnose or help with any problems, just identify them to the coder.
+:::
+
+## Is it reproducible?
+
+* Requires more time, but not expertise
+* The coder can make this a lot easier for the reviewer
+* Anyone running the code should get the same outputs
+* Outputs include: Analysis Results; Plots; Tables
+* Check for a **seed** when random values are used
+* Assess how straightforward it is to do this check
+
+::: notes
+Computational reproducibility means that anyone running the code gets the same results. The reviewer can check for consistency with outputs that are created by the code, such as an HTML or PDF rendered version of the script, or with values and figures in a manuscript.
+
+It is also relevant to comment on how straightforward it is to check the outputs. For example, did the coder use literate programming, where the source code and natural-language explanations are interspersed in the same document, to divide the code into sections that clearly correspond with outputs that it needs to be consistent with? Are figures and tables numbered or labeled in a way that makes it easy for the reviewer to see their correspondence? This both helps the reviewer assess the reproducibility of the code, and helps other researchers use the code.
+:::
+
+## Is it auditable and understandable?
+
+* Requires a bit more expertise and time
+* Is the code well-organised? 
+* Headers make a complex script much more accessible
+* Can you find corresponding parts of the outputs or manuscript?
+* Are all parts of the process available (e.g., generating analysed data from raw data)?
+* **Literate programming** makes code more understandable. 
+
+::: notes
+Even if a reviewer doesn't have the expertise to assess the statistics or data processing, they can assess whether the code is well-organized enough to figure out what is intended so mistakes *could* be detected. 
+:::
+
+## Does it follow best practices?
+
+* Requires substantial expertise and time
+* General coding principles that serve to reduce the scope for errors and make understanding code easier, for example: 
+  * Do the variable names make sense? 
+  * Is there repeated code (DRY) or values defined in multiple places (SPOT)? 
+  * Are outputs of long processes saved and loaded from file? 
+  * Are there sense checks or unit tests where appropriate?  
+
+::: notes
+Recommendations about 'best practices' can be idiosyncratic, but here we mean general coding principles that serve to reduce the scope for errors and make understanding code easier. This goal can take a bit longer and requires more general coding expertise from the reviewer. It also may be more appropriate in earlier stages of the project. However, advice on best practices can still help coders with future projects, even when there isn't scope to make big structural changes to the current project.
+:::
+
+## Is it correct and appropriate?
+
+* Requires substantial expertise and time
+* Is the code actually doing what was intended?
+* Is what was intended correct?
+* Detect logical problems (e.g., filtering in instead of out)
+* May require domain expertise to detect some problems (e.g., knowing that a certain questionnaire has reverse-coded items)
+
+::: notes
+Is the code actually doing what was intended, and is what was intended correct? A careful answer to this question requires the reviewer to have domain-specific expertise and statistical expertise. Some logical problems can be caught without domain knowledge, such as intending to filter out male subjects, but actually filtering them IN. However, other problems will require specialist domain or statistical knowledge to detect.
+:::
+
+## Not Goals
+
+:::{.notes}
+Do not submit code that doesn’t run for you for code review. Of course, code review may uncover bugs that were not apparent to you, but the reviewer should be able to assume that the code runs on your setup. Depending on their experience, a reviewer may fix bugs they find in review, or simply point them out. Severe enough bugs may cause the reviewer to terminate the review, which then prevents higher-order goals from being achieved. This is one reason it is important to do informal code check with colleagues before you send code for more formal review check, such as a journal submission.
+
+Don’t expect the reviewer to create code for you. Code review is not an opportunity to get someone else to fix sloppy or inefficient code, or to add documentation for you.Some reviewers, depending on their expertise and investment in the project, may of course choose to help improve the code directly, but this verges on a co-author role, not a review role. 
+
+Do not rely on code review to assess the appropriateness of your scientific decisions or statistical analyses. In the context of a manuscript review at a journal, the reviewer may be both a scientific and code reviewer, but these are distinct roles. Code review itself is not a guarantee that your research is methodologically sound or that your statistical approach is appropriate.
+:::
+
+:::: columns
+::: {.column width="40%"}
+-   Debugging
+-   Code help
+-   Statistical help
+:::
+
+::: {.column width="60%"}
+![](images/xkcd-new-bug.png){fig-alt="XKCD comic. first panel: stick figure sitting at a desk, says 'can you take a look at the bug I just opened?', off-panel voice says 'uh oh'; second panel: stick figure turn to look at offscreen voice, who says 'Is this a NORMAL bug, or one f those horrifying ones that prove your whole projec is broken beyond repair and should be burned to the ground?'"}
+:::
+:::
+
+# Key Concepts
+
+## A review package should include:
+
+::: checklist
+-   A README file that describes the project; specifies credit and licensing
+-   Any outputs that the reviewers should try to reproduce
+-   All data used to create the outputs to be reproduced
+-   All code necessary to recreate the outputs
+-   A main script that runs any subscripts in the relevant order
+:::
+
+## Project organisation
+
+* Make sure all files used in the code are in a single directory that is the working directory
+* Use Jupyter notebooks or RStudio projects to make this easy
+* Include a README that explains the purpose of all files
+* Danielle Navarro's [Project structure](https://djnavarro.net/slides-project-structure/)
+
+## File paths
+
+All file references should use relative paths, not absolute paths.
+
+### 👎 Absolute Path 
+
+```{julia}
+#| eval: false
+dogs = open("C:\Documents\My Project\data\dogs.csv", "r")
+```
+
+<br/>
+
+### 👍 Relative Path 
+
+```{julia}
+#| eval: false
+dogs  open("data/dogs.csv", "r")
+```
+
+## Naming things
+
+Name files and code objects so both people and computers can easily find things.
+
+* File and directory names should only contain letters, numbers, dashes, and underscores, with a full stop (.) between the file name and extension (no spaces!) e.g., `DeBruine_code-review_2023-10-10.qmd`
+* Be consistent with capitalization, punctuation, and order
+* Use a pattern that alphabetizes in a sensible order
+* Use YYYY-MM-DD format for dates 
+* Jenny Bryan's [Naming Things](https://speakerdeck.com/jennybc/how-to-name-files)
+
+
+## Data documentation
+
+:::: columns
+::: {.column width="40%"}
+
+### Overview
+
+- authors 
+- date and location
+- sampling/inclusion criteria
+- instruments used
+- updates to the data
+- license
+
+:::
+::: {.column width="60%"}
+
+### Variable information
+
+- Names (i.e., the column names)
+- Labels/description
+- Codings (e.g., 1 = always, 5 = never)
+- Data type (e.g., binary, continuous)
+- Descriptives (e.g., min, max)
+- Data units (e.g., mg/L, months)
+- Missing values (e.g., NA, 999)
+:::
+::::
+
+## Literate coding
+
+An approach to programming that focuses on the creation of a document containing a mix of human-readable narrative text and machine-readable computer code.
+
+* Quarto, Jupyter, or R Markdown notebooks
+
+<textarea style='width:100%; height: 11em; font-size: 24px;'>
+## Data Exclusions
+
+Why we excluded these subjects...
+
+```&lcub;julia}
+# exclude subjects with more than 50% errors
+df_grouped = groupby(df, :id)
+df_excluded = combine(df_grouped) do sub_df
+    if mean(sub_df.correct) >= 0.5
+        return sub_df
+    end
+    return DataFrame()
+end
+```
+</textarea>
+
+
+::: {.notes}
+When writing code, it is important to write it in such a way that it is easily understandable by others, and by your future self. The goals of literate programming are similar to those associated with writing clean code (Martin, 2009). Clean code is understandable by humans, well formatted, with an appropriate amount of white space, with meaningful names for variables and functions, and is well commented. Comments should clearly explain to the reader the purpose of the associated lines of code. The quality of commenting is more important than the quantity. 
+:::
+
+## Single point of truth (SPOT)
+
+### With repeated numbers
+
+```{julia}
+#| output: false
+using DataFrames, Random
+
+simdat = DataFrame(
+  id = 1:10, 
+  group = repeat(["A", "B"], 5), 
+  dv = randn(10)
+)
+```
+
+<br>
+
+### With parameter variables
+
+```{julia}
+#| output: false
+n = 10
+
+simdat = DataFrame(
+  id = 1:n,
+  group = repeat(["A", "B"], n ÷ 2), 
+  dv = randn(n)
+)
+```
+
+## Don't repeat yourself (DRY)
+
+::: notes
+If you find yourself copying and pasting code more than twice, it's probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.
+:::
+
+### With repeated code
+
+```{julia}
+#| eval: false
+using HypothesisTests
+
+dfA = filter(row -> row.group == "A", simdat)
+analysisA = OneSampleTTest(dfA.dv)
+
+dfB = filter(row -> row.group == "B", simdat)
+analysisB = OneSampleTTest(dfB.dv)
+```
+
+<br>
+
+### With a function
+
+```{julia}
+#| eval: false
+function subtest(data, level)
+    sub_df = filter(row -> row.group == level, data)
+    return OneSampleTTest(sub_df.dv)
+end
+
+analysisA = subtest(simdat, "A")
+analysisB = subtest(simdat, "B")
+```
+
+## Unit Tests
+
+
+```{julia}
+#| error: true
+using Test
+
+# check length of DataFrame is correct
+@test size(simdat, 1) == 10
+
+# check column names are as expected
+@test names(simdat) == ["id", "group", "dv"]
+
+# check all dv values are positive
+@test all(simdat.dv .> 0)
+```
+
+
+# Code Review Guide
+
+:::: columns
+::: {.column width="50%"}
+Huge thanks to the Code Review Guide Team (especially Hao Ye, Kaija Gahm, Andrew Stewart, Elaine Kearney, Ekaterina Pronizius, Saeed Shafiei Sabet, Clare Conry Murray)
+
+Anyone is welcome to get involved in the project.
+
+:::
+::: {.column width="50%"}
+
+[![https://github.com/code-check-club](images/code-review-guide.png)](https://github.com/code-check-club)
+
+:::
+::::
+
+## Exercises
+
+:::: columns
+::: {.column width="50%" style="font-size: smaller"}
+### 🔐 Personal Code
+
+* Find code that you have written, in any language 
+* Form groups of 2-3 people with code in the same language
+* Trade scripts and write code reviews
+* Go over the code review with the writer
+
+:::
+::: {.column width="50%" style="font-size: smaller"}
+
+### 🔓 Open Code
+
+* Form groups of 2-3 with expertise in the same topic/language
+* Find open code in that topic and language 
+* Collaboratively write a code review for it
+* Optional: send it to the code author
+
+:::
+::::
