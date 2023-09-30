@@ -1,4 +1,72 @@
 ---
 title: "Schedule"
 ---
+<!--
 ![Summerschool Schedule](https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Flyer_Programm_langes_Format_2308010.png)
+-->
+
+Tentative Program (as of 31 July 2023)
+
+## Monday, 9 October
+
+| Time | Program | Who |
+|:-----|:--------|:----|
+|10:00--10:30| Registration | |
+|10:30--11:30| **Welcome/Introduction to RSE** | Benedikt Ehinger |
+|11:30--13:00| **Why Julia?** | Hendrik Ranocha |
+|13:00--14:00| Lunch | |
+|14:00--16:00| **First Steps** | Benedikt Ehinger |
+|16:00--18:00| **Reproducible Environments** | Benedikt Ehinger |
+|18:00--open end| Social Program | |
+
+: {.hover .sm}
+
+## Tuesday, 10 October
+
+| Time | Program | Who |
+|:-----|:--------|:----|
+|9:00--11:00| **Advanced Git & Contributing** | Benjamin Uekermann |
+|11:00--13:00| **Unit Testing** | Benedikt Ehinger & Benjamin Uekermann |
+|13:00--14:00| Lunch | |
+|14:00--16:00| **Continuous Integration** | Benjamin Uekermann |
+|16:00--18:00| **Code Review** | Lisa DeBruine |
+|18:00--open end| Social Program | |
+
+: {.hover .sm}
+
+## Wednesday, 11 October
+
+| Time | Program | Who |
+|:-----|:--------|:----|
+|9:00--11:00| **Documentation & PkgTemplates.jl** | Benedikt Ehinger |
+|11:00--13:00| **Visualization** | Benedikt Ehinger |
+|13:00--14:00| Lunch | |
+|14:00--16:00| **Linear Algebra** | Przemyslaw Szufel |
+|16:00--18:00| **Multiple Regression Basics** | Marco Oesting |
+|18:00--open end| Social Program | |
+
+: {.hover .sm}
+
+## Thursday, 12 October
+
+| Time | Program | Who |
+|:-----|:--------|:----|
+|9:00--11:00| **Simulating Data** | Lisa DeBruine |
+|11:00--13:00| **Resampling-based Statistics** | Marco Oesting |
+|13:00--14:00| Lunch | |
+|14:00--16:00| **Parallelization** | Przemyslaw Szufel |
+|16:00--18:00| _**Project Work**_ | |
+|18:00--open end| Social Program | |
+
+: {.hover .sm}
+
+## Friday, 13 October
+
+| Time | Program | Who |
+|:-----|:--------|:----|
+|9:00--11:00| **Julia Highlights & Optimization** | Hendrik Ranocha |
+|11:00--13:00| _**Project Work**_ | |
+|13:00--14:00| Lunch | |
+|14:00--16:00| _**Project Work**_ | |
+
+: {.hover .sm}
