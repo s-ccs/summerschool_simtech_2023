@@ -38,7 +38,7 @@ slideOptions:
 - Students can explain difference between merge and rebase and when to use what.
 - How to use Git workflows to organize research software development in a team.
 - Get to know a few useful GitHub/GitLab standards and a few helpful tools.
-- Get to know a few rules on good commit messages
+- Get to know a few rules on good commit messages.
 
 Material is taken and modified from the [SSE lecture](https://github.com/Simulation-Software-Engineering/Lecture-Material), which builds partly on the [py-rse book](https://merely-useful.tech/py-rse).
 
