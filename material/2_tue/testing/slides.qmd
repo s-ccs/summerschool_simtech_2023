@@ -3,7 +3,7 @@ format: revealjs
 
 ---
 
-# Introduction to Testing
+# 1. General Introduction to Testing
 
 ---
 
@@ -144,3 +144,44 @@ format: revealjs
 
 - [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
 - [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
+
+---
+
+# 2. Unit Testing in Julia with Test.jl
+
+---
+
+## Setup of Tests.jl
+
+- Standard library to write and manage tests
+- Standardized folder structure:
+
+```
+├── Manifest.toml
+├── Project.toml
+├── src/
+└── test
+    ├── Manifest.toml
+    ├── Project.toml
+    ├── runtests.jl
+    └── setup.jl
+```
+
+- Singular `test` vs plural `runtests.jl`
+- `setup.jl` for all `using XYZ` statements, included in `runtests.jl`
+- Additional packages either in `[extra] section` of `./Project.toml` or in a new `./test/Project.toml` environment
+  - In case of the latter: Do not add the package itself to the `./test/Project.toml`
+
+
+---
+
+## Run Tests
+
+Various options:
+
+- Directly call `runtests.jl` TODO?
+- From Pkg-Manager `]test` when root project is activated
+
+---
+
+## Tests Demo
