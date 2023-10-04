@@ -1,6 +1,6 @@
 #---
 using ProgressMeter
-
+import Base: length
 function rse_sum(x)
     s = 0
     @showprogress for k = eachindex(x)
@@ -32,21 +32,22 @@ end
 rse_tstat(2:3) == 5
 
 #---
+
 struct StatResult
     x::Vector
     n::Int32
     std::Float64
     tvalue::Float64
 end
-length(s::StatResult) = s.n
+Base.length(s::StatResult) = s.n
 StatResult(x) = StatResult(x,length(x))
 
 StatResult(x,n) =  StatResult(x,n,rse_std(x))
-StatResult(x,n,std) = StatResult(x,n,)
+StatResult(x,n,std) = StatResult(x,n,std,rse_tstat(x;σ=std))
 
 
-mystatresult(10,500.) # <1>
+StatResult([10,500.]) # <1>
 
-function tstat(x) # <2> generate a function returning our new type
-    return mystatresult(length(x),rse_tstat(x))
+function tstat(x)
+    return StatResult(length(x),rse_tstat(x))
 end

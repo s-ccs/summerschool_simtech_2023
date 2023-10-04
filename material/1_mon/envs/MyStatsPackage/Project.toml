@@ -1,0 +1,7 @@
+name = "MyStatsPackage"
+uuid = "867243ab-1459-4018-9627-69ff6fe7dbfd"
+authors = ["behinger (s-ccs 001) <benedikt.ehinger@vis.uni-stuttgart.de>"]
+version = "0.1.0"
+
+[deps]
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
