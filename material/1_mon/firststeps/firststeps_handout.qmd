@@ -74,9 +74,9 @@ myfunction(0,5;keyword1 = "notdefault")
 1. everything before the `;` => positional, after => `kwargs`
 2. List all methods with that function name - returns two functions, due to the `b=123` optional positional argument
 
-:: callout-tip
-## Terminology function vs. method
-Methods are instantiations of a abstract `function`
+::: callout-tip
+Terminology function vs. method: Methods are instantiations of an abstract `function`
+:::
 
 ```julia
  anonym = (x,y) -> x+y
@@ -95,6 +95,7 @@ myfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)
 ```
 
 #### Excourse: splatting & slurping
+
 Think of it as unpacking / collecting something
 
 ```julia
@@ -105,6 +106,7 @@ a = [1,2,3]
 1. equivalent to `+(1,2,3)`
 
 #### elementwise-function / broadcasting
+
 Julia is very neat in regards of applying functions elementwise (also called broadcasting).
 
 ```julia
@@ -153,18 +155,18 @@ And a nice sideeffect: By doing this, we get rid of any specialized "serialized"
 
 
 ## Linear Algebra
+
 ```julia
 import LinearAlgebra # <1>
 import LinearAlgebra: qr
 using LinearAlgebra # <2>
-
 ```
 1. Requires to write `LinearAlgebra.QR(...)` to access a function
 2. `LinearAlgebra` is a `Base` package, and always available
 
-:: callout
-Julia typically recommends to use `using PackageNames`. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always as the user to specify in those cases (different to R: shows a warning, or Python: just does on with life as if nothing happened)
-::
+::: callout-tip
+Julia typically recommends to use `using PackageNames`. Name-space polution is not a problem, as the package manager will never silently overwrite an already existing method - it will always ask the user to specify in those cases (different to R: shows a warning, or Python: just goes on with life as if nothing happened)
+:::
 
 ```julia
 A = Matrix{Float64}(undef,11,22) # <1>
@@ -174,8 +176,7 @@ qr(A*B)
 1. equivalent to `Array`, as `Matrix` is a convenience type-alias for `Array` with 2 dimensions. Same thing for `Vector`.
 2. the `2` of `{Float64,2}` is not mandatory
 
-
-Much more on wednesday in the lecture `LinearAlgebra`!
+Much more on Wednesday in the lecture `LinearAlgebra`!
 
 ## Style-conventions
 
@@ -187,11 +188,13 @@ Much more on wednesday in the lecture `LinearAlgebra`!
 | inplace / side-effects | `endwith!()`^[A functionname ending with a `!` indicates that inplace operations will occur / side-effects are possible. This is convention only, but in 99% of cases adopted] |
 
 # Task 1
+
 Ok - lot of introduction, but I think you are ready for your first interactive task.
-Follow [Task 1 here](tasks.qmd#1)    )
+Follow [Task 1 here](tasks.qmd#1).
 
 # Julia Basics - II
-### Strings
+
+## Strings
 
 ```julia
     character = 'a'
@@ -200,7 +203,8 @@ Follow [Task 1 here](tasks.qmd#1)    )
 ```
 1. returns `c`
 
-##### characters
+### characters
+
 ```julia
     'a':'f' #<1>
     collect('a':'f') # <2>
@@ -210,7 +214,7 @@ Follow [Task 1 here](tasks.qmd#1)    )
 2. a `Array{Chars}`
 3. a `String` 
 
-##### concatenation
+### concatenation
 
 ```julia
     a = "one"
@@ -220,14 +224,16 @@ Follow [Task 1 here](tasks.qmd#1)    )
 ```
 1. Indeed, `*` and not `+` - as plus implies from algebra that `a+b == b+a` which obviously is not true for string concatenation. But `a*b !== b*a` - at least for matrices.
 
-##### substrings
+### substrings
+
 ```julia
     str = "long string"
     substr = SubString(str, 1, 4)
     whereis_str = findfirst("str",str)
 ```
 
-##### regexp
+## regexp
+
 ```julia
     str = "any WORD written in CAPITAL?"
     occursin(r"[A-Z]+", str) # <1>
@@ -236,13 +242,15 @@ Follow [Task 1 here](tasks.qmd#1)    )
 1. Returns `true`. Note the small `r` before the `r"regular expression"` - nifty!
 2. Returns a `::RegexMatch` - access via `m.match` & `m.offset` (index) - or  `m.captures` / `m.offsets` if you defined capture-groups
 
-##### Interpolation
+## Interpolation
+
 ```julia
     a = 123
     str = "this is a: $a; this 2*a: $(2*a)"  
 ```
 
 ## Scopes
+
 All things (excepts modules) are in local scope (in scripts)
 
 ``` julia
@@ -273,7 +281,7 @@ Putting this code into a function automatically resolves this issue
 
 :::
 
-#### explicit global / local
+### explicit global / local
 
 ``` julia
 a = 0
@@ -293,7 +301,8 @@ b #<2>
 2.  b = 1
 
 
-#### Modifying containers works in any case
+### Modifying containers works in any case
+
 ```julia
 a = zeros(10)
 for k = 1:10
@@ -305,6 +314,7 @@ a #<1>
 1. This works "correctly" in the `REPL` as well as in a script, because we modify the content of `a`, not `a` itself
 
 ## Types
+
 Types play a super important role in Julia for several main reasons:
 
 1) The allow for specialization e.g. `+(a::Int64,b::Float64)` might have a different (faster?) implementation compared to `+(a::Float64,b::Float64)`
@@ -312,6 +322,7 @@ Types play a super important role in Julia for several main reasons:
 3) They act as containers, structuring your programs and tools 
 
 Everything in julia has a type! Check this out:
+
 ```julia
 typeof(1)
 typeof(1.0)
@@ -340,6 +351,7 @@ And there are two more, `Singleton types` and `Parametric types` - which (at lea
 
 
 ### composite types
+
 You can think of these types as containers for your variables, which allows you for specialization.
 ```julia
     struct SimulationResults
@@ -380,6 +392,7 @@ once defined, a type-definition in the global scope of the REPL cannot be re-def
 :::
 
 # Task 2
+
 Follow [Task 2 here](tasks.qmd#2) 
 
 # Julia Basics III
@@ -405,6 +418,7 @@ using MyStatsPackage
 ```
 
 ## Macros
+
 Macros allow to programmers to edit the actual code **before** it is run. We will pretty much just use them, without learning how they work.
 
 ```julia
@@ -413,5 +427,19 @@ Macros allow to programmers to edit the actual code **before** it is run. We wil
     a = "123"
     @show a
 ```
+
+
 ## Debugging
-XXX
+
+### Debug messages
+```julia
+@debug "my debug message"
+ENV["JULIA_DEBUG"] = Main
+ENV["JULIA_DEBUG"] = MyPackage
+
+```
+
+### Debugger proper:
+[Cheatsheet for debugging](../../../cheatsheets/julia.qmd#debugging)
+
+In most cases, `@run myFunction(1,2,3)` is sufficient.

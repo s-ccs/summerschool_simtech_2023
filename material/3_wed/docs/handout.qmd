@@ -1,4 +1,7 @@
 
+::: callout
+[Link to Slides](slides.qmd)
+:::
 # Documenter.jl
 
 ### File-structure overview

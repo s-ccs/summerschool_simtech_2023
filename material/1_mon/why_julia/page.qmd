@@ -1,0 +1,5 @@
+# Why Julia?
+
+ Introduction talk from Hendrik Ranocha.
+
+Please find the slides [here (pdf)](2023_Ranocha_Why_Julia.pdf)

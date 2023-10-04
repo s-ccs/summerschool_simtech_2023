@@ -139,6 +139,64 @@ version = "0.3.4"
 [...]
 ```
 
+
+## Projects in Julia
+
+Formally, projects don't have specific requirements. You should activate an environment (`Project.toml`+`Manifest.toml`) in the main folder though. I recommend the following minimal structure:
+
+-   `./src/` - all functions should go there
+-   `./scripts/` - all actual scripts should go here,
+-   `./README.md` - Write what this is about, who you are etc.
+-   `./Project.toml` - Your explicit dependencies
+-   `./Manifest.toml` - Your implicit dependencies + versions <-- this makes it reproducible!
+
+::: callout-tip
+One recommendation is to use `DrWatson.initialize_project([path])` to start a new project - it will generate a nice folder structure + provide some other helpful `DrWatson.jl` features.
+
+
+
+:::
+
+
+:::{.callout-tip collapse="true"}
+## Click to expand the full datastructure
+```
+│projectdir          <- Project's main folder. It is initialized as a Git
+│                       repository with a reasonable .gitignore file.
+│
+├── _research        <- WIP scripts, code, notes, comments,
+│   |                   to-dos and anything in an alpha state.
+│   └── tmp          <- Temporary data folder.
+│
+├── data             <- **Immutable and add-only!**
+│   ├── sims         <- Data resulting directly from simulations.
+│   ├── exp_pro      <- Data from processing experiments.
+│   └── exp_raw      <- Raw experimental data.
+│
+├── plots            <- Self-explanatory.
+├── notebooks        <- Jupyter, Weave or any other mixed media notebooks.
+│
+├── papers           <- Scientific papers resulting from the project.
+│
+├── scripts          <- Various scripts, e.g. simulations, plotting, analysis,
+│   │                   The scripts use the `src` folder for their base code.
+│   └── intro.jl     <- Simple file that uses DrWatson and uses its greeting.
+│
+├── src              <- Source code for use in this project. Contains functions,
+│                       structures and modules that are used throughout
+│                       the project and in multiple scripts.
+│
+├── README.md        <- Optional top-level README for anyone using this project.
+├── .gitignore       <- by default ignores _research, data, plots, videos,
+│                       notebooks and latex-compilation related files.
+│
+├── Manifest.toml    <- Contains full list of exact package versions used currently.
+└── Project.toml     <- Main project file, allows activation and installation.
+                        Includes DrWatson by default.
+```
+:::
+
+
 ## Packages in Julia
 Several thousand packages exist in Julia already. Take a thorough look before starting something new!
 
@@ -181,10 +239,10 @@ The default registry is [JuliaRegistries/General](https://github.com/JuliaRegist
 ### Adding dependencies
 ```julia
 ]activate ./path/to/MyStatsPackage
-]add UnicodePlots
+]add ProgressMeter
 ]compat # <1>
 ```
-1. let's directly add a compat entry for UnicodePlots
+1. let's directly add a compat entry for ProgressMeter
 
 ### Semantic Versioning
 Following `semver` - three parts:
@@ -234,57 +292,22 @@ As you can see, develop version (`version < 1`) are treated a bit special in Jul
 keep the compat list in alphabetical order - github-actions might behave very strange else.
 :::
 
-## Projects in Julia
+### Internals of a package
 
-Formally, projects don't have specific requirements. You should activate an environment (`Project.toml`+`Manifest.toml`) in the main folder though. I recommend the following minimal structure:
+The file `./src/MyStatsPackage.jl` should contain:
+```julia
+module MyStatsPackage
+using ProgressMeter # <1>
+include("src/stats_functions.jl")
 
--   `./src/` - all functions should go there
--   `./scripts/` - all actual scripts should go here,
--   `./README.md` - Write what this is about, who you are etc.
--   `./Project.toml` - Your explicit dependencies
--   `./Manifest.toml` - Your implicit dependencies + versions <-- this makes it reproducible!
+export sum
+export mean, tstat
 
-::: callout-tip
-One recommendation is to use `DrWatson.initialize_project([path])` to start a new project - it will generate a nice folder structure + provide some other helpful `DrWatson.jl` features.
-
-(click the following tipp to expand the full datastructure)
-
-:::
-
-
-:::{.callout-tip collapse="true"}
+end
 ```
-│projectdir          <- Project's main folder. It is initialized as a Git
-│                       repository with a reasonable .gitignore file.
-│
-├── _research        <- WIP scripts, code, notes, comments,
-│   |                   to-dos and anything in an alpha state.
-│   └── tmp          <- Temporary data folder.
-│
-├── data             <- **Immutable and add-only!**
-│   ├── sims         <- Data resulting directly from simulations.
-│   ├── exp_pro      <- Data from processing experiments.
-│   └── exp_raw      <- Raw experimental data.
-│
-├── plots            <- Self-explanatory.
-├── notebooks        <- Jupyter, Weave or any other mixed media notebooks.
-│
-├── papers           <- Scientific papers resulting from the project.
-│
-├── scripts          <- Various scripts, e.g. simulations, plotting, analysis,
-│   │                   The scripts use the `src` folder for their base code.
-│   └── intro.jl     <- Simple file that uses DrWatson and uses its greeting.
-│
-├── src              <- Source code for use in this project. Contains functions,
-│                       structures and modules that are used throughout
-│                       the project and in multiple scripts.
-│
-├── README.md        <- Optional top-level README for anyone using this project.
-├── .gitignore       <- by default ignores _research, data, plots, videos,
-│                       notebooks and latex-compilation related files.
-│
-├── Manifest.toml    <- Contains full list of exact package versions used currently.
-└── Project.toml     <- Main project file, allows activation and installation.
-                        Includes DrWatson by default.
+1. We use GLMakie as a simple example as you need it on Wednesday again anyway - it does take a while to install though!
+
+Now we are ready to use the package from a different environment
+```julia
+]dev ./path/to/MyStatsPackage
 ```
-:::

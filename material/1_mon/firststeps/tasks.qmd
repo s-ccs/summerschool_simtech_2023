@@ -7,6 +7,7 @@ You concurrently have a REPL open, to not reload all packages etc. everytime. Fu
 
 You can mark some code and execute it using `ctrl` + `enter` - you can also generate code-blocks using `#---` and run a whole code-block using `alt`+`enter`
 
+## The exercise
 1. Open a new script `statistic_functions.jl` in VSCode in a folder of your choice.
 
 2. implement a function called `rse_sum`^[rse = research software engineering, we could use `sum` in a principled way, but it requires some knowledge you likely don't have right now]. This function should return `true` if provided with the following test: `res_sum(1:36) == 666`. You should further make use of a for-loop.
@@ -18,6 +19,21 @@ You can mark some code and execute it using `ctrl` + `enter` - you can also gene
 5. Finally, we will implement `rse_tstat`, returning the t-value with `length(x)-1` DF, that the provided Array actually has a mean of 0. Test it with `rse_tstat(2:3) == 5`. Add the keyword argument `σ` that allows the user to optionally provide a pre-calculated standard deviation. 
 
 Well done! You now have all functions defined with which we will continue our journey.
+
+::: callout
+## Bonus Task ProgressMeter
+for very large sums we might want to add a progressmeter. To do so:
+
+```julia
+]add ProgressMeter
+using ProgressMeter
+...
+@showprogress for ...
+```
+
+:::
+
+And that's it! You should have a nice progress bar now
 
 
 # Task 2 {#2}
