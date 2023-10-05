@@ -159,3 +159,39 @@ PlutoExtras.BondTable([
 :::
 
 # Task 3: AlgebraOfGraphics
+
+For this task we need a dataset, and I choose the US EGG dataset for it's simplicity for you.
+
+to load the data, use the following code
+```julia
+using DataFrames, HTTP, CSV
+# dataset via https://github.com/rfordatascience/tidytuesday/tree/master
+df = CSV.read(download("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv"),DataFrame)
+```
+
+:::callout-tip
+## If you dislike Pluto.jl
+If you dont like to use Pluto.jl, you can of course switch back to VSCode. Then you have to create a new environment and add the packages you use before.
+:::
+
+
+## 🥚 vs. 🗓
+Visualize the number of eggs against the year
+
+:::callout-tip
+To get a first overview, `first(df)` , `describe(df)` and `names(df)` are typically helpful
+:::
+
+## Split them up
+Next split them up, choose `color` and `col` and choose reasonable columns from the dataset
+
+## Rotate the labels
+Use the trick from the handout to modify a plot after it was generated: Rotate the x-label ticks by some 30°
+
+:::callout-tip
+instead of rotating each axis manually, you can also replace the `draw` command in your pipeline with an anonymous function. This allows you to specify additional arguments e.g. to the axis, for all "sub"-plots
+```julia
+... |> x-> draw(x;axis=(;xlims = (-3,2))) # <1>
+```
+1. Note the `;` before xlims, this enforces that a `NamedTuple` is created
+

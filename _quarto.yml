@@ -73,7 +73,7 @@ website:
                 text: "🛠 2 - Visualizations: Exercises"
               - href: material/3_wed/linalg/slides.qmd
                 text: "📝 3 - LinearAlgebra"
-              - href: material/3_wed/regression/missing.jl
+              - href: material/3_wed/regression/MultipleRegressionBasics.qmd
                 text: "📝 4 - Multiple Regression"
           
           - section: "Thursday"

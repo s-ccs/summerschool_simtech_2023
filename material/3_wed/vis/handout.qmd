@@ -229,7 +229,18 @@ data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (lin
 data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |> draw
 ```
 
+### Advanced
+
+```julia
+h = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |> draw
+h.grid
+ax = h.grid[1,1].axis
+ax + tab -> ax.xticks
+h
+```
 
 ## Task 3
 
 [Click here for the next task](tasks.qmd#3)
+
+df = CSV.read(download("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv"),DataFrame)

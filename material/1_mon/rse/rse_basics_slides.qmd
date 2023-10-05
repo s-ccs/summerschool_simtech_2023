@@ -25,8 +25,6 @@ Find all slides, all materials, and the schedule
 
 -   Check out the schedule
 
--   You will learn to use basic Julia
-
 -   In the beginning we will focus on the Research Software Engineering part!
 
 -   Advanced Julia, later this week and by request ;)
