@@ -97,7 +97,7 @@ website:
 resources:
   - CNAME
 
-
+keep-ipynb: true
 format:
   html:
     email-obfuscation: javascript
