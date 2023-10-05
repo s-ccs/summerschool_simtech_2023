@@ -231,6 +231,27 @@
     "text": "Adding interactivity via sliders\n\nDefine a slider that controls the number of samples from 1:500\nDefine a second slider that adds a constant offset to all values of the simulation simulation\nmake sure to fix the x/y-limits to get a nice looking plot :-)\n\n\n\n\n\n\n\nBonus: Advanced slider management\n\n\n\n\n\nAfter understanding the slightly awkward syntax, the following gives a nice collection of Sliders, Checkboxes, Widgets etc. with at the same time being drag-and-dropable and in a sidebar. Neat!\nusing PlutoExtras\n\nPlutoExtras.BondTable([\n    PlutoExtras.@BondsList \"Sliders\" let \n        \"name A\" = @bind(varA,PlutoUI.Slider(1:500))\n        \"name B\" = @bind(varB, PlutoUI.Slider(-5:5))\n    end\n    ])"
   },
   {
+    "objectID": "material/3_wed/vis/tasks.html#vs.",
+    "href": "material/3_wed/vis/tasks.html#vs.",
+    "title": "Setting up Pluto.jl",
+    "section": "🥚 vs. 🗓",
+    "text": "🥚 vs. 🗓\nVisualize the number of eggs against the year\n\n\n\n\n\n\nTip\n\n\n\nTo get a first overview, first(df) , describe(df) and names(df) are typically helpful"
+  },
+  {
+    "objectID": "material/3_wed/vis/tasks.html#split-them-up",
+    "href": "material/3_wed/vis/tasks.html#split-them-up",
+    "title": "Setting up Pluto.jl",
+    "section": "Split them up",
+    "text": "Split them up\nNext split them up, choose color and col and choose reasonable columns from the dataset"
+  },
+  {
+    "objectID": "material/3_wed/vis/tasks.html#rotate-the-labels",
+    "href": "material/3_wed/vis/tasks.html#rotate-the-labels",
+    "title": "Setting up Pluto.jl",
+    "section": "Rotate the labels",
+    "text": "Rotate the labels\nUse the trick from the handout to modify a plot after it was generated: Rotate the x-label ticks by some 30°\n:::callout-tip instead of rotating each axis manually, you can also replace the draw command in your pipeline with an anonymous function. This allows you to specify additional arguments e.g. to the axis, for all “sub”-plots\n1... |&gt; x-&gt; draw(x;axis=(;xlims = (-3,2)))\n\n1\n\nNote the ; before xlims, this enforces that a NamedTuple is created"
+  },
+  {
     "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#most-important-link",
     "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#most-important-link",
     "title": "Research Software Engineering Summer School",
@@ -249,7 +270,7 @@
     "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#structure-of-the-summer-school",
     "title": "Research Software Engineering Summer School",
     "section": "Structure of the summer school",
-    "text": "Structure of the summer school\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
+    "text": "Structure of the summer school\n\nCheck out the schedule\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#your-teaching-staff-i",
@@ -291,7 +312,7 @@
     "href": "material/1_mon/rse/rse_basics_slides.html",
     "title": "Introduction to the Research Software Engineering Summerschol",
     "section": "",
-    "text": "www.simtech-summerschool.de\nFind all slides, all materials, and the schedule\n(link to presentation)\n\n\n\n\n\n\n\n\n\n\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)\n\n\n\n\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
+    "text": "www.simtech-summerschool.de\nFind all slides, all materials, and the schedule\n(link to presentation)\n\n\n\n\n\n\n\n\n\n\n\nCheck out the schedule\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)\n\n\n\n\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
@@ -305,7 +326,7 @@
     "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
     "title": "Introduction to the Research Software Engineering Summerschol",
     "section": "",
-    "text": "Check out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
+    "text": "Check out the schedule\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
@@ -746,7 +767,7 @@
     "href": "material/1_mon/firststeps/firststeps_handout.html#syntax-differences-pythonrmatlab",
     "title": "First Steps",
     "section": "Syntax differences Python/R/MatLab",
-    "text": "Syntax differences Python/R/MatLab\n\nIn the beginning there was nothing\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN.\n\n\nControl Structures\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets.\nPython User? We don’t need no intendation, and we also have 1-index.\n1myarray = zeros(6)\n2for k = 1:length(myarray)\n    if iseven(k)\n3        myarray[k] = sum(myarray[1:k])\n    elseif k == 5\n41        myarray = myarray .- 1\n    else \n        myarray[k] = 5\n5    end\nend\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\nFunctions\n1function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n    if keyword1 == \"defaultkeyword\"\n        c = a+b\n    else\n        c = a*b\n    end\n    return c\nend\n2methods(myfunction)\nmyfunction(0)\nmyfunction(1;keyword1 = \"notdefault\")\nmyfunction(0,5)\nmyfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nList all methods with that function name - returns two functions, due to the b=123 optional positional argument\n\n\n\n\n\n\n\n\nTip\n\n\n\nTerminology function vs. method: Methods are instantiations of an abstract function\n\n\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\nmyfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)\n\nExcourse: splatting & slurping\nThink of it as unpacking / collecting something\na = [1,2,3]\n+(a)\n1+(a...)\n\n1\n\nequivalent to +(1,2,3)\n\n\n\n\nelementwise-function / broadcasting\nJulia is very neat in regards of applying functions elementwise (also called broadcasting).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of a Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (Matlab, Python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though).\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in Python/Matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
+    "text": "Syntax differences Python/R/MatLab\n\nControl Structures\nMatlab User? Syntax will be very familiar.\nR User? Forget about all the {} brackets.\nPython User? We don’t need no intendation, and we also have 1-index.\n1myarray = zeros(6)\n2for k = 1:length(myarray)\n    if iseven(k)\n3        myarray[k] = sum(myarray[1:k])\n    elseif k == 5\n41        myarray = myarray .- 1\n    else \n        myarray[k] = 5\n5    end\nend\n\n1\n\ninitialize a vector (check with typeof(myArray))\n\n2\n\nControl-Structure for-loop. 1-index!\n\n3\n\nMatLab: Notice the [ brackets to index Arrays!\n\n4\n\nPython/R: . always means elementwise\n\n5\n\nPython/R: end after each control sequence\n\n\n\n\nFunctions\n1function myfunction(a,b=123;keyword1=\"defaultkeyword\")\n    if keyword1 == \"defaultkeyword\"\n        c = a+b\n    else\n        c = a*b\n    end\n    return c\nend\n2methods(myfunction)\nmyfunction(0)\nmyfunction(1;keyword1 = \"notdefault\")\nmyfunction(0,5)\nmyfunction(0,5;keyword1 = \"notdefault\")\n\n1\n\neverything before the ; =&gt; positional, after =&gt; kwargs\n\n2\n\nList all methods with that function name - returns two functions, due to the b=123 optional positional argument\n\n\n\n\n\n\n\n\nTip\n\n\n\nTerminology function vs. method: Methods are instantiations of an abstract function\n\n\n anonym = (x,y) -&gt; x+y\n anonym(3,4)\nmyshortfunction(x) = x^2\nfunction mylongfunction(x)\n    return x^2\nend\nmyfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)\n\n\nIn the beginning there was nothing\nnothing- but also NaN and also Missing.\nEach of those has a specific purpose, but most likely we will only need a = nothing and b = NaN.\nNote that NaN counts as a Float-Number, whereas nothing & missing does not.\n\nExcourse: splatting & slurping\nThink of it as unpacking / collecting something\na = [1,2,3]\n+(a)\n1+(a...)\n\n1\n\nequivalent to +(1,2,3)\n\n\n\n\nelementwise-function / broadcasting\nJulia is very neat in regards of applying functions elementwise (also called broadcasting).\n    a = [1,2,3,4]\n1    b = sqrt(a)\n2    c = sqrt.(a)\n\n1\n\nError - there is no method defined for the sqrt of a Vector\n\n2\n\nthe small . applies the function to all elements of the container a - this works as “expected”\n\n\n\n\n\n\n\n\nImportant\n\n\n\nBroadcasting is very powerful, as Julia can get a huge performance boost in chaining many operations, without requiring saving temporary arrays. For example:\n    a = [1,2,3,4,5]\n    b = [6,7,8,9,10]\n\n    c = (a.^2 .+ sqrt.(a) .+ log.(a.*b))./5\nIn many languages (Matlab, Python, R) you would need to do the following:\n1. temp1 = a.*b\n2. temp2 = log.(temp1)\n3. temp3 = a.^2\n4. temp4 = sqrt.(a)\n5. temp5 = temp3 .+ temp4\n6. temp6 = temp5 + temp2\n7. output = temp6./5\nThus, we need to allocate ~7x the memory of the vector (not at the same time though).\nIn Julia, the elementwise code above rather translates to:\n1    c = similar(a)\n    for k = 1:length(a)\n        c[k] = (a[k]^2 + sqrt(a[k]) + log(a[k]*b[k]))/5\n    end\n\n1\n\nFunction to initialize an undef array with the same size as a\n\n\nThe temp memory we need at each iteration is simply c[k]. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g. to do sum, or + or whatever. Those are typically the inbuilt C functions in Python/Matlab/R, that really speed up things. In Julia we do not need inbuilt functions for speed."
   },
   {
     "objectID": "material/1_mon/firststeps/firststeps_handout.html#linear-algebra",
@@ -893,14 +914,14 @@
     "href": "material/3_wed/vis/handout.html#algebraofgraphics.jl",
     "title": "Makie.jl",
     "section": "AlgebraOfGraphics.jl",
-    "text": "AlgebraOfGraphics.jl\n\nLoading data\nusing GLMakie # backend\nusing AlgebraOfGraphics\nusing PalmerPenguins, DataFrames  # example dataset\n\npenguins = dropmissing(DataFrame(PalmerPenguins.load()))\nfirst(penguins, 6)\n\n\n\n\n\n\nNote\n\n\n\nA tidy dataframe is a dataframe that follows these three rules:\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value.\n\nTidy data make your visualization life much easier as you will see!\n\n\n\n\nAoG basics\ndata * mapping * visual\n  vis_pen = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * visual(Scatter) \n  draw(vis_pen)\n\n\nAdding color\nvis_pencolor = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color = :species) * visual(Scatter)\ndraw(vis_pencolor)\nBut that is a bit redundant, you can shortcut this, by reusing existing mappings / inputs:\nvis_pencolor2 = vis_pen * mapping(color=:species)\ndraw(vis_pencolor2)\n\n\nWhy AlgebraOfGraphics?\nFollows some algebraic rules of multiplying out sums\ndata * mapping * (visual(Scatter)+visual(Lines))\n\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * (visual(Scatter)+visual(Lines)) |&gt; draw\n\n\nFaceting\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex) |&gt; draw\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex,row=:body_mass_g =&gt; x-&gt; x&gt;3500) |&gt; draw\n\n\nLinear & Non-linear summaries\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (linear() + visual(Scatter)) |&gt; draw\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |&gt; draw"
+    "text": "AlgebraOfGraphics.jl\n\nLoading data\nusing GLMakie # backend\nusing AlgebraOfGraphics\nusing PalmerPenguins, DataFrames  # example dataset\n\npenguins = dropmissing(DataFrame(PalmerPenguins.load()))\nfirst(penguins, 6)\n\n\n\n\n\n\nNote\n\n\n\nA tidy dataframe is a dataframe that follows these three rules:\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value.\n\nTidy data make your visualization life much easier as you will see!\n\n\n\n\nAoG basics\ndata * mapping * visual\n  vis_pen = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * visual(Scatter) \n  draw(vis_pen)\n\n\nAdding color\nvis_pencolor = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color = :species) * visual(Scatter)\ndraw(vis_pencolor)\nBut that is a bit redundant, you can shortcut this, by reusing existing mappings / inputs:\nvis_pencolor2 = vis_pen * mapping(color=:species)\ndraw(vis_pencolor2)\n\n\nWhy AlgebraOfGraphics?\nFollows some algebraic rules of multiplying out sums\ndata * mapping * (visual(Scatter)+visual(Lines))\n\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm) * (visual(Scatter)+visual(Lines)) |&gt; draw\n\n\nFaceting\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex) |&gt; draw\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm)  * mapping(color = :species, col = :sex,row=:body_mass_g =&gt; x-&gt; x&gt;3500) |&gt; draw\n\n\nLinear & Non-linear summaries\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (linear() + visual(Scatter)) |&gt; draw\ndata(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |&gt; draw\n\n\nAdvanced\nh = data(penguins) * mapping(:bill_length_mm, :bill_depth_mm, color=:species) * (smooth() + visual(Scatter)) |&gt; draw\nh.grid\nax = h.grid[1,1].axis\nax + tab -&gt; ax.xticks\nh"
   },
   {
     "objectID": "material/3_wed/vis/handout.html#task-3",
     "href": "material/3_wed/vis/handout.html#task-3",
     "title": "Makie.jl",
     "section": "Task 3",
-    "text": "Task 3\nClick here for the next task"
+    "text": "Task 3\nClick here for the next task\ndf = CSV.read(download(“https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv”),DataFrame)"
   },
   {
     "objectID": "material/3_wed/vis/handout.html#footnotes",
@@ -945,25 +966,18 @@
     "text": "Classical linear model\n\\[\n\\mathbf{y} = \\mathbf{X} \\beta + \\varepsilon\n\\]\nimplies that \\[ \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathcal{N}(\\mathbf{X} \\mathbf{\\beta}, \\sigma^2\\mathbf{I}).\\]\nIn particular, the conditional expectation satisfies \\(\\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\mathbf{X} \\beta\\).\nHowever, the assumption of a normal distribution is unrealistic for non-continuous data. Popular alternatives include:\n\nfor counting data: \\[\n   \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathrm{Poisson}(\\exp(\\mathbf{X}\\mathbf{\\beta})) \\qquad \\leadsto  \\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\exp(\\mathbf{X} \\beta)\n  \\]\nHere, the components are considered to be independent and the exponential function is applied componentwise.\nfor binary data: \\[\n   \\mathbf{y} \\mid \\mathbf{X} \\sim \\mathrm{Bernoulli}\\left( \\frac{\\exp(\\mathbf{X}\\mathbf{\\beta})}{1 + \\exp(\\mathbf{X}\\mathbf{\\beta})} \\right) \\qquad \\leadsto  \\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = \\frac{\\exp(\\mathbf{X}\\mathbf{\\beta})}{1 + \\exp(\\mathbf{X}\\mathbf{\\beta})}\n  \\]\nAgain, the components are considered to be independent and all the operations are applied componentwise.\n\nAll these models are defined by the choice of a family of distributions and a function \\(g\\) (the so-called link function) such that\n\\[\n\\mathbb{E}(\\mathbf{y} \\mid \\mathbf{X}) = g^{-1}(\\mathbf{X} \\beta).\n\\]\nFor the models above, these are:\n\n\n\n\n\n\n\n\nType of Data\nDistribution Family\nLink Function\n\n\n\n\ncontinuous\nNormal\nidentity:\n\\[\ng(x)=x\n\\]\n\n\ncount\nPoisson\nlog:\n\\[\ng(x) = \\log(x)\n\\]\n\n\nbinary\nBernoulli\nlogit:\n\\[\ng(x) = \\log\\left\n(\n\\frac{x}{1-x}\\right)\n\\]\n\n\n\nIn general, the parameter vector \\(\\beta\\) is estimated via maximizing the likelihood, i.e.,\n\\[\n\\hat \\beta = \\mathrm{argmax} \\prod_{i=1}^n f(y_i \\mid \\mathbf{X}_{\\cdot i}),\n\\]\nwhich is equivalent to the maximization of the log-likelihood, i.e.,\n\\[\n\\hat \\beta = \\mathrm{argmax} \\sum_{i=1}^n \\log f(y_i \\mid \\mathbf{X}_{\\cdot i}),\n\\]\nIn the Gaussian case, the maximum likelihood estimator is identical to the least squares estimator considered above.\n[[ Example in Julia: maybe SwissLabor ]]\nTask 3: Reproduce the results of our data analysis of the tree data set using a generalized linear model with normal distribution family."
   },
   {
-    "objectID": "material/3_wed/linalg/slides.html",
-    "href": "material/3_wed/linalg/slides.html",
-    "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
-  },
-  {
     "objectID": "material/3_wed/linalg/slides.html#slides",
     "href": "material/3_wed/linalg/slides.html#slides",
     "title": "Research Software Engineering Summer School",
-    "section": "",
-    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
+    "section": "Slides",
+    "text": "Slides\nThe slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
   },
   {
     "objectID": "material/3_wed/linalg/slides.html#exercise",
     "href": "material/3_wed/linalg/slides.html#exercise",
     "title": "Research Software Engineering Summer School",
     "section": "Exercise",
-    "text": "Exercise\nThe exercise is available as a jupyter-notebook here."
+    "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
     "objectID": "material/3_wed/docs/tasks.html",

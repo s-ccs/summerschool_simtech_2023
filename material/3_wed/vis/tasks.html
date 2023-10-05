@@ -326,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/3_wed/regression/missing.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/regression/MultipleRegressionBasics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Multiple Regression</span></a>
   </div>
 </li>
@@ -414,7 +414,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#adding-interactivity-via-sliders" id="toc-adding-interactivity-via-sliders" class="nav-link" data-scroll-target="#adding-interactivity-via-sliders">Adding interactivity via sliders</a></li>
   </ul></li>
-  <li><a href="#task-3-algebraofgraphics" id="toc-task-3-algebraofgraphics" class="nav-link" data-scroll-target="#task-3-algebraofgraphics">Task 3: AlgebraOfGraphics</a></li>
+  <li><a href="#task-3-algebraofgraphics" id="toc-task-3-algebraofgraphics" class="nav-link" data-scroll-target="#task-3-algebraofgraphics">Task 3: AlgebraOfGraphics</a>
+  <ul class="collapse">
+  <li><a href="#vs." id="toc-vs." class="nav-link" data-scroll-target="#vs.">🥚 vs.&nbsp;🗓</a></li>
+  <li><a href="#split-them-up" id="toc-split-them-up" class="nav-link" data-scroll-target="#split-them-up">Split them up</a></li>
+  <li><a href="#rotate-the-labels" id="toc-rotate-the-labels" class="nav-link" data-scroll-target="#rotate-the-labels">Rotate the labels</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -649,8 +654,59 @@ Bonus: Advanced slider management
 </section>
 <section id="task-3-algebraofgraphics" class="level1">
 <h1>Task 3: AlgebraOfGraphics</h1>
+<p>For this task we need a dataset, and I choose the US EGG dataset for it’s simplicity for you.</p>
+<p>to load the data, use the following code</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span>, <span class="bu">HTTP</span>, <span class="bu">CSV</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset via https://github.com/rfordatascience/tidytuesday/tree/master</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="fu">download</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv"</span>),DataFrame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+If you dislike Pluto.jl
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you dont like to use Pluto.jl, you can of course switch back to VSCode. Then you have to create a new environment and add the packages you use before.</p>
+</div>
+</div>
+<section id="vs." class="level2">
+<h2 class="anchored" data-anchor-id="vs.">🥚 vs.&nbsp;🗓</h2>
+<p>Visualize the number of eggs against the year</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To get a first overview, <code>first(df)</code> , <code>describe(df)</code> and <code>names(df)</code> are typically helpful</p>
+</div>
+</div>
+</section>
+<section id="split-them-up" class="level2">
+<h2 class="anchored" data-anchor-id="split-them-up">Split them up</h2>
+<p>Next split them up, choose <code>color</code> and <code>col</code> and choose reasonable columns from the dataset</p>
+</section>
+<section id="rotate-the-labels" class="level2">
+<h2 class="anchored" data-anchor-id="rotate-the-labels">Rotate the labels</h2>
+<p>Use the trick from the handout to modify a plot after it was generated: Rotate the x-label ticks by some 30°</p>
+<p>:::callout-tip instead of rotating each axis manually, you can also replace the <code>draw</code> command in your pipeline with an anonymous function. This allows you to specify additional arguments e.g.&nbsp;to the axis, for all “sub”-plots</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode julia code-annotation-code code-with-copy code-annotated"><code class="sourceCode julia"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span> <span class="op">|&gt;</span> x<span class="op">-&gt;</span> <span class="fu">draw</span>(x;axis<span class="op">=</span>(;xlims <span class="op">=</span> (<span class="op">-</span><span class="fl">3</span>,<span class="fl">2</span>)))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="1">Note the <code>;</code> before xlims, this enforces that a <code>NamedTuple</code> is created</span>
+</dd>
+</dl>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

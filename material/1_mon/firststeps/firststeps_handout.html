@@ -328,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/3_wed/regression/missing.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/regression/MultipleRegressionBasics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Multiple Regression</span></a>
   </div>
 </li>
@@ -399,9 +399,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
   <li><a href="#syntax-differences-pythonrmatlab" id="toc-syntax-differences-pythonrmatlab" class="nav-link" data-scroll-target="#syntax-differences-pythonrmatlab">Syntax differences Python/R/MatLab</a>
   <ul class="collapse">
-  <li><a href="#in-the-beginning-there-was-nothing" id="toc-in-the-beginning-there-was-nothing" class="nav-link" data-scroll-target="#in-the-beginning-there-was-nothing">In the beginning there was <code>nothing</code></a></li>
   <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control Structures</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#in-the-beginning-there-was-nothing" id="toc-in-the-beginning-there-was-nothing" class="nav-link" data-scroll-target="#in-the-beginning-there-was-nothing">In the beginning there was <code>nothing</code></a></li>
   </ul></li>
   <li><a href="#linear-algebra" id="toc-linear-algebra" class="nav-link" data-scroll-target="#linear-algebra">Linear Algebra</a></li>
   <li><a href="#style-conventions" id="toc-style-conventions" class="nav-link" data-scroll-target="#style-conventions">Style-conventions</a></li>
@@ -483,11 +483,6 @@ Tip
 </section>
 <section id="syntax-differences-pythonrmatlab" class="level2">
 <h2 class="anchored" data-anchor-id="syntax-differences-pythonrmatlab">Syntax differences Python/R/MatLab</h2>
-<section id="in-the-beginning-there-was-nothing" class="level3">
-<h3 class="anchored" data-anchor-id="in-the-beginning-there-was-nothing">In the beginning there was <code>nothing</code></h3>
-<p><code>nothing</code>- but also <code>NaN</code> and also <code>Missing</code>.</p>
-<p>Each of those has a specific purpose, but most likely we will only need <code>a = nothing</code> and <code>b = NaN</code>.</p>
-</section>
 <section id="control-structures" class="level3">
 <h3 class="anchored" data-anchor-id="control-structures">Control Structures</h3>
 <p><strong>Matlab User?</strong> Syntax will be <em>very</em> familiar.</p>
@@ -506,23 +501,23 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">initialize a vector (check with <code>typeof(myArray)</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="2">Control-Structure for-loop. 1-index!</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Control-Structure for-loop. 1-index!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="4"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="3"><strong>MatLab</strong>: Notice the <code>[</code> brackets to index Arrays!</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="6"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="6" data-code-annotation="4"><strong>Python/R</strong>: <code>.</code> always means elementwise</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="5" data-code-lines="9"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="5"><strong>Python/R</strong>: <code>end</code> after each control sequence</span>
 </dd>
 </dl>
 </section>
@@ -544,11 +539,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">everything before the <code>;</code> =&gt; positional, after =&gt; <code>kwargs</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="9">List all methods with that function name - returns two functions, due to the <code>b=123</code> optional positional argument</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="9" data-code-annotation="2">List all methods with that function name - returns two functions, due to the <code>b=123</code> optional positional argument</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -571,6 +566,12 @@ Tip
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>(args<span class="op">...</span>;kwargs<span class="op">...</span>) <span class="op">=</span> <span class="fu">myotherfunction</span>(newarg,args<span class="op">...</span>;kwargs<span class="op">...</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="in-the-beginning-there-was-nothing" class="level3">
+<h3 class="anchored" data-anchor-id="in-the-beginning-there-was-nothing">In the beginning there was <code>nothing</code></h3>
+<p><code>nothing</code>- but also <code>NaN</code> and also <code>Missing</code>.</p>
+<p>Each of those has a specific purpose, but most likely we will only need <code>a = nothing</code> and <code>b = NaN</code>.</p>
+<p>Note that <code>NaN</code> counts as a Float-Number, whereas nothing &amp; missing does not.</p>
 <section id="excourse-splatting-slurping" class="level4">
 <h4 class="anchored" data-anchor-id="excourse-splatting-slurping">Excourse: splatting &amp; slurping</h4>
 <p>Think of it as unpacking / collecting something</p>
@@ -580,7 +581,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-annotation="1" data-code-lines="3">equivalent to <code>+(1,2,3)</code></span>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="1">equivalent to <code>+(1,2,3)</code></span>
 </dd>
 </dl>
 </section>
@@ -593,11 +594,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="2">Error - there is no method defined for the <code>sqrt</code> of a <code>Vector</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1">Error - there is no method defined for the <code>sqrt</code> of a <code>Vector</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="3">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="2">the small <code>.</code> applies the function to all elements of the container <code>a</code> - this works as “expected”</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -632,7 +633,7 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Function to initialize an <code>undef</code> array with the same size as <code>a</code></span>
 </dd>
 </dl>
 <p>The <code>temp</code> memory we need at each iteration is simply <code>c[k]</code>. And a nice sideeffect: By doing this, we get rid of any specialized “serialized” function, e.g.&nbsp;to do sum, or + or whatever. Those are typically the inbuilt <code>C</code> functions in Python/Matlab/R, that really speed up things. In Julia <strong>we do not need inbuilt functions for speed</strong>.</p>
@@ -649,11 +650,11 @@ Important
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="1" data-code-lines="1">Requires to write <code>LinearAlgebra.QR(...)</code> to access a function</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Requires to write <code>LinearAlgebra.QR(...)</code> to access a function</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="2" data-code-lines="3"><code>LinearAlgebra</code> is a <code>Base</code> package, and always available</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2"><code>LinearAlgebra</code> is a <code>Base</code> package, and always available</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -675,11 +676,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="1" data-code-lines="1">equivalent to <code>Array</code>, as <code>Matrix</code> is a convenience type-alias for <code>Array</code> with 2 dimensions. Same thing for <code>Vector</code>.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">equivalent to <code>Array</code>, as <code>Matrix</code> is a convenience type-alias for <code>Array</code> with 2 dimensions. Same thing for <code>Vector</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="2" data-code-lines="2">the <code>2</code> of <code>{Float64,2}</code> is not mandatory</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">the <code>2</code> of <code>{Float64,2}</code> is not mandatory</span>
 </dd>
 </dl>
 <p>Much more on Wednesday in the lecture <code>LinearAlgebra</code>!</p>
@@ -726,7 +727,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="1" data-code-lines="3">returns <code>c</code></span>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="1">returns <code>c</code></span>
 </dd>
 </dl>
 <section id="characters" class="level3">
@@ -737,15 +738,15 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="1" data-code-lines="1">a <code>StepRange</code> between characters</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">a <code>StepRange</code> between characters</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="2" data-code-lines="2">a <code>Array{Chars}</code></span>
+<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2">a <code>Array{Chars}</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="3" data-code-lines="3">a <code>String</code></span>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="3">a <code>String</code></span>
 </dd>
 </dl>
 </section>
@@ -757,7 +758,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="3">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="1">Indeed, <code>*</code> and not <code>+</code> - as plus implies from algebra that <code>a+b == b+a</code> which obviously is not true for string concatenation. But <code>a*b !== b*a</code> - at least for matrices.</span>
 </dd>
 </dl>
 </section>
@@ -776,11 +777,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="1" data-code-lines="2">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1">Returns <code>true</code>. Note the small <code>r</code> before the <code>r"regular expression"</code> - nifty!</span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="2" data-code-lines="3">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2">Returns a <code>::RegexMatch</code> - access via <code>m.match</code> &amp; <code>m.offset</code> (index) - or <code>m.captures</code> / <code>m.offsets</code> if you defined capture-groups</span>
 </dd>
 </dl>
 </section>
@@ -800,7 +801,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="5">a = 0! - in a script; but a = 1 in the REPL!</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="1">a = 0! - in a script; but a = 1 in the REPL!</span>
 </dd>
 </dl>
 <p>Variables are in global scope in the REPL for debugging convenience</p>
@@ -827,7 +828,7 @@ Tip
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="6,9">returns 1 now in both REPL and include(“myscript.jl”)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="6,9" data-code-annotation="1">returns 1 now in both REPL and include(“myscript.jl”)</span>
 </dd>
 </dl>
 </div>
@@ -848,11 +849,11 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="1" data-code-lines="10">a = 0</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="10" data-code-annotation="1">a = 0</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="2" data-code-lines="11">b = 1</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="11" data-code-annotation="2">b = 1</span>
 </dd>
 </dl>
 </section>
@@ -867,7 +868,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-annotation="1" data-code-lines="6">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="6" data-code-annotation="1">This works “correctly” in the <code>REPL</code> as well as in a script, because we modify the content of <code>a</code>, not <code>a</code> itself</span>
 </dd>
 </dl>
 </section>
@@ -944,7 +945,7 @@ Click me for even more types!
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-annotation="1" data-code-lines="17">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="17" data-code-annotation="1">in case not all fields are directly defined, we can provide an outer constructor (there are also inner constructors, but we will not discuss them here)</span>
 </dd>
 </dl>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -981,7 +982,7 @@ Warning
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-annotation="1" data-code-lines="3">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="3" data-code-annotation="1">This makes the <code>SimulationResults</code> type immediately available after running <code>using MyStatsPackage</code>. To use the other “internal” functions, one would use <code>MyStatsPackage.rse_sum</code>.</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> <span class="bu">MyStatsPackage</span></span>

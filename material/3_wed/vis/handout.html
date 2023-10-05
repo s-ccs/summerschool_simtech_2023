@@ -328,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/3_wed/regression/missing.jl" class="sidebar-item-text sidebar-link">
+  <a href="../../../material/3_wed/regression/MultipleRegressionBasics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 4 - Multiple Regression</span></a>
   </div>
 </li>
@@ -420,6 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#why-algebraofgraphics" id="toc-why-algebraofgraphics" class="nav-link" data-scroll-target="#why-algebraofgraphics">Why <code>Algebra</code>OfGraphics?</a></li>
   <li><a href="#faceting" id="toc-faceting" class="nav-link" data-scroll-target="#faceting">Faceting</a></li>
   <li><a href="#linear-non-linear-summaries" id="toc-linear-non-linear-summaries" class="nav-link" data-scroll-target="#linear-non-linear-summaries">Linear &amp; Non-linear summaries</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">Advanced</a></li>
   </ul></li>
   <li><a href="#task-3" id="toc-task-3" class="nav-link" data-scroll-target="#task-3">Task 3</a></li>
   </ul></li>
@@ -561,7 +562,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="1"><code>@lift</code> does the heavy lifting (hrhr) here. It adds a listener to <code>obs_ix</code>, whenever that value is changed, the value of the output of <code>@lift</code> is changed as well ## Task 2: Interactivity <a href="../../../material/3_wed/vis/tasks.html#2">Click here for the next task</a></span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="5"><code>@lift</code> does the heavy lifting (hrhr) here. It adds a listener to <code>obs_ix</code>, whenever that value is changed, the value of the output of <code>@lift</code> is changed as well ## Task 2: Interactivity <a href="../../../material/3_wed/vis/tasks.html#2">Click here for the next task</a></span>
 </dd>
 </dl>
 </section>
@@ -636,10 +637,19 @@ Note
 <div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color<span class="op">=:</span>species) <span class="op">*</span> (<span class="fu">linear</span>() <span class="op">+</span> <span class="fu">visual</span>(Scatter)) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color<span class="op">=:</span>species) <span class="op">*</span> (<span class="fu">smooth</span>() <span class="op">+</span> <span class="fu">visual</span>(Scatter)) <span class="op">|&gt;</span> draw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="advanced" class="level3">
+<h3 class="anchored" data-anchor-id="advanced">Advanced</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fu">data</span>(penguins) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>bill_length_mm, <span class="op">:</span>bill_depth_mm, color<span class="op">=:</span>species) <span class="op">*</span> (<span class="fu">smooth</span>() <span class="op">+</span> <span class="fu">visual</span>(Scatter)) <span class="op">|&gt;</span> draw</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>h.grid</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> h.grid[<span class="fl">1</span>,<span class="fl">1</span>].axis</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">+</span> tab <span class="op">-&gt;</span> ax.xticks</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="task-3" class="level2">
 <h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
 <p><a href="../../../material/3_wed/vis/tasks.html#3">Click here for the next task</a></p>
+<p>df = CSV.read(download(“https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv”),DataFrame)</p>
 
 
 </section>
