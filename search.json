@@ -142,9 +142,23 @@
   {
     "objectID": "material/3_wed/docs/handout.html",
     "href": "material/3_wed/docs/handout.html",
-    "title": "Documenter.jl",
+    "title": "PkgTemplate.jl",
     "section": "",
-    "text": "Link to Slides\n\n\n\n\nDocumenter.jl\n\nFile-structure overview\nExample/\n├── Project.toml\n├── README.md\n├── LICENSE.md\n├── src\n│   ├── Example.jl\n│   └── utilities.jl\n└── docs\n    ├── Project.toml\n    ├── src\n    │   ├── assets\n    │   │   ├── favicon.ico\n    │   │   └── logo.svg\n    │   ├── index.md\n    │   └── showcase.md\n    └── make.jl\n\n\nThe make.jl file\nusing Documenter, Example\nmakedocs(\n    sitename = \"Example.jl\",\n    modules = [Example],\n    pages = Any[\n        \"Home\" =&gt; \"index.md\",\n        \"Showcase\" =&gt; \"showcase.md\",\n    ],\n)\n\n\nHow to generate\njulia --project=docs/ docs/make.jl or ]activate docs/; include(\"make.jl\") or use LiveServer.jl\n\n\nHow to write\n# Normal Markdown is great\nAlso write lots of text\n\n```@example Main\na = 1\n    ```\n\nMore text!\n\n```@example Main\nb = a\n    ```\n\n\n```@example NewScope\na = 3 # a new a appears!\n    ```\n \n\n\n\nBonus: Literate.jl\nUsing Literate.jl one does not need to write .md files - but rather can use .jl files that are translated to .md files.\n# # This is markdown headline\n# This is normal markdown code\n1 ==1\n\n# Be careful in forloops with comments, Literate\n## this is a comment\n\n\nPkgTemplate.jl\n]activate --temp\n]add PkgTemplates\nusing PkgTemplates\ntpl = Template(user=\"yourGithubUser\",\n            dir=\"./PkgTemplate\", # the new package will appear in this folder\n            plugins=[GitHubActions(;extra_versions=[\"nightly\"]),Documenter{GitHubActions}()])\ntpl(\"MyStatisticsPackage\") # created in ./PkgTemplate/MyStatisticsPackage/Project.toml\nThis will create the Project+Git, but also setup github-actions / ContinuousIntegration with tests and docs.\nYou still need to go to github.com (or use gh repo create with the gh-command line interface) and create an not-initialized / empty repository with the same name (but .jl added), and run\ngit remote add origin https://github.com/behinger/MyStatisticsPackage.jl\ngit push -u origin main\nFinally, to activate documentation being deployed, you need to go to your Github-Repo, go to Settings, Pages and select the gh_page branch to be deployed.\n\n\n\n\n\n\nTip\n\n\n\nYou can also run the PkgTemplate interactively using\n  Template(interactive=true)(\"MyPkg\")\nWhich will ask you a hundred million questions ;-)"
+    "text": "Link to Slides"
+  },
+  {
+    "objectID": "material/3_wed/docs/handout.html#task-1",
+    "href": "material/3_wed/docs/handout.html#task-1",
+    "title": "PkgTemplate.jl",
+    "section": "Task 1",
+    "text": "Task 1\nSolve task 1\n\n\n\n# Documenter.jl\n\n\n### File-structure overview\n\n\nExample/ ├── Project.toml ├── README.md ├── LICENSE.md ├── src │   ├── Example.jl │   └── utilities.jl └── docs ├── Project.toml ├── src │   ├── assets │   │   ├── favicon.ico │   │   └── logo.svg │   ├── index.md │   └── showcase.md └── make.jl\n\n\n### The make.jl file\n\n\n### How to generate julia --project=docs/ docs/make.jl or ]activate docs/; include(\"make.jl\") or use LiveServer.jl\n\n\n### How to write\n\n\n```julia # Normal Markdown is great Also write lots of text\n\n\n@example Main a = 1\n\n\nMore text!\n\n\n@example Main b = a\n\n\n@example NewScope a = 3 # a new a appears!\n\n\n```\n\n\n# Bonus: Literate.jl Using Literate.jl one does not need to write .md files - but rather can use .jl files that are translated to .md files.\n\n\n```julia # # This is markdown headline # This is normal markdown code 1 ==1\n\n\n# Be careful in forloops with comments, Literate ## this is a comment ```\n\n\n## Task 2\n\n\nSolve task 2"
+  },
+  {
+    "objectID": "material/3_wed/docs/handout.html#task-3",
+    "href": "material/3_wed/docs/handout.html#task-3",
+    "title": "PkgTemplate.jl",
+    "section": "Task 3",
+    "text": "Task 3\nSolve task 3"
   },
   {
     "objectID": "material/3_wed/linalg/Julia_Matrices_Optimization_JuMP_Stuttgart2023.html",
@@ -217,58 +231,114 @@
     "text": "Adding interactivity via sliders\n\nDefine a slider that controls the number of samples from 1:500\nDefine a second slider that adds a constant offset to all values of the simulation simulation\nmake sure to fix the x/y-limits to get a nice looking plot :-)\n\n\n\n\n\n\n\nBonus: Advanced slider management\n\n\n\n\n\nAfter understanding the slightly awkward syntax, the following gives a nice collection of Sliders, Checkboxes, Widgets etc. with at the same time being drag-and-dropable and in a sidebar. Neat!\nusing PlutoExtras\n\nPlutoExtras.BondTable([\n    PlutoExtras.@BondsList \"Sliders\" let \n        \"name A\" = @bind(varA,PlutoUI.Slider(1:500))\n        \"name B\" = @bind(varB, PlutoUI.Slider(-5:5))\n    end\n    ])"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
-    "href": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#most-important-link",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#most-important-link",
     "title": "Research Software Engineering Summer School",
     "section": "Most important link",
-    "text": "Most important link\nwww.simtech-summerschool.de\nFind all slides, all materials, and the schedule"
+    "text": "Most important link\nwww.simtech-summerschool.de\nFind all slides, all materials, and the schedule\n(link to presentation)"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
-    "href": "material/1_mon/rse/rse_basics_slides.html#last-minute-organization-issues",
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#last-minute-organization-issues",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#last-minute-organization-issues",
     "title": "Research Software Engineering Summer School",
     "section": "Last minute organization issues",
     "text": "Last minute organization issues"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
-    "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#structure-of-the-summer-school",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#structure-of-the-summer-school",
     "title": "Research Software Engineering Summer School",
     "section": "Structure of the summer school",
     "text": "Structure of the summer school\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
-    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#your-teaching-staff-i",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#your-teaching-staff-i",
     "title": "Research Software Engineering Summer School",
     "section": "Your teaching staff I",
     "text": "Your teaching staff I\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine"
   },
   {
-    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
-    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#your-teaching-staff-ii",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#your-teaching-staff-ii",
     "title": "Research Software Engineering Summer School",
     "section": "Your teaching Staff II",
     "text": "Your teaching Staff II\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
   },
   {
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#starting-points",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#starting-points",
+    "title": "Research Software Engineering Summer School",
+    "section": "Starting Points",
+    "text": "Starting Points\n\nDORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#rse-movement",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#rse-movement",
+    "title": "Research Software Engineering Summer School",
+    "section": "RSE Movement",
+    "text": "RSE Movement\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#do-i-need-this-in-industry",
+    "href": "material/1_mon/rse/rse_basics_slides_revealjs.html#do-i-need-this-in-industry",
+    "title": "Research Software Engineering Summer School",
+    "section": "Do I need this in Industry?",
+    "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html",
+    "href": "material/1_mon/rse/rse_basics_slides.html",
+    "title": "Introduction to the Research Software Engineering Summerschol",
+    "section": "",
+    "text": "www.simtech-summerschool.de\nFind all slides, all materials, and the schedule\n(link to presentation)\n\n\n\n\n\n\n\n\n\n\n\nCheck out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)\n\n\n\n\n\n\n\n\n\n\nPrzemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "href": "material/1_mon/rse/rse_basics_slides.html#most-important-link",
+    "title": "Introduction to the Research Software Engineering Summerschol",
+    "section": "",
+    "text": "www.simtech-summerschool.de\nFind all slides, all materials, and the schedule\n(link to presentation)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "href": "material/1_mon/rse/rse_basics_slides.html#structure-of-the-summer-school",
+    "title": "Introduction to the Research Software Engineering Summerschol",
+    "section": "",
+    "text": "Check out the schedule\nYou will learn to use basic Julia\nIn the beginning we will focus on the Research Software Engineering part!\nAdvanced Julia, later this week and by request ;)"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-i",
+    "title": "Introduction to the Research Software Engineering Summerschol",
+    "section": "",
+    "text": "Przemysław Szufel\n\n\n\n\n\n\n\nHendrik Ranocha\n\n\n\n\n\n\n\nLisa DeBruine"
+  },
+  {
+    "objectID": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "href": "material/1_mon/rse/rse_basics_slides.html#your-teaching-staff-ii",
+    "title": "Introduction to the Research Software Engineering Summerschol",
+    "section": "",
+    "text": "Marco Oesting\n\n\n\n\n\n\n\nBenjamin Uekermann\n\n\n\n\n\n\n\nBenedikt Ehinger"
+  },
+  {
     "objectID": "material/1_mon/rse/rse_basics_slides.html#starting-points",
     "href": "material/1_mon/rse/rse_basics_slides.html#starting-points",
-    "title": "Research Software Engineering Summer School",
+    "title": "Introduction to the Research Software Engineering Summerschol",
     "section": "Starting Points",
     "text": "Starting Points\n\nDORA declaration in 2012: reshape how research impact should be assessed underlining importance of software\n\n\nFor the purposes of research assessment, consider the value and impact of all research outputs (including datasets and software) in addition to research publications …\n\n\nUK survey in 2014: 7 out of 10 researchers could not conduct research without software.\nDFG funding calls on research software sustainability in 2016 & 2019 & 2023\nNationale Forschungsdaten Infrastruktur, NFDI since 2020\nLack of careers for software developers in academia\nLack of reproducibility of research that uses software (“works for me on my machine” vs. “works for everyone everywhere”)"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
     "href": "material/1_mon/rse/rse_basics_slides.html#rse-movement",
-    "title": "Research Software Engineering Summer School",
+    "title": "Introduction to the Research Software Engineering Summerschol",
     "section": "RSE Movement",
     "text": "RSE Movement\n… academic software developers needed a name: Research Software Engineers\nUK Society of RSE:\n\nA Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.\n\n\n“Movement” started in the UK, first UK RSE conference in 2016\nFirst conferences in Germany and the Netherlands in 2019\nde-RSE position paper in 2020\nSecond Thursday of October is the International RSE Day\nWhy be an RSE? Interesting and novel projects, technical freedom, RSEs come from varied backgrounds, development for social good"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
     "href": "material/1_mon/rse/rse_basics_slides.html#do-i-need-this-in-industry",
-    "title": "Research Software Engineering Summer School",
+    "title": "Introduction to the Research Software Engineering Summerschol",
     "section": "Do I need this in Industry?",
     "text": "Do I need this in Industry?\n\nYes. Research also happens in industry.\nAll RSE things we learn (Git, packaging, CI/CD, virtualization, documentation, …) is also highly relevant for non-research software.\nCompanies use (more and more) the same workflows and tools.\n\nIt is not just about coding. It is about collaborative work.\n\nOpen-source development excellent door opener for industry.\nSome companies use open-source software and need to make contributions.\nSome companies develop their software as open-source software."
   },
@@ -894,6 +964,13 @@
     "title": "Research Software Engineering Summer School",
     "section": "Exercise",
     "text": "Exercise\nThe exercise is available as a jupyter-notebook here."
+  },
+  {
+    "objectID": "material/3_wed/docs/tasks.html",
+    "href": "material/3_wed/docs/tasks.html",
+    "title": "Task 1: Docstrings",
+    "section": "",
+    "text": "Add Docstrings to some of your functions.\nLoad the package, and check you can see the docstrings using e.g. ?rse_mean\n\n\n\nTask 2: Documenter.jl\n\nFolderstructure\n\ncreate folders/files:\n\ndocs/\n├── src/\n├── src/mydocs.jl\n└── make.jl\n\n\nadd some docs\n\nwith mydocs containing\n\n```@docs \nfunc(x)\n```\n\n\nand\nmake.jl containing\nusing Documenter, Example\n\nmakedocs(sitename=\"My Documentation\")\n\n\n3. Generate\nGenerate the docs using include(\"make.jl\") after activating the ./docs/Project.toml\n\n\n\n\n\n\nBonus-Task\n\n\n\nUse LiveServer.jl to automatically update a local preview of your documentation (follow this tutorial )\n\n\n\n\n4. Add a tutorial\nNow add a tutorial ./docs/src/tutorial.md which should contain a brief example simulating some data (using rand) and calculating mean, tstat and std on them.\nUse the makedocs(...page=) keywordargument.\n\n\n\n\nTask 3: PkgTemplate.jl\nGenerate a package MySecondStatsPackage using PkgTemplate.\n\nAdd github-actions for:\n\ncoverage\nunittests\ndocs\n\nMIT license\nREADME.md\n\n\nDon’t forget to activate the github-page in the github settings!"
   },
   {
     "objectID": "cheatsheets/ggplotAOG.html",
