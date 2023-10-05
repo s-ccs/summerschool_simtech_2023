@@ -1,5 +1,8 @@
 ---
-format: revealjs
+format: 
+    revealjs:
+        output-file: rse_basics_slides_revealjs.html
+    html: default
 ---
 
 # Introduction to the Research Software Engineering Summerschol
@@ -9,6 +12,8 @@ format: revealjs
 [www.simtech-summerschool.de](https://www.simtech-summerschool.de)
 
 Find all slides, all materials, and the schedule
+
+([link to presentation](rse_basics_slides_revealjs.html))
 
 ## Last minute organization issues
 
