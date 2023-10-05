@@ -243,4 +243,3 @@ h
 
 [Click here for the next task](tasks.qmd#3)
 
-df = CSV.read(download("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv"),DataFrame)

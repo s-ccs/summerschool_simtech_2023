@@ -4,4 +4,5 @@ The slides are available [in pptx format here](Julia_Parallel_Distributed_2023_S
 
 ## Exercise
 
-The exercise is available [as a jupyter-notebook here](Julia_Parallel_Distributed_2023_Stuttgart.ipynb). 
+The exercise is rendered [as html here](Julia_Parallel_Distributed_2023_Stuttgart.ipynb) but can also be downloaded {{< downloadthis Julia_Parallel_Distributed_2023_Stuttgart.ipynb label="Download as ipynb" >}}
+ 
