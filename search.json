@@ -452,7 +452,7 @@
     "href": "material/4_thu/parallel/slides.html#exercise",
     "title": "Research Software Engineering Summer School",
     "section": "Exercise",
-    "text": "Exercise\nThe exercise is available as a jupyter-notebook here."
+    "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
     "objectID": "material/2_tue/git/merge_rebase_slides.html",
@@ -921,7 +921,7 @@
     "href": "material/3_wed/vis/handout.html#task-3",
     "title": "Makie.jl",
     "section": "Task 3",
-    "text": "Task 3\nClick here for the next task\ndf = CSV.read(download(“https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv”),DataFrame)"
+    "text": "Task 3\nClick here for the next task"
   },
   {
     "objectID": "material/3_wed/vis/handout.html#footnotes",
