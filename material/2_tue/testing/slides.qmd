@@ -1,5 +1,16 @@
+
 ---
 format: revealjs
+
+---
+
+# Learning Goals
+
+- Justify the effort of developing tests to some extent
+- Get to know a few common terms of testing
+- Work with the Julia unit testing package `Test.jl`
+
+Material is taken and modified, on the one hand, from the [SSE lecture](https://github.com/Simulation-Software-Engineering/Lecture-Material), which builds partly on the [py-rse book](https://merely-useful.tech/py-rse), and, on the other hand, from the [Test.jl docs](https://docs.julialang.org/en/v1/stdlib/Test/).
 
 ---
 
@@ -140,20 +151,13 @@ format: revealjs
 
 ---
 
-## Further Reading and Watching
-
-- [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
-- [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
-
----
-
 # 2. Unit Testing in Julia with Test.jl
 
 ---
 
 ## Setup of Tests.jl
 
-- Standard library to write and manage tests
+- Standard library to write and manage tests, `using Test`
 - Standardized folder structure:
 
 ```
@@ -184,4 +188,39 @@ Various options:
 
 ---
 
+## Implement and Structure Tests
+
+- `@test expr`: Test whether expression `expr` is true
+- `@test expr broken=true`: Explicitly mark test as broken
+- `@test_throws exception expr`: Test whether expression `expr` throws `exception` (test unhappy path)
+
+    ```julia
+    julia> @test_throws DimensionMismatch [1, 2, 3] + [1, 2]
+    Test Passed
+          Thrown: DimensionMismatch
+    ```
+
+- `@testset`: Structure tests
+
+   ```julia
+   julia> @testset "trigonometric identities" begin
+           θ = 2/3*π
+           @test sin(-θ) ≈ -sin(θ)
+           @test cos(-θ) ≈ cos(θ)
+       end;
+   ```
+
+- `@testset for ... end`: Test in loop
+
+---
+
 ## Tests Demo
+
+---
+
+## Further Reading and Watching
+
+- [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
+- [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
+- [Official documentation of Test.jl](https://docs.julialang.org/en/v1/stdlib/Test/)
+
