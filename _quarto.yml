@@ -59,9 +59,9 @@ website:
                 text: "🛠 1 - Git: Exercises"
               - href: "material/2_tue/unittest/missing.qmd"
                 text: "📝 2 - Unit Testing"
-              - href: "material/3_tue/CI/missing.qmd"
+              - href: "material/2_tue/CI/missing.qmd"
                 text: "📝 3 - Continuous Integration"
-              - href: "material/4_tue/codereview/missing.qmd"
+              - href: material/2_tue/codereview/slides.qmd
                 text: "📝 4 - Code Review"
           - section: "Wednesday"
             contents:
@@ -80,10 +80,10 @@ website:
           
           - section: "Thursday"
             contents:
-              - href: material/4_thu/sim/missing.qmd
+              - href: material/4_thu/sim/slides.qmd
                 text: "📝 1 - Simulation"
               - href: material/4_thu/stats/missing.jl
-                text: "📝 2 - Stats"
+                text: "📝 2 - Bootstrapping"
               - href: material/4_thu/parallel/slides.qmd
                 text: "📝 3 - Parallelization"
           - section: "Friday"
@@ -95,7 +95,7 @@ website:
     background: primary
   page-footer:
     background: light
-    left: "CC-By Ehinger, Oesting, Uekerman" 
+    left: "CC-By Ehinger, Oesting, Uekerman, DeBruine, Ranocha, Szufel" 
 resources:
   - CNAME
 

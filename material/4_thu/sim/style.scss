@@ -1,0 +1,62 @@
+/*-- scss:defaults --*/
+
+$body-bg: #222;
+
+/*-- scss:rules --*/
+
+:root {
+  --red: #983E82;   /* hsl(315, 42%, 42%) */
+  --orange: #E2A458; /* hsl( 33, 70%, 62%) */
+  --yellow: #F5DC70; /* hsl( 49, 87%, 70%) */
+  --green: #59935B;  /* hsl(122, 25%, 46%) */
+  --blue: #467AAC;   /* hsl(209, 42%, 47%) */
+  --purple: #61589C; /* hsl(248, 28%, 48%) */
+}
+
+/* rainbow borders */
+.slide-background-content {
+  margin-top: 24px;
+  box-shadow: 0 -4px 0 0px var(--purple),
+              0 -8px 0 0px var(--blue),
+              0 -12px 0 0px var(--green),
+              0 -16px 0 0px var(--yellow),
+              0 -20px 0 0px var(--orange),
+              0 -24px 0 0px var(--red);
+}
+
+.checklist li {
+  list-style: none;
+}
+
+.checklist li::before {
+  content: '';
+  display: inline-block;
+  margin: 0 0 -.25em -1.3em;
+  height: 1.2em;
+  width: 1.2em;
+  background-image: url(images/checkbox.svg);
+}
+
+.plotcode {
+  font-size: .8em;
+}
+
+#figtwitter img {
+  border-radius: 50%;
+}
+
+#figtwitter .quarto-figure {
+  margin: 0;
+}
+
+#figtwitter figcaption {
+  position: relative;
+  top: -1em;
+  text-align: center;
+}
+
+#fauxapp li {
+  font-size: 50%;
+}
+
+.gt_col_heading { font-size: 50px; }

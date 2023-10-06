@@ -3,3 +3,5 @@ _site
 
 
 /.quarto/
+.Rproj.user
+*.Rproj
