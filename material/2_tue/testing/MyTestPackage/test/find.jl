@@ -9,10 +9,11 @@
 
     @testset "find_mean" begin
         @test find_mean([1,2,3]) == 2
-        @test find_mean([1,3,6]) == 3+1/3
+        @test find_mean([1,3,6]) ≈ 3.333 atol=1e-3
       
     end
 end
+
 @testset "integration test" begin
     
     data1 = [43, 32, 167, 18, 1, 209]
@@ -28,6 +29,6 @@ end
     actual_mean_of_max = find_mean([maximum1, maximum2])
     
     # Test
-    @test  actual_mean_of_max == expected_mean_of_max
+    @test actual_mean_of_max == expected_mean_of_max
     
 end

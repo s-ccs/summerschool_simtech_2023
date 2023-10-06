@@ -8,7 +8,6 @@ function find_max(x::AbstractVector)
         end
     end
     return currentmax
-
 end
 
 function find_mean(x::AbstractVector)

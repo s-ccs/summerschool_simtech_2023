@@ -118,6 +118,9 @@ Material is taken and modified, on the one hand, from the [SSE lecture](https://
 ```julia
 @test 1 ≈ 0.999999  rtol=1e-5
 ```
+
+- Get `≈` by Latex `\approx` + TAB
+
 ---
 
 ## Test-driven Development (TDD)
@@ -214,7 +217,43 @@ Various options:
 
 ---
 
-## Tests Demo
+# 3. Test.jl Demo
+
+We use [`MyTestPackage`](https://github.com/s-ccs/summerschool_simtech_2023/tree/main/material/2_tue/testing/MyTestPackage), which looks as follows:
+
+
+```
+├── Manifest.toml
+├── Project.toml
+├── src
+│   ├── find.jl
+│   └── MyTestPackage.jl
+└── test
+    ├── find.jl
+    ├── Manifest.toml
+    ├── Project.toml
+    ├── runtests.jl
+    └── setup.jl
+```
+
+
+- Look at `MyTestPackage.jl` and `find.jl`: We have two functions `find_max` and `find_mean`, which calculate the maximum and mean of all elements of a `::AbstractVector`.
+  - Assertions were added to check for `NaN` values
+- Look at `runtests.jl`:
+  - TODO: Why do we need `using MyTestPackage`?
+  - We include dependencies via `setup.jl`: `Test` and `StableRNG`.
+  - Testset "find"
+- Look at `find.jl`
+  - Unit tests for `find_max` and `find_mean`
+  - `test_throws` to test unhappy path
+  - Test with absolute tolerance
+  - Integration test, which tests combination of both methods
+- Run tests:
+
+    ```
+    ]activate .
+    ]test
+    ```
 
 ---
 
@@ -223,4 +262,3 @@ Various options:
 - [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
 - [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
 - [Official documentation of Test.jl](https://docs.julialang.org/en/v1/stdlib/Test/)
-
