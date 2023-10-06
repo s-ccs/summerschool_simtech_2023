@@ -217,6 +217,12 @@ Various options:
 
 ---
 
+## Further Reading and Watching
+
+- [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
+- [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
+- [Official documentation of Test.jl](https://docs.julialang.org/en/v1/stdlib/Test/)
+
 # 3. Test.jl Demo
 
 We use [`MyTestPackage`](https://github.com/s-ccs/summerschool_simtech_2023/tree/main/material/2_tue/testing/MyTestPackage), which looks as follows:
@@ -257,8 +263,7 @@ We use [`MyTestPackage`](https://github.com/s-ccs/summerschool_simtech_2023/tree
 
 ---
 
-## Further Reading and Watching
+# 4. Exercise
 
-- [Research Software Engineering with Python - Chapter 11: Testing Software](https://merely-useful.tech/py-rse/testing.html)
-- [HiRSE-Summer of Testing Part 2b: "Testing with Julia" by Nils Niggemann](https://www.youtube.com/watch?v=gSMKNbZOpZU)
-- [Official documentation of Test.jl](https://docs.julialang.org/en/v1/stdlib/Test/)
+Write tests for your own statistics package 😊
+
