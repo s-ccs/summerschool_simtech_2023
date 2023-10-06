@@ -53,8 +53,10 @@ website:
                 text: "🛠 4 - Envs & Pkgs: Exercises"
           - section: "Tuesday"
             contents: 
-              - href: material/2_tue/git/intro_slides.md
-                text: "📝 1 - GIT"    
+              - href: material/2_tue/git/slides.md
+                text: "📝 1 - Advanced Git and Contributing"
+              - href: "material/2_tue/git/tasks.qmd"
+                text: "🛠 1 - Git: Exercises"
               - href: "material/2_tue/unittest/missing.qmd"
                 text: "📝 2 - Unit Testing"
               - href: "material/3_tue/CI/missing.qmd"
