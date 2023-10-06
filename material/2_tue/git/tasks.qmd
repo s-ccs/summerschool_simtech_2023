@@ -1,6 +1,6 @@
 # Tasks
 
-1. Work with any forge that you like and create a user account (we recommend GitHub).
+1. Work with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).
 2. Push your package `MyStatsPackage` to a remote repository.
 3. Add a function `printOwner` to the package through a pull request. The function should print your (GitHub) user name.
 4. Use the package from somebody else in the classroom and verify with `printOwner` that you use the correct package.
