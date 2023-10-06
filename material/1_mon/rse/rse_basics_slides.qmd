@@ -1,5 +1,8 @@
 ---
-format: revealjs
+format: 
+    revealjs:
+        output-file: rse_basics_slides_revealjs.html
+    html: default
 ---
 
 # Introduction to the Research Software Engineering Summerschol
@@ -10,6 +13,8 @@ format: revealjs
 
 Find all slides, all materials, and the schedule
 
+([link to presentation](rse_basics_slides_revealjs.html))
+
 ## Last minute organization issues
 
 -   
@@ -19,8 +24,6 @@ Find all slides, all materials, and the schedule
 ## Structure of the summer school
 
 -   Check out the schedule
-
--   You will learn to use basic Julia
 
 -   In the beginning we will focus on the Research Software Engineering part!
 

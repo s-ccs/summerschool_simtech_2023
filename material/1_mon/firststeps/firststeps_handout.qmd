@@ -21,10 +21,6 @@ VSCode automatically loads the `Revise.jl` package, which screens all your activ
 
 ## Syntax differences Python/R/MatLab
 
-### In the beginning there was `nothing`
-`nothing`- but also  `NaN` and also `Missing`.
-
-Each of those has a specific purpose, but most likely we will only need `a = nothing` and `b = NaN`.
 
 ### Control Structures
 
@@ -93,6 +89,14 @@ end
 ```julia
 myfunction(args...;kwargs...) = myotherfunction(newarg,args...;kwargs...)
 ```
+
+### In the beginning there was `nothing`
+`nothing`- but also  `NaN` and also `Missing`.
+
+Each of those has a specific purpose, but most likely we will only need `a = nothing` and `b = NaN`.
+
+Note that `NaN` counts as a Float-Number, whereas nothing & missing does not.
+
 
 #### Excourse: splatting & slurping
 

@@ -1,0 +1,8 @@
+# Tasks
+
+1. Work with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).
+2. Push your package `MyStatsPackage` to a remote repository.
+3. Add a function `printOwner` to the package through a pull request. The function should print your (GitHub) user name (hard-coded).
+4. Use the package from somebody else in the classroom and verify with `printOwner` that you use the correct package.
+5. Fork this other package and contribute a function `printContributor` to it via a PR. Get a review and get it merged.
+6. Add more functions to other packages of classmates that print funny things, but always ensure a linear history.

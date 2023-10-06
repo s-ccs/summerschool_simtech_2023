@@ -1,0 +1,62 @@
+# Task 1: Docstrings {#1}
+1. Add Docstrings to some of your functions.
+2. Load the package, and check you can see the docstrings using e.g. `?rse_mean`
+
+-----
+
+# Task 2: Documenter.jl {#1}
+### Folderstructure
+1. create folders/files:
+```
+docs/
+├── src/
+├── src/mydocs.jl
+└── make.jl
+```
+
+### add some docs
+2. with mydocs containing
+
+````{verbatim}
+```@docs 
+func(x)
+```
+````
+
+and
+
+`make.jl` containing
+```julia
+using Documenter, Example
+
+makedocs(sitename="My Documentation")
+```
+
+### 3. Generate
+Generate the docs using `include("make.jl")` after activating the `./docs/Project.toml`
+
+:::callout
+## Bonus-Task
+ Use [`LiveServer.jl`](https://github.com/tlienart/LiveServer.jl) to automatically update a local preview of your documentation (follow [this tutorial](https://github.com/tlienart/LiveServer.jl#serve-docs) )
+:::
+
+### 4. Add a tutorial
+Now add a tutorial `./docs/src/tutorial.md` which should contain a brief example simulating some data (using `rand`) and calculating mean, tstat and std on them.
+
+Use the `makedocs(...page=)` keywordargument.
+
+----
+
+# Task 3: PkgTemplate.jl {#3}
+Generate a package MySecondStatsPackage using PkgTemplate. 
+
+- Add github-actions for:
+    - coverage
+    - unittests
+    - docs
+- MIT license
+- README.md
+
+::: callout-tipp
+   Don't forget to activate the github-page in the github settings!
+:::

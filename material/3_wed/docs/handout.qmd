@@ -1,7 +1,12 @@
-
 ::: callout
 [Link to Slides](slides.qmd)
 :::
+
+## Task 1
+
+Solve [task 1](tasks.qmd#1)
+
+----
 # Documenter.jl
 
 ### File-structure overview
@@ -76,6 +81,13 @@ Using `Literate.jl` one does not need to write `.md` files - but rather can use 
 ## this is a comment
 ```
 
+
+## Task 2
+
+Solve [task 2](tasks.qmd#2)
+
+----
+
 # PkgTemplate.jl 
 ```julia
 ]activate --temp
@@ -105,3 +117,8 @@ You can also run the PkgTemplate interactively using
 ```
 Which will ask you a hundred million questions ;-)
 ::: 
+
+
+## Task 3
+
+Solve [task 3](tasks.qmd#3)
