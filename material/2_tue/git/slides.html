@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Research Software Engineering Summer School – merge_rebase_slides</title>
+<title>Research Software Engineering Summer School – slides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../material/2_tue/git/tasks.html" rel="next">
+<link href="../../../material/1_mon/envs/tasks.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -89,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Slides / Handouts</li><li class="breadcrumb-item"><a href="../../../material/2_tue/git/slides.html">Tuesday</a></li><li class="breadcrumb-item"><a href="../../../material/2_tue/git/slides.html">📝 1 - Advanced Git and Contributing</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -218,17 +220,23 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Tuesday</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../material/2_tue/git/intro_slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">📝 1 - GIT</span></a>
+  <a href="../../../material/2_tue/git/slides.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">📝 1 - Advanced Git and Contributing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/git/tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 1 - Git: Exercises</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -358,7 +366,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#merge-vs.-rebase" id="toc-merge-vs.-rebase" class="nav-link active" data-scroll-target="#merge-vs.-rebase">Merge vs.&nbsp;Rebase</a>
+  <li><a href="#learning-goals-of-the-git-lecture" id="toc-learning-goals-of-the-git-lecture" class="nav-link active" data-scroll-target="#learning-goals-of-the-git-lecture">Learning Goals of the Git Lecture</a></li>
+  <li><a href="#introduction-to-version-control" id="toc-introduction-to-version-control" class="nav-link" data-scroll-target="#introduction-to-version-control">1. Introduction to Version Control</a>
+  <ul class="collapse">
+  <li><a href="#why-do-we-need-version-control" id="toc-why-do-we-need-version-control" class="nav-link" data-scroll-target="#why-do-we-need-version-control">Why Do We Need Version Control?</a></li>
+  <li><a href="#how-does-version-control-work" id="toc-how-does-version-control-work" class="nav-link" data-scroll-target="#how-does-version-control-work">How Does Version Control Work?</a></li>
+  <li><a href="#the-alternative-a-story-told-in-file-names" id="toc-the-alternative-a-story-told-in-file-names" class="nav-link" data-scroll-target="#the-alternative-a-story-told-in-file-names">The Alternative: A Story Told in File Names</a></li>
+  <li><a href="#a-very-short-history-of-version-control-i" id="toc-a-very-short-history-of-version-control-i" class="nav-link" data-scroll-target="#a-very-short-history-of-version-control-i">A Very Short History of Version Control I</a></li>
+  <li><a href="#a-very-short-history-of-version-control-ii" id="toc-a-very-short-history-of-version-control-ii" class="nav-link" data-scroll-target="#a-very-short-history-of-version-control-ii">A Very Short History of Version Control II</a></li>
+  <li><a href="#the-only-standard-today-git" id="toc-the-only-standard-today-git" class="nav-link" data-scroll-target="#the-only-standard-today-git">The Only Standard Today: Git</a></li>
+  <li><a href="#more-facts-on-git" id="toc-more-facts-on-git" class="nav-link" data-scroll-target="#more-facts-on-git">More Facts on Git</a></li>
+  <li><a href="#forges" id="toc-forges" class="nav-link" data-scroll-target="#forges">Forges</a></li>
+  </ul></li>
+  <li><a href="#recap-of-git-basics" id="toc-recap-of-git-basics" class="nav-link" data-scroll-target="#recap-of-git-basics">2. Recap of Git Basics</a>
+  <ul class="collapse">
+  <li><a href="#expert-level-poll" id="toc-expert-level-poll" class="nav-link" data-scroll-target="#expert-level-poll">Expert level poll</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo">Demo</a></li>
+  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful Links</a></li>
+  </ul></li>
+  <li><a href="#merge-vs.-rebase" id="toc-merge-vs.-rebase" class="nav-link" data-scroll-target="#merge-vs.-rebase">3. Merge vs.&nbsp;Rebase</a>
   <ul class="collapse">
   <li><a href="#linear-history" id="toc-linear-history" class="nav-link" data-scroll-target="#linear-history">Linear History</a></li>
   <li><a href="#merge-commits" id="toc-merge-commits" class="nav-link" data-scroll-target="#merge-commits">Merge Commits</a></li>
@@ -368,8 +395,30 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#github-pr-merge-variants" id="toc-github-pr-merge-variants" class="nav-link" data-scroll-target="#github-pr-merge-variants">GitHub PR Merge Variants</a></li>
   <li><a href="#squash-and-merge" id="toc-squash-and-merge" class="nav-link" data-scroll-target="#squash-and-merge">Squash and Merge</a></li>
   <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts">Conflicts</a></li>
-  <li><a href="#summary-and-final-remarks" id="toc-summary-and-final-remarks" class="nav-link" data-scroll-target="#summary-and-final-remarks">Summary and Final Remarks</a></li>
+  <li><a href="#summary-and-remarks" id="toc-summary-and-remarks" class="nav-link" data-scroll-target="#summary-and-remarks">Summary and Remarks</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
+  <li><a href="#working-in-teams-git-workflows" id="toc-working-in-teams-git-workflows" class="nav-link" data-scroll-target="#working-in-teams-git-workflows">4. Working in Teams / Git Workflows</a>
+  <ul class="collapse">
+  <li><a href="#why-workflows" id="toc-why-workflows" class="nav-link" data-scroll-target="#why-workflows">Why Workflows?</a></li>
+  <li><a href="#which-workflow" id="toc-which-workflow" class="nav-link" data-scroll-target="#which-workflow">Which Workflow?</a></li>
+  <li><a href="#centralized-workflow" id="toc-centralized-workflow" class="nav-link" data-scroll-target="#centralized-workflow">Centralized Workflow</a></li>
+  <li><a href="#feature-branch-workflow" id="toc-feature-branch-workflow" class="nav-link" data-scroll-target="#feature-branch-workflow">Feature Branch Workflow</a></li>
+  <li><a href="#gitflow" id="toc-gitflow" class="nav-link" data-scroll-target="#gitflow">Gitflow</a></li>
+  <li><a href="#forking-workflow" id="toc-forking-workflow" class="nav-link" data-scroll-target="#forking-workflow">Forking Workflow</a></li>
+  <li><a href="#do-small-prs" id="toc-do-small-prs" class="nav-link" data-scroll-target="#do-small-prs">Do Small PRs</a></li>
+  <li><a href="#quick-reads" id="toc-quick-reads" class="nav-link" data-scroll-target="#quick-reads">Quick Reads</a></li>
+  </ul></li>
+  <li><a href="#github-gitlab-standards" id="toc-github-gitlab-standards" class="nav-link" data-scroll-target="#github-gitlab-standards">5. GitHub / GitLab Standards</a>
+  <ul class="collapse">
+  <li><a href="#what-do-we-mean-with-standards" id="toc-what-do-we-mean-with-standards" class="nav-link" data-scroll-target="#what-do-we-mean-with-standards">What Do We Mean With Standards?</a></li>
+  <li><a href="#special-files" id="toc-special-files" class="nav-link" data-scroll-target="#special-files">Special Files</a></li>
+  <li><a href="#issues-and-prs" id="toc-issues-and-prs" class="nav-link" data-scroll-target="#issues-and-prs">Issues and PRs</a></li>
+  </ul></li>
+  <li><a href="#commit-messages" id="toc-commit-messages" class="nav-link" data-scroll-target="#commit-messages">6. Commit Messages</a>
+  <ul class="collapse">
+  <li><a href="#commit-messages-12" id="toc-commit-messages-12" class="nav-link" data-scroll-target="#commit-messages-12">Commit Messages (1/2)</a></li>
+  <li><a href="#commit-messages-22" id="toc-commit-messages-22" class="nav-link" data-scroll-target="#commit-messages-22">Commit Messages (2/2)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -381,7 +430,7 @@ ul.task-list li input[type="checkbox"] {
 
 <style>
   .reveal strong {
-    font-weight: bold;
+   font-weight: bold;
     color: orange;
   }
   .reveal p {
@@ -403,12 +452,244 @@ ul.task-list li input[type="checkbox"] {
     box-shadow:none;
   }
 </style>
+<section id="learning-goals-of-the-git-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goals-of-the-git-lecture">Learning Goals of the Git Lecture</h2>
+<ul>
+<li>Refresh and organize students’ existing knowledge on Git (learn how to learn more).</li>
+<li>Students can explain difference between merge and rebase and when to use what.</li>
+<li>How to use Git workflows to organize research software development in a team.</li>
+<li>Get to know a few useful GitHub/GitLab standards and a few helpful tools.</li>
+<li>Get to know a few rules on good commit messages.</li>
+</ul>
+<p>Material is taken and modified from the <a href="https://github.com/Simulation-Software-Engineering/Lecture-Material">SSE lecture</a>, which builds partly on the <a href="https://merely-useful.tech/py-rse">py-rse book</a>.</p>
+<hr>
+</section>
+<section id="introduction-to-version-control" class="level1">
+<h1>1. Introduction to Version Control</h1>
+<hr>
+<section id="why-do-we-need-version-control" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-version-control">Why Do We Need Version Control?</h2>
+<p>Version control …</p>
+<ul>
+<li>tracks changes to files and helps people share those changes with each other.
+<ul>
+<li>Could also be done via email / Google Docs / …, but not as accurately and efficiently</li>
+</ul></li>
+<li>was originally developed for software development, but today cornerstone of <em>reproducible research</em></li>
+</ul>
+<blockquote class="blockquote">
+<p>“If you can’t git diff a file format, it’s broken.”</p>
+</blockquote>
+<hr>
+</section>
+<section id="how-does-version-control-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-version-control-work">How Does Version Control Work?</h2>
+<ul>
+<li><em>master</em> (or <em>main</em>) copy of code in repository, can’t edit directly</li>
+<li>Instead: check out a working copy of code, edit, commit changes back</li>
+<li>Repository records complete revision history
+<ul>
+<li>You can go back in time</li>
+<li>It’s clear who did what when</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="the-alternative-a-story-told-in-file-names" class="level2">
+<h2 class="anchored" data-anchor-id="the-alternative-a-story-told-in-file-names">The Alternative: A Story Told in File Names</h2>
+<p><img src="http://phdcomics.com/comics/archive/phd052810s.gif" width="60%" style="margin-left:auto; margin-right:auto"></p>
+<p><a href="http://phdcomics.com/comics/archive/phd052810s.gif">http://phdcomics.com/comics/archive/phd052810s.gif</a></p>
+<hr>
+</section>
+<section id="a-very-short-history-of-version-control-i" class="level2">
+<h2 class="anchored" data-anchor-id="a-very-short-history-of-version-control-i">A Very Short History of Version Control I</h2>
+<p>The old centralized variants:</p>
+<ul>
+<li>1982: RCS (Revision Control System), operates on single files</li>
+<li>1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects</li>
+<li>1994: VSS (Microsoft Visual SourceSafe)</li>
+<li>2000: SVN (Apache Subversion), mostly compatible successor of CVS, <em>still used today</em></li>
+</ul>
+<hr>
+</section>
+<section id="a-very-short-history-of-version-control-ii" class="level2">
+<h2 class="anchored" data-anchor-id="a-very-short-history-of-version-control-ii">A Very Short History of Version Control II</h2>
+<p>Distributed version control:</p>
+<ul>
+<li>Besides remote master version, also local copy of repository</li>
+<li>More memory required, but much better performance</li>
+<li>For a long time: highly fragmented market
+<ul>
+<li>2000: BitKeeper (originally proprietary software)</li>
+<li>2005: Mercurial</li>
+<li>2005: Git</li>
+<li>A few more</li>
+</ul></li>
+</ul>
+<p>Learn more: <a href="https://www.allthingsgit.com/episodes/the_history_of_vc_with_eric_sink.html">Podcast All Things Git: History of VC</a></p>
+<hr>
+</section>
+<section id="the-only-standard-today-git" class="level2">
+<h2 class="anchored" data-anchor-id="the-only-standard-today-git">The Only Standard Today: Git</h2>
+<p>No longer a fragmented market, there is nearly only Git today:</p>
+<ul>
+<li><a href="https://insights.stackoverflow.com/survey/2021#technology-most-popular-technologies">Stackoverflow developer survey 2021</a>: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”</li>
+<li>Is this good or bad?</li>
+</ul>
+<hr>
+</section>
+<section id="more-facts-on-git" class="level2">
+<h2 class="anchored" data-anchor-id="more-facts-on-git">More Facts on Git</h2>
+<ul>
+<li>Git itself is open-source: GPL license</li>
+<li>Source code on <a href="https://github.com/git/git">GitHub</a>, contributions are a bit more complicated than a simple PR</li>
+<li>Written mainly in C</li>
+<li>Started by Linus Torvalds, core maintainer since later 2005: Junio Hamano</li>
+<li><strong>Git</strong> (the version control software) vs.&nbsp;<strong>git</strong> (the command line interface)</li>
+</ul>
+<hr>
+</section>
+<section id="forges" class="level2">
+<h2 class="anchored" data-anchor-id="forges">Forges</h2>
+<p>There is a difference between Git and hosting services (<a href="https://en.wikipedia.org/wiki/Forge_(software)"><em>forges</em></a>):</p>
+<ul>
+<li><a href="https://github.com/">GitHub</a></li>
+<li><a href="https://about.gitlab.com/">GitLab</a>, open-source, hosted e.g.&nbsp;at <a href="https://gitlab-sim.informatik.uni-stuttgart.de">IPVS</a></li>
+<li><a href="https://bitbucket.org/product/">Bitbucket</a></li>
+<li><a href="https://sourceforge.net/">SourceForge</a></li>
+<li>many more</li>
+<li>often, more than just hosting, also DevOps</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="recap-of-git-basics" class="level1">
+<h1>2. Recap of Git Basics</h1>
+<hr>
+<section id="expert-level-poll" class="level2">
+<h2 class="anchored" data-anchor-id="expert-level-poll">Expert level poll</h2>
+<p>Which level do you have?</p>
+<ul>
+<li><strong>Beginner</strong>: hardly ever used Git</li>
+<li><strong>User</strong>: pull, commit, push, status, diff</li>
+<li><strong>Developer</strong>: fork, branch, merge, checkout</li>
+<li><strong>Maintainer</strong>: rebase, squash, cherry-pick, bisect</li>
+<li><strong>Owner</strong>: submodules</li>
+</ul>
+<hr>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><img src="https://merely-useful.tech/py-rse/figures/git-cmdline/git-remote.png" width="60%" style="margin-left:auto; margin-right:auto"></p>
+<p><a href="https://merely-useful.tech/py-rse/figures/git-cmdline/git-remote.png">Git overview picture from py-rse</a></p>
+<hr>
+</section>
+<section id="demo" class="level2">
+<h2 class="anchored" data-anchor-id="demo">Demo</h2>
+<ul>
+<li><p><code>git --help</code>, <code>git commit --help</code></p></li>
+<li><p>incomplete statement <code>git comm</code></p></li>
+<li><p>There is not <em>the one solution</em> how to do things with Git. I simply show what I typically use.</p></li>
+<li><p>Don’t use a client if you don’t understand the command line <code>git</code></p></li>
+<li><ol type="1">
+<li>Look at GitHub</li>
+</ol>
+<ul>
+<li><a href="https://github.com/precice/precice">preCICE repository</a></li>
+<li>default branch <code>develop</code></li>
+<li>fork -&gt; my fork</li>
+</ul></li>
+<li><ol start="2" type="1">
+<li>Working directory:</li>
+</ol>
+<ul>
+<li>ZSH shell shows git branches</li>
+<li><code>git remote -v</code> (I have upstream, myfork, …)</li>
+<li>mention difference between ssh and https (also see GitHub)</li>
+<li>get newest changes <code>git pull upstream develop</code></li>
+<li><code>git log</code> -&gt; I use special format, see <code>~/.gitconfig</code>,</li>
+<li>check log on GitHub; explain short hash</li>
+<li><code>git branch</code></li>
+<li><code>git branch add-demo-feature</code></li>
+<li><code>git checkout add-demo-feature</code></li>
+</ul></li>
+<li><ol start="3" type="1">
+<li>First commit</li>
+</ol>
+<ul>
+<li><code>git status</code> -&gt; always tells you what you can do</li>
+<li><code>vi src/action/Action.hpp</code> -&gt; add <code>#include "MagicHeader.hpp"</code></li>
+<li><code>git diff</code>, <code>git diff src/com/Action.hpp</code>, <code>git diff --color-words</code></li>
+<li><code>git status</code>, <code>git add</code>, <code>git status</code></li>
+<li><code>git commit</code> -&gt; “Include MagicHeader in Action.hpp”</li>
+<li><code>git status</code>, <code>git log</code>, <code>git log -p</code>, <code>git show</code></li>
+</ul></li>
+<li><ol start="4" type="1">
+<li>Change or revert things</li>
+</ol>
+<ul>
+<li>I forgot to add sth: <code>git reset --soft HEAD~1</code>, <code>git status</code></li>
+<li><code>git diff</code>, <code>git diff HEAD</code> because already staged</li>
+<li><code>git log</code></li>
+<li><code>git commit</code></li>
+<li>actually all that is nonsense: <code>git reset --hard HEAD~1</code></li>
+<li>modify again, all nonsense before committing: <code>git checkout src/action/Action.hpp</code></li>
+</ul></li>
+<li><ol start="5" type="1">
+<li>Stash</li>
+</ol>
+<ul>
+<li>while working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches</li>
+<li><code>git stash</code></li>
+<li><code>git stash pop</code></li>
+</ul></li>
+<li><ol start="6" type="1">
+<li>Create PR</li>
+</ol>
+<ul>
+<li>create commit again</li>
+<li>preview what will be in PR: <code>git diff develop..add-demo-feature</code></li>
+<li><code>git push -u myfork add-demo-feature</code> -&gt; copy link</li>
+<li>explain PR template</li>
+<li>explain target branch</li>
+<li>explain “Allow edits by maintainers”</li>
+<li>cancel</li>
+<li>my fork -&gt; branches -&gt; delete</li>
+</ul></li>
+<li><ol start="7" type="1">
+<li>Check out someone else’s work</li>
+</ol>
+<ul>
+<li>have a look at an existing PR, look at all tabs, show suggestion feature</li>
+<li>but sometimes we want to really build and try sth out …</li>
+<li><code>git remote -v</code></li>
+<li><code>git remote add alex git@github.com:ajaust/precice.git</code> if I don’t have remote already (or somebody else)</li>
+<li><code>git fetch alex</code></li>
+<li><code>git checkout -t alex/[branch-name]</code></li>
+<li>I could now also push to <code>ajaust</code>’s remote</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="useful-links" class="level2">
+<h2 class="anchored" data-anchor-id="useful-links">Useful Links</h2>
+<ul>
+<li><a href="http://git-scm.com/doc">Official documentation</a></li>
+<li><a href="https://www.youtube.com/watch?v=USjZcfj8yxE">Video: Git in 15 minutes: basics, branching, no remote</a></li>
+<li><a href="https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/">The GitHub Blog: Commits are snapshots, not diffs</a></li>
+<li>Chapters <a href="https://merely-useful.tech/py-rse/git-cmdline.html">6</a> and <a href="https://merely-useful.tech/py-rse/git-advanced.html">7</a> of Research Software Engineering with Python</li>
+<li><a href="https://www.allthingsgit.com/episodes/the_history_of_vc_with_eric_sink.html">Podcast All Things Git: History of VC</a></li>
+<li><a href="https://girliemac.com/blog/2017/12/26/git-purr/">git purr</a></li>
+</ul>
+<hr>
+</section>
+</section>
 <section id="merge-vs.-rebase" class="level1">
-<h1>Merge vs.&nbsp;Rebase</h1>
+<h1>3. Merge vs.&nbsp;Rebase</h1>
 <hr>
 <section id="linear-history" class="level2">
 <h2 class="anchored" data-anchor-id="linear-history">Linear History</h2>
-<p><img src="https://raw.githubusercontent.com/Simulation-Software-Engineering/Lecture-Material/main/01_version_control/figs/history_linear/fig.png" width="60%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></p>
+<p><img src="https://raw.githubusercontent.com/s-ccs/summerschool_simtech_2023/main/material/2_tue/git/figs/history_linear/fig.png" width="60%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></p>
 <ul>
 <li>Commits are snapshots + pointer to parent, not diffs
 <ul>
@@ -428,7 +709,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="merge-commits" class="level2">
 <h2 class="anchored" data-anchor-id="merge-commits">Merge Commits</h2>
 <ul>
-<li><code>git checkout main &amp;&amp; git merge feature</code> <img src="https://raw.githubusercontent.com/Simulation-Software-Engineering/Lecture-Material/main/01_version_control/figs/history_merge/fig.png" width="70%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></li>
+<li><code>git checkout main &amp;&amp; git merge feature</code> <img src="https://raw.githubusercontent.com/s-ccs/summerschool_simtech_2023/main/material/2_tue/git/figs/history_merge/fig.png" width="70%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></li>
 <li>A merge commit (normally) has two parent commits <code>M^1</code> and <code>M^2</code> (don’t confuse <code>^2</code> with <code>~2</code>)
 <ul>
 <li>Can’t show unique diff</li>
@@ -472,7 +753,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="rebase" class="level2">
 <h2 class="anchored" data-anchor-id="rebase">Rebase</h2>
 <ul>
-<li><code>git checkout feature &amp;&amp; git rebase main</code> <img src="https://raw.githubusercontent.com/Simulation-Software-Engineering/Lecture-Material/main/01_version_control/figs/history_rebase/fig.png" width="90%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></li>
+<li><code>git checkout feature &amp;&amp; git rebase main</code> <img src="https://raw.githubusercontent.com/s-ccs/summerschool_simtech_2023/main/material/2_tue/git/figs/history_rebase/fig.png" width="90%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px"></li>
 <li>States of issues change (and new parents) –&gt; history is rewritten</li>
 <li>If <code>feature</code> is already on remote, it needs a force push <code>git push --force myfork feature</code> (or <code>--force-with-lease</code>).</li>
 <li>Be careful: Only use rebase if <strong>only you</strong> work on a branch (a local branch or a branch on your fork).</li>
@@ -489,7 +770,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Squash and merge</li>
 <li>Rebase and merge</li>
 </ul></li>
-<li>Look at a PR together, e.g.&nbsp;<a href="https://github.com/precice/precice/pull/1432">PR 1432 from preCICE</a> (will be closed eventually)</li>
+<li>Look at a PR together, e.g.&nbsp;<a href="https://github.com/precice/precice/pull/1824">PR 1432 from preCICE</a> (will be closed eventually)</li>
 </ul>
 <blockquote class="blockquote">
 <p>What do the options do?</p>
@@ -520,8 +801,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
-<section id="summary-and-final-remarks" class="level2">
-<h2 class="anchored" data-anchor-id="summary-and-final-remarks">Summary and Final Remarks</h2>
+<section id="summary-and-remarks" class="level2">
+<h2 class="anchored" data-anchor-id="summary-and-remarks">Summary and Remarks</h2>
 <ul>
 <li>Try to keep a linear history with rebasing whenever reasonable</li>
 <li>Don’t use rebase on a public/shared branch during development</li>
@@ -539,6 +820,200 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://hackernoon.com/git-merge-vs-rebase-whats-the-diff-76413c117333">Hackernoon: “What’s the diff?”</a></li>
 <li><a href="https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/">GitHub Blog: “Commits are snapshots, not diffs”</a></li>
 <li><a href="https://stackoverflow.com/questions/40986518/git-show-of-a-merge-commit?">Stack Overflow: “Git show of a merge commit”</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="working-in-teams-git-workflows" class="level1">
+<h1>4. Working in Teams / Git Workflows</h1>
+<hr>
+<section id="why-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="why-workflows">Why Workflows?</h2>
+<ul>
+<li>Git offers a lot of flexibility in managing changes.</li>
+<li>When working in a team, some agreements need to be made however (especially on how to work with branches).</li>
+</ul>
+<hr>
+</section>
+<section id="which-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="which-workflow">Which Workflow?</h2>
+<ul>
+<li>There are standard solutions.</li>
+<li>It depends on the size of the team.</li>
+<li>Workflow should enhance effectiveness of team, not be a burden that limits productivity.</li>
+</ul>
+<hr>
+</section>
+<section id="centralized-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="centralized-workflow">Centralized Workflow</h2>
+<ul>
+<li>Only one branch: the <code>main</code> branch</li>
+<li>Keep your changes in local commits till some feature is ready</li>
+<li>If ready, directly push to <code>main</code>; no PRs, no reviews</li>
+<li>Conflicts: fix locally (push not allowed anyway), use <code>git pull --rebase</code></li>
+<li><strong>Good for</strong>: small teams, small projects, projects that are anyway reviewed over and over again</li>
+<li>Example: LaTeX papers
+<ul>
+<li>Put each section in separate file</li>
+<li>Put each sentence in separate line</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="feature-branch-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="feature-branch-workflow">Feature Branch Workflow</h2>
+<ul>
+<li>Each feature (or bugfix) in separate branch</li>
+<li>Push feature branch to remote, use descriptive name
+<ul>
+<li>e.g.&nbsp;issue number in name if each branch closes one issue</li>
+</ul></li>
+<li><code>main</code> should never contain broken code</li>
+<li>Protect direct push to <code>main</code></li>
+<li>PR (or MR) with review to merge from feature branch to <code>main</code></li>
+<li>Rebase feature branch on <code>main</code> if necessary</li>
+<li>Delete remote branch once merged and no longer needed (one click on GitHub after merge)</li>
+<li><strong>Good for</strong>: small teams, small projects, prototyping, websites (continuous deployment), documentation</li>
+<li>Aka. <a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">trunk-based development</a> or <a href="https://guides.github.com/introduction/flow/">GitHub flow</a></li>
+</ul>
+<hr>
+</section>
+<section id="gitflow" class="level2">
+<h2 class="anchored" data-anchor-id="gitflow">Gitflow</h2>
+<ul>
+<li><a href="https://nvie.com/img/git-model@2x.png">Visualization by Vincent Driessen</a>, from <a href="https://nvie.com/posts/a-successful-git-branching-model/">original blog post in 2010</a></li>
+<li><code>main</code> and <code>develop</code>
+<ul>
+<li><code>main</code> contains releases as tags</li>
+<li><code>develop</code> contains latest features</li>
+</ul></li>
+<li>Feature branches created of <code>develop</code>, PRs back to <code>develop</code></li>
+<li>Protect <code>main</code> and (possibly) <code>develop</code> from direct pushes</li>
+<li>Dedicated release branches (e.g., <code>v1.0</code>) created of <code>develop</code>
+<ul>
+<li>Tested, fixed, merged to <code>main</code></li>
+<li>Afterwards, tagged, merged back to <code>develop</code></li>
+</ul></li>
+<li>Hotfix branches directly of and to <code>main</code></li>
+<li><strong>Good for</strong>: software with users, larger teams</li>
+<li>There is a tool <code>git-flow</code>, a wrapper around <code>git</code>, e.g.&nbsp;<code>git flow init</code> … but not really necessary IMHO</li>
+</ul>
+<hr>
+</section>
+<section id="forking-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="forking-workflow">Forking Workflow</h2>
+<ul>
+<li>Gitflow + feature branches on other forks</li>
+<li>More control over access rights, distinguish between maintainers and external contributors</li>
+<li>Should maintainers also use branches on their forks?
+<ul>
+<li>Makes overview of branches easier</li>
+<li>Distinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)</li>
+</ul></li>
+<li><strong>Good for</strong>: open-source projects with external contributions (used more or less in preCICE)</li>
+</ul>
+<hr>
+</section>
+<section id="do-small-prs" class="level2">
+<h2 class="anchored" data-anchor-id="do-small-prs">Do Small PRs</h2>
+<ul>
+<li>For all workflows, it is better to do small PRs
+<ul>
+<li>Easier to review</li>
+<li>Faster to merge –&gt; fewer conflicts</li>
+<li>Easier to squash</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="quick-reads" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reads">Quick Reads</h2>
+<ul>
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Atlassian docs on workflows</a></li>
+<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">Original gitflow blog post</a></li>
+<li><a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">Trunk-based development</a></li>
+<li><a href="https://guides.github.com/introduction/flow/">GitHub flow</a></li>
+<li><a href="https://gist.github.com/sktse/569cb192ce1518f83db58567591e3205">How to keep pull requests manageable</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="github-gitlab-standards" class="level1">
+<h1>5. GitHub / GitLab Standards</h1>
+<hr>
+<section id="what-do-we-mean-with-standards" class="level2">
+<h2 class="anchored" data-anchor-id="what-do-we-mean-with-standards">What Do We Mean With Standards?</h2>
+<ul>
+<li>GitHub uses standards or conventions.</li>
+<li>Certain files or names trigger certain behavior automatically.</li>
+<li>Many are supported by most forges.
+<ul>
+<li><strong>This is good.</strong></li>
+<li>Everybody should know them.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="special-files" class="level2">
+<h2 class="anchored" data-anchor-id="special-files">Special Files</h2>
+<p>Certain files lead to special formatting (normally directly at root of repo):</p>
+<ul>
+<li><code>README.md</code>
+<ul>
+<li>… contains meta information / overview / first steps of software.</li>
+<li>… gets rendered on landing page (and in every folder).</li>
+</ul></li>
+<li><code>LICENSE</code>
+<ul>
+<li>… contains software license.</li>
+<li>… gets rendered on right sidebar, when clicking on license, and on repo preview.</li>
+</ul></li>
+<li><code>CONTRIBUTING.md</code>
+<ul>
+<li>… contains guidelines for contributing.</li>
+<li>First-time contributors see banner.</li>
+</ul></li>
+<li><code>CODE_OF_CONDUCT.md</code>
+<ul>
+<li>… contains code of conduct.</li>
+<li>… gets rendered on right sidebar.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="issues-and-prs" class="level2">
+<h2 class="anchored" data-anchor-id="issues-and-prs">Issues and PRs</h2>
+<ul>
+<li>Templates for description in <code>.github</code> folder</li>
+<li><code>closes #34</code> (or several other keywords: <code>fixes</code>, <code>resolves</code>) in commit message or PR description will close issue 34 when merged.</li>
+<li><code>help wanted</code> label gets rendered on repo preview (e.g.&nbsp;<em>“3 issues need help”</em>).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="commit-messages" class="level1">
+<h1>6. Commit Messages</h1>
+<hr>
+<section id="commit-messages-12" class="level2">
+<h2 class="anchored" data-anchor-id="commit-messages-12">Commit Messages (1/2)</h2>
+<ul>
+<li>Consistent</li>
+<li>Descriptive and concise (such that complete history becomes skimmable)</li>
+<li>Explain the “why” (the “how” is covered in the diff)</li>
+</ul>
+<hr>
+</section>
+<section id="commit-messages-22" class="level2">
+<h2 class="anchored" data-anchor-id="commit-messages-22">Commit Messages (2/2)</h2>
+<p><a href="https://chris.beams.io/git-commit/">The seven rules of a great Git commit message</a>:</p>
+<ul>
+<li>Separate subject from body with a blank line.</li>
+<li>Limit the subject line to 50 characters.</li>
+<li>Capitalize the subject line.</li>
+<li>Do not end the subject line with a period.</li>
+<li>Use the imperative mood in the subject line.</li>
+<li>Wrap the body at 72 characters.</li>
+<li>Use the body to explain what and why vs.&nbsp;how.</li>
 </ul>
 
 
@@ -860,6 +1335,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../material/1_mon/envs/tasks.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">🛠 4 - Envs &amp; Pkgs: Exercises</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../material/2_tue/git/tasks.html" class="pagination-link">
+        <span class="nav-page-text">🛠 1 - Git: Exercises</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

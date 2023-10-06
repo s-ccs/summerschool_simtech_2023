@@ -455,263 +455,270 @@
     "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html",
-    "href": "material/2_tue/git/merge_rebase_slides.html",
-    "title": "Merge vs. Rebase",
+    "objectID": "material/2_tue/git/tasks.html",
+    "href": "material/2_tue/git/tasks.html",
+    "title": "Tasks",
     "section": "",
-    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent\n\n\n\n\n\n\ngit checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents\n\n\n\n\n\n\nWe use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4.\n\n\n\n\n\n\n\nReal conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch.\n\n\n\n\n\n\ngit checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)\n\n\n\n\n\n\nGitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?\n\n\n\n\n\n\n… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)\n\n\n\n\n\n\nBut what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature\n\n\n\n\n\n\nTry to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE\n\n\n\n\n\n\nBitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
+    "text": "Tasks\n\nWork with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).\nPush your package MyStatsPackage to a remote repository.\nAdd a function printOwner to the package through a pull request. The function should print your (GitHub) user name (hard-coded).\nUse the package from somebody else in the classroom and verify with printOwner that you use the correct package.\nFork this other package and contribute a function printContributor to it via a PR. Get a review and get it merged.\nAdd more functions to other packages of classmates that print funny things, but always ensure a linear history."
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#linear-history",
-    "href": "material/2_tue/git/merge_rebase_slides.html#linear-history",
-    "title": "Merge vs. Rebase",
+    "objectID": "material/2_tue/git/slides.html",
+    "href": "material/2_tue/git/slides.html",
+    "title": "1. Introduction to Version Control",
     "section": "",
-    "text": "Commits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent"
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\nGet to know a few rules on good commit messages.\n\nMaterial is taken and modified from the SSE lecture, which builds partly on the py-rse book."
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
-    "href": "material/2_tue/git/merge_rebase_slides.html#merge-commits",
-    "title": "Merge vs. Rebase",
+    "objectID": "material/2_tue/git/slides.html#learning-goals-of-the-git-lecture",
+    "href": "material/2_tue/git/slides.html#learning-goals-of-the-git-lecture",
+    "title": "1. Introduction to Version Control",
     "section": "",
-    "text": "git checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents"
+    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\nGet to know a few rules on good commit messages.\n\nMaterial is taken and modified from the SSE lecture, which builds partly on the py-rse book."
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
-    "href": "material/2_tue/git/merge_rebase_slides.html#why-is-a-linear-history-important",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "We use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4."
+    "objectID": "material/2_tue/git/slides.html#why-do-we-need-version-control",
+    "href": "material/2_tue/git/slides.html#why-do-we-need-version-control",
+    "title": "1. Introduction to Version Control",
+    "section": "Why Do We Need Version Control?",
+    "text": "Why Do We Need Version Control?\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
-    "href": "material/2_tue/git/merge_rebase_slides.html#how-to-get-a-linear-history",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Real conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch."
+    "objectID": "material/2_tue/git/slides.html#how-does-version-control-work",
+    "href": "material/2_tue/git/slides.html#how-does-version-control-work",
+    "title": "1. Introduction to Version Control",
+    "section": "How Does Version Control Work?",
+    "text": "How Does Version Control Work?\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#rebase",
-    "href": "material/2_tue/git/merge_rebase_slides.html#rebase",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "git checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)"
+    "objectID": "material/2_tue/git/slides.html#the-alternative-a-story-told-in-file-names",
+    "href": "material/2_tue/git/slides.html#the-alternative-a-story-told-in-file-names",
+    "title": "1. Introduction to Version Control",
+    "section": "The Alternative: A Story Told in File Names",
+    "text": "The Alternative: A Story Told in File Names\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
-    "href": "material/2_tue/git/merge_rebase_slides.html#github-pr-merge-variants",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "GitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?"
+    "objectID": "material/2_tue/git/slides.html#a-very-short-history-of-version-control-i",
+    "href": "material/2_tue/git/slides.html#a-very-short-history-of-version-control-i",
+    "title": "1. Introduction to Version Control",
+    "section": "A Very Short History of Version Control I",
+    "text": "A Very Short History of Version Control I\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
-    "href": "material/2_tue/git/merge_rebase_slides.html#squash-and-merge",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)"
+    "objectID": "material/2_tue/git/slides.html#a-very-short-history-of-version-control-ii",
+    "href": "material/2_tue/git/slides.html#a-very-short-history-of-version-control-ii",
+    "title": "1. Introduction to Version Control",
+    "section": "A Very Short History of Version Control II",
+    "text": "A Very Short History of Version Control II\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#conflicts",
-    "href": "material/2_tue/git/merge_rebase_slides.html#conflicts",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "But what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature"
+    "objectID": "material/2_tue/git/slides.html#the-only-standard-today-git",
+    "href": "material/2_tue/git/slides.html#the-only-standard-today-git",
+    "title": "1. Introduction to Version Control",
+    "section": "The Only Standard Today: Git",
+    "text": "The Only Standard Today: Git\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nIs this good or bad?"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
-    "href": "material/2_tue/git/merge_rebase_slides.html#summary-and-final-remarks",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Try to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE"
+    "objectID": "material/2_tue/git/slides.html#more-facts-on-git",
+    "href": "material/2_tue/git/slides.html#more-facts-on-git",
+    "title": "1. Introduction to Version Control",
+    "section": "More Facts on Git",
+    "text": "More Facts on Git\n\nGit itself is open-source: GPL license\nSource code on GitHub, contributions are a bit more complicated than a simple PR\nWritten mainly in C\nStarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano\nGit (the version control software) vs. git (the command line interface)"
   },
   {
-    "objectID": "material/2_tue/git/merge_rebase_slides.html#further-reading",
-    "href": "material/2_tue/git/merge_rebase_slides.html#further-reading",
-    "title": "Merge vs. Rebase",
-    "section": "",
-    "text": "Bitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
+    "objectID": "material/2_tue/git/slides.html#forges",
+    "href": "material/2_tue/git/slides.html#forges",
+    "title": "1. Introduction to Version Control",
+    "section": "Forges",
+    "text": "Forges\nThere is a difference between Git and hosting services (forges):\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html",
-    "href": "material/2_tue/git/intro_slides.html",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools.\n\n\n\n\n\nVersion control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”\n\n\n\n\n\n\nmaster (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when\n\n\n\n\n\n\n\nhttp://phdcomics.com/comics/archive/phd052810s.gif\n\n\n\n\nThe old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today\n\n\n\n\n\nDistributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC\n\n\n\n\nNo longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?\n\n\n\n\n\nGit itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+    "objectID": "material/2_tue/git/slides.html#expert-level-poll",
+    "href": "material/2_tue/git/slides.html#expert-level-poll",
+    "title": "1. Introduction to Version Control",
+    "section": "Expert level poll",
+    "text": "Expert level poll\nWhich level do you have?\n\nBeginner: hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "href": "material/2_tue/git/intro_slides.html#learning-goals-of-section",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Refresh and organize students’ existing knowledge on Git (learn how to learn more).\nStudents can explain difference between merge and rebase and when to use what.\nHow to use Git workflows to organize research software development in a team.\nGet to know a few useful GitHub/GitLab standards and a few helpful tools."
+    "objectID": "material/2_tue/git/slides.html#overview",
+    "href": "material/2_tue/git/slides.html#overview",
+    "title": "1. Introduction to Version Control",
+    "section": "Overview",
+    "text": "Overview\n\nGit overview picture from py-rse"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "href": "material/2_tue/git/intro_slides.html#why-do-we-need-version-control",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Version control …\n\ntracks changes to files and helps people share those changes with each other.\n\nCould also be done via email / Google Docs / …, but not as accurately and efficiently\n\nwas originally developed for software development, but today cornerstone of reproducible research\n\n\n“If you can’t git diff a file format, it’s broken.”"
+    "objectID": "material/2_tue/git/slides.html#demo",
+    "href": "material/2_tue/git/slides.html#demo",
+    "title": "1. Introduction to Version Control",
+    "section": "Demo",
+    "text": "Demo\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "href": "material/2_tue/git/intro_slides.html#how-does-version-control-work",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "master (or main) copy of code in repository, can’t edit directly\nInstead: check out a working copy of code, edit, commit changes back\nRepository records complete revision history\n\nYou can go back in time\nIt’s clear who did what when"
+    "objectID": "material/2_tue/git/slides.html#useful-links",
+    "href": "material/2_tue/git/slides.html#useful-links",
+    "title": "1. Introduction to Version Control",
+    "section": "Useful Links",
+    "text": "Useful Links\n\nOfficial documentation\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "href": "material/2_tue/git/intro_slides.html#the-alternative-a-story-told-in-file-names",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "http://phdcomics.com/comics/archive/phd052810s.gif"
+    "objectID": "material/2_tue/git/slides.html#linear-history",
+    "href": "material/2_tue/git/slides.html#linear-history",
+    "title": "1. Introduction to Version Control",
+    "section": "Linear History",
+    "text": "Linear History\n\n\nCommits are snapshots + pointer to parent, not diffs\n\nBut for linear history, this makes no difference\n\nEach normal commit has one parent commit\n\nc05f017^ &lt;– c05f017\nA = B^ &lt;– B\n(^ is the same as ~1)\nPointer to parent commit goes into hash\n\ngit show gives diff of commit to parent"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-i",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "The old centralized variants:\n\n1982: RCS (Revision Control System), operates on single files\n1986 (release in 1990): CVS (Concurrent Versions System), front end of RCS, operates on whole projects\n1994: VSS (Microsoft Visual SourceSafe)\n2000: SVN (Apache Subversion), mostly compatible successor of CVS, still used today"
+    "objectID": "material/2_tue/git/slides.html#merge-commits",
+    "href": "material/2_tue/git/slides.html#merge-commits",
+    "title": "1. Introduction to Version Control",
+    "section": "Merge Commits",
+    "text": "Merge Commits\n\ngit checkout main && git merge feature \nA merge commit (normally) has two parent commits M^1 and M^2 (don’t confuse ^2 with ~2)\n\nCan’t show unique diff\nFirst parent relative to the branch you are on (M^1 = C, M^2 = E)\n\ngit show\n\ngit show: “combined diff”\nGitHub: git show --first-parent\ngit show -m: separate diff to all parents"
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "href": "material/2_tue/git/intro_slides.html#a-very-short-history-of-version-control-ii",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Distributed version control:\n\nBesides remote master version, also local copy of repository\nMore memory required, but much better performance\nFor a long time: highly fragmented market\n\n2000: BitKeeper (originally proprietary software)\n2005: Mercurial\n2005: Git\nA few more\n\n\nLearn more: Podcast All Things Git: History of VC"
+    "objectID": "material/2_tue/git/slides.html#why-is-a-linear-history-important",
+    "href": "material/2_tue/git/slides.html#why-is-a-linear-history-important",
+    "title": "1. Introduction to Version Control",
+    "section": "Why is a Linear History Important?",
+    "text": "Why is a Linear History Important?\nWe use here:\n\nLinear history := no merge commits\n\n\nMerge commits are hard to understand per se.\nA merge takes all commits from feature to main (on git log). –&gt; Hard to understand\nDevelopers often follow projects by reading commits (reading the diffs). –&gt; Harder to read (where happened what)\nTracing bugs easier with linear history (see git bisect)\n\nExample: We know a bug was introduced between v1.3 and v1.4."
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "href": "material/2_tue/git/intro_slides.html#the-only-standard-today-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "No longer a fragmented market, there is nearly only Git today:\n\nStackoverflow developer survey 2021: &gt; “Over 90% of respondents use Git, suggesting that it is a fundamental tool to being a developer.”\nAll software project candidates for contribution challenge use Git\nIs this good or bad?"
+    "objectID": "material/2_tue/git/slides.html#how-to-get-a-linear-history",
+    "href": "material/2_tue/git/slides.html#how-to-get-a-linear-history",
+    "title": "1. Introduction to Version Control",
+    "section": "How to get a Linear History?",
+    "text": "How to get a Linear History?\n\nReal conflicts are very rare in real projects, most merge commits are false positives (not conflicts) and should be avoided.\nIf there are no changes on main, git merge does a “fast-forward” merge (no merge commit).\nIf there are changes on main, rebase feature branch."
   },
   {
-    "objectID": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "href": "material/2_tue/git/intro_slides.html#more-facts-on-git",
-    "title": "Introduction to version control",
-    "section": "",
-    "text": "Git itself is open-source: GPL license\n\nsource on GitHub, contributions are a bit more complicated than a simple PR\nwritten mainly in C\nstarted by Linus Torvalds, core maintainer since later 2005: Junio Hamano"
+    "objectID": "material/2_tue/git/slides.html#rebase",
+    "href": "material/2_tue/git/slides.html#rebase",
+    "title": "1. Introduction to Version Control",
+    "section": "Rebase",
+    "text": "Rebase\n\ngit checkout feature && git rebase main \nStates of issues change (and new parents) –&gt; history is rewritten\nIf feature is already on remote, it needs a force push git push --force myfork feature (or --force-with-lease).\nBe careful: Only use rebase if only you work on a branch (a local branch or a branch on your fork).\nFor local branches very helpful: git pull --rebase (fetch & rebase)"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html",
-    "href": "material/2_tue/git/workflow_slides.html",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches).\n\n\n\n\n\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity.\n\n\n\n\n\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line\n\n\n\n\n\n\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow\n\n\n\n\n\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO\n\n\n\n\n\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)\n\n\n\n\n\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash\n\n\n\n\n\n\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+    "objectID": "material/2_tue/git/slides.html#github-pr-merge-variants",
+    "href": "material/2_tue/git/slides.html#github-pr-merge-variants",
+    "title": "1. Introduction to Version Control",
+    "section": "GitHub PR Merge Variants",
+    "text": "GitHub PR Merge Variants\n\nGitHub offers three ways to merge a non-conflicting (no changes in same files) PR:\n\nCreate a merge commit\nSquash and merge\nRebase and merge\n\nLook at a PR together, e.g. PR 1432 from preCICE (will be closed eventually)\n\n\nWhat do the options do?"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "href": "material/2_tue/git/workflow_slides.html#why-workflows",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Git offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
+    "objectID": "material/2_tue/git/slides.html#squash-and-merge",
+    "href": "material/2_tue/git/slides.html#squash-and-merge",
+    "title": "1. Introduction to Version Control",
+    "section": "Squash and Merge",
+    "text": "Squash and Merge\n\n… squashes all commits into one\n\nOften, single commits of feature branch are important while developing the feature,\n… but not when the feature is merged\nWorks well for small feature PRs\n\n… also does a rebase (interactively, git rebase -i)"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#which-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "There are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
+    "objectID": "material/2_tue/git/slides.html#conflicts",
+    "href": "material/2_tue/git/slides.html#conflicts",
+    "title": "1. Introduction to Version Control",
+    "section": "Conflicts",
+    "text": "Conflicts\n\nBut what if there is a conflict?\n\n\nResolve by rebasing feature branch (recommended)\nOr resolve by merging main into feature"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#centralized-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Only one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
+    "objectID": "material/2_tue/git/slides.html#summary-and-remarks",
+    "href": "material/2_tue/git/slides.html#summary-and-remarks",
+    "title": "1. Introduction to Version Control",
+    "section": "Summary and Remarks",
+    "text": "Summary and Remarks\n\nTry to keep a linear history with rebasing whenever reasonable\nDon’t use rebase on a public/shared branch during development\nSquash before merging if reasonable\nDelete feature branch after merging\nLocal view: git log --graph\nRemote view on GitHub, e.g. for preCICE"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#feature-branch-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Each feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
+    "objectID": "material/2_tue/git/slides.html#further-reading",
+    "href": "material/2_tue/git/slides.html#further-reading",
+    "title": "1. Introduction to Version Control",
+    "section": "Further Reading",
+    "text": "Further Reading\n\nBitbucket docs: “Merging vs. Rebasing”\nHackernoon: “What’s the diff?”\nGitHub Blog: “Commits are snapshots, not diffs”\nStack Overflow: “Git show of a merge commit”"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#gitflow",
-    "href": "material/2_tue/git/workflow_slides.html#gitflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Visualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
+    "objectID": "material/2_tue/git/slides.html#why-workflows",
+    "href": "material/2_tue/git/slides.html#why-workflows",
+    "title": "1. Introduction to Version Control",
+    "section": "Why Workflows?",
+    "text": "Why Workflows?\n\nGit offers a lot of flexibility in managing changes.\nWhen working in a team, some agreements need to be made however (especially on how to work with branches)."
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "href": "material/2_tue/git/workflow_slides.html#forking-workflow",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Gitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
+    "objectID": "material/2_tue/git/slides.html#which-workflow",
+    "href": "material/2_tue/git/slides.html#which-workflow",
+    "title": "1. Introduction to Version Control",
+    "section": "Which Workflow?",
+    "text": "Which Workflow?\n\nThere are standard solutions.\nIt depends on the size of the team.\nWorkflow should enhance effectiveness of team, not be a burden that limits productivity."
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "href": "material/2_tue/git/workflow_slides.html#do-small-prs",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "For all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
+    "objectID": "material/2_tue/git/slides.html#centralized-workflow",
+    "href": "material/2_tue/git/slides.html#centralized-workflow",
+    "title": "1. Introduction to Version Control",
+    "section": "Centralized Workflow",
+    "text": "Centralized Workflow\n\nOnly one branch: the main branch\nKeep your changes in local commits till some feature is ready\nIf ready, directly push to main; no PRs, no reviews\nConflicts: fix locally (push not allowed anyway), use git pull --rebase\nGood for: small teams, small projects, projects that are anyway reviewed over and over again\nExample: LaTeX papers\n\nPut each section in separate file\nPut each sentence in separate line"
   },
   {
-    "objectID": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "href": "material/2_tue/git/workflow_slides.html#quick-reads",
-    "title": "Working in Teams / Git Workflows",
-    "section": "",
-    "text": "Atlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
+    "objectID": "material/2_tue/git/slides.html#feature-branch-workflow",
+    "href": "material/2_tue/git/slides.html#feature-branch-workflow",
+    "title": "1. Introduction to Version Control",
+    "section": "Feature Branch Workflow",
+    "text": "Feature Branch Workflow\n\nEach feature (or bugfix) in separate branch\nPush feature branch to remote, use descriptive name\n\ne.g. issue number in name if each branch closes one issue\n\nmain should never contain broken code\nProtect direct push to main\nPR (or MR) with review to merge from feature branch to main\nRebase feature branch on main if necessary\nDelete remote branch once merged and no longer needed (one click on GitHub after merge)\nGood for: small teams, small projects, prototyping, websites (continuous deployment), documentation\nAka. trunk-based development or GitHub flow"
   },
   {
-    "objectID": "material/2_tue/git/git_basics_demo.html",
-    "href": "material/2_tue/git/git_basics_demo.html",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick\n\n\n\n\nStarting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote\n\n\n\n\n\n\n\n\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+    "objectID": "material/2_tue/git/slides.html#gitflow",
+    "href": "material/2_tue/git/slides.html#gitflow",
+    "title": "1. Introduction to Version Control",
+    "section": "Gitflow",
+    "text": "Gitflow\n\nVisualization by Vincent Driessen, from original blog post in 2010\nmain and develop\n\nmain contains releases as tags\ndevelop contains latest features\n\nFeature branches created of develop, PRs back to develop\nProtect main and (possibly) develop from direct pushes\nDedicated release branches (e.g., v1.0) created of develop\n\nTested, fixed, merged to main\nAfterwards, tagged, merged back to develop\n\nHotfix branches directly of and to main\nGood for: software with users, larger teams\nThere is a tool git-flow, a wrapper around git, e.g. git flow init … but not really necessary IMHO"
   },
   {
-    "objectID": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "href": "material/2_tue/git/git_basics_demo.html#recap-of-git-basics",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Expert level poll on git: ask students to estimate their level.\n\nBeginner: I have hardly ever used Git\nUser: pull, commit, push, status, diff\nDeveloper: fork, branch, merge, checkout\nMaintainer: rebase, squash, cherry-pick, bisect\nOwner: submodules\n\n\n\n\n\ngit overview picture from py-rse\n\n\n\ngit --help, git commit --help\nincomplete statement git comm\nThere is a difference between Git and hosting services (forges)\n\nGitHub\nGitLab, open-source, hosted e.g. at IPVS\nBitbucket\nSourceForge\nmany more\noften, more than just hosting, also DevOps\n\nGive outlook on remainder of Git chapter: How I work with Git, quiz, advanced topics (workflows, rebase, standards), my neat little Git trick"
+    "objectID": "material/2_tue/git/slides.html#forking-workflow",
+    "href": "material/2_tue/git/slides.html#forking-workflow",
+    "title": "1. Introduction to Version Control",
+    "section": "Forking Workflow",
+    "text": "Forking Workflow\n\nGitflow + feature branches on other forks\nMore control over access rights, distinguish between maintainers and external contributors\nShould maintainers also use branches on their forks?\n\nMakes overview of branches easier\nDistinguishes between prototype branches (on fork, no PR), serious enhancements (on fork with PR), joint enhancements (on upstream)\n\nGood for: open-source projects with external contributions (used more or less in preCICE)"
   },
   {
-    "objectID": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "href": "material/2_tue/git/git_basics_demo.html#how-i-work-with-git",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Starting remarks:\n\nThere is not the one solution how to do things with Git. I simply show what I typically use.\nDon’t use a client if you don’t understand the command line git\n\nLook at GitHub\n\n\npreCICE repository\ndefault branch develop\nfork -&gt; my fork\n\n\nWorking directory:\n\n\nZSH shell shows git branches\ngit remote -v (I have upstream, myfork, …)\nmention difference between ssh and https (also see GitHub)\nget newest changes git pull upstream develop\ngit log -&gt; I use special format, see ~/.gitconfig,\ncheck log on GitHub; explain short hash\ngit branch\ngit branch add-demo-feature\ngit checkout add-demo-feature\n\n\nFirst commit\n\n\ngit status -&gt; always tells you what you can do\nvi src/action/Action.hpp -&gt; add #include \"MagicHeader.hpp\"\ngit diff, git diff src/com/Action.hpp, git diff --color-words\ngit status, git add, git status\ngit commit -&gt; “Include MagicHeader in Action.hpp”\ngit status, git log, git log -p, git show\n\n\nChange or revert things\n\n\nI forgot to add sth: git reset --soft HEAD~1, git status\ngit diff, git diff HEAD because already staged\ngit log\ngit commit\nactually all that is nonsense: git reset --hard HEAD~1\nmodify again, all nonsense before committing: git checkout src/action/Action.hpp\n\n\nStash\n\n\nwhile working on unfinished feature, I need to change / test this other thing quickly, too lazy for commits / branches\ngit stash\ngit stash pop\n\n\nCreate PR\n\n\ncreate commit again\npreview what will be in PR: git diff develop..add-demo-feature\ngit push -u myfork add-demo-feature -&gt; copy link\nexplain PR template\nexplain target branch\nexplain “Allow edits by maintainers”\ncancel\nmy fork -&gt; branches -&gt; delete\n\n\nCheck out someone else’s work\n\n\nhave a look at an existing PR, look at all tabs, show suggestion feature\nbut sometimes we want to really build and try sth out …\ngit remote -v\ngit remote add alex git@github.com:ajaust/precice.git if I don’t have remote already (or somebody else)\ngit fetch alex\ngit checkout -t alex/[branch-name]\nI could now also push to ajaust’s remote"
+    "objectID": "material/2_tue/git/slides.html#do-small-prs",
+    "href": "material/2_tue/git/slides.html#do-small-prs",
+    "title": "1. Introduction to Version Control",
+    "section": "Do Small PRs",
+    "text": "Do Small PRs\n\nFor all workflows, it is better to do small PRs\n\nEasier to review\nFaster to merge –&gt; fewer conflicts\nEasier to squash"
   },
   {
-    "objectID": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "href": "material/2_tue/git/git_basics_demo.html#further-reading",
-    "title": "Git Demo",
-    "section": "",
-    "text": "Video: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr\n\n\n\n\n\nOfficial documentation"
+    "objectID": "material/2_tue/git/slides.html#quick-reads",
+    "href": "material/2_tue/git/slides.html#quick-reads",
+    "title": "1. Introduction to Version Control",
+    "section": "Quick Reads",
+    "text": "Quick Reads\n\nAtlassian docs on workflows\nOriginal gitflow blog post\nTrunk-based development\nGitHub flow\nHow to keep pull requests manageable"
   },
   {
-    "objectID": "material/2_tue/git/standards_slides.html",
-    "href": "material/2_tue/git/standards_slides.html",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them.\n\n\n\n\n\n\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar.\n\n\n\n\n\n\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+    "objectID": "material/2_tue/git/slides.html#what-do-we-mean-with-standards",
+    "href": "material/2_tue/git/slides.html#what-do-we-mean-with-standards",
+    "title": "1. Introduction to Version Control",
+    "section": "What Do We Mean With Standards?",
+    "text": "What Do We Mean With Standards?\n\nGitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
   },
   {
-    "objectID": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "href": "material/2_tue/git/standards_slides.html#what-do-we-mean-with-standards",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "GitHub uses standards or conventions.\nCertain files or names trigger certain behavior automatically.\nMany are supported by most forges.\n\nThis is good.\nEverybody should know them."
+    "objectID": "material/2_tue/git/slides.html#special-files",
+    "href": "material/2_tue/git/slides.html#special-files",
+    "title": "1. Introduction to Version Control",
+    "section": "Special Files",
+    "text": "Special Files\nCertain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
   },
   {
-    "objectID": "material/2_tue/git/standards_slides.html#special-files",
-    "href": "material/2_tue/git/standards_slides.html#special-files",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Certain files lead to special formatting (normally directly at root of repo):\n\nREADME.md\n\n… contains meta information / overview / first steps of software.\n… gets rendered on landing page (and in every folder).\n\nLICENSE\n\n… contains software license.\n… gets rendered on right sidebar, when clicking on license, and on repo preview.\n\nCONTRIBUTING.md\n\n… contains guidelines for contributing.\nFirst-time contributors see banner.\n\nCODE_OF_CONDUCT.md\n\n… contains code of conduct.\n… gets rendered on right sidebar."
+    "objectID": "material/2_tue/git/slides.html#issues-and-prs",
+    "href": "material/2_tue/git/slides.html#issues-and-prs",
+    "title": "1. Introduction to Version Control",
+    "section": "Issues and PRs",
+    "text": "Issues and PRs\n\nTemplates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
   },
   {
-    "objectID": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "href": "material/2_tue/git/standards_slides.html#issues-and-prs",
-    "title": "GitHub / GitLab Standards",
-    "section": "",
-    "text": "Templates for description in .github folder\ncloses #34 (or several other keywords: fixes, resolves) in commit message or PR description will close issue 34 when merged.\nhelp wanted label gets rendered on repo preview (e.g. “3 issues need help”)."
+    "objectID": "material/2_tue/git/slides.html#commit-messages-12",
+    "href": "material/2_tue/git/slides.html#commit-messages-12",
+    "title": "1. Introduction to Version Control",
+    "section": "Commit Messages (1/2)",
+    "text": "Commit Messages (1/2)\n\nConsistent\nDescriptive and concise (such that complete history becomes skimmable)\nExplain the “why” (the “how” is covered in the diff)"
+  },
+  {
+    "objectID": "material/2_tue/git/slides.html#commit-messages-22",
+    "href": "material/2_tue/git/slides.html#commit-messages-22",
+    "title": "1. Introduction to Version Control",
+    "section": "Commit Messages (2/2)",
+    "text": "Commit Messages (2/2)\nThe seven rules of a great Git commit message:\n\nSeparate subject from body with a blank line.\nLimit the subject line to 50 characters.\nCapitalize the subject line.\nDo not end the subject line with a period.\nUse the imperative mood in the subject line.\nWrap the body at 72 characters.\nUse the body to explain what and why vs. how."
   },
   {
     "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
