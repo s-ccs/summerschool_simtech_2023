@@ -53,7 +53,42 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Summerschool Schedule"
+    "text": "Tentative Program (as of 31 July 2023)"
+  },
+  {
+    "objectID": "schedule.html#monday-9-october",
+    "href": "schedule.html#monday-9-october",
+    "title": "Schedule",
+    "section": "Monday, 9 October",
+    "text": "Monday, 9 October\n\n\n\n\nTime\nProgram\nWho\n\n\n\n\n10:00–10:30\nRegistration\n\n\n\n10:30–11:30\nWelcome/Introduction to RSE\nBenedikt Ehinger\n\n\n11:30–13:00\nWhy Julia?\nHendrik Ranocha\n\n\n13:00–14:00\nLunch\n\n\n\n14:00–16:00\nFirst Steps\nBenedikt Ehinger\n\n\n16:00–18:00\nReproducible Environments\nBenedikt Ehinger\n\n\n18:00–open end\nSocial Program"
+  },
+  {
+    "objectID": "schedule.html#tuesday-10-october",
+    "href": "schedule.html#tuesday-10-october",
+    "title": "Schedule",
+    "section": "Tuesday, 10 October",
+    "text": "Tuesday, 10 October\n\n\n\n\n\n\n\n\n\nTime\nProgram\nWho\n\n\n\n\n9:00–11:00\nAdvanced Git & Contributing\nBenjamin Uekermann\n\n\n11:00–13:00\nUnit Testing\nBenedikt Ehinger & Benjamin Uekermann\n\n\n13:00–14:00\nLunch\n\n\n\n14:00–16:00\nContinuous Integration\nBenjamin Uekermann\n\n\n16:00–18:00\nCode Review\nLisa DeBruine\n\n\n18:00–open end\nSocial Program"
+  },
+  {
+    "objectID": "schedule.html#wednesday-11-october",
+    "href": "schedule.html#wednesday-11-october",
+    "title": "Schedule",
+    "section": "Wednesday, 11 October",
+    "text": "Wednesday, 11 October\n\n\n\n\nTime\nProgram\nWho\n\n\n\n\n9:00–11:00\nDocumentation & PkgTemplates.jl\nBenedikt Ehinger\n\n\n11:00–13:00\nVisualization\nBenedikt Ehinger\n\n\n13:00–14:00\nLunch\n\n\n\n14:00–16:00\nLinear Algebra\nPrzemyslaw Szufel\n\n\n16:00–18:00\nMultiple Regression Basics\nMarco Oesting\n\n\n18:00–open end\nSocial Program"
+  },
+  {
+    "objectID": "schedule.html#thursday-12-october",
+    "href": "schedule.html#thursday-12-october",
+    "title": "Schedule",
+    "section": "Thursday, 12 October",
+    "text": "Thursday, 12 October\n\n\n\n\nTime\nProgram\nWho\n\n\n\n\n9:00–11:00\nSimulating Data\nLisa DeBruine\n\n\n11:00–13:00\nResampling-based Statistics\nMarco Oesting\n\n\n13:00–14:00\nLunch\n\n\n\n14:00–16:00\nParallelization\nPrzemyslaw Szufel\n\n\n16:00–18:00\nProject Work\n\n\n\n18:00–open end\nSocial Program"
+  },
+  {
+    "objectID": "schedule.html#friday-13-october",
+    "href": "schedule.html#friday-13-october",
+    "title": "Schedule",
+    "section": "Friday, 13 October",
+    "text": "Friday, 13 October\n\n\n\n\nTime\nProgram\nWho\n\n\n\n\n9:00–11:00\nJulia Highlights & Optimization\nHendrik Ranocha\n\n\n11:00–13:00\nProject Work\n\n\n\n13:00–14:00\nLunch\n\n\n\n14:00–16:00\nProject Work"
   },
   {
     "objectID": "projectwork.html",
@@ -455,6 +490,62 @@
     "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
+    "objectID": "material/4_thu/sim/slides.html#pre-registration",
+    "href": "material/4_thu/sim/slides.html#pre-registration",
+    "title": "Fake It Until You Make It",
+    "section": "Pre-Registration",
+    "text": "Pre-Registration\n\nPrep analysis scripts for pre-registration"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#power",
+    "href": "material/4_thu/sim/slides.html#power",
+    "title": "Fake It Until You Make It",
+    "section": "Power",
+    "text": "Power\n\nCalculate power and sensitivity for analyses that don’t have empirical methods"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#reproducible-examples",
+    "href": "material/4_thu/sim/slides.html#reproducible-examples",
+    "title": "Fake It Until You Make It",
+    "section": "Reproducible Examples",
+    "text": "Reproducible Examples\n\n\nCreate reproducible examples when your data are too big or confidential to share"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#enhance-understanding",
+    "href": "material/4_thu/sim/slides.html#enhance-understanding",
+    "title": "Fake It Until You Make It",
+    "section": "Enhance Understanding",
+    "text": "Enhance Understanding\n\n\nEnhance your understanding of statistical concepts"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#teaching-data",
+    "href": "material/4_thu/sim/slides.html#teaching-data",
+    "title": "Fake It Until You Make It",
+    "section": "Teaching Data",
+    "text": "Teaching Data\n\nCreate demo data for teaching and tutorials"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#plot",
+    "href": "material/4_thu/sim/slides.html#plot",
+    "title": "Fake It Until You Make It",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#data",
+    "href": "material/4_thu/sim/slides.html#data",
+    "title": "Fake It Until You Make It",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "material/4_thu/sim/slides.html#code",
+    "href": "material/4_thu/sim/slides.html#code",
+    "title": "Fake It Until You Make It",
+    "section": "Code",
+    "text": "Code"
+  },
+  {
     "objectID": "material/2_tue/git/tasks.html",
     "href": "material/2_tue/git/tasks.html",
     "title": "Tasks",
@@ -719,6 +810,146 @@
     "title": "1. Introduction to Version Control",
     "section": "Commit Messages (2/2)",
     "text": "Commit Messages (2/2)\nThe seven rules of a great Git commit message:\n\nSeparate subject from body with a blank line.\nLimit the subject line to 50 characters.\nCapitalize the subject line.\nDo not end the subject line with a period.\nUse the imperative mood in the subject line.\nWrap the body at 72 characters.\nUse the body to explain what and why vs. how."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#error-detection",
+    "href": "material/2_tue/codereview/slides.html#error-detection",
+    "title": "Code Review",
+    "section": "Error Detection",
+    "text": "Error Detection\n\n\n\nAn analysis by Nuijten et al. (2016) of over 250K p-values reported in 8 major psych journals from 1985 to 2013 found that:\n\nhalf the papers had at least one inconsistent p-value\n1/8 of papers had errors that could affect conclusions\nerrors more likely to be erroneously significant than not"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#analysis-reproducibility",
+    "href": "material/2_tue/codereview/slides.html#analysis-reproducibility",
+    "title": "Code Review",
+    "section": "Analysis Reproducibility",
+    "text": "Analysis Reproducibility\nOf 35 articles published in Cognition with usable data (but no code, Hardwicke et al. (2018) found:\n\nonly 11 could be reproduced independently\n11 were reproducible with the original authors’ help\n13 were not reproducible even by the original authors"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#code-reproducibility",
+    "href": "material/2_tue/codereview/slides.html#code-reproducibility",
+    "title": "Code Review",
+    "section": "Code Reproducibility",
+    "text": "Code Reproducibility\nOf 62 Registered Reports in psychology published from 2014–2018, 36 had data and analysis code, 31 could be run, and 21 reproduced all the main results (Obels et al, 2020)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
+    "href": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
+    "title": "Code Review",
+    "section": "Barriers to Doing Code Review",
+    "text": "Barriers to Doing Code Review\n\n\n💻 Technical\n\nLack of skill\nNo guide\n\n\n⏱ Incentive\n\nNo time\nNot expected\n\n\n😳 Social\n\nExpectations\nFear of judgement"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#does-it-run",
+    "href": "material/2_tue/codereview/slides.html#does-it-run",
+    "title": "Code Review",
+    "section": "Does it run?",
+    "text": "Does it run?\n\nRequires the least expertise and time\nCan result in a substantial improvement\nRun on a different computer than coded on\nIdeally, access from the same place users or reviewers will\nNote if you get any errors\nIf you have the expertise to fix them, make and note the fix, then try again\n\n\nChecking whether the code runs is the simplest goal, but one of the most important and it would be a substantial improvement if all research code had this single check. It requires only the expertise to run a script in the relevant language. The reviewer does not necessarily need to be able to diagnose or help with any problems, just identify them to the coder."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-reproducible",
+    "href": "material/2_tue/codereview/slides.html#is-it-reproducible",
+    "title": "Code Review",
+    "section": "Is it reproducible?",
+    "text": "Is it reproducible?\n\nRequires more time, but not expertise\nThe coder can make this a lot easier for the reviewer\nAnyone running the code should get the same outputs\nOutputs include: Analysis Results; Plots; Tables\nCheck for a seed when random values are used\nAssess how straightforward it is to do this check\n\n\nComputational reproducibility means that anyone running the code gets the same results. The reviewer can check for consistency with outputs that are created by the code, such as an HTML or PDF rendered version of the script, or with values and figures in a manuscript.\nIt is also relevant to comment on how straightforward it is to check the outputs. For example, did the coder use literate programming, where the source code and natural-language explanations are interspersed in the same document, to divide the code into sections that clearly correspond with outputs that it needs to be consistent with? Are figures and tables numbered or labeled in a way that makes it easy for the reviewer to see their correspondence? This both helps the reviewer assess the reproducibility of the code, and helps other researchers use the code."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
+    "href": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
+    "title": "Code Review",
+    "section": "Is it auditable and understandable?",
+    "text": "Is it auditable and understandable?\n\nRequires a bit more expertise and time\nIs the code well-organised?\nHeaders make a complex script much more accessible\nCan you find corresponding parts of the outputs or manuscript?\nAre all parts of the process available (e.g., generating analysed data from raw data)?\nLiterate programming makes code more understandable.\n\n\nEven if a reviewer doesn’t have the expertise to assess the statistics or data processing, they can assess whether the code is well-organized enough to figure out what is intended so mistakes could be detected."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
+    "href": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
+    "title": "Code Review",
+    "section": "Does it follow best practices?",
+    "text": "Does it follow best practices?\n\nRequires substantial expertise and time\nGeneral coding principles that serve to reduce the scope for errors and make understanding code easier, for example:\n\nDo the variable names make sense?\nIs there repeated code (DRY) or values defined in multiple places (SPOT)?\nAre outputs of long processes saved and loaded from file?\nAre there sense checks or unit tests where appropriate?\n\n\n\nRecommendations about ‘best practices’ can be idiosyncratic, but here we mean general coding principles that serve to reduce the scope for errors and make understanding code easier. This goal can take a bit longer and requires more general coding expertise from the reviewer. It also may be more appropriate in earlier stages of the project. However, advice on best practices can still help coders with future projects, even when there isn’t scope to make big structural changes to the current project."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
+    "href": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
+    "title": "Code Review",
+    "section": "Is it correct and appropriate?",
+    "text": "Is it correct and appropriate?\n\nRequires substantial expertise and time\nIs the code actually doing what was intended?\nIs what was intended correct?\nDetect logical problems (e.g., filtering in instead of out)\nMay require domain expertise to detect some problems (e.g., knowing that a certain questionnaire has reverse-coded items)\n\n\nIs the code actually doing what was intended, and is what was intended correct? A careful answer to this question requires the reviewer to have domain-specific expertise and statistical expertise. Some logical problems can be caught without domain knowledge, such as intending to filter out male subjects, but actually filtering them IN. However, other problems will require specialist domain or statistical knowledge to detect."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#not-goals",
+    "href": "material/2_tue/codereview/slides.html#not-goals",
+    "title": "Code Review",
+    "section": "Not Goals",
+    "text": "Not Goals\n\nDo not submit code that doesn’t run for you for code review. Of course, code review may uncover bugs that were not apparent to you, but the reviewer should be able to assume that the code runs on your setup. Depending on their experience, a reviewer may fix bugs they find in review, or simply point them out. Severe enough bugs may cause the reviewer to terminate the review, which then prevents higher-order goals from being achieved. This is one reason it is important to do informal code check with colleagues before you send code for more formal review check, such as a journal submission.\nDon’t expect the reviewer to create code for you. Code review is not an opportunity to get someone else to fix sloppy or inefficient code, or to add documentation for you.Some reviewers, depending on their expertise and investment in the project, may of course choose to help improve the code directly, but this verges on a co-author role, not a review role.\nDo not rely on code review to assess the appropriateness of your scientific decisions or statistical analyses. In the context of a manuscript review at a journal, the reviewer may be both a scientific and code reviewer, but these are distinct roles. Code review itself is not a guarantee that your research is methodologically sound or that your statistical approach is appropriate.\n\n\n\n\nDebugging\nCode help\nStatistical help"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#a-review-package-should-include",
+    "href": "material/2_tue/codereview/slides.html#a-review-package-should-include",
+    "title": "Code Review",
+    "section": "A review package should include:",
+    "text": "A review package should include:\n\n\nA README file that describes the project; specifies credit and licensing\nAny outputs that the reviewers should try to reproduce\nAll data used to create the outputs to be reproduced\nAll code necessary to recreate the outputs\nA main script that runs any subscripts in the relevant order"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#project-organisation",
+    "href": "material/2_tue/codereview/slides.html#project-organisation",
+    "title": "Code Review",
+    "section": "Project organisation",
+    "text": "Project organisation\n\nMake sure all files used in the code are in a single directory that is the working directory\nUse Jupyter notebooks or RStudio projects to make this easy\nInclude a README that explains the purpose of all files\nDanielle Navarro’s Project structure"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#file-paths",
+    "href": "material/2_tue/codereview/slides.html#file-paths",
+    "title": "Code Review",
+    "section": "File paths",
+    "text": "File paths\nAll file references should use relative paths, not absolute paths.\n👎 Absolute Path\n#| eval: false\ndogs = open(\"C:\\Documents\\My Project\\data\\dogs.csv\", \"r\")\n\n👍 Relative Path\n#| eval: false\ndogs  open(\"data/dogs.csv\", \"r\")"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#naming-things",
+    "href": "material/2_tue/codereview/slides.html#naming-things",
+    "title": "Code Review",
+    "section": "Naming things",
+    "text": "Naming things\nName files and code objects so both people and computers can easily find things.\n\nFile and directory names should only contain letters, numbers, dashes, and underscores, with a full stop (.) between the file name and extension (no spaces!) e.g., DeBruine_code-review_2023-10-10.qmd\nBe consistent with capitalization, punctuation, and order\nUse a pattern that alphabetizes in a sensible order\nUse YYYY-MM-DD format for dates\nJenny Bryan’s Naming Things"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#data-documentation",
+    "href": "material/2_tue/codereview/slides.html#data-documentation",
+    "title": "Code Review",
+    "section": "Data documentation",
+    "text": "Data documentation\n\n\nOverview\n\nauthors\ndate and location\nsampling/inclusion criteria\ninstruments used\nupdates to the data\nlicense\n\n\nVariable information\n\nNames (i.e., the column names)\nLabels/description\nCodings (e.g., 1 = always, 5 = never)\nData type (e.g., binary, continuous)\nDescriptives (e.g., min, max)\nData units (e.g., mg/L, months)\nMissing values (e.g., NA, 999)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#literate-coding",
+    "href": "material/2_tue/codereview/slides.html#literate-coding",
+    "title": "Code Review",
+    "section": "Literate coding",
+    "text": "Literate coding\nAn approach to programming that focuses on the creation of a document containing a mix of human-readable narrative text and machine-readable computer code.\n\nQuarto, Jupyter, or R Markdown notebooks\n\n## Data Exclusions\n\nWhy we excluded these subjects...\n\n```{julia}\n# exclude subjects with more than 50% errors\ndf_grouped = groupby(df, :id)\ndf_excluded = combine(df_grouped) do sub_df\n    if mean(sub_df.correct) &gt;= 0.5\n        return sub_df\n    end\n    return DataFrame()\nend\n```\n\n\nWhen writing code, it is important to write it in such a way that it is easily understandable by others, and by your future self. The goals of literate programming are similar to those associated with writing clean code (Martin, 2009). Clean code is understandable by humans, well formatted, with an appropriate amount of white space, with meaningful names for variables and functions, and is well commented. Comments should clearly explain to the reader the purpose of the associated lines of code. The quality of commenting is more important than the quantity."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
+    "href": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
+    "title": "Code Review",
+    "section": "Single point of truth (SPOT)",
+    "text": "Single point of truth (SPOT)\nWith repeated numbers\n#| output: false\nusing DataFrames, Random\n\nsimdat = DataFrame(\n  id = 1:10, \n  group = repeat([\"A\", \"B\"], 5), \n  dv = randn(10)\n)\n\nWith parameter variables\n#| output: false\nn = 10\n\nsimdat = DataFrame(\n  id = 1:n,\n  group = repeat([\"A\", \"B\"], n ÷ 2), \n  dv = randn(n)\n)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
+    "href": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
+    "title": "Code Review",
+    "section": "Don’t repeat yourself (DRY)",
+    "text": "Don’t repeat yourself (DRY)\n\nIf you find yourself copying and pasting code more than twice, it’s probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.\n\nWith repeated code\n#| eval: false\nusing HypothesisTests\n\ndfA = filter(row -&gt; row.group == \"A\", simdat)\nanalysisA = OneSampleTTest(dfA.dv)\n\ndfB = filter(row -&gt; row.group == \"B\", simdat)\nanalysisB = OneSampleTTest(dfB.dv)\n\nWith a function\n#| eval: false\nfunction subtest(data, level)\n    sub_df = filter(row -&gt; row.group == level, data)\n    return OneSampleTTest(sub_df.dv)\nend\n\nanalysisA = subtest(simdat, \"A\")\nanalysisB = subtest(simdat, \"B\")"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#unit-tests",
+    "href": "material/2_tue/codereview/slides.html#unit-tests",
+    "title": "Code Review",
+    "section": "Unit Tests",
+    "text": "Unit Tests\n#| error: true\nusing Test\n\n# check length of DataFrame is correct\n@test size(simdat, 1) == 10\n\n# check column names are as expected\n@test names(simdat) == [\"id\", \"group\", \"dv\"]\n\n# check all dv values are positive\n@test all(simdat.dv .&gt; 0)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#exercises",
+    "href": "material/2_tue/codereview/slides.html#exercises",
+    "title": "Code Review",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n🔐 Personal Code\n\nFind code that you have written, in any language\nForm groups of 2-3 people with code in the same language\nTrade scripts and write code reviews\nGo over the code review with the writer\n\n\n🔓 Open Code\n\nForm groups of 2-3 with expertise in the same topic/language\nFind open code in that topic and language\nCollaboratively write a code review for it\nOptional: send it to the code author"
   },
   {
     "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
