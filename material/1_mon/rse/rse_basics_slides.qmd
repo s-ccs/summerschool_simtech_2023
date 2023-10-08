@@ -13,21 +13,21 @@ format:
 
 Find all slides, all materials, and the schedule
 
-([link to presentation](rse_basics_slides_revealjs.html))
+([activate presentation mode](rse_basics_slides_revealjs.html))
 
 ## Last minute organization issues
 
--   
+-   Benedikt has Corona since last week - he hopes to make it. He hopes to give this talk hybrid, but we'll see!
 
--   
+-   Some words on what can be paid: All lunch + Food Mo + We + Bowling Entry+Shoes. No food/drinks on any other days unfortunately.
 
 ## Structure of the summer school
 
 -   Check out the schedule
 
--   In the beginning we will focus on the Research Software Engineering part!
+-   In the beginning we will focus on the Research Software Engineering part.
 
--   Advanced Julia, later this week and by request ;)
+-   Advanced Julia, later this week and by custom request. We hope we put enough slack time in!
 
 ## Your teaching staff I
 
@@ -55,10 +55,6 @@ Find all slides, all materials, and the schedule
 :::
 
 
-<!-- ## Your social team -->
-
-<!-- ## Your admin team -->
-
 # Introduction to Research Software Engineering
 
 ------------------------------------------------------------------------
@@ -72,8 +68,8 @@ Find all slides, all materials, and the schedule
 -   [UK survey in 2014](https://zenodo.org/record/1183562): 7 out of 10 researchers could not conduct research without software.
 -   [DFG funding calls on research software sustainability](https://www.dfg.de/en/research_funding/programmes/infrastructure/lis/funding_opportunities/call_proposal_software/) in 2016 & 2019 & 2023
 -   [Nationale Forschungsdaten Infrastruktur, NFDI](https://www.nfdi.de/?lang=en) since 2020
--   Lack of careers for software developers in academia
--   Lack of reproducibility of research that uses software (*"works for me on my machine"* vs. *"works for everyone everywhere"*)
+-   **BUT** Lack of careers for software developers in academia
+-   **BUT** Lack of reproducibility of research that uses software (*"works for me on my machine"* vs. *"works for everyone everywhere"*)
 
 ------------------------------------------------------------------------
 
@@ -102,3 +98,9 @@ Find all slides, all materials, and the schedule
 -   Open-source development excellent door opener for industry.
 -   Some companies use open-source software and need to make contributions.
 -   Some companies develop their software as open-source software.
+
+## Why RSE+Julia?
+
+- RSE is comparatively easy in Julia
+- Julia resolves 2-language problem: "normalish" Scientists can write^[and support!] fast tools
+- Hendrik will dive into details
