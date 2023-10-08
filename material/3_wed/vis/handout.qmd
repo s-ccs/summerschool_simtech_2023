@@ -154,6 +154,11 @@ Check out the [AoG/GGplot cheatsheet](../../../../cheatsheets/ggplotAOG.qmd):
 
 ## AlgebraOfGraphics.jl
 
+::: callout-note
+Checkout [this awesome AOG tutorial](https://tutorials.pumas.ai/html/PlottingInJulia/01-AoG-intro.html)
+Really beautifully made!
+:::
+
 ### Loading data
 ```julia
 using GLMakie # backend

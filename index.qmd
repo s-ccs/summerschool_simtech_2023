@@ -15,6 +15,12 @@ Please, take a minute to [Install Julia!](installation/julia.qmd) and VSCode
 #### 📅 During the summerschool
 Keep this website ready and have a look at the schedule!
 
+#### 🗺 Where is the summerschool?
+In the SimTech Building, Pfaffenwaldring 5a, 70569 Stuttgart
+
+Seminar room in the groundfloor (directly at the entrance)
+
+[Link to map](https://www.simtech.uni-stuttgart.de/events/simtech-summer-school/SuSch_2/location/)
 
 ----
 
