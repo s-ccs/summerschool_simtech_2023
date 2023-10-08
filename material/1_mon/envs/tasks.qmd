@@ -15,8 +15,10 @@
 Oh no, better check you activated the right environment - ask for help!
 :::
 6. Go back to your package environment. Now add a dependency (e.g. ProgressMeter.jl) and a `compat`-entry
-7. Go back to your project environment, has the dependency been updated? 
+7. Go back to your project environment, has the
+ dependency been updated? 
 
-:::{.callout-hint collapse=true}
+:::{.callout collapse=true}
+## Hint?
 Should you use `resolve` or `instantiate`?
 :::
