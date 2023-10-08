@@ -10,13 +10,26 @@ editor:
 
 ### Introductory Example: tree dataset from R
 
-\[figure of raw data\]
+```{julia}
+using Statistics
+using Plots
+using RDatasets
+
+trees = dataset("datasets", "trees")
+
+scatter(trees.Volume, trees.Girth,
+        legend=false, xlabel="Girth", ylabel="Volume")
+```
 
 *Aim:* Find relationship between the *response variable* `volume` and
 the *explanatory variable/covariate* `girth`? Can we predict the volume
 of a tree given its girth?
 
-\[figure including a straight line\]
+```{julia}
+scatter(trees.Girth, trees.Volume,
+        legend=false, xlabel="Girth", ylabel="Volume")
+plot!(x -> -37 + 5*x)
+```
 
 First Guess: There is a linear relation!
 
@@ -54,6 +67,10 @@ rather use Julia to solve the problem.
 
 \[use Julia code (existing package) to perform linear regression for
 `volume ~ girth`\]
+
+```{julia}
+lm(@formula(Volume ~ Girth), trees)
+```
 
 *Interpretation of the Julia output:*
 
@@ -166,6 +183,15 @@ the corresponding standard errors and the $t$-statistics. Test your
 functions with the \`\`\`tree''' data set and try to reproduce the
 output above.
 
+```{julia}
+r2(linmod1)
+r2(linmod2)
+
+linmod3 = lm(@formula(Volume ~ Girth + Height + Girth*Height), trees)
+
+r2(linmod3)
+```
+
 ## Generalized Linear Models
 
 Classical linear model
@@ -206,29 +232,31 @@ $$
 
 For the models above, these are:
 
-+----------------------+---------------------+----------------------+
-| Type of Data         | Distribution Family | Link Function        |
-+======================+=====================+======================+
-| continuous           | Normal              | identity:            |
-|                      |                     |                      |
-|                      |                     | $$                   |
-|                      |                     | g(x)=x               |
-|                      |                     | $$                   |
-+----------------------+---------------------+----------------------+
-| count                | Poisson             | log:                 |
-|                      |                     |                      |
-|                      |                     | $$                   |
-|                      |                     |  g(x) = \log(x)      |
-|                      |                     | $$                   |
-+----------------------+---------------------+----------------------+
-| binary               | Bernoulli           | logit:               |
-|                      |                     |                      |
-|                      |                     | $$                   |
-|                      |                     | g(x) = \log\left     |
-|                      |                     | (                    |
-|                      |                     | \frac{x}{1-x}\right) |
-|                      |                     | $$                   |
-+----------------------+---------------------+----------------------+
++--------------+---------------------+--------------------+
+| Type of Data | Distribution Family | Link Function      |
++==============+=====================+====================+
+| continuous   | Normal              | identity:          |
+|              |                     |                    |
+|              |                     | $$                 |
+|              |                     | g(x)=x             |
+|              |                     | $$                 |
++--------------+---------------------+--------------------+
+| count        | Poisson             | log:               |
+|              |                     |                    |
+|              |                     | $$                 |
+|              |                     |  g(x) = \log(x)    |
+|              |                     | $$                 |
++--------------+---------------------+--------------------+
+| binary       | Bernoulli           | logit:             |
+|              |                     |                    |
+|              |                     | $$                 |
+|              |                     | g(x) = \log\left   |
+|              |                     | (                  |
+|              |                     | \                  |
+|              |                     | f                  |
+|              |                     | rac{x}{1-x}\right) |
+|              |                     | $$                 |
++--------------+---------------------+--------------------+
 
 In general, the parameter vector $\beta$ is estimated via maximizing the
 likelihood, i.e.,
@@ -246,7 +274,18 @@ $$
 In the Gaussian case, the maximum likelihood estimator is identical to
 the least squares estimator considered above.
 
-\[\[ Example in Julia: maybe `SwissLabor` \]\]
+```{julia}
+using CSV
+using HTTP
+
+http_response = HTTP.get("https://vincentarelbundock.github.io/Rdatasets/csv/AER/SwissLabor.csv")
+SwissLabor = DataFrame(CSV.File(http_response.body))
+
+SwissLabor[!,"participation"] .= (SwissLabor.participation .== "yes")
+
+model = glm(@formula(participation ~ age^2), 
+            SwissLabor, Binomial(), ProbitLink())
+```
 
 **Task 3:** Reproduce the results of our data analysis of the `tree`
 data set using a generalized linear model with normal distribution
