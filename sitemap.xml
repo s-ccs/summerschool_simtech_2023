@@ -2,138 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.simtech-summerschool.de/installation/vscode.html</loc>
-    <lastmod>2023-10-08T18:15:57.046Z</lastmod>
+    <lastmod>2023-10-08T18:35:14.064Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/teaching.html</loc>
-    <lastmod>2023-10-08T18:15:56.270Z</lastmod>
+    <lastmod>2023-10-08T18:35:13.320Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/schedule.html</loc>
-    <lastmod>2023-10-08T18:15:55.546Z</lastmod>
+    <lastmod>2023-10-08T18:35:12.616Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/projectwork.html</loc>
-    <lastmod>2023-10-08T18:15:54.714Z</lastmod>
+    <lastmod>2023-10-08T18:35:11.792Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/cheatsheets/githubactions.html</loc>
-    <lastmod>2023-10-08T18:15:53.878Z</lastmod>
+    <lastmod>2023-10-08T18:35:11.008Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/cheatsheets/julia.html</loc>
-    <lastmod>2023-10-08T18:15:53.186Z</lastmod>
+    <lastmod>2023-10-08T18:35:10.320Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/docs/slides.html</loc>
-    <lastmod>2023-10-08T18:15:52.418Z</lastmod>
+    <lastmod>2023-10-08T18:35:09.612Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/docs/handout.html</loc>
-    <lastmod>2023-10-08T18:15:49.242Z</lastmod>
+    <lastmod>2023-10-08T18:35:06.848Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/linalg/Julia_Matrices_Optimization_JuMP_Stuttgart2023.html</loc>
-    <lastmod>2023-10-08T18:15:48.097Z</lastmod>
+    <lastmod>2023-10-08T18:35:05.768Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/vis/tasks.html</loc>
-    <lastmod>2023-10-08T18:15:44.281Z</lastmod>
+    <lastmod>2023-10-08T18:35:02.204Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/rse/rse_basics_slides_revealjs.html</loc>
-    <lastmod>2023-10-08T18:15:42.825Z</lastmod>
+    <lastmod>2023-10-08T18:35:00.816Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/rse/rse_basics_slides.html</loc>
-    <lastmod>2023-10-08T18:15:42.813Z</lastmod>
+    <lastmod>2023-10-08T18:35:00.804Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/envs/envs_handout.html</loc>
-    <lastmod>2023-10-08T18:15:41.549Z</lastmod>
+    <lastmod>2023-10-08T18:34:59.612Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/firststeps/tasks.html</loc>
-    <lastmod>2023-10-08T18:15:40.453Z</lastmod>
+    <lastmod>2023-10-08T18:34:58.548Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/4_thu/parallel/slides.html</loc>
-    <lastmod>2023-10-08T18:15:39.037Z</lastmod>
+    <lastmod>2023-10-08T18:34:57.192Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/4_thu/sim/slides.html</loc>
-    <lastmod>2023-10-08T18:15:37.185Z</lastmod>
+    <lastmod>2023-10-08T18:34:55.424Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/codereview/slides.html</loc>
-    <lastmod>2023-10-08T18:15:35.133Z</lastmod>
+    <lastmod>2023-10-08T18:34:53.416Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/slides.html</loc>
-    <lastmod>2023-10-08T18:15:29.285Z</lastmod>
+    <lastmod>2023-10-08T18:34:47.500Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/git/tasks.html</loc>
-    <lastmod>2023-10-08T18:15:30.017Z</lastmod>
+    <lastmod>2023-10-08T18:34:48.216Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/2_tue/testing/slides.html</loc>
-    <lastmod>2023-10-08T18:15:36.817Z</lastmod>
+    <lastmod>2023-10-08T18:34:55.064Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html</loc>
-    <lastmod>2023-10-08T18:15:38.657Z</lastmod>
+    <lastmod>2023-10-08T18:34:56.824Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/firststeps/firststeps_handout.html</loc>
-    <lastmod>2023-10-08T18:15:40.017Z</lastmod>
+    <lastmod>2023-10-08T18:34:58.124Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/envs/tasks.html</loc>
-    <lastmod>2023-10-08T18:15:40.845Z</lastmod>
+    <lastmod>2023-10-08T18:34:58.952Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/1_mon/why_julia/page.html</loc>
-    <lastmod>2023-10-08T18:15:41.897Z</lastmod>
+    <lastmod>2023-10-08T18:34:59.944Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/vis/handout.html</loc>
-    <lastmod>2023-10-08T18:15:43.557Z</lastmod>
+    <lastmod>2023-10-08T18:35:01.512Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/regression/MultipleRegressionBasics.html</loc>
-    <lastmod>2023-10-08T18:15:44.821Z</lastmod>
+    <lastmod>2023-10-08T18:35:02.704Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/linalg/slides.html</loc>
-    <lastmod>2023-10-08T18:15:48.566Z</lastmod>
+    <lastmod>2023-10-08T18:35:06.200Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/material/3_wed/docs/tasks.html</loc>
-    <lastmod>2023-10-08T18:15:52.062Z</lastmod>
+    <lastmod>2023-10-08T18:35:09.272Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/cheatsheets/git.html</loc>
-    <lastmod>2023-10-08T18:15:52.754Z</lastmod>
+    <lastmod>2023-10-08T18:35:09.924Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/cheatsheets/ggplotAOG.html</loc>
-    <lastmod>2023-10-08T18:15:53.546Z</lastmod>
+    <lastmod>2023-10-08T18:35:10.664Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/social.html</loc>
-    <lastmod>2023-10-08T18:15:54.330Z</lastmod>
+    <lastmod>2023-10-08T18:35:11.448Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/missing.html</loc>
-    <lastmod>2023-10-08T18:15:55.054Z</lastmod>
+    <lastmod>2023-10-08T18:35:12.140Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/index.html</loc>
-    <lastmod>2023-10-08T18:15:55.922Z</lastmod>
+    <lastmod>2023-10-08T18:35:12.984Z</lastmod>
   </url>
   <url>
     <loc>https://www.simtech-summerschool.de/installation/julia.html</loc>
-    <lastmod>2023-10-08T18:15:56.678Z</lastmod>
+    <lastmod>2023-10-08T18:35:13.712Z</lastmod>
   </url>
 </urlset>
