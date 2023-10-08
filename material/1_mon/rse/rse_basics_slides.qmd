@@ -2,6 +2,9 @@
 format: 
     revealjs:
         output-file: rse_basics_slides_revealjs.html
+        scrollable: true
+        progress: true
+        history: false 
     html: default
 ---
 

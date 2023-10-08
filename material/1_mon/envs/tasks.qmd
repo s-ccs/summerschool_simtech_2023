@@ -3,6 +3,20 @@
 2. Add your `statistic.jl` & "include" it. 
 3. Export all functions
 4. Create a new environment in a separate folder and add the package.
-5. Does `using MyStatsPackage` work now? :tada: congratulations!
-6. Go back to your package environment. Now add a dependency (e.g. ProgressMeter) and a `compat`-entry
-7. Go back to your project environment, has the dependency been updated? Think: should you use `resolve` or `instantiate`?
+5. Does `using MyStatsPackage` work now? 
+
+:::{.callout collapse=true}
+## Yes!
+:tada: congratulations!
+:::
+
+:::{.callout collapse=true}
+## No!
+Oh no, better check you activated the right environment - ask for help!
+:::
+6. Go back to your package environment. Now add a dependency (e.g. ProgressMeter.jl) and a `compat`-entry
+7. Go back to your project environment, has the dependency been updated? 
+
+:::{.callout-hint collapse=true}
+Should you use `resolve` or `instantiate`?
+:::
