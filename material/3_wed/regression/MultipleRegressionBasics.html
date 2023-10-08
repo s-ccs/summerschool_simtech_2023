@@ -368,33 +368,52 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#multiple-regression-basics" id="toc-multiple-regression-basics" class="nav-link active" data-scroll-target="#multiple-regression-basics">Multiple Regression Basics</a>
-  <ul class="collapse">
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a>
   <ul class="collapse">
   <li><a href="#introductory-example-tree-dataset-from-r" id="toc-introductory-example-tree-dataset-from-r" class="nav-link" data-scroll-target="#introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</a></li>
   </ul></li>
   <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
   <li><a href="#multiple-regression-model" id="toc-multiple-regression-model" class="nav-link" data-scroll-target="#multiple-regression-model">Multiple Regression Model</a></li>
   <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link" data-scroll-target="#generalized-linear-models">Generalized Linear Models</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Multiple Regression Basics</h1>
+</div>
 
 
-<section id="multiple-regression-basics" class="level1">
-<h1>Multiple Regression Basics</h1>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
 <section id="introductory-example-tree-dataset-from-r" class="level3">
 <h3 class="anchored" data-anchor-id="introductory-example-tree-dataset-from-r">Introductory Example: tree dataset from R</h3>
-<p>[figure of raw data]</p>
+<pre class="{julia}"><code>using Statistics
+using Plots
+using RDatasets
+
+trees = dataset("datasets", "trees")
+
+scatter(trees.Volume, trees.Girth,
+        legend=false, xlabel="Girth", ylabel="Volume")</code></pre>
 <p><em>Aim:</em> Find relationship between the <em>response variable</em> <code>volume</code> and the <em>explanatory variable/covariate</em> <code>girth</code>? Can we predict the volume of a tree given its girth?</p>
-<p>[figure including a straight line]</p>
+<pre class="{julia}"><code>scatter(trees.Girth, trees.Volume,
+        legend=false, xlabel="Girth", ylabel="Volume")
+plot!(x -&gt; -37 + 5*x)</code></pre>
 <p>First Guess: There is a linear relation!</p>
 </section>
 </section>
@@ -412,6 +431,7 @@ ul.task-list li input[type="checkbox"] {
 \]</span></p>
 <p>Note: There is a closed-form expression for <span class="math inline">\((\hat \beta_0, \hat \beta_1)\)</span>. We will not make use of it here, but rather use Julia to solve the problem.</p>
 <p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth</code>]</p>
+<pre class="{julia}"><code>lm(@formula(Volume ~ Girth), trees)</code></pre>
 <p><em>Interpretation of the Julia output:</em></p>
 <ul>
 <li><p>column <code>estimate</code> : least square estimates for <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span></p></li>
@@ -474,6 +494,12 @@ p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 \]</span></p></li>
 </ul>
 <p><strong>Task 2</strong>: Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics. Test your functions with the ```tree’’’ data set and try to reproduce the output above.</p>
+<pre class="{julia}"><code>r2(linmod1)
+r2(linmod2)
+
+linmod3 = lm(@formula(Volume ~ Girth + Height + Girth*Height), trees)
+
+r2(linmod3)</code></pre>
 </section>
 <section id="generalized-linear-models" class="level2">
 <h2 class="anchored" data-anchor-id="generalized-linear-models">Generalized Linear Models</h2>
@@ -501,9 +527,9 @@ p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 <p>For the models above, these are:</p>
 <table class="table">
 <colgroup>
-<col style="width: 31%">
+<col style="width: 20%">
 <col style="width: 30%">
-<col style="width: 31%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -536,7 +562,9 @@ g(x) = \log(x)
 <p><span class="math display">\[
 g(x) = \log\left
 (
-\frac{x}{1-x}\right)
+\
+f
+rac{x}{1-x}\right)
 \]</span></p></td>
 </tr>
 </tbody>
@@ -550,11 +578,19 @@ g(x) = \log\left
 \hat \beta = \mathrm{argmax} \sum_{i=1}^n \log f(y_i \mid \mathbf{X}_{\cdot i}),
 \]</span></p>
 <p>In the Gaussian case, the maximum likelihood estimator is identical to the least squares estimator considered above.</p>
-<p>[[ Example in Julia: maybe <code>SwissLabor</code> ]]</p>
+<pre class="{julia}"><code>using CSV
+using HTTP
+
+http_response = HTTP.get("https://vincentarelbundock.github.io/Rdatasets/csv/AER/SwissLabor.csv")
+SwissLabor = DataFrame(CSV.File(http_response.body))
+
+SwissLabor[!,"participation"] .= (SwissLabor.participation .== "yes")
+
+model = glm(@formula(participation ~ age^2), 
+            SwissLabor, Binomial(), ProbitLink())</code></pre>
 <p><strong>Task 3:</strong> Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
