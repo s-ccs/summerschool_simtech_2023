@@ -497,7 +497,7 @@ Task 1
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Generate <span class="math inline">\(n=20\)</span> covariates <span class="math inline">\(\mathbf{x}\)</span> randomly.</li>
-<li>Given these covariates and true parameters <span class="math inline">\(\beta_0=-3\)</span>, <span class="math inline">\(\beta_1=2\)</span> and <span class="math inline">\(\sigma=0.5\)</span>, simulate responses from a linear model and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
+<li>Given these covariates and the true parameters <span class="math inline">\(\beta_0=-3\)</span>, <span class="math inline">\(\beta_1=2\)</span> and <span class="math inline">\(\sigma=0.5\)</span>, simulate responses from a linear model (with normally distributed errors) and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
 <li>Play with different choices of the parameters above (including the sample size <span class="math inline">\(n\)</span>) to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</li>
 </ol>
 </div>
@@ -554,7 +554,26 @@ Task 1
 p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 \]</span></p></li>
 </ul>
-<p><strong>Task 2</strong>: Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics. Test your functions with the ```tree’’’ data set and try to reproduce the output above.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics.</li>
+<li>Test your functions with the `tree’ data set and try to reproduce the output above.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Which model is the best? For linear models, one often uses the <span class="math inline">\(R^2\)</span> characteristic. Roughly speaking, it gives the percentage (between 0 and 1) of the variance that can be explained by the linear model.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(linmod1)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(linmod2)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -653,12 +672,25 @@ x}{1-x}\right)
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">glm</span>(<span class="pp">@formula</span>(participation <span class="op">~</span> age<span class="op">^</span><span class="fl">2</span>), </span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            SwissLabor, <span class="fu">Binomial</span>(), <span class="fu">ProbitLink</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout-task">
-<p><strong>Task 3</strong>:</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>##Task 3:</p>
 <ol type="1">
 <li>Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</li>
-<li>Generate</li>
+<li>Generate <span class="math inline">\(n=20\)</span> random covariates <span class="math inline">\(\mathbf{x}\)</span> and Poisson-distributed counting data with parameters <span class="math inline">\(\beta_0 + \beta_1 x_i\)</span>. Re-estimate the parameters by a generalized linear model.</li>
 </ol>
+</div>
+</div>
 </div>
 
 
