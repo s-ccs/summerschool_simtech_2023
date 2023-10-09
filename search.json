@@ -98,6 +98,13 @@
     "text": "A considerable of time will be dedicated to project work allowing you to apply the skills you have learnt during the summer school.\nWe encourage you to bring your own problem (e.g. something related to your own research) and try to build a small software package for that problem. Moreover, we will provide alternative problems to be solved."
   },
   {
+    "objectID": "cheatsheets/githubactions.html",
+    "href": "cheatsheets/githubactions.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "Also one from GitHub"
+  },
+  {
     "objectID": "cheatsheets/julia.html",
     "href": "cheatsheets/julia.html",
     "title": "Research Software Engineering Summer School",
@@ -1510,6 +1517,13 @@
     "title": "Task 1: Docstrings",
     "section": "",
     "text": "Add Docstrings to some of your functions.\nLoad the package, and check you can see the docstrings using e.g. ?rse_mean\n\n\n\nTask 2: Documenter.jl\n\nFolderstructure\n\ncreate folders/files:\n\ndocs/\n├── src/\n├── src/mydocs.jl\n└── make.jl\n\n\nadd some docs\n\nwith mydocs containing\n\n```@docs \nfunc(x)\n```\n\n\nand\nmake.jl containing\nusing Documenter, Example\n\nmakedocs(sitename=\"My Documentation\")\n\n\n3. Generate\nGenerate the docs using include(\"make.jl\") after activating the ./docs/Project.toml\n\n\n\n\n\n\nBonus-Task\n\n\n\nUse LiveServer.jl to automatically update a local preview of your documentation (follow this tutorial )\n\n\n\n\n4. Add a tutorial\nNow add a tutorial ./docs/src/tutorial.md which should contain a brief example simulating some data (using rand) and calculating mean, tstat and std on them.\nUse the makedocs(...page=) keywordargument.\n\n\n\n\nTask 3: PkgTemplate.jl\nGenerate a package MySecondStatsPackage using PkgTemplate.\n\nAdd github-actions for:\n\ncoverage\nunittests\ndocs\n\nMIT license\nREADME.md\n\n\nDon’t forget to activate the github-page in the github settings!"
+  },
+  {
+    "objectID": "cheatsheets/git.html",
+    "href": "cheatsheets/git.html",
+    "title": "Research Software Engineering Summer School",
+    "section": "",
+    "text": "There are many good ones out there. One we can recommend is the one from GitHub."
   },
   {
     "objectID": "cheatsheets/ggplotAOG.html",
