@@ -316,7 +316,7 @@ model = glm(@formula(participation ~ age^2),
 
 ::: {.callout-caution collapse="false"}
 
-##Task 3:
+## Task 3:
 
 1.  Reproduce the results of our data analysis of the `tree` data set
     using a generalized linear model with normal distribution family.
