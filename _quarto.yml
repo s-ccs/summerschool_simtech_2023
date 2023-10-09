@@ -47,6 +47,8 @@ website:
                 text: "📝 3 - First Steps: Handout"
               - href: "material/1_mon/firststeps/tasks.qmd"
                 text: "🛠 3 - First Steps: Exercises"
+              - href: "https://github.com/s-ccs/summerschool_simtech_2023/blob/main/material/1_mon/firststeps/statistic_functions.jl"
+                text: "✔ 3 - Solutions"
               - href: "material/1_mon/envs/envs_handout.qmd"
                 text: "📝 4 - Envs & Pkgs : Handout"
               - href: "material/1_mon/envs/tasks.qmd"
