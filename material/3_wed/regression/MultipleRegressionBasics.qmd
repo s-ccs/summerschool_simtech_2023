@@ -10,7 +10,7 @@ editor:
 
 ### Introductory Example: tree dataset from R
 
-``` julia 
+``` julia
 using Statistics
 using Plots
 using RDatasets
@@ -25,7 +25,7 @@ scatter(trees.Volume, trees.Girth,
 the *explanatory variable/covariate* `girth`? Can we predict the volume
 of a tree given its girth?
 
-``` julia 
+``` julia
 scatter(trees.Girth, trees.Volume,
         legend=false, xlabel="Girth", ylabel="Volume")
 plot!(x -> -37 + 5*x)
@@ -68,7 +68,7 @@ rather use Julia to solve the problem.
 \[use Julia code (existing package) to perform linear regression for
 `volume ~ girth`\]
 
-``` julia 
+``` julia
 lm(@formula(Volume ~ Girth), trees)
 ```
 
@@ -183,7 +183,7 @@ the corresponding standard errors and the $t$-statistics. Test your
 functions with the \`\`\`tree''' data set and try to reproduce the
 output above.
 
-``` julia 
+``` julia
 r2(linmod1)
 r2(linmod2)
 
@@ -232,31 +232,33 @@ $$
 
 For the models above, these are:
 
-+--------------+---------------------+--------------------+
-| Type of Data | Distribution Family | Link Function      |
-+==============+=====================+====================+
-| continuous   | Normal              | identity:          |
-|              |                     |                    |
-|              |                     | $$                 |
-|              |                     | g(x)=x             |
-|              |                     | $$                 |
-+--------------+---------------------+--------------------+
-| count        | Poisson             | log:               |
-|              |                     |                    |
-|              |                     | $$                 |
-|              |                     |  g(x) = \log(x)    |
-|              |                     | $$                 |
-+--------------+---------------------+--------------------+
-| binary       | Bernoulli           | logit:             |
-|              |                     |                    |
-|              |                     | $$                 |
-|              |                     | g(x) = \log\left   |
-|              |                     | (                  |
-|              |                     | \                  |
-|              |                     | f                  |
-|              |                     | rac{x}{1-x}\right) |
-|              |                     | $$                 |
-+--------------+---------------------+--------------------+
++---------------+-------------------+------------------+
+| Type of Data  | Distribution      | Link Function    |
+|               | Family            |                  |
++===============+===================+==================+
+| continuous    | Normal            | identity:        |
+|               |                   |                  |
+|               |                   | $$               |
+|               |                   | g(x)=x           |
+|               |                   | $$               |
++---------------+-------------------+------------------+
+| count         | Poisson           | log:             |
+|               |                   |                  |
+|               |                   | $$               |
+|               |                   |  g(x) = \log(x)  |
+|               |                   | $$               |
++---------------+-------------------+------------------+
+| binary        | Bernoulli         | logit:           |
+|               |                   |                  |
+|               |                   | $$               |
+|               |                   | g(x) = \log\left |
+|               |                   | (                |
+|               |                   | \                |
+|               |                   | f                |
+|               |                   | ra               |
+|               |                   | c{x}{1-x}\right) |
+|               |                   | $$               |
++---------------+-------------------+------------------+
 
 In general, the parameter vector $\beta$ is estimated via maximizing the
 likelihood, i.e.,
@@ -274,7 +276,7 @@ $$
 In the Gaussian case, the maximum likelihood estimator is identical to
 the least squares estimator considered above.
 
-``` julia 
+``` julia
 using CSV
 using HTTP
 
