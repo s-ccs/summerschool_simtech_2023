@@ -802,7 +802,7 @@
     "href": "material/2_tue/git/slides.html#useful-links",
     "title": "Learning Goals",
     "section": "Useful Links",
-    "text": "Useful Links\n\nOfficial documentation\nVideo: Git in 15 minutes: basics, branching, no remote\nThe GitHub Blog: Commits are snapshots, not diffs\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr"
+    "text": "Useful Links\n\nOfficial documentation\nVideo: Git in 15 minutes: basics, branching, no remote\nChapters 6 and 7 of Research Software Engineering with Python\nPodcast All Things Git: History of VC\ngit purr"
   },
   {
     "objectID": "material/2_tue/git/slides.html#linear-history",
