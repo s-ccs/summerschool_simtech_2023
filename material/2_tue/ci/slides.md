@@ -38,7 +38,7 @@ slideOptions:
 - Explain the differences between the various continuous methodologies.
 - Explain why automation is crucial in RSE.
 - Write and understand basic automation scripts for GitHub Actions.
-  - s.t. we are able to understand what `PkgTemplates` generates for us.
+  - s.t. we understand what `PkgTemplates` generates for us.
 
 
 Material is taken and modified from the [SSE lecture](https://github.com/Simulation-Software-Engineering/Lecture-Material).
@@ -143,7 +143,7 @@ From: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 
 ## Components (2/2)
 
-<img src="https://docs.github.com/assets/cb-25628/images/help/images/overview-actions-simple.png" width=95%; style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px; background: #eeeeee">
+<img src="https://docs.github.com/assets/cb-25535/mw-1440/images/help/actions/overview-actions-simple.webp" width=95%; style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px; background: #eeeeee">
 
 
 From [GitHub Actions tutorial](https://docs.github.com/en/actions)
@@ -292,17 +292,6 @@ jobs:
 
 - Environment is not 100% identical to GitHub's
     - Workflows may fail locally, but work on GitHub
-
----
-
-## Advanced Topics
-
-- [Self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-- [Secrets and tokens](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-- [Continuous deployment](https://docs.github.com/en/actions/deployment/about-deployments/about-continuous-deployment)
-- [Custom actions](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
-- [Build matrices](https://docs.github.com/en/actions/using-workflows/advanced-workflow-features#using-a-build-matrix)
-- Using own Docker containers
 
 ---
 
