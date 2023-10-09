@@ -65,8 +65,6 @@ Note: There is a closed-form expression for
 $(\hat \beta_0, \hat \beta_1)$. We will not make use of it here, but
 rather use Julia to solve the problem.
 
-\[use Julia code (existing package) to perform linear regression for
-`volume ~ girth`\]
 
 ``` julia
 lm(@formula(Volume ~ Girth), trees)
@@ -87,8 +85,12 @@ lm(@formula(Volume ~ Girth), trees)
     Under the hypothesis $\beta_i=0$, the test statistics $t_i$ would
     follow a $t$-distribution.
 
--   column `Pr(>|t|)`: $p$-values for the hyptheses $\beta_i=0$ for
+-   column `Pr(>|t|)`: $p$-values for the hypotheses $\beta_i=0$ for
     $i=0,1$
+    
+:::callout.tip
+The command `rand(n)` generates a sample of `n` "random" (i.e., uniformly distributed) random numbers.
+:::
 
 **Task 1**: Generate a random set of covariates $\mathbf{x}$. Given
 these covariates and true parameters $\beta_0$, $\beta_1$ and $\sigma^2$
@@ -232,33 +234,35 @@ $$
 
 For the models above, these are:
 
-+---------------+-------------------+------------------+
-| Type of Data  | Distribution      | Link Function    |
-|               | Family            |                  |
-+===============+===================+==================+
-| continuous    | Normal            | identity:        |
-|               |                   |                  |
-|               |                   | $$               |
-|               |                   | g(x)=x           |
-|               |                   | $$               |
-+---------------+-------------------+------------------+
-| count         | Poisson           | log:             |
-|               |                   |                  |
-|               |                   | $$               |
-|               |                   |  g(x) = \log(x)  |
-|               |                   | $$               |
-+---------------+-------------------+------------------+
-| binary        | Bernoulli         | logit:           |
-|               |                   |                  |
-|               |                   | $$               |
-|               |                   | g(x) = \log\left |
-|               |                   | (                |
-|               |                   | \                |
-|               |                   | f                |
-|               |                   | ra               |
-|               |                   | c{x}{1-x}\right) |
-|               |                   | $$               |
-+---------------+-------------------+------------------+
++----------------+------------------+-----------------+
+| Type of Data   | Distribution     | Link Function   |
+|                | Family           |                 |
++================+==================+=================+
+| continuous     | Normal           | identity:       |
+|                |                  |                 |
+|                |                  | $$              |
+|                |                  | g(x)=x          |
+|                |                  | $$              |
++----------------+------------------+-----------------+
+| count          | Poisson          | log:            |
+|                |                  |                 |
+|                |                  | $$              |
+|                |                  |  g(x) = \log(x) |
+|                |                  | $$              |
++----------------+------------------+-----------------+
+| binary         | Bernoulli        | logit:          |
+|                |                  |                 |
+|                |                  | $$              |
+|                |                  | g               |
+|                |                  | (x) = \log\left |
+|                |                  | (               |
+|                |                  | \               |
+|                |                  | f               |
+|                |                  | ra              |
+|                |                  | c               |
+|                |                  | {x}{1-x}\right) |
+|                |                  | $$              |
++----------------+------------------+-----------------+
 
 In general, the parameter vector $\beta$ is estimated via maximizing the
 likelihood, i.e.,
@@ -289,6 +293,10 @@ model = glm(@formula(participation ~ age^2),
             SwissLabor, Binomial(), ProbitLink())
 ```
 
-**Task 3:** Reproduce the results of our data analysis of the `tree`
-data set using a generalized linear model with normal distribution
-family.
+::: callout-task
+**Task 3**:
+
+1. Reproduce the results of our data analysis of the `tree` data set using
+a generalized linear model with normal distribution family.
+2. Generate 
+:::
