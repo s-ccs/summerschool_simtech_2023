@@ -1334,7 +1334,7 @@
     "href": "material/1_mon/envs/tasks.html",
     "title": "Task",
     "section": "",
-    "text": "Task\n\nCreate a new package MyStatsPackage using generate\nAdd your statistic.jl & “include” it.\nExport all functions\nCreate a new environment in a separate folder and add the package.\nDoes using MyStatsPackage work now?\n\n\n\n\n\n\n\nYes!\n\n\n\n\n\n🎉 congratulations!\n\n\n\n\n\n\n\n\n\nNo!\n\n\n\n\n\nOh no, better check you activated the right environment - ask for help!\n\n\n\n\nGo back to your package environment. Now add a dependency (e.g. ProgressMeter.jl) and a compat-entry\nGo back to your project environment, has the dependency been updated?\n\n\n\n\n\n\n\nHint?\n\n\n\n\n\nShould you use resolve or instantiate?"
+    "text": "Task\n\nCreate a new package MyStatsPackage using generate\nAdd your statistic_functions.jl & “include” it.\nExport all functions\nCreate a new environment in a separate folder and add the package.\nDoes using MyStatsPackage work now?\n\n\n\n\n\n\n\nYes!\n\n\n\n\n\n🎉 congratulations!\n\n\n\n\n\n\n\n\n\nNo!\n\n\n\n\n\nOh no, better check you activated the right environment - ask for help!\n\n\n\n\nGo back to your package environment. Now add a dependency (e.g. ProgressMeter.jl) and a compat-entry\nGo back to your project environment, has the dependency been updated?\n\n\n\n\n\n\n\nHint?\n\n\n\n\n\nShould you use resolve or instantiate?"
   },
   {
     "objectID": "material/1_mon/why_julia/page.html",
