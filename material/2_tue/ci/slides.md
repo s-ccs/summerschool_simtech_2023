@@ -190,7 +190,7 @@ jobs:
 
 ## Some Useful Julia Actions
 
-- Find on [gitHub.com/julia-actions](https://github.com/julia-actions/)
+- Find on [github.com/julia-actions](https://github.com/julia-actions/)
 
    ```
    - uses: julia-actions/setup-julia@v1
@@ -202,7 +202,7 @@ jobs:
   - `cache`: caches `~/.julia/artifacts/*` and `~/.julia/packages/*` to reduce runtime of CI
   - `julia-buildpkg`: build package
   - `julia-runtest`: run tests
-  - `julia-format`: format code
+  - `julia-format`: format code (not really an action, but example)
 
 ---
 
