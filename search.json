@@ -711,7 +711,7 @@
     "href": "material/2_tue/git/tasks.html",
     "title": "Tasks",
     "section": "",
-    "text": "Tasks\n\nWork with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).\nPush your package MyStatsPackage to a remote repository.\nAdd a function printOwner to the package through a pull request. The function should print your (GitHub) user name (hard-coded).\nUse the package from somebody else in the classroom and verify with printOwner that you use the correct package.\nFork this other package and contribute a function printContributor to it via a PR. Get a review and get it merged.\nAdd more functions to other packages of classmates that print funny things, but always ensure a linear history."
+    "text": "Tasks\n\nWork with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).\nPush your package MyStatsPackage to a remote repository.\nAdd a function printOwner to the package through a pull request. The function should print your (GitHub) user name (hard-coded).\nStart a new Julia environment and use your package through its url: ]add https://github.com/[username]/MyStatsPackage.\nNow use the package from somebody else in the classroom instead and verify with printOwner that you use the correct package.\nFork this other package and contribute a function printContributor to it via a PR. Get a review and get it merged.\nAdd more functions to other packages of classmates that print funny things, but always ensure a linear history."
   },
   {
     "objectID": "material/2_tue/git/slides.html",
