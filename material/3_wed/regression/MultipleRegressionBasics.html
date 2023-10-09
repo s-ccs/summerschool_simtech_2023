@@ -460,7 +460,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 (\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \left\| \mathbf{y} - (\mathbf{1},\mathbf{x}) \left( \begin{array}{c} \beta_0\\ \beta_1\end{array}\right) \right\|^2
 \]</span></p>
 <p>Note: There is a closed-form expression for <span class="math inline">\((\hat \beta_0, \hat \beta_1)\)</span>. We will not make use of it here, but rather use Julia to solve the problem.</p>
-<p>[use Julia code (existing package) to perform linear regression for <code>volume ~ girth</code>]</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="pp">@formula</span>(Volume <span class="op">~</span> Girth), trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Interpretation of the Julia output:</em></p>
 <ul>
@@ -469,8 +468,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>column <code>t value</code> : value of the <span class="math inline">\(t\)</span>-statistics</p>
 <p><span class="math display">\[ t_i = {\hat \beta_i \over \hat s_{\hat \beta_i}}, \quad i=0,1, \]</span></p>
 <p>Under the hypothesis <span class="math inline">\(\beta_i=0\)</span>, the test statistics <span class="math inline">\(t_i\)</span> would follow a <span class="math inline">\(t\)</span>-distribution.</p></li>
-<li><p>column <code>Pr(&gt;|t|)</code>: <span class="math inline">\(p\)</span>-values for the hyptheses <span class="math inline">\(\beta_i=0\)</span> for <span class="math inline">\(i=0,1\)</span></p></li>
+<li><p>column <code>Pr(&gt;|t|)</code>: <span class="math inline">\(p\)</span>-values for the hypotheses <span class="math inline">\(\beta_i=0\)</span> for <span class="math inline">\(i=0,1\)</span></p></li>
 </ul>
+<div class="callout.tip">
+<p>The command <code>rand(n)</code> generates a sample of <code>n</code> “random” (i.e., uniformly distributed) random numbers.</p>
+</div>
 <p><strong>Task 1</strong>: Generate a random set of covariates <span class="math inline">\(\mathbf{x}\)</span>. Given these covariates and true parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> (you can choose them)), simulate responses from a linear model and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Play with different choices of the parameters to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</p>
 </section>
 <section id="multiple-regression-model" class="level2">
@@ -557,9 +559,9 @@ p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 <p>For the models above, these are:</p>
 <table class="table">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 27%">
+<col style="width: 23%">
 <col style="width: 26%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -590,12 +592,14 @@ g(x) = \log(x)
 <td>Bernoulli</td>
 <td><p>logit:</p>
 <p><span class="math display">\[
-g(x) = \log\left
+g
+(x) = \log\left
 (
 \
 f
 ra
-c{x}{1-x}\right)
+c
+{x}{1-x}\right)
 \]</span></p></td>
 </tr>
 </tbody>
@@ -619,7 +623,13 @@ c{x}{1-x}\right)
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">glm</span>(<span class="pp">@formula</span>(participation <span class="op">~</span> age<span class="op">^</span><span class="fl">2</span>), </span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            SwissLabor, <span class="fu">Binomial</span>(), <span class="fu">ProbitLink</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Task 3:</strong> Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</p>
+<div class="callout-task">
+<p><strong>Task 3</strong>:</p>
+<ol type="1">
+<li>Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</li>
+<li>Generate</li>
+</ol>
+</div>
 
 
 </section>
