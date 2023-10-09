@@ -405,22 +405,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-testing" id="toc-what-is-testing" class="nav-link" data-scroll-target="#what-is-testing">What is Testing?</a></li>
   <li><a href="#why-should-you-test-your-software" id="toc-why-should-you-test-your-software" class="nav-link" data-scroll-target="#why-should-you-test-your-software">Why Should you Test your Software?</a></li>
-  <li><a href="#nomenclature-in-software-testing" id="toc-nomenclature-in-software-testing" class="nav-link" data-scroll-target="#nomenclature-in-software-testing">Nomenclature in Software Testing</a></li>
   <li><a href="#some-ways-to-test-software" id="toc-some-ways-to-test-software" class="nav-link" data-scroll-target="#some-ways-to-test-software">Some Ways to Test Software</a></li>
   <li><a href="#assertions" id="toc-assertions" class="nav-link" data-scroll-target="#assertions">Assertions</a></li>
   <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">Unit Testing</a></li>
   <li><a href="#integration-testing" id="toc-integration-testing" class="nav-link" data-scroll-target="#integration-testing">Integration Testing</a></li>
   <li><a href="#regression-testing" id="toc-regression-testing" class="nav-link" data-scroll-target="#regression-testing">Regression Testing</a></li>
-  <li><a href="#test-coverage" id="toc-test-coverage" class="nav-link" data-scroll-target="#test-coverage">Test Coverage</a></li>
-  <li><a href="#comparing-floating-point-variables" id="toc-comparing-floating-point-variables" class="nav-link" data-scroll-target="#comparing-floating-point-variables">Comparing Floating-point Variables</a></li>
-  <li><a href="#test-driven-development-tdd" id="toc-test-driven-development-tdd" class="nav-link" data-scroll-target="#test-driven-development-tdd">Test-driven Development (TDD)</a></li>
-  <li><a href="#checking-driven-development-cdd" id="toc-checking-driven-development-cdd" class="nav-link" data-scroll-target="#checking-driven-development-cdd">Checking-driven Development (CDD)</a></li>
-  <li><a href="#verifying-a-test" id="toc-verifying-a-test" class="nav-link" data-scroll-target="#verifying-a-test">Verifying a Test</a></li>
   </ul></li>
   <li><a href="#unit-testing-in-julia-with-test.jl" id="toc-unit-testing-in-julia-with-test.jl" class="nav-link" data-scroll-target="#unit-testing-in-julia-with-test.jl">2. Unit Testing in Julia with Test.jl</a>
   <ul class="collapse">
-  <li><a href="#setup-of-tests.jl" id="toc-setup-of-tests.jl" class="nav-link" data-scroll-target="#setup-of-tests.jl">Setup of Tests.jl</a></li>
-  <li><a href="#run-tests" id="toc-run-tests" class="nav-link" data-scroll-target="#run-tests">Run Tests</a></li>
+  <li><a href="#setup-of-test.jl" id="toc-setup-of-test.jl" class="nav-link" data-scroll-target="#setup-of-test.jl">Setup of Test.jl</a></li>
   <li><a href="#implement-and-structure-tests" id="toc-implement-and-structure-tests" class="nav-link" data-scroll-target="#implement-and-structure-tests">Implement and Structure Tests</a></li>
   <li><a href="#further-reading-and-watching" id="toc-further-reading-and-watching" class="nav-link" data-scroll-target="#further-reading-and-watching">Further Reading and Watching</a></li>
   </ul></li>
@@ -461,11 +454,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="learning-goals" class="level1">
 <h1>Learning Goals</h1>
 <ul>
-<li>Justify the effort of developing tests to some extent</li>
 <li>Get to know a few common terms of testing</li>
 <li>Work with the Julia unit testing package <code>Test.jl</code></li>
 </ul>
-<p>Material is taken and modified, on the one hand, from the <a href="https://github.com/Simulation-Software-Engineering/Lecture-Material">SSE lecture</a>, which builds partly on the <a href="https://merely-useful.tech/py-rse">py-rse book</a>, and, on the other hand, from the <a href="https://docs.julialang.org/en/v1/stdlib/Test/">Test.jl docs</a>.</p>
+<p>Material is taken and modified from the <a href="https://github.com/Simulation-Software-Engineering/Lecture-Material">SSE lecture</a>, which builds partly on the <a href="https://merely-useful.tech/py-rse">py-rse book</a>, and from the <a href="https://docs.julialang.org/en/v1/stdlib/Test/">Test.jl docs</a>.</p>
 <hr>
 </section>
 <section id="general-introduction-to-testing" class="level1">
@@ -474,29 +466,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-testing" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-testing">What is Testing?</h2>
 <ul>
-<li>Smelling old milk before using it!</li>
-<li>A way to determine if a software is not producing reliable results and if so, what is the reason.</li>
-<li>Manual testing vs.&nbsp;automated testing.</li>
+<li>Smelling old milk before using it</li>
+<li>A way to determine if a software is not producing reliable results and if so, what is the reason</li>
+<li>Manual testing vs.&nbsp;automated testing</li>
 </ul>
 <hr>
 </section>
 <section id="why-should-you-test-your-software" class="level2">
 <h2 class="anchored" data-anchor-id="why-should-you-test-your-software">Why Should you Test your Software?</h2>
 <ul>
-<li>Improve software reliability and reproducibility.</li>
-<li>Make sure that changes (bugfixes, new features) do not affect other parts of software.</li>
+<li>Improve software reliability and reproducibility</li>
+<li>Make sure that changes (bugfixes, new features) do not affect other parts of software</li>
 <li>Generally all software is better off being tested regularly. Possible exceptions are very small codes with single users.</li>
 <li>Ensure that a released version of a software actually works.</li>
-</ul>
-<hr>
-</section>
-<section id="nomenclature-in-software-testing" class="level2">
-<h2 class="anchored" data-anchor-id="nomenclature-in-software-testing">Nomenclature in Software Testing</h2>
-<ul>
-<li><strong>Fixture</strong>: preparatory set for testing.</li>
-<li><strong>Actual result</strong>: what the code produces when given the fixture.</li>
-<li><strong>Expected result</strong>: what the actual result is compared to.</li>
-<li><strong>Test coverage</strong>: how much of the code do tests touch in one run.</li>
 </ul>
 <hr>
 </section>
@@ -512,8 +494,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="assertions" class="level2">
 <h2 class="anchored" data-anchor-id="assertions">Assertions</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> condition <span class="st">"message"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Principle of <em>defensive programming</em>.</li>
+<li>Principle of <em>defensive programming</em></li>
 <li>Nothing happens when an assertion is true; throws error when false.</li>
 <li>Types of assertion statements:
 <ul>
@@ -521,23 +504,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Postcondition</li>
 <li>Invariant</li>
 </ul></li>
-<li>A basic but powerful tool to test a software on-the-go.</li>
-<li>Assertion statement syntax in Python</li>
+<li>A basic but powerful tool to test a software on-the-go</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> condition <span class="st">"message"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
 <section id="unit-testing" class="level2">
 <h2 class="anchored" data-anchor-id="unit-testing">Unit Testing</h2>
 <ul>
-<li>Catching errors with assertions is good but preventing them is better!</li>
+<li>Catching errors with assertions is good but preventing them is better.</li>
 <li>A <em>unit</em> is a single function in one situation.
 <ul>
 <li>A situation is one amongst many possible variations of input parameters.</li>
 </ul></li>
-<li>User creates the expected result manually.</li>
-<li>Fixture is the set of inputs used to generate an actual result.</li>
-<li>Actual result is compared to the expected result by <code>@test</code>.</li>
+<li>User creates the <strong>expected result</strong> manually.</li>
+<li><strong>Actual result</strong> is compared to the expected result by <code>@test</code>.</li>
 </ul>
 <hr>
 </section>
@@ -546,9 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Test whether several units work in conjunction.</li>
 <li><em>Integrate</em> units and test them together in an <em>integration</em> test.</li>
-<li>Often more complicated than a unit test and has more test coverage.</li>
-<li>A fixture is used to generate an actual result.</li>
-<li>Actual result is compared to the expected result by <code>@test</code>.</li>
+<li>Often more complicated than a unit test and gives higher test coverage.</li>
 </ul>
 <hr>
 </section>
@@ -556,72 +534,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="regression-testing">Regression Testing</h2>
 <ul>
 <li>Generating an expected result is not possible in some situations.</li>
-<li>Compare the current actual result with a previous actual result.</li>
+<li>Compare the <em>current</em> actual result with a <em>previous</em> actual result.</li>
 <li>No guarantee that the current actual result is correct.</li>
 <li>Risk of a bug being carried over indefinitely.</li>
 <li>Main purpose is to identify changes in the current state of the code with respect to a past state.</li>
-</ul>
-<hr>
-</section>
-<section id="test-coverage" class="level2">
-<h2 class="anchored" data-anchor-id="test-coverage">Test Coverage</h2>
-<ul>
-<li>Coverage is the amount of code a test touches in one run.</li>
-<li>Aim for high test coverage.</li>
-<li>There is a trade-off: high test coverage vs.&nbsp;effort in test development</li>
-</ul>
-<hr>
-</section>
-<section id="comparing-floating-point-variables" class="level2">
-<h2 class="anchored" data-anchor-id="comparing-floating-point-variables">Comparing Floating-point Variables</h2>
-<ul>
-<li>Very often quantities in math software are <code>float</code> / <code>double</code>.</li>
-<li>Such quantities cannot be compared to exact values, an approximation is necessary.</li>
-<li>Comparison of floating point variables needs to be done to a certain tolerance.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> <span class="fl">1</span> <span class="op">≈</span> <span class="fl">0.999999</span>  rtol<span class="op">=</span><span class="fl">1e-5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Get <code>≈</code> by Latex <code>\approx</code> + TAB</li>
-</ul>
-<hr>
-</section>
-<section id="test-driven-development-tdd" class="level2">
-<h2 class="anchored" data-anchor-id="test-driven-development-tdd">Test-driven Development (TDD)</h2>
-<ul>
-<li>Principle is to write a test and then write a code to fulfill the test.</li>
-<li>Advantages:
-<ul>
-<li>In the end user ends up with a test alongside the code.</li>
-<li>Eliminates confirmation bias of the user.</li>
-<li>Writing tests gives clarity on what the code is supposed to do.</li>
-</ul></li>
-<li>Disadvantage: known to not improve productivity.</li>
-</ul>
-<hr>
-</section>
-<section id="checking-driven-development-cdd" class="level2">
-<h2 class="anchored" data-anchor-id="checking-driven-development-cdd">Checking-driven Development (CDD)</h2>
-<ul>
-<li>Developer performs spot checks; sanity checks at intermediate stages</li>
-<li>Math software often has heuristics which are easy to determine.</li>
-<li>Keep performing same checks at different stages of development to ensure the code works.</li>
-</ul>
-<hr>
-</section>
-<section id="verifying-a-test" class="level2">
-<h2 class="anchored" data-anchor-id="verifying-a-test">Verifying a Test</h2>
-<ul>
-<li>Test written as part of a bug-fix:
-<ul>
-<li>Reproduce the bug in the test by ensuring that the test fails.</li>
-<li>Fix the bug.</li>
-<li>Rerun the test to ensure that it passes.</li>
-</ul></li>
-<li>Test written to increase code coverage:
-<ul>
-<li>Make sure that the first iteration of the test passes.</li>
-<li>Try introducing a small fixable bug in the code to verify if the test fails.</li>
-</ul></li>
 </ul>
 <hr>
 </section>
@@ -629,12 +545,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="unit-testing-in-julia-with-test.jl" class="level1">
 <h1>2. Unit Testing in Julia with Test.jl</h1>
 <hr>
-<section id="setup-of-tests.jl" class="level2">
-<h2 class="anchored" data-anchor-id="setup-of-tests.jl">Setup of Tests.jl</h2>
+<section id="setup-of-test.jl" class="level2">
+<h2 class="anchored" data-anchor-id="setup-of-test.jl">Setup of Test.jl</h2>
 <ul>
-<li>Standard library to write and manage tests, <code>using Test</code></li>
-<li>Standardized folder structure:</li>
-</ul>
+<li><p>Standardized folder structure:</p>
 <pre><code>├── Manifest.toml
 ├── Project.toml
 ├── src/
@@ -642,23 +556,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     ├── Manifest.toml
     ├── Project.toml
     ├── runtests.jl
-    └── setup.jl</code></pre>
-<ul>
-<li>Singular <code>test</code> vs plural <code>runtests.jl</code></li>
-<li><code>setup.jl</code> for all <code>using XYZ</code> statements, included in <code>runtests.jl</code></li>
-<li>Additional packages either in <code>[extra] section</code> of <code>./Project.toml</code> or in a new <code>./test/Project.toml</code> environment
+    └── setup.jl</code></pre></li>
+<li><p>Singular <code>test</code> vs plural <code>runtests.jl</code></p></li>
+<li><p><code>setup.jl</code> for all <code>using XYZ</code> statements, included in <code>runtests.jl</code></p></li>
+<li><p>Additional packages in <code>[extra] section</code> of <code>./Project.toml</code> or in new <code>./test/Project.toml</code></p>
 <ul>
 <li>In case of the latter: Do not add the package itself to the <code>./test/Project.toml</code></li>
 </ul></li>
-</ul>
-<hr>
-</section>
-<section id="run-tests" class="level2">
-<h2 class="anchored" data-anchor-id="run-tests">Run Tests</h2>
-<p>Various options:</p>
-<ul>
-<li>Directly call <code>runtests.jl</code> TODO?</li>
-<li>From Pkg-Manager <code>]test</code> when root project is activated</li>
+<li><p>Run: <code>]test</code> when root project is activated</p></li>
 </ul>
 <hr>
 </section>
@@ -668,15 +573,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>@test expr</code>: Test whether expression <code>expr</code> is true</p></li>
 <li><p><code>@test expr broken=true</code>: Explicitly mark test as broken</p></li>
 <li><p><code>@test_throws exception expr</code>: Test whether expression <code>expr</code> throws <code>exception</code> (test unhappy path)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@test_throws</span> <span class="dt">DimensionMismatch</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>] <span class="op">+</span> [<span class="fl">1</span>, <span class="fl">2</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Test</span> Passed</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      Thrown<span class="op">:</span> <span class="dt">DimensionMismatch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@test_throws</span> <span class="dt">DimensionMismatch</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>] <span class="op">+</span> [<span class="fl">1</span>, <span class="fl">2</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Test</span> Passed</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      Thrown<span class="op">:</span> <span class="dt">DimensionMismatch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>@testset</code>: Structure tests</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@testset</span> <span class="st">"trigonometric identities"</span> <span class="cf">begin</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        θ <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">*</span><span class="cn">π</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@test</span> <span class="fu">sin</span>(<span class="op">-</span>θ) <span class="op">≈</span> <span class="fu">-sin</span>(θ)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@test</span> <span class="fu">cos</span>(<span class="op">-</span>θ) <span class="op">≈</span> <span class="fu">cos</span>(θ)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@testset</span> <span class="st">"trigonometric identities"</span> <span class="cf">begin</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    θ <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">*</span><span class="cn">π</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@test</span> <span class="fu">sin</span>(<span class="op">-</span>θ) <span class="op">≈</span> <span class="fu">-sin</span>(θ)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@test</span> <span class="fu">cos</span>(<span class="op">-</span>θ) <span class="op">≈</span> <span class="fu">cos</span>(θ)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>@testset for ... end</code>: Test in loop</p></li>
 </ul>
 <hr>
@@ -688,6 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://www.youtube.com/watch?v=gSMKNbZOpZU">HiRSE-Summer of Testing Part 2b: “Testing with Julia” by Nils Niggemann</a></li>
 <li><a href="https://docs.julialang.org/en/v1/stdlib/Test/">Official documentation of Test.jl</a></li>
 </ul>
+<hr>
 </section>
 </section>
 <section id="test.jl-demo" class="level1">
@@ -711,7 +617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Look at <code>runtests.jl</code>:</p>
 <ul>
-<li>TODO: Why do we need <code>using MyTestPackage</code>?</li>
+<li>Why do we need <code>using MyTestPackage</code>?</li>
 <li>We include dependencies via <code>setup.jl</code>: <code>Test</code> and <code>StableRNG</code>.</li>
 <li>Testset “find”</li>
 </ul></li>

@@ -585,28 +585,21 @@
     "href": "material/2_tue/testing/slides.html",
     "title": "Learning Goals",
     "section": "",
-    "text": "Justify the effort of developing tests to some extent\nGet to know a few common terms of testing\nWork with the Julia unit testing package Test.jl\n\nMaterial is taken and modified, on the one hand, from the SSE lecture, which builds partly on the py-rse book, and, on the other hand, from the Test.jl docs."
+    "text": "Get to know a few common terms of testing\nWork with the Julia unit testing package Test.jl\n\nMaterial is taken and modified from the SSE lecture, which builds partly on the py-rse book, and from the Test.jl docs."
   },
   {
     "objectID": "material/2_tue/testing/slides.html#what-is-testing",
     "href": "material/2_tue/testing/slides.html#what-is-testing",
     "title": "Learning Goals",
     "section": "What is Testing?",
-    "text": "What is Testing?\n\nSmelling old milk before using it!\nA way to determine if a software is not producing reliable results and if so, what is the reason.\nManual testing vs. automated testing."
+    "text": "What is Testing?\n\nSmelling old milk before using it\nA way to determine if a software is not producing reliable results and if so, what is the reason\nManual testing vs. automated testing"
   },
   {
     "objectID": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
     "href": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
     "title": "Learning Goals",
     "section": "Why Should you Test your Software?",
-    "text": "Why Should you Test your Software?\n\nImprove software reliability and reproducibility.\nMake sure that changes (bugfixes, new features) do not affect other parts of software.\nGenerally all software is better off being tested regularly. Possible exceptions are very small codes with single users.\nEnsure that a released version of a software actually works."
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#nomenclature-in-software-testing",
-    "href": "material/2_tue/testing/slides.html#nomenclature-in-software-testing",
-    "title": "Learning Goals",
-    "section": "Nomenclature in Software Testing",
-    "text": "Nomenclature in Software Testing\n\nFixture: preparatory set for testing.\nActual result: what the code produces when given the fixture.\nExpected result: what the actual result is compared to.\nTest coverage: how much of the code do tests touch in one run."
+    "text": "Why Should you Test your Software?\n\nImprove software reliability and reproducibility\nMake sure that changes (bugfixes, new features) do not affect other parts of software\nGenerally all software is better off being tested regularly. Possible exceptions are very small codes with single users.\nEnsure that a released version of a software actually works."
   },
   {
     "objectID": "material/2_tue/testing/slides.html#some-ways-to-test-software",
@@ -620,21 +613,21 @@
     "href": "material/2_tue/testing/slides.html#assertions",
     "title": "Learning Goals",
     "section": "Assertions",
-    "text": "Assertions\n\nPrinciple of defensive programming.\nNothing happens when an assertion is true; throws error when false.\nTypes of assertion statements:\n\nPrecondition\nPostcondition\nInvariant\n\nA basic but powerful tool to test a software on-the-go.\nAssertion statement syntax in Python\n\n@assert condition \"message\""
+    "text": "Assertions\n@assert condition \"message\"\n\nPrinciple of defensive programming\nNothing happens when an assertion is true; throws error when false.\nTypes of assertion statements:\n\nPrecondition\nPostcondition\nInvariant\n\nA basic but powerful tool to test a software on-the-go"
   },
   {
     "objectID": "material/2_tue/testing/slides.html#unit-testing",
     "href": "material/2_tue/testing/slides.html#unit-testing",
     "title": "Learning Goals",
     "section": "Unit Testing",
-    "text": "Unit Testing\n\nCatching errors with assertions is good but preventing them is better!\nA unit is a single function in one situation.\n\nA situation is one amongst many possible variations of input parameters.\n\nUser creates the expected result manually.\nFixture is the set of inputs used to generate an actual result.\nActual result is compared to the expected result by @test."
+    "text": "Unit Testing\n\nCatching errors with assertions is good but preventing them is better.\nA unit is a single function in one situation.\n\nA situation is one amongst many possible variations of input parameters.\n\nUser creates the expected result manually.\nActual result is compared to the expected result by @test."
   },
   {
     "objectID": "material/2_tue/testing/slides.html#integration-testing",
     "href": "material/2_tue/testing/slides.html#integration-testing",
     "title": "Learning Goals",
     "section": "Integration Testing",
-    "text": "Integration Testing\n\nTest whether several units work in conjunction.\nIntegrate units and test them together in an integration test.\nOften more complicated than a unit test and has more test coverage.\nA fixture is used to generate an actual result.\nActual result is compared to the expected result by @test."
+    "text": "Integration Testing\n\nTest whether several units work in conjunction.\nIntegrate units and test them together in an integration test.\nOften more complicated than a unit test and gives higher test coverage."
   },
   {
     "objectID": "material/2_tue/testing/slides.html#regression-testing",
@@ -644,60 +637,18 @@
     "text": "Regression Testing\n\nGenerating an expected result is not possible in some situations.\nCompare the current actual result with a previous actual result.\nNo guarantee that the current actual result is correct.\nRisk of a bug being carried over indefinitely.\nMain purpose is to identify changes in the current state of the code with respect to a past state."
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#test-coverage",
-    "href": "material/2_tue/testing/slides.html#test-coverage",
+    "objectID": "material/2_tue/testing/slides.html#setup-of-test.jl",
+    "href": "material/2_tue/testing/slides.html#setup-of-test.jl",
     "title": "Learning Goals",
-    "section": "Test Coverage",
-    "text": "Test Coverage\n\nCoverage is the amount of code a test touches in one run.\nAim for high test coverage.\nThere is a trade-off: high test coverage vs. effort in test development"
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#comparing-floating-point-variables",
-    "href": "material/2_tue/testing/slides.html#comparing-floating-point-variables",
-    "title": "Learning Goals",
-    "section": "Comparing Floating-point Variables",
-    "text": "Comparing Floating-point Variables\n\nVery often quantities in math software are float / double.\nSuch quantities cannot be compared to exact values, an approximation is necessary.\nComparison of floating point variables needs to be done to a certain tolerance.\n\n@test 1 ≈ 0.999999  rtol=1e-5\n\nGet ≈ by Latex \\approx + TAB"
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#test-driven-development-tdd",
-    "href": "material/2_tue/testing/slides.html#test-driven-development-tdd",
-    "title": "Learning Goals",
-    "section": "Test-driven Development (TDD)",
-    "text": "Test-driven Development (TDD)\n\nPrinciple is to write a test and then write a code to fulfill the test.\nAdvantages:\n\nIn the end user ends up with a test alongside the code.\nEliminates confirmation bias of the user.\nWriting tests gives clarity on what the code is supposed to do.\n\nDisadvantage: known to not improve productivity."
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#checking-driven-development-cdd",
-    "href": "material/2_tue/testing/slides.html#checking-driven-development-cdd",
-    "title": "Learning Goals",
-    "section": "Checking-driven Development (CDD)",
-    "text": "Checking-driven Development (CDD)\n\nDeveloper performs spot checks; sanity checks at intermediate stages\nMath software often has heuristics which are easy to determine.\nKeep performing same checks at different stages of development to ensure the code works."
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#verifying-a-test",
-    "href": "material/2_tue/testing/slides.html#verifying-a-test",
-    "title": "Learning Goals",
-    "section": "Verifying a Test",
-    "text": "Verifying a Test\n\nTest written as part of a bug-fix:\n\nReproduce the bug in the test by ensuring that the test fails.\nFix the bug.\nRerun the test to ensure that it passes.\n\nTest written to increase code coverage:\n\nMake sure that the first iteration of the test passes.\nTry introducing a small fixable bug in the code to verify if the test fails."
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#setup-of-tests.jl",
-    "href": "material/2_tue/testing/slides.html#setup-of-tests.jl",
-    "title": "Learning Goals",
-    "section": "Setup of Tests.jl",
-    "text": "Setup of Tests.jl\n\nStandard library to write and manage tests, using Test\nStandardized folder structure:\n\n├── Manifest.toml\n├── Project.toml\n├── src/\n└── test\n    ├── Manifest.toml\n    ├── Project.toml\n    ├── runtests.jl\n    └── setup.jl\n\nSingular test vs plural runtests.jl\nsetup.jl for all using XYZ statements, included in runtests.jl\nAdditional packages either in [extra] section of ./Project.toml or in a new ./test/Project.toml environment\n\nIn case of the latter: Do not add the package itself to the ./test/Project.toml"
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html#run-tests",
-    "href": "material/2_tue/testing/slides.html#run-tests",
-    "title": "Learning Goals",
-    "section": "Run Tests",
-    "text": "Run Tests\nVarious options:\n\nDirectly call runtests.jl TODO?\nFrom Pkg-Manager ]test when root project is activated"
+    "section": "Setup of Test.jl",
+    "text": "Setup of Test.jl\n\nStandardized folder structure:\n├── Manifest.toml\n├── Project.toml\n├── src/\n└── test\n    ├── Manifest.toml\n    ├── Project.toml\n    ├── runtests.jl\n    └── setup.jl\nSingular test vs plural runtests.jl\nsetup.jl for all using XYZ statements, included in runtests.jl\nAdditional packages in [extra] section of ./Project.toml or in new ./test/Project.toml\n\nIn case of the latter: Do not add the package itself to the ./test/Project.toml\n\nRun: ]test when root project is activated"
   },
   {
     "objectID": "material/2_tue/testing/slides.html#implement-and-structure-tests",
     "href": "material/2_tue/testing/slides.html#implement-and-structure-tests",
     "title": "Learning Goals",
     "section": "Implement and Structure Tests",
-    "text": "Implement and Structure Tests\n\n@test expr: Test whether expression expr is true\n@test expr broken=true: Explicitly mark test as broken\n@test_throws exception expr: Test whether expression expr throws exception (test unhappy path)\njulia&gt; @test_throws DimensionMismatch [1, 2, 3] + [1, 2]\nTest Passed\n      Thrown: DimensionMismatch\n@testset: Structure tests\njulia&gt; @testset \"trigonometric identities\" begin\n        θ = 2/3*π\n        @test sin(-θ) ≈ -sin(θ)\n        @test cos(-θ) ≈ cos(θ)\n    end;\n@testset for ... end: Test in loop"
+    "text": "Implement and Structure Tests\n\n@test expr: Test whether expression expr is true\n@test expr broken=true: Explicitly mark test as broken\n@test_throws exception expr: Test whether expression expr throws exception (test unhappy path)\njulia&gt; @test_throws DimensionMismatch [1, 2, 3] + [1, 2]\nTest Passed\n      Thrown: DimensionMismatch\n@testset: Structure tests\n@testset \"trigonometric identities\" begin\n    θ = 2/3*π\n    @test sin(-θ) ≈ -sin(θ)\n    @test cos(-θ) ≈ cos(θ)\nend;\n@testset for ... end: Test in loop"
   },
   {
     "objectID": "material/2_tue/testing/slides.html#further-reading-and-watching",
