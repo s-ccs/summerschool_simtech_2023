@@ -470,8 +470,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Under the hypothesis <span class="math inline">\(\beta_i=0\)</span>, the test statistics <span class="math inline">\(t_i\)</span> would follow a <span class="math inline">\(t\)</span>-distribution.</p></li>
 <li><p>column <code>Pr(&gt;|t|)</code>: <span class="math inline">\(p\)</span>-values for the hypotheses <span class="math inline">\(\beta_i=0\)</span> for <span class="math inline">\(i=0,1\)</span></p></li>
 </ul>
-<div class="callout.tip">
-<p>The command <code>rand(n)</code> generates a sample of <code>n</code> “random” (i.e., uniformly distributed) random numbers.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The command <code>rand(n)</code> generates a sample of <code>n</code> “random” (i.e., uniformly distributed) random numbers. If you want to sample from another distribution, use the <code>Distributions</code> package, define an object being the distribution of interest, e.g.&nbsp;<code>d = Normal(0.0, 2.0)</code> for a normal distribution with mean 0.0 and standard deviation 2.0, and sample <code>n</code> times from this distribution by <code>rand(d, n)</code>.</p>
+</div>
 </div>
 <p><strong>Task 1</strong>: Generate a random set of covariates <span class="math inline">\(\mathbf{x}\)</span>. Given these covariates and true parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> (you can choose them)), simulate responses from a linear model and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Play with different choices of the parameters to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</p>
 </section>
@@ -560,8 +570,8 @@ p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 <table class="table">
 <colgroup>
 <col style="width: 23%">
-<col style="width: 26%">
 <col style="width: 25%">
+<col style="width: 23%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -583,9 +593,8 @@ g(x)=x
 <td>count</td>
 <td>Poisson</td>
 <td><p>log:</p>
-<p><span class="math display">\[
-g(x) = \log(x)
-\]</span></p></td>
+<p>$$</p>
+<p>g(x) = (x) $$</p></td>
 </tr>
 <tr class="odd">
 <td>binary</td>
@@ -593,13 +602,15 @@ g(x) = \log(x)
 <td><p>logit:</p>
 <p><span class="math display">\[
 g
-(x) = \log\left
+(
+x) = \log\left
 (
 \
 f
 ra
 c
-{x}{1-x}\right)
+{
+x}{1-x}\right)
 \]</span></p></td>
 </tr>
 </tbody>
