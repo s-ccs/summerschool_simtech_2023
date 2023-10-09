@@ -100,9 +100,10 @@ normal distribution with mean 0.0 and standard deviation 2.0, and sample
 ## Task 1
 
 1.  Generate $n=20$ covariates $\mathbf{x}$ randomly.
-2.  Given these covariates and true parameters $\beta_0=-3$, $\beta_1=2$
-    and $\sigma=0.5$, simulate responses from a linear model and
-    estimate the coefficients $\beta_0$ and $\beta_1$.
+2.  Given these covariates and the true parameters $\beta_0=-3$,
+    $\beta_1=2$ and $\sigma=0.5$, simulate responses from a linear model
+    (with normally distributed errors) and estimate the coefficients
+    $\beta_0$ and $\beta_1$.
 3.  Play with different choices of the parameters above (including the
     sample size $n$) to see the effects on the parameter estimates and
     the $p$-values.
@@ -189,10 +190,18 @@ regression model, but we provide explicit formulas now:
     p\text{-value} = \mathbb{P}(|T| > t_i), \quad \text{where } T \sim t_{n-p}
     $$
 
-**Task 2**: Implement functions that estimate the $\beta$-parameters,
-the corresponding standard errors and the $t$-statistics. Test your
-functions with the \`\`\`tree''' data set and try to reproduce the
+::: {.callout-caution collapse="false"}
+
+## Task 2
+
+1. Implement functions that estimate the $\beta$-parameters,
+the corresponding standard errors and the $t$-statistics. 
+2. Test your functions with the `tree' data set and try to reproduce the
 output above.
+:::
+
+Which model is the best? For linear models, one often uses the $R^2$ characteristic.
+Roughly speaking, it gives the percentage (between 0 and 1) of the variance that can be explained by the linear model.
 
 ``` julia
 r2(linmod1)
@@ -305,10 +314,11 @@ model = glm(@formula(participation ~ age^2),
             SwissLabor, Binomial(), ProbitLink())
 ```
 
-::: callout-task
-**Task 3**:
+::: {.callout-caution collapse="false"}
+
+##Task 3:
 
 1.  Reproduce the results of our data analysis of the `tree` data set
     using a generalized linear model with normal distribution family.
-2.  Generate
+2.  Generate $n=20$ random covariates $\mathbf{x}$ and Poisson-distributed counting      data with parameters $\beta_0 + \beta_1 x_i$. Re-estimate the parameters by a generalized linear model. 
 :::
