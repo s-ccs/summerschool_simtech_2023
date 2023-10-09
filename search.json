@@ -1145,7 +1145,7 @@
     "href": "material/2_tue/ci/slides.html#some-useful-julia-actions",
     "title": "Learning Goals",
     "section": "Some Useful Julia Actions",
-    "text": "Some Useful Julia Actions\n\nFind on gitHub.com/julia-actions\n- uses: julia-actions/setup-julia@v1\n     with:\n       version: '1.9'\nMore:\n\ncache: caches ~/.julia/artifacts/* and ~/.julia/packages/* to reduce runtime of CI\njulia-buildpkg: build package\njulia-runtest: run tests\njulia-format: format code"
+    "text": "Some Useful Julia Actions\n\nFind on github.com/julia-actions\n- uses: julia-actions/setup-julia@v1\n     with:\n       version: '1.9'\nMore:\n\ncache: caches ~/.julia/artifacts/* and ~/.julia/packages/* to reduce runtime of CI\njulia-buildpkg: build package\njulia-runtest: run tests\njulia-format: format code (not really an action, but example)"
   },
   {
     "objectID": "material/2_tue/ci/slides.html#user-specified-commands",
