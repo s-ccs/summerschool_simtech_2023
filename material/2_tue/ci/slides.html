@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Research Software Engineering Summer School – slides</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../material/2_tue/codereview/slides.html" rel="next">
+<link href="../../../material/2_tue/testing/slides.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Research Software Engineering Summer School</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Slides / Handouts</li><li class="breadcrumb-item"><a href="../../../material/2_tue/git/slides.html">Tuesday</a></li><li class="breadcrumb-item"><a href="../../../material/2_tue/ci/slides.html">📝 3 - Continuous Integration</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏠 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../installation/julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📓 Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projectwork.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 Projects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../social.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="emoji" data-emoji="fire">🔥</span> Social</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Cheatsheets</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/githubactions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub actions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Slides / Handouts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Monday</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/rse/rse_basics_slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📊 1 - RSE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/why_julia/page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📊 2 - Why Julia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/firststeps/firststeps_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 3 - First Steps: Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/firststeps/tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 3 - First Steps: Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/envs/envs_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 4 - Envs &amp; Pkgs : Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/1_mon/envs/tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 4 - Envs &amp; Pkgs: Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Tuesday</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/git/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 1 - Advanced Git and Contributing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/git/tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 1 - Git: Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/testing/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 2 - Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/ci/slides.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">📝 3 - Continuous Integration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/2_tue/codereview/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 4 - Code Review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Wednesday</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/docs/handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 1 - Docs: Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/docs/tasks.qmd&quot;" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 1 - Docs: Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/vis/handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 2 - Visualizations: Handout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/vis/tasks.qmd&quot;" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🛠 2 - Visualizations: Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/linalg/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 3 - LinearAlgebra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/3_wed/regression/MultipleRegressionBasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 4 - Multiple Regression</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Thursday</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/4_thu/sim/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 1 - Simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/4_thu/stats/missing.jl" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 2 - Bootstrapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/4_thu/parallel/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 3 - Parallelization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Friday</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../material/5_fri/highlightsOptim/missing.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 1 - Highlights + Optimization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><img src="https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Zeichenflaeche-3-Kopie-42x.png?__scale=w:150,h:150" class="img-fluid"></p>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning Goals</a></li>
+  <li><a href="#workflow-automation" id="toc-workflow-automation" class="nav-link" data-scroll-target="#workflow-automation">1. Workflow Automation</a>
+  <ul class="collapse">
+  <li><a href="#why-automation" id="toc-why-automation" class="nav-link" data-scroll-target="#why-automation">Why Automation?</a></li>
+  <li><a href="#typical-automation-tasks-in-rse" id="toc-typical-automation-tasks-in-rse" class="nav-link" data-scroll-target="#typical-automation-tasks-in-rse">Typical Automation Tasks in RSE</a></li>
+  <li><a href="#continuous-methodologies-12" id="toc-continuous-methodologies-12" class="nav-link" data-scroll-target="#continuous-methodologies-12">Continuous Methodologies (1/2)</a></li>
+  <li><a href="#continuous-methodologies-22" id="toc-continuous-methodologies-22" class="nav-link" data-scroll-target="#continuous-methodologies-22">Continuous Methodologies (2/2)</a></li>
+  <li><a href="#automation-servicessoftware" id="toc-automation-servicessoftware" class="nav-link" data-scroll-target="#automation-servicessoftware">Automation Services/Software</a></li>
+  </ul></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">2. GitHub Actions</a>
+  <ul class="collapse">
+  <li><a href="#what-is-github-actions" id="toc-what-is-github-actions" class="nav-link" data-scroll-target="#what-is-github-actions">What is “GitHub Actions”?</a></li>
+  <li><a href="#general-information" id="toc-general-information" class="nav-link" data-scroll-target="#general-information">General Information</a></li>
+  <li><a href="#components-12" id="toc-components-12" class="nav-link" data-scroll-target="#components-12">Components (1/2)</a></li>
+  <li><a href="#components-22" id="toc-components-22" class="nav-link" data-scroll-target="#components-22">Components (2/2)</a></li>
+  <li><a href="#setting-up-a-workflow" id="toc-setting-up-a-workflow" class="nav-link" data-scroll-target="#setting-up-a-workflow">Setting up a Workflow</a></li>
+  <li><a href="#actions" id="toc-actions" class="nav-link" data-scroll-target="#actions">Actions</a></li>
+  <li><a href="#some-useful-julia-actions" id="toc-some-useful-julia-actions" class="nav-link" data-scroll-target="#some-useful-julia-actions">Some Useful Julia Actions</a></li>
+  <li><a href="#user-specified-commands" id="toc-user-specified-commands" class="nav-link" data-scroll-target="#user-specified-commands">User-specified Commands</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events">Events</a></li>
+  <li><a href="#artifacts" id="toc-artifacts" class="nav-link" data-scroll-target="#artifacts">Artifacts</a></li>
+  <li><a href="#test-actions-locally" id="toc-test-actions-locally" class="nav-link" data-scroll-target="#test-actions-locally">Test Actions Locally</a></li>
+  <li><a href="#advanced-topics" id="toc-advanced-topics" class="nav-link" data-scroll-target="#advanced-topics">Advanced Topics</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul></li>
+  <li><a href="#demo-automation-with-github-actions" id="toc-demo-automation-with-github-actions" class="nav-link" data-scroll-target="#demo-automation-with-github-actions">3. Demo: Automation with GitHub Actions</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-a-test-job" id="toc-setting-up-a-test-job" class="nav-link" data-scroll-target="#setting-up-a-test-job">Setting up a Test Job</a></li>
+  <li><a href="#act-demo" id="toc-act-demo" class="nav-link" data-scroll-target="#act-demo">act Demo</a></li>
+  </ul></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">4. Exercise</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<style>
+  .reveal strong {
+    font-weight: bold;
+    color: orange;
+  }
+  .reveal p {
+    text-align: left;
+  }
+  .reveal section h1 {
+    color: orange;
+  }
+  .reveal section h2 {
+    color: orange;
+  }
+  .reveal code {
+    font-family: 'Ubuntu Mono';
+    color: orange;
+  }
+  .reveal section img {
+    background:none;
+    border:none;
+    box-shadow:none;
+  }
+</style>
+<section id="learning-goals" class="level1">
+<h1>Learning Goals</h1>
+<ul>
+<li>Name and explain common workflows to automate in RSE.</li>
+<li>Explain the differences between the various continuous methodologies.</li>
+<li>Explain why automation is crucial in RSE.</li>
+<li>Write and understand basic automation scripts for GitHub Actions.
+<ul>
+<li>s.t. we are able to understand what <code>PkgTemplates</code> generates for us.</li>
+</ul></li>
+</ul>
+<p>Material is taken and modified from the <a href="https://github.com/Simulation-Software-Engineering/Lecture-Material">SSE lecture</a>.</p>
+<hr>
+</section>
+<section id="workflow-automation" class="level1">
+<h1>1. Workflow Automation</h1>
+<hr>
+<section id="why-automation" class="level2">
+<h2 class="anchored" data-anchor-id="why-automation">Why Automation?</h2>
+<ul>
+<li>Automatize tasks
+<ul>
+<li>Run tests frequently, give feedback early etc.</li>
+<li>Ensure reproducible test environments</li>
+<li>Cannot forget automatized tasks</li>
+<li>Less burden to developer (and their workstation)</li>
+<li>Avoid manual errors</li>
+</ul></li>
+<li>Process often integrated in development workflow
+<ul>
+<li>Example: Support by Git hooks or Git forges</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="typical-automation-tasks-in-rse" class="level2">
+<h2 class="anchored" data-anchor-id="typical-automation-tasks-in-rse">Typical Automation Tasks in RSE</h2>
+<ul>
+<li>Check code formatting and quality</li>
+<li>Compile and test code for different platforms</li>
+<li>Generate coverage reports and visualization</li>
+<li>Build documentation and deploy it</li>
+<li>Build, package, and upload releases</li>
+</ul>
+<hr>
+</section>
+<section id="continuous-methodologies-12" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-methodologies-12">Continuous Methodologies (1/2)</h2>
+<ul>
+<li><strong>Continuous Integration</strong> (CI)
+<ul>
+<li>Continuously integrate changes into “main” branch</li>
+<li>Avoids “merge hell”</li>
+<li>Relies on testing and checking code continuously
+<ul>
+<li>Should be automatized</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="continuous-methodologies-22" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-methodologies-22">Continuous Methodologies (2/2)</h2>
+<ul>
+<li><strong>Continuous Delivery</strong> (CD)
+<ul>
+<li>Software is in a state that allows new release at any time</li>
+<li>Software package is built</li>
+<li>Actual release triggered manually</li>
+</ul></li>
+<li><strong>Continuous Deployment</strong> (CD)
+<ul>
+<li>Software is in a state that allows new release at any time</li>
+<li>Software package is built</li>
+<li>Actual release triggered automatically (continuously)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="automation-servicessoftware" class="level2">
+<h2 class="anchored" data-anchor-id="automation-servicessoftware">Automation Services/Software</h2>
+<ul>
+<li><a href="https://github.com/features/actions">GitHub Actions</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/">GitLab CI/CD</a></li>
+<li><a href="https://circleci.com/">Circle CI</a></li>
+<li><a href="https://www.travis-ci.com/">Travis CI</a></li>
+<li><a href="https://www.jenkins.io/">Jenkins</a></li>
+<li>…</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="github-actions" class="level1">
+<h1>2. GitHub Actions</h1>
+<hr>
+<section id="what-is-github-actions" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-github-actions">What is “GitHub Actions”?</h2>
+<blockquote class="blockquote">
+<p>Automate, customize, and execute your software development workflows right in your repository with GitHub Actions.</p>
+</blockquote>
+<p>From: <a href="https://docs.github.com/en/actions">https://docs.github.com/en/actions</a></p>
+<hr>
+</section>
+<section id="general-information" class="level2">
+<h2 class="anchored" data-anchor-id="general-information">General Information</h2>
+<ul>
+<li>Usage of GitHub’s runners is <a href="https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#usage-limits">limited</a></li>
+<li>Available for public repositories or accounts with subscription</li>
+<li>By default Actions run on GitHub’s runners
+<ul>
+<li>Linux, Windows, or MacOS</li>
+</ul></li>
+<li>Quickly evolving and significant improvements in recent years</li>
+</ul>
+<hr>
+</section>
+<section id="components-12" class="level2">
+<h2 class="anchored" data-anchor-id="components-12">Components (1/2)</h2>
+<ul>
+<li><a href="https://docs.github.com/en/actions/using-workflows">Workflow</a>: Runs one or more jobs</li>
+<li><a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows">Event</a>: Triggers a workflow</li>
+<li><a href="https://docs.github.com/en/actions/using-jobs">Jobs</a>: Set of steps (running on same runner)
+<ul>
+<li>Steps executed consecutively and share data</li>
+<li>Jobs by default executed in parallel</li>
+</ul></li>
+<li><a href="https://docs.github.com/en/actions/creating-actions">Action</a>: Application performing common, complex task (step) often used in workflows</li>
+<li><a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#runners">Runner</a>: Server that runs jobs</li>
+<li><a href="https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#sharing-data-between-jobs">Artifacts</a>: Files to be shared between jobs or to be kept after workflow finishes</li>
+</ul>
+<hr>
+</section>
+<section id="components-22" class="level2">
+<h2 class="anchored" data-anchor-id="components-22">Components (2/2)</h2>
+<p><img src="https://docs.github.com/assets/cb-25628/images/help/images/overview-actions-simple.png" width="95%;" style="margin-left:auto; margin-right:auto; padding-top: 25px; padding-bottom: 25px; background: #eeeeee"></p>
+<p>From <a href="https://docs.github.com/en/actions">GitHub Actions tutorial</a></p>
+<hr>
+</section>
+<section id="setting-up-a-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-a-workflow">Setting up a Workflow</h2>
+<ul>
+<li>Workflow file files stored <code>${REPO_ROOT}/.github/workflows</code></li>
+<li>Configured via YAML file</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> learn-github-actions</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">]</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">check-bats-version</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-node@v2</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">node-version</span><span class="kw">:</span><span class="at"> </span><span class="st">'14'</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> npm install -g bats</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> bats -v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="actions" class="level2">
+<h2 class="anchored" data-anchor-id="actions">Actions</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-node@v2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">node-version</span><span class="kw">:</span><span class="at"> </span><span class="st">'14'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Integrated via <code>uses</code> directive</li>
+<li>Additional configuration via <code>with</code> (options depend on Action)</li>
+<li>Find actions in <a href="https://github.com/marketplace?type=actions">marketplace</a></li>
+<li>Write <a href="https://docs.github.com/en/actions/creating-actions">own actions</a></li>
+</ul>
+<hr>
+</section>
+<section id="some-useful-julia-actions" class="level2">
+<h2 class="anchored" data-anchor-id="some-useful-julia-actions">Some Useful Julia Actions</h2>
+<ul>
+<li><p>Find on <a href="https://github.com/julia-actions/">gitHub.com/julia-actions</a></p>
+<pre><code>- uses: julia-actions/setup-julia@v1
+     with:
+       version: '1.9'</code></pre></li>
+<li><p>More:</p>
+<ul>
+<li><code>cache</code>: caches <code>~/.julia/artifacts/*</code> and <code>~/.julia/packages/*</code> to reduce runtime of CI</li>
+<li><code>julia-buildpkg</code>: build package</li>
+<li><code>julia-runtest</code>: run tests</li>
+<li><code>julia-format</code>: format code</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="user-specified-commands" class="level2">
+<h2 class="anchored" data-anchor-id="user-specified-commands">User-specified Commands</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Single line command"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">run</span><span class="kw">:</span><span class="at"> echo "Single line command"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Multi line command"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    echo "First line"</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    echo "Second line. Directory ${PWD}"</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">workdir</span><span class="kw">:</span><span class="at"> tmp/</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="events" class="level2">
+<h2 class="anchored" data-anchor-id="events">Events</h2>
+<ul>
+<li><p>Single or multiple events</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> fork</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Activities</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">issue</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">types</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> opened</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> labeled</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Filters</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> main</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'releases/**'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<hr>
+</section>
+<section id="artifacts" class="level2">
+<h2 class="anchored" data-anchor-id="artifacts">Artifacts</h2>
+<ul>
+<li><p>Data sharing between jobs and data upload</p></li>
+<li><p>Uploading artifact</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Upload artifact"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v2</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-artifact</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">path</span><span class="kw">:</span><span class="at"> my_file.txt</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">retention-days</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Downloading artifact</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Download a single artifact"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/download-artifact@v2</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-artifact</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note</strong>: Drop name to download all artifacts</p></li>
+</ul>
+<hr>
+</section>
+<section id="test-actions-locally" class="level2">
+<h2 class="anchored" data-anchor-id="test-actions-locally">Test Actions Locally</h2>
+<ul>
+<li><p><a href="https://github.com/nektos/act">act</a></p></li>
+<li><p>Relies extensively on Docker</p>
+<ul>
+<li>User should be in <code>docker</code> group</li>
+</ul></li>
+<li><p>Run <code>act</code> from root of the repository</p>
+<pre class="text"><code>act (runs all workflows)
+act --job WORKFLOWNAME</code></pre></li>
+<li><p>Environment is not 100% identical to GitHub’s</p>
+<ul>
+<li>Workflows may fail locally, but work on GitHub</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="advanced-topics" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-topics">Advanced Topics</h2>
+<ul>
+<li><a href="https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners">Self-hosted runners</a></li>
+<li><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">Secrets and tokens</a></li>
+<li><a href="https://docs.github.com/en/actions/deployment/about-deployments/about-continuous-deployment">Continuous deployment</a></li>
+<li><a href="https://docs.github.com/en/actions/creating-actions/about-custom-actions">Custom actions</a></li>
+<li><a href="https://docs.github.com/en/actions/using-workflows/advanced-workflow-features#using-a-build-matrix">Build matrices</a></li>
+<li>Using own Docker containers</li>
+</ul>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://www.atlassian.com/continuous-delivery/continuous-integration">What is Continuous Integration?</a></li>
+<li><a href="https://docs.github.com/en/actions">GitHub Actions documentation</a></li>
+<li><a href="https://docs.github.com/en/actions/quickstart">GitHub Actions quickstart</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="demo-automation-with-github-actions" class="level1">
+<h1>3. Demo: Automation with GitHub Actions</h1>
+<hr>
+<section id="setting-up-a-test-job" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-a-test-job">Setting up a Test Job</h2>
+<ul>
+<li><p>Import <a href="https://github.com/uekerman/JuliaTestPackage">Julia test package repository</a> (the same code we used for testing)</p></li>
+<li><p>Set up workflow file</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> .github/workflows</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .github/workflows</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> format-check.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Let’s check whether our code is formatted correctly. Edit <code>format-check.yml</code> to have following content</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> format-check</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> julia-actions/setup-julia@v1</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'1.9'</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install JuliaFormatter and format</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>          julia  -e 'using Pkg; Pkg.add(PackageSpec(name="JuliaFormatter"))'</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>          julia  -e 'using JuliaFormatter; format(".", verbose=true)'</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Format check</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>          julia -e '</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>          out = Cmd(`git diff --name-only`) |&gt; read |&gt; String</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>          if out == ""</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>              exit(0)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>          else</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>              @error "Some files have not been formatted"</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>              write(stdout, out)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>              exit(1)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>          end'     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>runs-on</code> does <strong>not</strong> refer to a Docker container, but to a runner tag.</p></li>
+<li><p>Add, commit, push</p></li>
+<li><p>After the push, inspect “Action” panel on GitHub repository</p>
+<ul>
+<li>GitHub will schedule a run (yellow dot)</li>
+<li>Hooray. We have set up our first action.</li>
+</ul></li>
+<li><p>Failing test example:</p>
+<ul>
+<li>Edit settings on GitHub that one can only merge if all tests pass:
+<ul>
+<li>Settings -&gt; Branches -&gt; Branch protection rule</li>
+<li>Choose <code>main</code> branch</li>
+<li>Enable “Require status checks to pass before merging”. Optionally enable “Require branches to be up to date before merging”</li>
+<li>Choose status checks that need to pass: <code>test</code></li>
+<li>Click on “Create” at bottom of page.</li>
+</ul></li>
+<li>Create a new branch <code>break-code</code>.</li>
+<li>Edit some file, violate the formatting, commit it and push it to the branch. Afterwards open a new PR and inspect the failing test. We are also not able to merge the changes as the “Merge” button should be inactive.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="act-demo" class="level2">
+<h2 class="anchored" data-anchor-id="act-demo">act Demo</h2>
+<ul>
+<li><p><code>act</code> is for quick checks while developing workflows, not for developing the code</p></li>
+<li><p>Check available jobs (at root of repository)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">act</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Run jobs for <code>push</code> event (default event)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">act</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Run a specific job</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">act</span> <span class="at">-j</span> test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="exercise" class="level1">
+<h1>4. Exercise</h1>
+<p>Set up GitHub Actions for your statistics package. They should format your code and run the tests. To structure and parallelize things, you could use two separate jobs.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Handle positioning of the toggle
+      window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("https:\/\/www\.simtech-summerschool\.de");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../material/2_tue/testing/slides.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">📝 2 - Testing</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../material/2_tue/codereview/slides.html" class="pagination-link">
+        <span class="nav-page-text">📝 4 - Code Review</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">CC-By Ehinger, Oesting, Uekerman, DeBruine, Ranocha, Szufel</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
