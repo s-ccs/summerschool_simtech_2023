@@ -14,7 +14,7 @@ You can mark some code and execute it using `ctrl` + `enter` - you can also gene
 
 3. implement a second function called `rse_mean`, which calculates the mean of the provided vector. Make sure to use the `rse_sum` function! Test it using `res_mean(-15:17) == 1`
 
-4. Next implement a standard deviation function `rse_std`: $\sqrt{\frac{\sum(x-mean(x))}{n-1}}$, this time you should use elementwise/broadcasting operators. Test it with `rse_std(1:3) == 1`
+4. Next implement a standard deviation function `rse_std`: $\sqrt{\frac{\sum((x-mean(x))^2)}{n-1}}$, this time you should use elementwise/broadcasting operators. Test it with `rse_std(1:3) == 1`
 
 5. Finally, we will implement `rse_tstat`, returning the t-value with `length(x)-1` DF, that the provided Array actually has a mean of 0. Test it with `rse_tstat(2:3) == 5`. Add the keyword argument `σ` that allows the user to optionally provide a pre-calculated standard deviation. 
 
