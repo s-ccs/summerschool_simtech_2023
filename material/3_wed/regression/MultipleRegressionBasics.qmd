@@ -107,6 +107,9 @@ normal distribution with mean 0.0 and standard deviation 2.0, and sample
 3.  Play with different choices of the parameters above (including the
     sample size $n$) to see the effects on the parameter estimates and
     the $p$-values.
+
+::: {callout-note}
+The more covariates you add the more variance can be explained by the linear model - $R^2$ increases. In order to balance goodness-of-tit of a model and its complexity, information criteria such as `aic` are considered.
 :::
 
 ## Multiple Regression Model
