@@ -483,25 +483,14 @@ Tip
 <p>The command <code>rand(n)</code> generates a sample of <code>n</code> “random” (i.e., uniformly distributed) random numbers. If you want to sample from another distribution, use the <code>Distributions</code> package, define an object being the distribution of interest, e.g.&nbsp;<code>d = Normal(0.0, 2.0)</code> for a normal distribution with mean 0.0 and standard deviation 2.0, and sample <code>n</code> times from this distribution by <code>rand(d, n)</code>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Task 1
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
+<p>::: {.callout-caution collapse=“false”} ## Task 1</p>
 <ol type="1">
 <li>Generate <span class="math inline">\(n=20\)</span> covariates <span class="math inline">\(\mathbf{x}\)</span> randomly.</li>
 <li>Given these covariates and the true parameters <span class="math inline">\(\beta_0=-3\)</span>, <span class="math inline">\(\beta_1=2\)</span> and <span class="math inline">\(\sigma=0.5\)</span>, simulate responses from a linear model (with normally distributed errors) and estimate the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
 <li>Play with different choices of the parameters above (including the sample size <span class="math inline">\(n\)</span>) to see the effects on the parameter estimates and the <span class="math inline">\(p\)</span>-values.</li>
 </ol>
-</div>
-</div>
+<div class="{callout-note}">
+<p>The more covariates you add the more variance can be explained by the linear model - <span class="math inline">\(R^2\)</span> increases. In order to balance goodness-of-tit of a model and its complexity, information criteria such as <code>aic</code> are considered.</p>
 </div>
 </section>
 <section id="multiple-regression-model" class="level2">
@@ -555,7 +544,7 @@ p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
 \]</span></p></li>
 </ul>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -564,7 +553,7 @@ Task 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Implement functions that estimate the <span class="math inline">\(\beta\)</span>-parameters, the corresponding standard errors and the <span class="math inline">\(t\)</span>-statistics.</li>
@@ -667,7 +656,7 @@ g(x) = \log\left(
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">glm</span>(<span class="pp">@formula</span>(participation <span class="op">~</span> age<span class="op">^</span><span class="fl">2</span>), </span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            SwissLabor, <span class="fu">Binomial</span>(), <span class="fu">ProbitLink</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -676,7 +665,7 @@ Task 3:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Reproduce the results of our data analysis of the <code>tree</code> data set using a generalized linear model with normal distribution family.</li>
