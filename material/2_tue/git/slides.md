@@ -32,7 +32,7 @@ slideOptions:
   }
 </style>
 
-## Learning Goals of the Git Lecture
+# Learning Goals
 
 - Refresh and organize students' existing knowledge on Git (learn how to learn more).
 - Students can explain difference between merge and rebase and when to use what.
@@ -232,7 +232,6 @@ Which level do you have?
 
 - [Official documentation](http://git-scm.com/doc)
 - [Video: Git in 15 minutes: basics, branching, no remote](https://www.youtube.com/watch?v=USjZcfj8yxE)
-- [The GitHub Blog: Commits are snapshots, not diffs](https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/)
 - Chapters [6](https://merely-useful.tech/py-rse/git-cmdline.html) and [7](https://merely-useful.tech/py-rse/git-advanced.html) of Research Software Engineering with Python
 - [Podcast All Things Git: History of VC](https://www.allthingsgit.com/episodes/the_history_of_vc_with_eric_sink.html)
 - [git purr](https://girliemac.com/blog/2017/12/26/git-purr/)

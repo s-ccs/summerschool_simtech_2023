@@ -22,6 +22,9 @@ Seminar room in the groundfloor (directly at the entrance)
 
 [Link to map](https://www.simtech.uni-stuttgart.de/events/simtech-summer-school/SuSch_2/location/)
 
+
+#### ⚗ Advanced topics
+We probably have some time to discuss advanced topics towards the end of the summers school. You are welcome to send an email to benedikt and/or put it into [the git issue](https://github.com/s-ccs/summerschool_simtech_2023/issues/15)
 ----
 
 We wish you all a interesting, safe and fun summerschool. If there are any interpersonal issues (especially regarding [code-of-conduct](https://www.uni-stuttgart.de/en/university/profile/diversity/code-of-conduct/)), please directly contact [Benedikt Ehinger](benedikt.ehinger@vis.uni-stuttgart.de)^[If there are problem with him, please contact **Marco Oesting**]. For organizational issues, please contact [Sina Schorndorfer](sina.schorndorfer@imsb.uni-stuttgart.de)
