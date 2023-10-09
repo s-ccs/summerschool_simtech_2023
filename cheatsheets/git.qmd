@@ -1,0 +1,1 @@
+There are many good ones out there. One we can recommend is the [one from GitHub](https://education.github.com/git-cheat-sheet-education.pdf).

@@ -32,7 +32,7 @@ slideOptions:
   }
 </style>
 
-## Learning Goals of the Git Lecture
+# Learning Goals
 
 - Refresh and organize students' existing knowledge on Git (learn how to learn more).
 - Students can explain difference between merge and rebase and when to use what.
