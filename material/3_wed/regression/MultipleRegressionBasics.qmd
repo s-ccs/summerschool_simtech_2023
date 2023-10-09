@@ -89,17 +89,24 @@ lm(@formula(Volume ~ Girth), trees)
 
 ::: callout-tip
 The command `rand(n)` generates a sample of `n` "random" (i.e.,
-uniformly distributed) random numbers. If you want to sample from another distribution, use the `Distributions` package, define an object being the distribution of interest, e.g. `d = Normal(0.0, 2.0)` for a  normal distribution 
-with mean 0.0 and standard deviation 2.0, and sample `n` times from this 
-distribution by `rand(d, n)`.
+uniformly distributed) random numbers. If you want to sample from
+another distribution, use the `Distributions` package, define an object
+being the distribution of interest, e.g. `d = Normal(0.0, 2.0)` for a
+normal distribution with mean 0.0 and standard deviation 2.0, and sample
+`n` times from this distribution by `rand(d, n)`.
 :::
 
-**Task 1**: Generate a random set of covariates $\mathbf{x}$. Given
-these covariates and true parameters $\beta_0$, $\beta_1$ and $\sigma^2$
-(you can choose them)), simulate responses from a linear model and
-estimate the coefficients $\beta_0$ and $\beta_1$. Play with different
-choices of the parameters to see the effects on the parameter estimates
-and the $p$-values.
+::: {.callout-caution collapse="false"}
+## Task 1
+
+1.  Generate $n=20$ covariates $\mathbf{x}$ randomly.
+2.  Given these covariates and true parameters $\beta_0=-3$, $\beta_1=2$
+    and $\sigma=0.5$, simulate responses from a linear model and
+    estimate the coefficients $\beta_0$ and $\beta_1$.
+3.  Play with different choices of the parameters above (including the
+    sample size $n$) to see the effects on the parameter estimates and
+    the $p$-values.
+:::
 
 ## Multiple Regression Model
 
@@ -236,38 +243,38 @@ $$
 
 For the models above, these are:
 
-+----------------+-----------------+----------------+
-| Type of Data   | Distribution    | Link Function  |
-|                | Family          |                |
-+================+=================+================+
-| continuous     | Normal          | identity:      |
-|                |                 |                |
-|                |                 | $$             |
-|                |                 | g(x)=x         |
-|                |                 | $$             |
-+----------------+-----------------+----------------+
-| count          | Poisson         | log:           |
-|                |                 |                |
-|                |                 | $$             |
-|                |                 |                |
-|                |                 | g(x) = \log(x) |
-|                |                 | $$             |
-+----------------+-----------------+----------------+
-| binary         | Bernoulli       | logit:         |
-|                |                 |                |
-|                |                 | $$             |
-|                |                 | g              |
-|                |                 | (              |
-|                |                 | x) = \log\left |
-|                |                 | (              |
-|                |                 | \              |
-|                |                 | f              |
-|                |                 | ra             |
-|                |                 | c              |
-|                |                 | {              |
-|                |                 | x}{1-x}\right) |
-|                |                 | $$             |
-+----------------+-----------------+----------------+
++----------------+----------------+----------------+
+| Type of Data   | Distribution   | Link Function  |
+|                | Family         |                |
++================+================+================+
+| continuous     | Normal         | identity:      |
+|                |                |                |
+|                |                | $$             |
+|                |                | g(x)=x         |
+|                |                | $$             |
++----------------+----------------+----------------+
+| count          | Poisson        | log:           |
+|                |                |                |
+|                |                | \$\$           |
+|                |                |                |
+|                |                | g(x) = \log(x) |
+|                |                | \$\$           |
++----------------+----------------+----------------+
+| binary         | Bernoulli      | logit:         |
+|                |                |                |
+|                |                | $$             |
+|                |                | g              |
+|                |                | (              |
+|                |                | x) = \log\left |
+|                |                | (              |
+|                |                | \              |
+|                |                | f              |
+|                |                | ra             |
+|                |                | c              |
+|                |                | {              |
+|                |                | x}{1-x}\right) |
+|                |                | $$             |
++----------------+----------------+----------------+
 
 In general, the parameter vector $\beta$ is estimated via maximizing the
 likelihood, i.e.,
