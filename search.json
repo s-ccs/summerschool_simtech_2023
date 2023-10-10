@@ -1005,7 +1005,7 @@
     "href": "material/2_tue/codereview/slides.html#file-paths",
     "title": "Code Review",
     "section": "File paths",
-    "text": "File paths\nAll file references should use relative paths, not absolute paths.\n👎 Absolute Path\n#| eval: false\ndogs = open(\"C:\\Documents\\My Project\\data\\dogs.csv\", \"r\")\n\n👍 Relative Path\n#| eval: false\ndogs  open(\"data/dogs.csv\", \"r\")"
+    "text": "File paths\nAll file references should use relative paths, not absolute paths.\n👎 Absolute Path\ndogs = open(\"C:\\Documents\\My Project\\data\\dogs.csv\", \"r\")\n\n👍 Relative Path\ndogs  open(\"data/dogs.csv\", \"r\")"
   },
   {
     "objectID": "material/2_tue/codereview/slides.html#naming-things",
@@ -1033,21 +1033,21 @@
     "href": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
     "title": "Code Review",
     "section": "Single point of truth (SPOT)",
-    "text": "Single point of truth (SPOT)\nWith repeated numbers\n#| output: false\nusing DataFrames, Random\n\nsimdat = DataFrame(\n  id = 1:10, \n  group = repeat([\"A\", \"B\"], 5), \n  dv = randn(10)\n)\n\nWith parameter variables\n#| output: false\nn = 10\n\nsimdat = DataFrame(\n  id = 1:n,\n  group = repeat([\"A\", \"B\"], n ÷ 2), \n  dv = randn(n)\n)"
+    "text": "Single point of truth (SPOT)\nWith repeated numbers\nusing DataFrames, Random\n\nsimdat = DataFrame(\n  id = 1:10, \n  group = repeat([\"A\", \"B\"], 5), \n  dv = randn(10)\n)\n\nWith parameter variables\nn = 10\n\nsimdat = DataFrame(\n  id = 1:n,\n  group = repeat([\"A\", \"B\"], n ÷ 2), \n  dv = randn(n)\n)"
   },
   {
     "objectID": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
     "href": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
     "title": "Code Review",
     "section": "Don’t repeat yourself (DRY)",
-    "text": "Don’t repeat yourself (DRY)\n\nIf you find yourself copying and pasting code more than twice, it’s probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.\n\nWith repeated code\n#| eval: false\nusing HypothesisTests\n\ndfA = filter(row -&gt; row.group == \"A\", simdat)\nanalysisA = OneSampleTTest(dfA.dv)\n\ndfB = filter(row -&gt; row.group == \"B\", simdat)\nanalysisB = OneSampleTTest(dfB.dv)\n\nWith a function\n#| eval: false\nfunction subtest(data, level)\n    sub_df = filter(row -&gt; row.group == level, data)\n    return OneSampleTTest(sub_df.dv)\nend\n\nanalysisA = subtest(simdat, \"A\")\nanalysisB = subtest(simdat, \"B\")"
+    "text": "Don’t repeat yourself (DRY)\n\nIf you find yourself copying and pasting code more than twice, it’s probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.\n\nWith repeated code\nusing HypothesisTests\n\ndfA = filter(row -&gt; row.group == \"A\", simdat)\nanalysisA = OneSampleTTest(dfA.dv)\n\ndfB = filter(row -&gt; row.group == \"B\", simdat)\nanalysisB = OneSampleTTest(dfB.dv)\n\nWith a function\nfunction subtest(data, level)\n    sub_df = filter(row -&gt; row.group == level, data)\n    return OneSampleTTest(sub_df.dv)\nend\n\nanalysisA = subtest(simdat, \"A\")\nanalysisB = subtest(simdat, \"B\")"
   },
   {
     "objectID": "material/2_tue/codereview/slides.html#unit-tests",
     "href": "material/2_tue/codereview/slides.html#unit-tests",
     "title": "Code Review",
     "section": "Unit Tests",
-    "text": "Unit Tests\n#| error: true\nusing Test\n\n# check length of DataFrame is correct\n@test size(simdat, 1) == 10\n\n# check column names are as expected\n@test names(simdat) == [\"id\", \"group\", \"dv\"]\n\n# check all dv values are positive\n@test all(simdat.dv .&gt; 0)"
+    "text": "Unit Tests\nusing Test\n\n# check length of DataFrame is correct\n@test size(simdat, 1) == 10\n\n# check column names are as expected\n@test names(simdat) == [\"id\", \"group\", \"dv\"]\n\n# check all dv values are positive\n@test all(simdat.dv .&gt; 0)"
   },
   {
     "objectID": "material/2_tue/codereview/slides.html#exercises",
