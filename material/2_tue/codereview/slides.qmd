@@ -6,7 +6,7 @@ execute:
 format: 
   revealjs:
     logo: images/psyteachr_hex.png
-    theme: [light, style.scss]
+    theme: [default, style.scss]
     transition: none
     transition-speed: fast
 ---
@@ -200,8 +200,7 @@ All file references should use relative paths, not absolute paths.
 
 ### 👎 Absolute Path 
 
-```{julia}
-#| eval: false
+``` julia
 dogs = open("C:\Documents\My Project\data\dogs.csv", "r")
 ```
 
@@ -209,8 +208,7 @@ dogs = open("C:\Documents\My Project\data\dogs.csv", "r")
 
 ### 👍 Relative Path 
 
-```{julia}
-#| eval: false
+``` julia
 dogs  open("data/dogs.csv", "r")
 ```
 
@@ -286,8 +284,7 @@ When writing code, it is important to write it in such a way that it is easily u
 
 ### With repeated numbers
 
-```{julia}
-#| output: false
+``` julia
 using DataFrames, Random
 
 simdat = DataFrame(
@@ -301,8 +298,7 @@ simdat = DataFrame(
 
 ### With parameter variables
 
-```{julia}
-#| output: false
+``` julia
 n = 10
 
 simdat = DataFrame(
@@ -320,8 +316,7 @@ If you find yourself copying and pasting code more than twice, it's probably tim
 
 ### With repeated code
 
-```{julia}
-#| eval: false
+``` julia
 using HypothesisTests
 
 dfA = filter(row -> row.group == "A", simdat)
@@ -335,8 +330,7 @@ analysisB = OneSampleTTest(dfB.dv)
 
 ### With a function
 
-```{julia}
-#| eval: false
+``` julia
 function subtest(data, level)
     sub_df = filter(row -> row.group == level, data)
     return OneSampleTTest(sub_df.dv)
@@ -349,8 +343,7 @@ analysisB = subtest(simdat, "B")
 ## Unit Tests
 
 
-```{julia}
-#| error: true
+``` julia
 using Test
 
 # check length of DataFrame is correct
