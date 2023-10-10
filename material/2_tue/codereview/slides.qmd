@@ -6,7 +6,7 @@ execute:
 format: 
   revealjs:
     logo: images/psyteachr_hex.png
-    theme: [dark, style.scss]
+    theme: [light, style.scss]
     transition: none
     transition-speed: fast
 ---
