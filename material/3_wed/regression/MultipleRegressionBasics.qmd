@@ -44,7 +44,7 @@ $$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i,   \qquad  i=1,...,n,$$
 where $\varepsilon_i \sim \mathcal{N}(0,\sigma^2)$ are independent
 normally distributed errors with unknown variance $\sigma^2$.
 
-*Task:* Find the straight line that fits best, i.e., find the *optimal*
+*Aim:* Find the straight line that fits best, i.e., find the *optimal*
 estimators for $\beta_0$ and $\beta_1$.
 
 *Typical choice*: Least squares estimator (= maximum likelihood
@@ -191,17 +191,17 @@ regression model, but we provide explicit formulas now:
     $$
 
 ::: {.callout-caution collapse="false"}
-
 ## Task 2
 
-1. Implement functions that estimate the $\beta$-parameters,
-the corresponding standard errors and the $t$-statistics. 
-2. Test your functions with the `tree' data set and try to reproduce the
-output above.
+1.  Implement functions that estimate the $\beta$-parameters, the
+    corresponding standard errors and the $t$-statistics.
+2.  Test your functions with the \`tree' data set and try to reproduce
+    the output above.
 :::
 
-Which model is the best? For linear models, one often uses the $R^2$ characteristic.
-Roughly speaking, it gives the percentage (between 0 and 1) of the variance that can be explained by the linear model.
+Which model is the best? For linear models, one often uses the $R^2$
+characteristic. Roughly speaking, it gives the percentage (between 0
+and 1) of the variance that can be explained by the linear model.
 
 ``` julia
 r2(linmod1)
@@ -212,8 +212,11 @@ linmod3 = lm(@formula(Volume ~ Girth + Height + Girth*Height), trees)
 r2(linmod3)
 ```
 
-::: {.callout-note}
-The more covariates you add the more variance can be explained by the linear model - $R^2$ increases. In order to balance goodness-of-fit of a model and its complexity, information criteria such as `aic` are considered.
+::: callout-note
+The more covariates you add the more variance can be explained by the
+linear model - $R^2$ increases. In order to balance goodness-of-fit of a
+model and its complexity, information criteria such as `aic` are
+considered.
 :::
 
 ## Generalized Linear Models
@@ -256,30 +259,30 @@ $$
 
 For the models above, these are:
 
-+----------------+------------------+--------------------------+
-| Type of Data   | Distribution     | Link Function            |
-|                | Family           |                          |
-+================+==================+==========================+
-| continuous     | Normal           | identity:                |
-|                |                  |                          |
-|                |                  | $$                       |
-|                |                  | g(x)=x                   |
-|                |                  | $$                       |
-+----------------+------------------+--------------------------+
-| count          | Poisson          | log:                     |
-|                |                  |                          |
-|                |                  | $$                       |
-|                |                  |  g(x) = \log(x)          |
-|                |                  | $$                       |
-+----------------+------------------+--------------------------+
-| binary         | Bernoulli        | logit:                   |
-|                |                  |                          |
-|                |                  | $$                       |
-|                |                  | g(x) = \log\left(        |
-|                |                  | \frac{x}{1-x}            |
-|                |                  | \right)                  |
-|                |                  | $$                       |
-+----------------+------------------+--------------------------+
++----------------+-----------------+-------------------------+
+| Type of Data   | Distribution    | Link Function           |
+|                | Family          |                         |
++================+=================+=========================+
+| continuous     | Normal          | identity:               |
+|                |                 |                         |
+|                |                 | $$                      |
+|                |                 | g(x)=x                  |
+|                |                 | $$                      |
++----------------+-----------------+-------------------------+
+| count          | Poisson         | log:                    |
+|                |                 |                         |
+|                |                 | $$                      |
+|                |                 |  g(x) = \log(x)         |
+|                |                 | $$                      |
++----------------+-----------------+-------------------------+
+| binary         | Bernoulli       | logit:                  |
+|                |                 |                         |
+|                |                 | $$                      |
+|                |                 | g(x) = \log\left(       |
+|                |                 | \frac{x}{1-x}           |
+|                |                 | \right)                 |
+|                |                 | $$                      |
++----------------+-----------------+-------------------------+
 
 In general, the parameter vector $\beta$ is estimated via maximizing the
 likelihood, i.e.,
@@ -311,10 +314,33 @@ model = glm(@formula(participation ~ age^2),
 ```
 
 ::: {.callout-caution collapse="false"}
-
 ## Task 3:
 
 1.  Reproduce the results of our data analysis of the `tree` data set
     using a generalized linear model with normal distribution family.
-2.  Generate $n=20$ random covariates $\mathbf{x}$ and Poisson-distributed counting      data with parameters $\beta_0 + \beta_1 x_i$. Re-estimate the parameters by a generalized linear model. 
+2.  Generate $n=20$ random covariates $\mathbf{x}$ and
+    Poisson-distributed counting data with parameters
+    $\beta_0 + \beta_1 x_i$. Re-estimate the parameters by a generalized
+    linear model.
 :::
+
+## Outlook: Linear Mixed Models
+
+In the linear regression models so far, we assumed that the response
+variable $\mathbf{y}$ depends on the design matrix of covariates
+$\mathbf{X}$ - which are assumed to be given/fixed - multiplied by the
+so-called *fixed effects* coefficients $\mathbf{X}\beta$ and independent
+errors $\varepsilon$. However, in many situations, there are also random
+effects on several components of the response variable. These can be
+included in the model by adding another design matrix $\mathbf{Z}$
+multiplied by a random vector $u$, the so-called *random effects*
+coefficients, that are assumed to be jointly normally distributed with
+mean vector $0$ and variance-covariance matrix $\Sigma$ (typically *not*
+a diagonal matrix). In matrix notation, we have the following form: 
+
+$$
+ \mathbf{y} = \mathbf{X} \beta + \mathbf{Z}u + \varepsilon 
+$$ 
+
+Maximizing the likelihood, we can estimate $\beta$ and optimally
+predict the random vector $u$.
