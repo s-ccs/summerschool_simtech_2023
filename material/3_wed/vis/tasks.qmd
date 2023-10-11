@@ -56,7 +56,7 @@ Note that there is no `cummean` function, but clever element-wise division in co
 ::: {.callout-tip collapse="true"}
 ## click to show solution
 
- `cumsum(x) ./ 1:length(x)` 
+ `cumsum(x) ./ (1:length(x))` 
 :::
 
 ## 3. Plotting!
