@@ -249,7 +249,7 @@
     "href": "material/3_wed/vis/tasks.html#plotting",
     "title": "Setting up Pluto.jl",
     "section": "3. Plotting!",
-    "text": "3. Plotting!\nNow for your first plot. Use a scatter plot to visualize the cummulative mean output, if you do not generate a Figure() + ax = f[1,1] = Axis(f) manually, you can get it back by the scatter call. f,ax,s = scatter(). This is helpful as we later want to extend the Axis and Figure with other plot elements\nUse hlines! to add a horizontal line at your “true” value"
+    "text": "3. Plotting!\nNow for your first plot. Use a scatter plot1 to visualize the cummulative mean output, if you do not generate a Figure() + ax = f[1,1] = Axis(f) manually, you can get it back by the scatter call. f,ax,s = scatter(). This is helpful as we later want to extend the Axis and Figure with other plot elements\nUse hlines! to add a horizontal line at your “true” value"
   },
   {
     "objectID": "material/3_wed/vis/tasks.html#subplot",
@@ -292,6 +292,13 @@
     "title": "Setting up Pluto.jl",
     "section": "Rotate the labels",
     "text": "Rotate the labels\nUse the trick from the handout to modify a plot after it was generated: Rotate the x-label ticks by some 30°\n:::callout-tip instead of rotating each axis manually, you can also replace the draw command in your pipeline with an anonymous function. This allows you to specify additional arguments e.g. to the axis, for all “sub”-plots\n1... |&gt; x-&gt; draw(x;axis=(;xlims = (-3,2)))\n\n1\n\nNote the ; before xlims, this enforces that a NamedTuple is created"
+  },
+  {
+    "objectID": "material/3_wed/vis/tasks.html#footnotes",
+    "href": "material/3_wed/vis/tasks.html#footnotes",
+    "title": "Setting up Pluto.jl",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nafter a using CairoMakie↩︎"
   },
   {
     "objectID": "material/1_mon/rse/rse_basics_slides_revealjs.html#most-important-link",

@@ -521,7 +521,7 @@ click to show solution
 </section>
 <section id="plotting" class="level2">
 <h2 class="anchored" data-anchor-id="plotting">3. Plotting!</h2>
-<p>Now for your first plot. Use a <code>scatter</code> plot to visualize the cummulative mean output, if you do not generate a <code>Figure()</code> + <code>ax = f[1,1] = Axis(f)</code> manually, you can get it back by the scatter call. <code>f,ax,s = scatter()</code>. This is helpful as we later want to extend the <code>Axis</code> and <code>Figure</code> with other plot elements</p>
+<p>Now for your first plot. Use a <code>scatter</code> plot<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to visualize the cummulative mean output, if you do not generate a <code>Figure()</code> + <code>ax = f[1,1] = Axis(f)</code> manually, you can get it back by the scatter call. <code>f,ax,s = scatter()</code>. This is helpful as we later want to extend the <code>Axis</code> and <code>Figure</code> with other plot elements</p>
 <p>Use <code>hlines!</code> to add a horizontal line at your “true” value</p>
 </section>
 <section id="subplot" class="level2">
@@ -715,7 +715,7 @@ Tip
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Note the <code>;</code> before xlims, this enforces that a <code>NamedTuple</code> is created</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1">Note the <code>;</code> before xlims, this enforces that a <code>NamedTuple</code> is created</span>
 </dd>
 </dl>
 
@@ -723,7 +723,13 @@ Tip
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>after a <code>using CairoMakie</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
