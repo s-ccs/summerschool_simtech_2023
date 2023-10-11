@@ -1,11 +1,29 @@
----
+------------------------------------------------------------------------
 
----
+------------------------------------------------------------------------
+
 ## Slides
 
 The slides are available [in pptx format here](Julia_Matrices_Optimization_JuMP_Stuttgart2023.pptx). Note that there are a few extra slides in case you are motivated to learn more!
 
 ## Exercise
 
+Please download the files {{< downloadthis Manifest.toml label="Manifest.toml" >}} and {{< downloadthis Project.toml label="Project.toml" >}}, put the files in the same folder that \*.ipynb file is located.
+
+Start Julia in that directory and run the following commands:
+
+```{julia}
+
+using Pkg; Pkg.activate("."); Pkg.instantiate()
+
+```
+
+Now, you are ready to open the notebook in VSCode or alternatively in the same Julia console that you used for installation. You can run the following commands:
+
+```{julia}
+
+using IJulia; notebook(dir=".")
+
+```
+
 The exercise is rendered [as html here](Julia_Matrices_Optimization_JuMP_Stuttgart2023.ipynb) but can also be downloaded {{< downloadthis Julia_Matrices_Optimization_JuMP_Stuttgart2023.ipynb label="Download as ipynb" >}}
- 
