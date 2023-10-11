@@ -60,7 +60,7 @@ Note that there is no `cummean` function, but clever element-wise division in co
 :::
 
 ## 3. Plotting!
-Now for your first plot. Use a `scatter` plot to visualize the cummulative mean output, if you do not generate a `Figure()` + `ax = f[1,1] = Axis(f)` manually, you can get it back by the scatter call. `f,ax,s = scatter()`. This is helpful as we later want to extend the `Axis` and `Figure` with other plot elements
+Now for your first plot. Use a `scatter` plot^[after a `using CairoMakie`] to visualize the cummulative mean output, if you do not generate a `Figure()` + `ax = f[1,1] = Axis(f)` manually, you can get it back by the scatter call. `f,ax,s = scatter()`. This is helpful as we later want to extend the `Axis` and `Figure` with other plot elements
 
 Use `hlines!` to add a horizontal line at your "true" value
 
