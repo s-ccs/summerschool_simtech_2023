@@ -242,7 +242,7 @@
     "href": "material/3_wed/vis/tasks.html#cumulative-mean",
     "title": "Setting up Pluto.jl",
     "section": "2. cumulative mean",
-    "text": "2. cumulative mean\nCalculate the cumulative mean of a single simulation. save it to a variable\nNote that there is no cummean function, but clever element-wise division in combination with cumsum should lead you there - or you just use a loop 🤷\n\n\n\n\n\n\nclick to show solution\n\n\n\n\n\ncumsum(x) ./ 1:length(x)"
+    "text": "2. cumulative mean\nCalculate the cumulative mean of a single simulation. save it to a variable\nNote that there is no cummean function, but clever element-wise division in combination with cumsum should lead you there - or you just use a loop 🤷\n\n\n\n\n\n\nclick to show solution\n\n\n\n\n\ncumsum(x) ./ (1:length(x))"
   },
   {
     "objectID": "material/3_wed/vis/tasks.html#plotting",
