@@ -448,8 +448,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>with mydocs containing</li>
 </ol>
-<pre class="@docs"><code>func(x)</code></pre>
-<p>(but with three `)</p>
+<pre><code>```@docs 
+func
+```
+```@autodocs 
+```
+```@example MyScope
+x = [1,2,3]
+nothing #hide
+```</code></pre>
 <p>and</p>
 <p><code>make.jl</code> containing</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Documenter</span>, <span class="bu">Example</span></span>
