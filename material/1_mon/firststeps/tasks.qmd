@@ -40,6 +40,6 @@ And that's it! You should have a nice progress bar now
 
 1. Implement a type `StatResult` with fields for `x`, `n`, `std` and `tvalue`
 2. Implement an outer constructor that can run `StatResult(2:10)` and return the full type including the calculated t-values.
-3. Implement a function `length` for `StatResult` to multiple-dispatch on
+3. Implement a function length for StatResult (using multiple-dispatch) which returns the `.n` field. Overload "Base.length"
 4. **Optional:** If you have time, optimize the functions, so that mean, sum, length, std etc. is not calculated multiple times - you might want to rewrite your type. Note: This is a bit tricky :)
 

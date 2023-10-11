@@ -17,11 +17,12 @@ docs/
 ### add some docs
 2. with mydocs containing
 
-````{verbatim}
-```@docs 
+
+````@docs 
 func(x)
-```
 ````
+(but with three `)
+
 
 and
 
