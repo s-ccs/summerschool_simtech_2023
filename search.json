@@ -1467,7 +1467,7 @@
     "href": "material/3_wed/linalg/slides.html#exercise",
     "title": "Slides",
     "section": "Exercise",
-    "text": "Exercise\nPlease download the files Manifest.toml and Project.toml, put the files in the same folder that *.ipynb file is located.\nStart Julia in that directory and run the following commands:\n\nusing Pkg; Pkg.activate(\".\"); Pkg.instantiate()\n\nNow, you are ready to open the notebook in VSCode or alternatively in the same Julia console that you used for installation. You can run the following commands:\n\nusing IJulia; notebook(dir=\".\")\n\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
+    "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb \nBefore starting the exercise, please download the files Manifest.toml and Project.toml, put the files in the same folder that *.ipynb file is located.\nStart Julia in that directory and run the following commands:\n\nusing Pkg; Pkg.activate(\".\"); Pkg.instantiate()\n\nNow, you are ready to open the notebook in VSCode or alternatively in the same Julia console that you used for installation. You can run the following commands:\n\nusing IJulia; notebook(dir=\".\")"
   },
   {
     "objectID": "material/3_wed/docs/tasks.html",
