@@ -70,7 +70,7 @@ Let's simulate 1000x datasets, each with a  different seed, and take the mean ov
 
 ::: {.callout-tip collapse="true"}
 ## click to show tip
-An easy way to call a function many times is to broadcast it on an array e.g. `1:1000` - you could also use `map` to do it, but I don't think it is as clear :)
+An easy way to call a function many times is to broadcast it on an array e.g. `fun.(1:1000)` - you could also use `map` to do it, but I don't think it is as clear :)
 :::
 
 
