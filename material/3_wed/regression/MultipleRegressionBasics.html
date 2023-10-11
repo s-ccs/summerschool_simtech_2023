@@ -417,6 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple Linear Regression</a></li>
   <li><a href="#multiple-regression-model" id="toc-multiple-regression-model" class="nav-link" data-scroll-target="#multiple-regression-model">Multiple Regression Model</a></li>
   <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link" data-scroll-target="#generalized-linear-models">Generalized Linear Models</a></li>
+  <li><a href="#outlook-linear-mixed-models" id="toc-outlook-linear-mixed-models" class="nav-link" data-scroll-target="#outlook-linear-mixed-models">Outlook: Linear Mixed Models</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -451,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="simple-linear-regression">Simple Linear Regression</h2>
 <p>Main assumption: up to some error term, each measurement of the response variable <span class="math inline">\(y_i\)</span> depends linearly on the corresponding value <span class="math inline">\(x_i\)</span> of the covariate</p>
 <p><span class="math inline">\(\leadsto\)</span> <strong>(Simple) Linear Model:</strong> <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \varepsilon_i,   \qquad  i=1,...,n,\]</span> where <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,\sigma^2)\)</span> are independent normally distributed errors with unknown variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p><em>Task:</em> Find the straight line that fits best, i.e., find the <em>optimal</em> estimators for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+<p><em>Aim:</em> Find the straight line that fits best, i.e., find the <em>optimal</em> estimators for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 <p><em>Typical choice</em>: Least squares estimator (= maximum likelihood estimator for normal errors)</p>
 <p><span class="math display">\[ (\hat \beta_0, \hat \beta_1) = \mathrm{argmin} \ \| \mathbf{y} - \mathbf{1} \beta_0 - \mathbf{x} \beta_1\|^2 \]</span></p>
 <p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector of responses, <span class="math inline">\(\mathbf{x}\)</span> is the vector of covariates and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
@@ -621,8 +622,8 @@ Note
 <table class="table">
 <colgroup>
 <col style="width: 23%">
-<col style="width: 26%">
-<col style="width: 37%">
+<col style="width: 25%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -698,6 +699,14 @@ Task 3:
 </div>
 </div>
 </div>
+</section>
+<section id="outlook-linear-mixed-models" class="level2">
+<h2 class="anchored" data-anchor-id="outlook-linear-mixed-models">Outlook: Linear Mixed Models</h2>
+<p>In the linear regression models so far, we assumed that the response variable <span class="math inline">\(\mathbf{y}\)</span> depends on the design matrix of covariates <span class="math inline">\(\mathbf{X}\)</span> - which are assumed to be given/fixed - multiplied by the so-called <em>fixed effects</em> coefficients <span class="math inline">\(\mathbf{X}\beta\)</span> and independent errors <span class="math inline">\(\varepsilon\)</span>. However, in many situations, there are also random effects on several components of the response variable. These can be included in the model by adding another design matrix <span class="math inline">\(\mathbf{Z}\)</span> multiplied by a random vector <span class="math inline">\(u\)</span>, the so-called <em>random effects</em> coefficients, that are assumed to be jointly normally distributed with mean vector <span class="math inline">\(0\)</span> and variance-covariance matrix <span class="math inline">\(\Sigma\)</span> (typically <em>not</em> a diagonal matrix). In matrix notation, we have the following form:</p>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X} \beta + \mathbf{Z}u + \varepsilon
+\]</span></p>
+<p>Maximizing the likelihood, we can estimate <span class="math inline">\(\beta\)</span> and optimally predict the random vector <span class="math inline">\(u\)</span>.</p>
 
 
 </section>
