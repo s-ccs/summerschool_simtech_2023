@@ -530,7 +530,7 @@ Task 1
 <p><span class="math display">\[ \mathbf{X} = \left( \begin{array}{cccc}
                 1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
                 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-                1 &amp; x_{11} &amp; \ldots &amp; x_{1p}
+                1 &amp; x_{n1} &amp; \ldots &amp; x_{np}
                 \end{array}\right) \qquad
   (\text{size } n \times (p+1)), \]</span></p>
 <p>we get the short form</p>
@@ -546,13 +546,13 @@ Task 1
 \]</span></p></li>
 <li><p>estimated standard errors:</p>
 <p><span class="math display">\[
-\hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p} \|\mathbf{y} - \mathbf{X} \beta\|^2}
+\hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p-1} \|\mathbf{y} - \mathbf{X} \beta\|^2}
 \]</span></p></li>
 <li><p><span class="math inline">\(t\)</span>-statistics:</p>
 <p><span class="math display">\[ t_i = \frac{\hat \beta_i}{\hat s_{\hat \beta_i}}, \qquad i=0,\ldots,p. \]</span></p></li>
 <li><p><span class="math inline">\(p\)</span>-values:</p>
 <p><span class="math display">\[
-p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p}
+p\text{-value} = \mathbb{P}(|T| &gt; t_i), \quad \text{where } T \sim t_{n-p-1}
 \]</span></p></li>
 </ul>
 <div class="callout callout-style-default callout-caution callout-titled">
