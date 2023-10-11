@@ -69,7 +69,7 @@ website:
             contents:
               - href: material/3_wed/docs/handout.qmd
                 text: "📝 1 - Docs: Handout"
-              - href: material/3_wed/docs/tasks.qmd"
+              - href: material/3_wed/docs/tasks.qmd
                 text: "🛠 1 - Docs: Exercises"
               - href: material/3_wed/vis/handout.qmd
                 text: "📝 2 - Visualizations: Handout"
