@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Task 1: Docstrings</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -404,7 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#1" id="toc-1" class="nav-link active" data-scroll-target="#1">Task 2: Documenter.jl</a>
+  <li><a href="#1" id="toc-1" class="nav-link active" data-scroll-target="#1">Task 1: Docstrings</a></li>
+  <li><a href="#1" id="toc-1" class="nav-link" data-scroll-target="#1">Task 2: Documenter.jl</a>
   <ul class="collapse">
   <li><a href="#folderstructure" id="toc-folderstructure" class="nav-link" data-scroll-target="#folderstructure">Folderstructure</a></li>
   <li><a href="#add-some-docs" id="toc-add-some-docs" class="nav-link" data-scroll-target="#add-some-docs">add some docs</a></li>
@@ -418,28 +419,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Task 1: Docstrings</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<section id="1" class="level1">
+<h1>Task 1: Docstrings</h1>
 <ol type="1">
 <li>Add Docstrings to some of your functions.</li>
 <li>Load the package, and check you can see the docstrings using e.g.&nbsp;<code>?rse_mean</code></li>
 </ol>
 <hr>
+</section>
 <section id="1" class="level1">
 <h1>Task 2: Documenter.jl</h1>
 <section id="folderstructure" class="level3">
@@ -457,11 +446,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>with mydocs containing</li>
 </ol>
-<pre class="{verbatim}"><code>```@docs 
-func(x)
-```
-
-</code></pre>
+<pre class="@docs"><code>func(x)</code></pre>
+<p>(but with three `)</p>
 <p>and</p>
 <p><code>make.jl</code> containing</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Documenter</span>, <span class="bu">Example</span></span>

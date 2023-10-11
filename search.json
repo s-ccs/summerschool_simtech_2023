@@ -182,23 +182,23 @@
     "text": "Example: A cookbook-toolbox\n\n\n\n\n\n\n\n\n\nTutorials\nHow-To\nReference\nExplanation\n\n\n\n\nteaching a child to cook\nseveral recipes\nhow ginger is added to the pot\nwhy garlic is needed in all cookingh\n\n\na lesson\na series of steps\ndry description\ndiscursive explanation\n\n\nbeginners/users\nusers\ndevelopers\nusers/developers\n\n\n\nCheck out the extended guide on divio.com"
   },
   {
-    "objectID": "material/3_wed/docs/handout.html",
-    "href": "material/3_wed/docs/handout.html",
-    "title": "PkgTemplate.jl",
-    "section": "",
-    "text": "Link to Slides"
-  },
-  {
     "objectID": "material/3_wed/docs/handout.html#task-1",
     "href": "material/3_wed/docs/handout.html#task-1",
-    "title": "PkgTemplate.jl",
+    "title": "Documenter.jl",
     "section": "Task 1",
-    "text": "Task 1\nSolve task 1\n\n\n\n# Documenter.jl\n\n\n### File-structure overview\n\n\nExample/ ├── Project.toml ├── README.md ├── LICENSE.md ├── src │   ├── Example.jl │   └── utilities.jl └── docs ├── Project.toml ├── src │   ├── assets │   │   ├── favicon.ico │   │   └── logo.svg │   ├── index.md │   └── showcase.md └── make.jl\n\n\n### The make.jl file\n\n\n### How to generate julia --project=docs/ docs/make.jl or ]activate docs/; include(\"make.jl\") or use LiveServer.jl\n\n\n### How to write\n\n\n```julia # Normal Markdown is great Also write lots of text\n\n\n@example Main a = 1\n\n\nMore text!\n\n\n@example Main b = a\n\n\n@example NewScope a = 3 # a new a appears!\n\n\n```\n\n\n# Bonus: Literate.jl Using Literate.jl one does not need to write .md files - but rather can use .jl files that are translated to .md files.\n\n\n```julia # # This is markdown headline # This is normal markdown code 1 ==1\n\n\n# Be careful in forloops with comments, Literate ## this is a comment ```\n\n\n## Task 2\n\n\nSolve task 2"
+    "text": "Task 1\nSolve task 1"
+  },
+  {
+    "objectID": "material/3_wed/docs/handout.html#task-2",
+    "href": "material/3_wed/docs/handout.html#task-2",
+    "title": "Documenter.jl",
+    "section": "Task 2",
+    "text": "Task 2\nSolve task 2"
   },
   {
     "objectID": "material/3_wed/docs/handout.html#task-3",
     "href": "material/3_wed/docs/handout.html#task-3",
-    "title": "PkgTemplate.jl",
+    "title": "Documenter.jl",
     "section": "Task 3",
     "text": "Task 3\nSolve task 3"
   },
@@ -1467,7 +1467,7 @@
     "href": "material/3_wed/docs/tasks.html",
     "title": "Task 1: Docstrings",
     "section": "",
-    "text": "Add Docstrings to some of your functions.\nLoad the package, and check you can see the docstrings using e.g. ?rse_mean\n\n\n\nTask 2: Documenter.jl\n\nFolderstructure\n\ncreate folders/files:\n\ndocs/\n├── src/\n├── src/mydocs.jl\n└── make.jl\n\n\nadd some docs\n\nwith mydocs containing\n\n```@docs \nfunc(x)\n```\n\n\nand\nmake.jl containing\nusing Documenter, Example\n\nmakedocs(sitename=\"My Documentation\")\n\n\n3. Generate\nGenerate the docs using include(\"make.jl\") after activating the ./docs/Project.toml\n\n\n\n\n\n\nBonus-Task\n\n\n\nUse LiveServer.jl to automatically update a local preview of your documentation (follow this tutorial )\n\n\n\n\n4. Add a tutorial\nNow add a tutorial ./docs/src/tutorial.md which should contain a brief example simulating some data (using rand) and calculating mean, tstat and std on them.\nUse the makedocs(...page=) keywordargument.\n\n\n\n\nTask 3: PkgTemplate.jl\nGenerate a package MySecondStatsPackage using PkgTemplate.\n\nAdd github-actions for:\n\ncoverage\nunittests\ndocs\n\nMIT license\nREADME.md\n\n\nDon’t forget to activate the github-page in the github settings!"
+    "text": "Task 1: Docstrings\n\nAdd Docstrings to some of your functions.\nLoad the package, and check you can see the docstrings using e.g. ?rse_mean\n\n\n\n\nTask 2: Documenter.jl\n\nFolderstructure\n\ncreate folders/files:\n\ndocs/\n├── src/\n├── src/mydocs.jl\n└── make.jl\n\n\nadd some docs\n\nwith mydocs containing\n\nfunc(x)\n(but with three `)\nand\nmake.jl containing\nusing Documenter, Example\n\nmakedocs(sitename=\"My Documentation\")\n\n\n3. Generate\nGenerate the docs using include(\"make.jl\") after activating the ./docs/Project.toml\n\n\n\n\n\n\nBonus-Task\n\n\n\nUse LiveServer.jl to automatically update a local preview of your documentation (follow this tutorial )\n\n\n\n\n4. Add a tutorial\nNow add a tutorial ./docs/src/tutorial.md which should contain a brief example simulating some data (using rand) and calculating mean, tstat and std on them.\nUse the makedocs(...page=) keywordargument.\n\n\n\n\nTask 3: PkgTemplate.jl\nGenerate a package MySecondStatsPackage using PkgTemplate.\n\nAdd github-actions for:\n\ncoverage\nunittests\ndocs\n\nMIT license\nREADME.md\n\n\nDon’t forget to activate the github-page in the github settings!"
   },
   {
     "objectID": "cheatsheets/git.html",

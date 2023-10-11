@@ -465,7 +465,7 @@ Bonus Task ProgressMeter
 <ol type="1">
 <li>Implement a type <code>StatResult</code> with fields for <code>x</code>, <code>n</code>, <code>std</code> and <code>tvalue</code></li>
 <li>Implement an outer constructor that can run <code>StatResult(2:10)</code> and return the full type including the calculated t-values.</li>
-<li>Implement a function <code>length</code> for <code>StatResult</code> to multiple-dispatch on</li>
+<li>Implement a function length for StatResult (using multiple-dispatch) which returns the <code>.n</code> field. Overload “Base.length”</li>
 <li><strong>Optional:</strong> If you have time, optimize the functions, so that mean, sum, length, std etc. is not calculated multiple times - you might want to rewrite your type. Note: This is a bit tricky :)</li>
 </ol>
 

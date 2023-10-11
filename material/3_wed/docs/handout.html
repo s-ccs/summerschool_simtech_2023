@@ -407,6 +407,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#task-1" id="toc-task-1" class="nav-link active" data-scroll-target="#task-1">Task 1</a></li>
+  <li><a href="#documenter.jl" id="toc-documenter.jl" class="nav-link" data-scroll-target="#documenter.jl">Documenter.jl</a>
+  <ul class="collapse">
+  <li><a href="#file-structure-overview" id="toc-file-structure-overview" class="nav-link" data-scroll-target="#file-structure-overview">File-structure overview</a></li>
+  <li><a href="#the-make.jl-file" id="toc-the-make.jl-file" class="nav-link" data-scroll-target="#the-make.jl-file">The <code>make.jl</code> file</a></li>
+  <li><a href="#how-to-generate" id="toc-how-to-generate" class="nav-link" data-scroll-target="#how-to-generate">How to generate</a></li>
+  <li><a href="#how-to-write" id="toc-how-to-write" class="nav-link" data-scroll-target="#how-to-write">How to write</a></li>
+  </ul></li>
+  <li><a href="#bonus-literate.jl" id="toc-bonus-literate.jl" class="nav-link" data-scroll-target="#bonus-literate.jl">Bonus: Literate.jl</a>
+  <ul class="collapse">
+  <li><a href="#task-2" id="toc-task-2" class="nav-link" data-scroll-target="#task-2">Task 2</a></li>
+  </ul></li>
   <li><a href="#pkgtemplate.jl" id="toc-pkgtemplate.jl" class="nav-link" data-scroll-target="#pkgtemplate.jl">PkgTemplate.jl</a>
   <ul class="collapse">
   <li><a href="#task-3" id="toc-task-3" class="nav-link" data-scroll-target="#task-3">Task 3</a></li>
@@ -419,6 +430,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<hr>
+<hr>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -432,75 +445,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task-1" class="level2">
 <h2 class="anchored" data-anchor-id="task-1">Task 1</h2>
 <p>Solve <a href="../../../material/3_wed/docs/tasks.html#1">task 1</a></p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td># Documenter.jl</td>
-</tr>
-<tr class="even">
-<td>### File-structure overview</td>
-</tr>
-<tr class="odd">
-<td><code>Example/ ├── Project.toml ├── README.md ├── LICENSE.md ├── src │   ├── Example.jl │   └── utilities.jl └── docs ├── Project.toml ├── src │   ├── assets │   │   ├── favicon.ico │   │   └── logo.svg │   ├── index.md │   └── showcase.md └── make.jl</code></td>
-</tr>
-<tr class="even">
-<td>### The <code>make.jl</code> file</td>
-</tr>
-<tr class="odd">
-<td>### How to generate <code>julia --project=docs/ docs/make.jl</code> or <code>]activate docs/; include("make.jl")</code> or use <code>LiveServer.jl</code></td>
-</tr>
-<tr class="even">
-<td>### How to write</td>
-</tr>
-<tr class="odd">
-<td>```julia # Normal Markdown is great Also write lots of text</td>
-</tr>
-<tr class="even">
-<td><code>@example Main a = 1</code></td>
-</tr>
-<tr class="odd">
-<td>More text!</td>
-</tr>
-<tr class="even">
-<td><code>@example Main b = a</code></td>
-</tr>
-<tr class="odd">
-<td><code>@example NewScope a = 3 # a new a appears!</code></td>
-</tr>
-<tr class="even">
-<td>```</td>
-</tr>
-<tr class="odd">
-<td># Bonus: Literate.jl Using <code>Literate.jl</code> one does not need to write <code>.md</code> files - but rather can use <code>.jl</code> files that are translated to <code>.md</code> files.</td>
-</tr>
-<tr class="even">
-<td>```julia # # This is markdown headline # This is normal markdown code 1 ==1</td>
-</tr>
-<tr class="odd">
-<td># Be careful in forloops with comments, Literate ## this is a comment ```</td>
-</tr>
-<tr class="even">
-<td>## Task 2</td>
-</tr>
-<tr class="odd">
-<td>Solve <a href="../../../material/3_wed/docs/tasks.html#2">task 2</a></td>
-</tr>
-</tbody>
-</table>
+<hr>
+</section>
+<section id="documenter.jl" class="level1">
+<h1>Documenter.jl</h1>
+<section id="file-structure-overview" class="level3">
+<h3 class="anchored" data-anchor-id="file-structure-overview">File-structure overview</h3>
+<pre><code>Example/
+├── Project.toml
+├── README.md
+├── LICENSE.md
+├── src
+│   ├── Example.jl
+│   └── utilities.jl
+└── docs
+    ├── Project.toml
+    ├── src
+    │   ├── assets
+    │   │   ├── favicon.ico
+    │   │   └── logo.svg
+    │   ├── index.md
+    │   └── showcase.md
+    └── make.jl</code></pre>
+</section>
+<section id="the-make.jl-file" class="level3">
+<h3 class="anchored" data-anchor-id="the-make.jl-file">The <code>make.jl</code> file</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Documenter</span>, <span class="bu">Example</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">makedocs</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    sitename <span class="op">=</span> <span class="st">"Example.jl"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    modules <span class="op">=</span> [Example],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    pages <span class="op">=</span> <span class="dt">Any</span>[</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Home"</span> <span class="op">=&gt;</span> <span class="st">"index.md"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Showcase"</span> <span class="op">=&gt;</span> <span class="st">"showcase.md"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="how-to-generate" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-generate">How to generate</h3>
+<ul>
+<li><code>julia --project=docs/ docs/make.jl</code>, or</li>
+<li><code>]activate docs/; include("make.jl")</code>, or</li>
+<li><code>LiveServer.jl</code> + <code>deploydocs()</code></li>
+</ul>
+</section>
+<section id="how-to-write" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-write">How to write</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal Markdown is great</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Also write lots of text</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ss">```@example Main</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">a = 1</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    ```</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>More text!</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">```@example Main</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">b = a</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    ```</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">```@example NewScope</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">a = 3 # a new a appears!</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ss">    ```</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="bonus-literate.jl" class="level1">
+<h1>Bonus: Literate.jl</h1>
+<p>Using <code>Literate.jl</code> one does not need to write <code>.md</code> files - but rather can use <code>.jl</code> files that are translated to <code>.md</code> files.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # This is markdown headline</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is normal markdown code</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span> <span class="op">==</span><span class="fl">1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Be careful in forloops with comments, Literate</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">## this is a comment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task 2</h2>
+<p>Solve <a href="../../../material/3_wed/docs/tasks.html#2">task 2</a></p>
+<hr>
+</section>
 </section>
 <section id="pkgtemplate.jl" class="level1">
 <h1>PkgTemplate.jl</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>]activate <span class="op">--</span>temp</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>]add PkgTemplates</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PkgTemplates</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>tpl <span class="op">=</span> <span class="fu">Template</span>(user<span class="op">=</span><span class="st">"yourGithubUser"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            dir<span class="op">=</span><span class="st">"./PkgTemplate"</span>, <span class="co"># the new package will appear in this folder</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            plugins<span class="op">=</span>[<span class="fu">GitHubActions</span>(;extra_versions<span class="op">=</span>[<span class="st">"nightly"</span>]),<span class="fu">Documenter</span><span class="dt">{GitHubActions}</span>()])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tpl</span>(<span class="st">"MyStatisticsPackage"</span>) <span class="co"># created in ./PkgTemplate/MyStatisticsPackage/Project.toml</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>]activate <span class="op">--</span>temp</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>]add PkgTemplates</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PkgTemplates</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>tpl <span class="op">=</span> <span class="fu">Template</span>(user<span class="op">=</span><span class="st">"yourGithubUser"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            dir<span class="op">=</span><span class="st">"./PkgTemplate"</span>, <span class="co"># the new package will appear in this folder</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            plugins<span class="op">=</span>[<span class="fu">GitHubActions</span>(;extra_versions<span class="op">=</span>[<span class="st">"nightly"</span>]),<span class="fu">Documenter</span><span class="dt">{GitHubActions}</span>()])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tpl</span>(<span class="st">"MyStatisticsPackage"</span>) <span class="co"># created in ./PkgTemplate/MyStatisticsPackage/Project.toml</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will create the Project+Git, but also setup github-actions / ContinuousIntegration with tests and docs.</p>
 <p>You still need to go to <a href="https://github.com">github.com</a> (or use <code>gh repo create</code> with the <a href="https://cli.github.com/">gh-command line interface</a>) and create an not-initialized / empty repository with the same name (but .jl added), and run</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="op">://</span>github.com<span class="op">/</span>behinger<span class="op">/</span>MyStatisticsPackage.jl</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>git push <span class="op">-</span>u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="op">://</span>github.com<span class="op">/</span>behinger<span class="op">/</span>MyStatisticsPackage.jl</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>git push <span class="op">-</span>u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, to activate documentation being deployed, you need to go to your Github-Repo, go to Settings, Pages and select the gh_page branch to be deployed.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -513,7 +550,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>You can also run the PkgTemplate interactively using</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Template</span>(interactive<span class="op">=</span><span class="cn">true</span>)(<span class="st">"MyPkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Template</span>(interactive<span class="op">=</span><span class="cn">true</span>)(<span class="st">"MyPkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which will ask you a hundred million questions ;-)</p>
 </div>
 </div>
