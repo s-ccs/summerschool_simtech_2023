@@ -73,7 +73,7 @@ website:
                 text: "🛠 1 - Docs: Exercises"
               - href: material/3_wed/vis/handout.qmd
                 text: "📝 2 - Visualizations: Handout"
-              - href: material/3_wed/vis/tasks.qmd"
+              - href: material/3_wed/vis/tasks.qmd
                 text: "🛠 2 - Visualizations: Exercises"
               - href: material/3_wed/linalg/slides.qmd
                 text: "📝 3 - LinearAlgebra"

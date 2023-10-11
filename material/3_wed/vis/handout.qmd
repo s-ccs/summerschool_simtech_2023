@@ -3,6 +3,7 @@
 
 ## Backends
 Four backends:
+
 1. `CairoMakie` - SVG
 2. `GLMakie` - 2D/3D/fast interactivity
 3. `WGLMakie` - Same as GLMakie, but in browser
