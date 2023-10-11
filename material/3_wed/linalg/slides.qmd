@@ -8,7 +8,7 @@ The slides are available [in pptx format here](Julia_Matrices_Optimization_JuMP_
 
 ## Exercise
 
-Please download the files {{< downloadthis Manifest.toml label="Manifest.toml" >}} and {{< downloadthis Project.toml label="Project.toml" >}}, put the files in the same folder that \*.ipynb file is located.
+Please download the files [Manifest.toml](Manifest.toml) and [Project.toml](Project.toml), put the files in the same folder that \*.ipynb file is located.
 
 Start Julia in that directory and run the following commands:
 
