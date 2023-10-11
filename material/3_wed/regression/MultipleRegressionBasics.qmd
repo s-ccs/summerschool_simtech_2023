@@ -152,7 +152,7 @@ Defining the *design matrix*
 $$ \mathbf{X} = \left( \begin{array}{cccc}
                 1 & x_{11} & \ldots & x_{1p} \\
                 \vdots & \vdots & \ddots & \vdots \\
-                1 & x_{11} & \ldots & x_{1p} 
+                1 & x_{n1} & \ldots & x_{np} 
                 \end{array}\right) \qquad 
   (\text{size } n \times (p+1)), $$
 
@@ -177,7 +177,7 @@ regression model, but we provide explicit formulas now:
 -   estimated standard errors:
 
     $$
-     \hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p} \|\mathbf{y} - \mathbf{X} \beta\|^2}
+     \hat s_{\beta_i} = \sqrt{([\mathbf{X}^\top \mathbf{X}]^{-1})_{ii} \frac 1 {n-p-1} \|\mathbf{y} - \mathbf{X} \beta\|^2}
     $$
 
 -   $t$-statistics:
@@ -187,7 +187,7 @@ regression model, but we provide explicit formulas now:
 -   $p$-values:
 
     $$
-    p\text{-value} = \mathbb{P}(|T| > t_i), \quad \text{where } T \sim t_{n-p}
+    p\text{-value} = \mathbb{P}(|T| > t_i), \quad \text{where } T \sim t_{n-p-1}
     $$
 
 ::: {.callout-caution collapse="false"}
