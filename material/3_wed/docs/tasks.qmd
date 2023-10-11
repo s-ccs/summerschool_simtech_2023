@@ -10,7 +10,7 @@
 ```
 docs/
 ├── src/
-├── src/mydocs.jl
+├── src/index.md
 └── make.jl
 ```
 
