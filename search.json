@@ -1456,18 +1456,18 @@
     "text": "In the linear regression models so far, we assumed that the response variable \\(\\mathbf{y}\\) depends on the design matrix of covariates \\(\\mathbf{X}\\) - which are assumed to be given/fixed - multiplied by the so-called fixed effects coefficients \\(\\mathbf{X}\\beta\\) and independent errors \\(\\varepsilon\\). However, in many situations, there are also random effects on several components of the response variable. These can be included in the model by adding another design matrix \\(\\mathbf{Z}\\) multiplied by a random vector \\(u\\), the so-called random effects coefficients, that are assumed to be jointly normally distributed with mean vector \\(0\\) and variance-covariance matrix \\(\\Sigma\\) (typically not a diagonal matrix). In matrix notation, we have the following form:\n\\[\n\\mathbf{y} = \\mathbf{X} \\beta + \\mathbf{Z}u + \\varepsilon\n\\]\nMaximizing the likelihood, we can estimate \\(\\beta\\) and optimally predict the random vector \\(u\\)."
   },
   {
-    "objectID": "material/3_wed/linalg/slides.html#slides",
-    "href": "material/3_wed/linalg/slides.html#slides",
-    "title": "Research Software Engineering Summer School",
-    "section": "Slides",
-    "text": "Slides\nThe slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
+    "objectID": "material/3_wed/linalg/slides.html",
+    "href": "material/3_wed/linalg/slides.html",
+    "title": "Slides",
+    "section": "",
+    "text": "The slides are available in pptx format here. Note that there are a few extra slides in case you are motivated to learn more!"
   },
   {
     "objectID": "material/3_wed/linalg/slides.html#exercise",
     "href": "material/3_wed/linalg/slides.html#exercise",
-    "title": "Research Software Engineering Summer School",
+    "title": "Slides",
     "section": "Exercise",
-    "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
+    "text": "Exercise\nPlease download the files Manifest.toml and Project.toml, put the files in the same folder that *.ipynb file is located.\nStart Julia in that directory and run the following commands:\n\nusing Pkg; Pkg.activate(\".\"); Pkg.instantiate()\n\nNow, you are ready to open the notebook in VSCode or alternatively in the same Julia console that you used for installation. You can run the following commands:\n\nusing IJulia; notebook(dir=\".\")\n\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
     "objectID": "material/3_wed/docs/tasks.html",
