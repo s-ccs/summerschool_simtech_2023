@@ -17,12 +17,17 @@ docs/
 ### add some docs
 2. with mydocs containing
 
-
-````@docs 
-func(x)
 ````
-(but with three `)
-
+```@docs 
+func
+```
+```@autodocs 
+```
+```@example MyScope
+x = [1,2,3]
+nothing #hide
+```
+````
 
 and
 
