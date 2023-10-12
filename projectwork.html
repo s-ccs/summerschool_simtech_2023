@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -62,6 +96,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Research Software Engineering Summer School - Project Work">
 <meta property="og:description" content="">
@@ -371,7 +407,13 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
 <p><img src="https://www.simtech.uni-stuttgart.de/img/events/Summer-School/Zeichenflaeche-3-Kopie-42x.png?__scale=w:150,h:150" class="img-fluid"></p>
 </div></div>
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-analyzing-spatial-data" id="toc-project-analyzing-spatial-data" class="nav-link active" data-scroll-target="#project-analyzing-spatial-data">Project: Analyzing Spatial Data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -394,9 +436,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>A considerable of time will be dedicated to project work allowing you to apply the skills you have learnt during the summer school.</p>
-<p>We encourage you to bring your own problem (e.g.&nbsp;something related to your own research) and try to build a small software package for that problem. Moreover, we will provide alternative problems to be solved.</p>
+<p>We encourage you to bring your own problem (e.g.&nbsp;something related to your own research) and try to build a small software package for that problem.</p>
+<p>Moreover, we will provide alternative problems to be solved:</p>
+<section id="project-analyzing-spatial-data" class="level2">
+<h2 class="anchored" data-anchor-id="project-analyzing-spatial-data">Project: Analyzing Spatial Data</h2>
+<p>In this project, we propose to write a package that allows for the statistical analysis of spatially indexed data.</p>
+<p>Before starting, you might look at an data example. To this end, download <a href="TemperatureData.jld2">TemperatureData.jld2</a> and read this data via</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">JLD2 </span><span class="pp">@load</span> <span class="st">"TemperatureData.jld2"</span> <span class="op">\</span><span class="co">## potentially correct your path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will give you data frames with information on weather stations in the Netherlands, summer temperature means (in <span class="math inline">\(0.1^\circ\mathrm{C}\)</span>) and summer temperature maxima (in <span class="math inline">\(0.1^\circ\mathrm{C}\)</span>). It is reasonable to assume that the temperature data are temporally independent. Furthermore, assuming a normal distribution at each station is quite common for this type of data.</p>
+<p>A reasonable package could for instance contain functions to estimate means and standard deviations station-by-station, fit linear models for <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\log(\sigma)\)</span> (with, e.g., geographic coordinates as covariates), or, provided that <span class="math inline">\(\sigma\)</span> is constant over space, a linear model for the data themselves (with repetitions.) $</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
