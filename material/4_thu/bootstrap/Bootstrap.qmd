@@ -84,7 +84,7 @@ vline!(ci_bounds_new)
 
 The overall procedure is as follows:
 
-1.  Generate $p$ samples $\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(B)}$ of size $n$ by independently resampling from $\mathbf{x}$ with replacement.
+1.  Generate $B$ samples $\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(B)}$ of size $n$ by independently resampling from $\mathbf{x}$ with replacement.
 2.  Apply the estimator separately to each sample $\leadsto$ $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$
 3.  Use the empirical distribution $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$ as a proxy to the theoretical one.
 
