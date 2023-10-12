@@ -16,7 +16,8 @@ Before starting, you might look at an data example. To this end, download [Tempe
 
 ``` julia
 
-using JLD2 @load "TemperatureData.jld2" \## potentially correct your path
+using JLD2 
+@load "TemperatureData.jld2" ## potentially correct your path
 ```
 
 This will give you data frames with information on weather stations in the Netherlands, summer temperature means (in $0.1^\circ\mathrm{C}$) and summer temperature maxima (in $0.1^\circ\mathrm{C}$). It is reasonable to assume that the temperature data are temporally independent. Furthermore, assuming a normal distribution at each station is quite common for this type of data.
