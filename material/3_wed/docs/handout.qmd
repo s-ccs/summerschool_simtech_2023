@@ -1,3 +1,7 @@
+---
+
+---
+
 ::: callout
 [Link to Slides](slides.qmd)
 :::
@@ -7,6 +11,7 @@
 Solve [task 1](tasks.qmd#1)
 
 ----
+
 # Documenter.jl
 
 ### File-structure overview
@@ -44,7 +49,9 @@ makedocs(
 ```
 
 ### How to generate
- `julia --project=docs/ docs/make.jl` or `]activate docs/; include("make.jl")` or use `LiveServer.jl`
+ - `julia --project=docs/ docs/make.jl`, or
+ - `]activate docs/; include("make.jl")`, or
+ - `LiveServer.jl` + `deploydocs()`
 
 ### How to write
 

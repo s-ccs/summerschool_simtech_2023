@@ -56,11 +56,11 @@ Note that there is no `cummean` function, but clever element-wise division in co
 ::: {.callout-tip collapse="true"}
 ## click to show solution
 
- `cumsum(x) ./ 1:length(x)` 
+ `cumsum(x) ./ (1:length(x))` 
 :::
 
 ## 3. Plotting!
-Now for your first plot. Use a `scatter` plot to visualize the cummulative mean output, if you do not generate a `Figure()` + `ax = f[1,1] = Axis(f)` manually, you can get it back by the scatter call. `f,ax,s = scatter()`. This is helpful as we later want to extend the `Axis` and `Figure` with other plot elements
+Now for your first plot. Use a `scatter` plot^[after a `using CairoMakie`] to visualize the cummulative mean output, if you do not generate a `Figure()` + `ax = f[1,1] = Axis(f)` manually, you can get it back by the scatter call. `f,ax,s = scatter()`. This is helpful as we later want to extend the `Axis` and `Figure` with other plot elements
 
 Use `hlines!` to add a horizontal line at your "true" value
 
@@ -70,7 +70,7 @@ Let's simulate 1000x datasets, each with a  different seed, and take the mean ov
 
 ::: {.callout-tip collapse="true"}
 ## click to show tip
-An easy way to call a function many times is to broadcast it on an array e.g. `1:1000` - you could also use `map` to do it, but I don't think it is as clear :)
+An easy way to call a function many times is to broadcast it on an array created e.g. via `1:1000` - you could also use `map` to do it, but I don't think it is as clear :)
 :::
 
 

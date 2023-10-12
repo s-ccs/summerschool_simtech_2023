@@ -10,17 +10,31 @@
 ```
 docs/
 ├── src/
-├── src/mydocs.jl
+├── src/index.md
 └── make.jl
 ```
 
 ### add some docs
 2. with mydocs containing
 
-````{verbatim}
+````
+
+Show docstring of a single function `func`
 ```@docs 
-func(x)
+func
 ```
+
+Provide documentation for all doc_string-equiped functions
+```@autodocs 
+Modules = [MyDocsPackage]
+```
+
+Execute a code-block, but hide it's output
+```@example MyScope
+x = [1,2,3]
+nothing #hide
+```
+
 ````
 
 and

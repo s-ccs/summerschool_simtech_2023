@@ -42,7 +42,7 @@ website:
               - href: material/1_mon/rse/rse_basics_slides.qmd
                 text: "📊 1 - RSE"
               - href: "material/1_mon/why_julia/page.qmd"
-                text: "📊 2 - Why Julia"
+                text: "📊 2 - Why Julia"  
               - href: "material/1_mon/firststeps/firststeps_handout.qmd"
                 text: "📝 3 - First Steps: Handout"
               - href: "material/1_mon/firststeps/tasks.qmd"
@@ -69,11 +69,11 @@ website:
             contents:
               - href: material/3_wed/docs/handout.qmd
                 text: "📝 1 - Docs: Handout"
-              - href: material/3_wed/docs/tasks.qmd"
+              - href: material/3_wed/docs/tasks.qmd
                 text: "🛠 1 - Docs: Exercises"
               - href: material/3_wed/vis/handout.qmd
                 text: "📝 2 - Visualizations: Handout"
-              - href: material/3_wed/vis/tasks.qmd"
+              - href: material/3_wed/vis/tasks.qmd
                 text: "🛠 2 - Visualizations: Exercises"
               - href: material/3_wed/linalg/slides.qmd
                 text: "📝 3 - LinearAlgebra"
@@ -84,7 +84,7 @@ website:
             contents:
               - href: material/4_thu/sim/slides.qmd
                 text: "📝 1 - Simulation"
-              - href: material/4_thu/stats/missing.jl
+              - href: material/4_thu/bootstrap/Bootstrap.qmd
                 text: "📝 2 - Bootstrapping"
               - href: material/4_thu/parallel/slides.qmd
                 text: "📝 3 - Parallelization"
