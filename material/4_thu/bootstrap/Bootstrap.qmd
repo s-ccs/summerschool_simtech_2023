@@ -1,9 +1,3 @@
----
-  editor: 
-  markdown: 
-  wrap: 72
----
-
 # Resampling-Based Statistics
 
 ## Motivation: Fitting Models to Data
