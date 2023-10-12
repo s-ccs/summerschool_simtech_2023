@@ -20,7 +20,7 @@ Situation considered yesterday: We have data and want to fit a model with certai
 
 -   use empirical mean as estimator: $\widehat \theta(\mathbf{x}) = \overline{x} = \frac 1 n \sum_{i=1}^n x_i$
 
-```{julia}
+``` julia
 
 using Distributions
 using Statistics
@@ -30,7 +30,6 @@ d = Normal(0.0, 1.0)
 n = 100
 x = rand(d, n)
 θ = mean(x)
-
 ```
 
 *Problem:* Estimator [never]{.underline} gives the [exact]{.underline} result -- if you have random data, also the estimate is random.
@@ -39,7 +38,7 @@ x = rand(d, n)
 
 In some easy examples, you can calculate the distribution of $\widehat \theta$ theoretically. *Example:* If $x_i$ is $\mathcal{N}(\theta,\sigma^2)$ distributed, then the distribution of $\widehat \theta(\mathbf{x})$ is $\mathcal{N}(\theta, \sigma^2/n)$. Strategy: Estimate $\sigma^2$, e.g. via the sample variance $$ \widehat \sigma^2 = \frac 1 {n-1} \sum_{i=1}^n (x_i - \overline{x})^2 $$ and take the standard error, confidence intervals, etc. of the corresponding normal distribution.
 
-```{julia}
+``` julia
 
 σ = std(x)
 est_d = Normal(θ, σ/sqrt(n))
@@ -59,7 +58,7 @@ In theory, one would ideally do the following:
 2.  Apply the estimator separately to each sample $\leadsto$ $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$
 3.  Use the empirical distribution $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$ as a proxy to the theoretical one.
 
-```{julia}
+``` julia
 B = 1000
 est_vector_new = zeros(B)
 for i in 1:B
@@ -88,7 +87,7 @@ The overall procedure is as follows:
 2.  Apply the estimator separately to each sample $\leadsto$ $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$
 3.  Use the empirical distribution $\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})$ as a proxy to the theoretical one.
 
-```{julia}
+``` julia
 
 est_vector_bs = zeros(B)
 for i in 1:B
@@ -99,7 +98,6 @@ histogram(est_vector_bs, legend=false)
 
 ci_bounds_bs = quantile(est_vector_bs, [0.025, 0.975])
 vline!(ci_bounds_bs) 
-
 ```
 
 If the sample $\mathbf{x} = (x_1,\ldots,x_n)$ consists of independent and identically distributed data, the resampling procedure often provides a code proxy to the true (unknown) distribution of the estimator.
@@ -134,7 +132,7 @@ The answer is given by the following procedure, called *parametric bootstrap*:
 
 1.  Consider the following function that generate $n$ correlated samples that are uniformly distributed on $[\mu-0-5,\mu+0.5]$.
 
-```{julia}
+``` julia
 myrand = function(mu, n) 
   rho = 0.9
   res = zeros(n)
