@@ -90,7 +90,7 @@ website:
                 text: "📝 3 - Parallelization"
           - section: "Friday"
             contents:
-              - href: material/5_fri/highlightsOptim/missing.qmd
+              - href: material/5_fri/optimizing_julia/optimizing_julia.md
                 text: "📝 1 - Highlights + Optimization"
           
   navbar:
