@@ -74,6 +74,15 @@ Web App: [rstudio-connect.psy.gla.ac.uk/faux/](https://rstudio-connect.psy.gla.a
 
 :::
 
+# Exercises
+
+* [Faux.jl](https://debruine.github.io/Faux.jl) (under development!)
+* [tutorial](https://debruine.github.io/Faux.jl/dev/tutorial/)
+
+``` julia
+] add https://github.com/debruine/Faux.jl
+```
+
 
 
 
