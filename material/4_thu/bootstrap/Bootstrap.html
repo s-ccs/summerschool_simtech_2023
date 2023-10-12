@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -374,36 +408,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation-fitting-models-to-data" id="toc-motivation-fitting-models-to-data" class="nav-link active" data-scroll-target="#motivation-fitting-models-to-data">Motivation: Fitting Models to Data</a>
+  <li><a href="#resampling-based-statistics" id="toc-resampling-based-statistics" class="nav-link active" data-scroll-target="#resampling-based-statistics">Resampling-Based Statistics</a>
+  <ul class="collapse">
+  <li><a href="#motivation-fitting-models-to-data" id="toc-motivation-fitting-models-to-data" class="nav-link" data-scroll-target="#motivation-fitting-models-to-data">Motivation: Fitting Models to Data</a>
   <ul class="collapse">
   <li><a href="#working-example-fitting-a-normal-distribution" id="toc-working-example-fitting-a-normal-distribution" class="nav-link" data-scroll-target="#working-example-fitting-a-normal-distribution">Working example: Fitting a normal distribution</a></li>
   </ul></li>
   <li><a href="#the-ideal-solution-generate-new-data" id="toc-the-ideal-solution-generate-new-data" class="nav-link" data-scroll-target="#the-ideal-solution-generate-new-data">The ‘ideal’ solution: Generate <em>new</em> data</a></li>
   <li><a href="#the-practical-solution-resampling-bootstrap" id="toc-the-practical-solution-resampling-bootstrap" class="nav-link" data-scroll-target="#the-practical-solution-resampling-bootstrap">The practical solution: Resampling / Bootstrap</a></li>
   <li><a href="#parametric-bootstrap" id="toc-parametric-bootstrap" class="nav-link" data-scroll-target="#parametric-bootstrap">Parametric Bootstrap</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Resampling-Based Statistics</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<section id="resampling-based-statistics" class="level1">
+<h1>Resampling-Based Statistics</h1>
 <section id="motivation-fitting-models-to-data" class="level2">
 <h2 class="anchored" data-anchor-id="motivation-fitting-models-to-data">Motivation: Fitting Models to Data</h2>
 <p>Situation considered yesterday: We have data and want to fit a model with certain parameters (e.g., a linear model) – we estimate the parameter.</p>
@@ -420,26 +444,25 @@ ul.task-list li input[type="checkbox"] {
 <li><p>model: <span class="math inline">\(\mathcal{N}(\theta, \sigma^2)\)</span>, i.e., a normal distribution with unknown mean <span class="math inline">\(\theta\)</span> (that we want to estimate) and variance <span class="math inline">\(\sigma^2\)</span> (that we are less interested in)</p></li>
 <li><p>use empirical mean as estimator: <span class="math inline">\(\widehat \theta(\mathbf{x}) = \overline{x} = \frac 1 n \sum_{i=1}^n x_i\)</span></p></li>
 </ul>
-<pre class="{julia}"><code>
-using Distributions
-using Statistics
-using StatsPlots
-
-d = Normal(0.0, 1.0)
-n = 100
-x = rand(d, n)
-θ = mean(x)
-</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Distributions</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">StatsPlots</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fu">Normal</span>(<span class="fl">0.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(d, n)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> <span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Problem:</em> Estimator <u>never</u> gives the <u>exact</u> result – if you have random data, also the estimate is random.</p>
 <p><em>Aim:</em> Find the distribution (or at least the variance) of the estimator <span class="math inline">\(\widehat \theta\)</span> in order to get standard errors, confidence intervals, etc.</p>
 <p>In some easy examples, you can calculate the distribution of <span class="math inline">\(\widehat \theta\)</span> theoretically. <em>Example:</em> If <span class="math inline">\(x_i\)</span> is <span class="math inline">\(\mathcal{N}(\theta,\sigma^2)\)</span> distributed, then the distribution of <span class="math inline">\(\widehat \theta(\mathbf{x})\)</span> is <span class="math inline">\(\mathcal{N}(\theta, \sigma^2/n)\)</span>. Strategy: Estimate <span class="math inline">\(\sigma^2\)</span>, e.g.&nbsp;via the sample variance <span class="math display">\[ \widehat \sigma^2 = \frac 1 {n-1} \sum_{i=1}^n (x_i - \overline{x})^2 \]</span> and take the standard error, confidence intervals, etc. of the corresponding normal distribution.</p>
-<pre class="{julia}"><code>
-σ = std(x)
-est_d = Normal(θ, σ/sqrt(n))
-plot(est_d, legend=false)
-
-ci_bounds = quantile(est_d, [0.025,0.975])
-vline!(ci_bounds)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span> <span class="fu">std</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>est_d <span class="op">=</span> <span class="fu">Normal</span>(θ, σ<span class="op">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_d, legend<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ci_bounds <span class="op">=</span> <span class="fu">quantile</span>(est_d, [<span class="fl">0.025</span>,<span class="fl">0.975</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>(ci_bounds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Problem:</em> In more complex examples, we cannot calculate the distribution.</p>
 </section>
 </section>
@@ -451,16 +474,16 @@ vline!(ci_bounds)</code></pre>
 <li>Apply the estimator separately to each sample <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})\)</span></li>
 <li>Use the empirical distribution <span class="math inline">\(\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})\)</span> as a proxy to the theoretical one.</li>
 </ol>
-<pre class="{julia}"><code>B = 1000
-est_vector_new = zeros(B)
-for i in 1:B
-  x_new = rand(d, n)
-  est_vector_new[i] = mean(x_new)
-end    
-histogram(est_vector_new, legend=false)
-
-ci_bounds_new = quantile(est_vector_new, [0.025, 0.975])
-vline!(ci_bounds_new)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fl">1000</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>est_vector_new <span class="op">=</span> <span class="fu">zeros</span>(B)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>B</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  x_new <span class="op">=</span> <span class="fu">rand</span>(d, n)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  est_vector_new[i] <span class="op">=</span> <span class="fu">mean</span>(x_new)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span>    </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(est_vector_new, legend<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ci_bounds_new <span class="op">=</span> <span class="fu">quantile</span>(est_vector_new, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>(ci_bounds_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-attention">
 <p><em>But:</em> In most real world situation, we can not generate new data if the distribution is unknown. We have to work with the data we have …</p>
 </div>
@@ -471,21 +494,20 @@ vline!(ci_bounds_new)</code></pre>
 <p><em>Question:</em> How can one obtained another sample of the same size <span class="math inline">\(n\)</span>? <span class="math inline">\(\leadsto\)</span> (re-)sampling with replacement</p>
 <p>The overall procedure is as follows:</p>
 <ol type="1">
-<li>Generate <span class="math inline">\(p\)</span> samples <span class="math inline">\(\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(B)}\)</span> of size <span class="math inline">\(n\)</span> by independently resampling from <span class="math inline">\(\mathbf{x}\)</span> with replacement.</li>
+<li>Generate <span class="math inline">\(B\)</span> samples <span class="math inline">\(\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(B)}\)</span> of size <span class="math inline">\(n\)</span> by independently resampling from <span class="math inline">\(\mathbf{x}\)</span> with replacement.</li>
 <li>Apply the estimator separately to each sample <span class="math inline">\(\leadsto\)</span> <span class="math inline">\(\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})\)</span></li>
 <li>Use the empirical distribution <span class="math inline">\(\widehat \theta(\mathbf{x}^{(1)}), \ldots, \widehat \theta(\mathbf{x}^{(B)})\)</span> as a proxy to the theoretical one.</li>
 </ol>
-<pre class="{julia}"><code>
-est_vector_bs = zeros(B)
-for i in 1:B
-  x_bs = rand(x, n)
-  est_vector_bs[i] = mean(x_bs)
-end
-histogram(est_vector_bs, legend=false)
-
-ci_bounds_bs = quantile(est_vector_bs, [0.025, 0.975])
-vline!(ci_bounds_bs) 
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>est_vector_bs <span class="op">=</span> <span class="fu">zeros</span>(B)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>B</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  x_bs <span class="op">=</span> <span class="fu">rand</span>(x, n)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  est_vector_bs[i] <span class="op">=</span> <span class="fu">mean</span>(x_bs)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(est_vector_bs, legend<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ci_bounds_bs <span class="op">=</span> <span class="fu">quantile</span>(est_vector_bs, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>(ci_bounds_bs) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If the sample <span class="math inline">\(\mathbf{x} = (x_1,\ldots,x_n)\)</span> consists of independent and identically distributed data, the resampling procedure often provides a code proxy to the true (unknown) distribution of the estimator.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -546,18 +568,18 @@ Task 2
 <ol type="1">
 <li>Consider the following function that generate <span class="math inline">\(n\)</span> correlated samples that are uniformly distributed on <span class="math inline">\([\mu-0-5,\mu+0.5]\)</span>.</li>
 </ol>
-<pre class="{julia}"><code>myrand = function(mu, n) 
-  rho = 0.9
-  res = zeros(n)
-  res[1] = rand(1)[1]
-  if n &gt; 1
-    for i in 2:n
-      res[i] = rho*res[i-1] .+ (1-rho)*rand(1)[1]
-    end
-  end
-  res .= mu - 0.5 .+ res
-  return(res)
-end </code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>myrand <span class="op">=</span> <span class="kw">function</span>(mu, n) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  rho <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  res <span class="op">=</span> <span class="fu">zeros</span>(n)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  res[<span class="fl">1</span>] <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span>)[<span class="fl">1</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&gt;</span> <span class="fl">1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span>n</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="op">=</span> rho<span class="op">*</span>res[i<span class="op">-</span><span class="fl">1</span>] <span class="op">.+</span> (<span class="fl">1</span><span class="op">-</span>rho)<span class="fu">*rand</span>(<span class="fl">1</span>)[<span class="fl">1</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  res <span class="op">.=</span> mu <span class="op">-</span> <span class="fl">0.5</span> <span class="op">.+</span> res</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>(res)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The additional parameter <code>rho</code> (between 0 and 1) controls the strength of dependence with 0 meaning independence and 1 meaning full dependence.</p>
 <p>Write functions that estimate the standard deviation of the estimated mean via (a) generating new samples from the true unknown distribution, (b) i.i.d. bootstrap, (c) parametric bootstrap 2. Use the functions for different values of <code>rho</code> and compare the results.</p>
 </div>
@@ -565,6 +587,7 @@ end </code></pre>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
