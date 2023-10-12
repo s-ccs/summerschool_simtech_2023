@@ -532,144 +532,319 @@
     "text": "Exercise\nThe exercise is rendered as html here but can also be downloaded  Download as ipynb"
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#pre-registration",
-    "href": "material/4_thu/sim/slides.html#pre-registration",
-    "title": "Fake It Until You Make It",
-    "section": "Pre-Registration",
-    "text": "Pre-Registration\n\nPrep analysis scripts for pre-registration"
+    "objectID": "material/4_thu/bootstrap/Bootstrap.html",
+    "href": "material/4_thu/bootstrap/Bootstrap.html",
+    "title": "Resampling-Based Statistics",
+    "section": "",
+    "text": "Situation considered yesterday: We have data and want to fit a model with certain parameters (e.g., a linear model) – we estimate the parameter.\nNotation:\n\ndata: \\(\\mathbf{x} = (x_1, \\ldots, x_n)\\)\nmodel with unknown parameter \\(\\theta\\)\nestimate \\(\\widehat \\theta(\\mathbf{x})\\)\n\n\n\n\ndata: \\(\\mathbf{x} = (x_1, \\ldots, x_n)\\)\nmodel: \\(\\mathcal{N}(\\theta, \\sigma^2)\\), i.e., a normal distribution with unknown mean \\(\\theta\\) (that we want to estimate) and variance \\(\\sigma^2\\) (that we are less interested in)\nuse empirical mean as estimator: \\(\\widehat \\theta(\\mathbf{x}) = \\overline{x} = \\frac 1 n \\sum_{i=1}^n x_i\\)\n\n\nusing Distributions\nusing Statistics\nusing StatsPlots\n\nd = Normal(0.0, 1.0)\nn = 100\nx = rand(d, n)\nθ = mean(x)\n\nProblem: Estimator never gives the exact result – if you have random data, also the estimate is random.\nAim: Find the distribution (or at least the variance) of the estimator \\(\\widehat \\theta\\) in order to get standard errors, confidence intervals, etc.\nIn some easy examples, you can calculate the distribution of \\(\\widehat \\theta\\) theoretically. Example: If \\(x_i\\) is \\(\\mathcal{N}(\\theta,\\sigma^2)\\) distributed, then the distribution of \\(\\widehat \\theta(\\mathbf{x})\\) is \\(\\mathcal{N}(\\theta, \\sigma^2/n)\\). Strategy: Estimate \\(\\sigma^2\\), e.g. via the sample variance \\[ \\widehat \\sigma^2 = \\frac 1 {n-1} \\sum_{i=1}^n (x_i - \\overline{x})^2 \\] and take the standard error, confidence intervals, etc. of the corresponding normal distribution.\n\nσ = std(x)\nest_d = Normal(θ, σ/sqrt(n))\nplot(est_d, legend=false)\n\nci_bounds = quantile(est_d, [0.025,0.975])\nvline!(ci_bounds)\nProblem: In more complex examples, we cannot calculate the distribution."
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#power",
-    "href": "material/4_thu/sim/slides.html#power",
-    "title": "Fake It Until You Make It",
-    "section": "Power",
-    "text": "Power\n\nCalculate power and sensitivity for analyses that don’t have empirical methods"
+    "objectID": "material/4_thu/bootstrap/Bootstrap.html#motivation-fitting-models-to-data",
+    "href": "material/4_thu/bootstrap/Bootstrap.html#motivation-fitting-models-to-data",
+    "title": "Resampling-Based Statistics",
+    "section": "",
+    "text": "Situation considered yesterday: We have data and want to fit a model with certain parameters (e.g., a linear model) – we estimate the parameter.\nNotation:\n\ndata: \\(\\mathbf{x} = (x_1, \\ldots, x_n)\\)\nmodel with unknown parameter \\(\\theta\\)\nestimate \\(\\widehat \\theta(\\mathbf{x})\\)\n\n\n\n\ndata: \\(\\mathbf{x} = (x_1, \\ldots, x_n)\\)\nmodel: \\(\\mathcal{N}(\\theta, \\sigma^2)\\), i.e., a normal distribution with unknown mean \\(\\theta\\) (that we want to estimate) and variance \\(\\sigma^2\\) (that we are less interested in)\nuse empirical mean as estimator: \\(\\widehat \\theta(\\mathbf{x}) = \\overline{x} = \\frac 1 n \\sum_{i=1}^n x_i\\)\n\n\nusing Distributions\nusing Statistics\nusing StatsPlots\n\nd = Normal(0.0, 1.0)\nn = 100\nx = rand(d, n)\nθ = mean(x)\n\nProblem: Estimator never gives the exact result – if you have random data, also the estimate is random.\nAim: Find the distribution (or at least the variance) of the estimator \\(\\widehat \\theta\\) in order to get standard errors, confidence intervals, etc.\nIn some easy examples, you can calculate the distribution of \\(\\widehat \\theta\\) theoretically. Example: If \\(x_i\\) is \\(\\mathcal{N}(\\theta,\\sigma^2)\\) distributed, then the distribution of \\(\\widehat \\theta(\\mathbf{x})\\) is \\(\\mathcal{N}(\\theta, \\sigma^2/n)\\). Strategy: Estimate \\(\\sigma^2\\), e.g. via the sample variance \\[ \\widehat \\sigma^2 = \\frac 1 {n-1} \\sum_{i=1}^n (x_i - \\overline{x})^2 \\] and take the standard error, confidence intervals, etc. of the corresponding normal distribution.\n\nσ = std(x)\nest_d = Normal(θ, σ/sqrt(n))\nplot(est_d, legend=false)\n\nci_bounds = quantile(est_d, [0.025,0.975])\nvline!(ci_bounds)\nProblem: In more complex examples, we cannot calculate the distribution."
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#reproducible-examples",
-    "href": "material/4_thu/sim/slides.html#reproducible-examples",
-    "title": "Fake It Until You Make It",
-    "section": "Reproducible Examples",
-    "text": "Reproducible Examples\n\n\nCreate reproducible examples when your data are too big or confidential to share"
+    "objectID": "material/4_thu/bootstrap/Bootstrap.html#the-ideal-solution-generate-new-data",
+    "href": "material/4_thu/bootstrap/Bootstrap.html#the-ideal-solution-generate-new-data",
+    "title": "Resampling-Based Statistics",
+    "section": "The ‘ideal’ solution: Generate new data",
+    "text": "The ‘ideal’ solution: Generate new data\nIn theory, one would ideally do the following:\n\nGenerate new independent data \\(\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(B)}\\) (each sample of size \\(n\\))\nApply the estimator separately to each sample \\(\\leadsto\\) \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\)\nUse the empirical distribution \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\) as a proxy to the theoretical one.\n\nB = 1000\nest_vector_new = zeros(B)\nfor i in 1:B\n  x_new = rand(d, n)\n  est_vector_new[i] = mean(x_new)\nend    \nhistogram(est_vector_new, legend=false)\n\nci_bounds_new = quantile(est_vector_new, [0.025, 0.975])\nvline!(ci_bounds_new)\n\nBut: In most real world situation, we can not generate new data if the distribution is unknown. We have to work with the data we have …"
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#enhance-understanding",
-    "href": "material/4_thu/sim/slides.html#enhance-understanding",
-    "title": "Fake It Until You Make It",
-    "section": "Enhance Understanding",
-    "text": "Enhance Understanding\n\n\nEnhance your understanding of statistical concepts"
+    "objectID": "material/4_thu/bootstrap/Bootstrap.html#the-practical-solution-resampling-bootstrap",
+    "href": "material/4_thu/bootstrap/Bootstrap.html#the-practical-solution-resampling-bootstrap",
+    "title": "Resampling-Based Statistics",
+    "section": "The practical solution: Resampling / Bootstrap",
+    "text": "The practical solution: Resampling / Bootstrap\nIdea: Use samples \\(\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(B)}\\) that are not completely new, but obtained from resampling the original data \\(\\mathbf{x}\\).\nQuestion: How can one obtained another sample of the same size \\(n\\)? \\(\\leadsto\\) (re-)sampling with replacement\nThe overall procedure is as follows:\n\nGenerate \\(p\\) samples \\(\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(B)}\\) of size \\(n\\) by independently resampling from \\(\\mathbf{x}\\) with replacement.\nApply the estimator separately to each sample \\(\\leadsto\\) \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\)\nUse the empirical distribution \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\) as a proxy to the theoretical one.\n\n\nest_vector_bs = zeros(B)\nfor i in 1:B\n  x_bs = rand(x, n)\n  est_vector_bs[i] = mean(x_bs)\nend\nhistogram(est_vector_bs, legend=false)\n\nci_bounds_bs = quantile(est_vector_bs, [0.025, 0.975])\nvline!(ci_bounds_bs) \n\nIf the sample \\(\\mathbf{x} = (x_1,\\ldots,x_n)\\) consists of independent and identically distributed data, the resampling procedure often provides a code proxy to the true (unknown) distribution of the estimator.\n\n\n\n\n\n\nNote\n\n\n\nThe above resampling procedure is called bootstrap (from ‘’To pull oneself up by one’s bootstraps.’’) as only data are used that are already available.\n\n\n\n\n\n\n\n\nTask 1\n\n\n\n\n\n\nReconsider the tree data set and the simple linear regression model Volume ~ Girth. Calculate a 95% confidence interval for \\(\\beta_1\\) via bootstrap and compare to the Julia output of the linear model.\nUse bootstrap to estimate the standard error for the predicted volume of a tree with Girth=10 the output above.\n\n\n\n\nProblem: If the data are not independent, the above (i.i.d.) bootstrap samples would have a misspecified dependence structure and therefore lead to a bad uncertainty estimate. For some situations, there are specific modifications of the bootstrap procedure (e.g. block bootstrap for time series), but they tend to work well only if dependence is sufficiently weak."
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#teaching-data",
-    "href": "material/4_thu/sim/slides.html#teaching-data",
-    "title": "Fake It Until You Make It",
-    "section": "Teaching Data",
-    "text": "Teaching Data\n\nCreate demo data for teaching and tutorials"
+    "objectID": "material/4_thu/bootstrap/Bootstrap.html#parametric-bootstrap",
+    "href": "material/4_thu/bootstrap/Bootstrap.html#parametric-bootstrap",
+    "title": "Resampling-Based Statistics",
+    "section": "Parametric Bootstrap",
+    "text": "Parametric Bootstrap\nThere are situations where it is hardly possible to construct reasonable confidence intervals or estimate the standard error. But one could at least get a rough guess of the uncertainty by the following thought experiment:\nAssume that the estimated parameter value \\(\\theta^*\\) would be equal to the true one. How uncertain would an estimate be in that case?\nThe answer is given by the following procedure, called parametric bootstrap:\n\nGenerate independent data \\(\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(B)}\\) (each sample of size \\(n\\)) from the model with parameter \\(\\theta^*\\)\nApply the estimator separately to each sample \\(\\leadsto\\) \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\)\nUse the empirical distribution \\(\\widehat \\theta(\\mathbf{x}^{(1)}), \\ldots, \\widehat \\theta(\\mathbf{x}^{(B)})\\) as a proxy to the theoretical one.\n\n\n\n\n\n\n\nTask 2\n\n\n\n\n\n\nConsider the following function that generate \\(n\\) correlated samples that are uniformly distributed on \\([\\mu-0-5,\\mu+0.5]\\).\n\nmyrand = function(mu, n) \n  rho = 0.9\n  res = zeros(n)\n  res[1] = rand(1)[1]\n  if n &gt; 1\n    for i in 2:n\n      res[i] = rho*res[i-1] .+ (1-rho)*rand(1)[1]\n    end\n  end\n  res .= mu - 0.5 .+ res\n  return(res)\nend \nThe additional parameter rho (between 0 and 1) controls the strength of dependence with 0 meaning independence and 1 meaning full dependence.\nWrite functions that estimate the standard deviation of the estimated mean via (a) generating new samples from the true unknown distribution, (b) i.i.d. bootstrap, (c) parametric bootstrap 2. Use the functions for different values of rho and compare the results."
   },
   {
-    "objectID": "material/4_thu/sim/slides.html#plot",
-    "href": "material/4_thu/sim/slides.html#plot",
-    "title": "Fake It Until You Make It",
-    "section": "Plot",
-    "text": "Plot"
-  },
-  {
-    "objectID": "material/4_thu/sim/slides.html#data",
-    "href": "material/4_thu/sim/slides.html#data",
-    "title": "Fake It Until You Make It",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "material/4_thu/sim/slides.html#code",
-    "href": "material/4_thu/sim/slides.html#code",
-    "title": "Fake It Until You Make It",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "material/2_tue/testing/slides.html",
-    "href": "material/2_tue/testing/slides.html",
+    "objectID": "material/2_tue/ci/slides.html",
+    "href": "material/2_tue/ci/slides.html",
     "title": "Learning Goals",
     "section": "",
-    "text": "Get to know a few common terms of testing\nWork with the Julia unit testing package Test.jl\n\nMaterial is taken and modified from the SSE lecture, which builds partly on the py-rse book, and from the Test.jl docs."
+    "text": "Name and explain common workflows to automate in RSE.\nExplain the differences between the various continuous methodologies.\nExplain why automation is crucial in RSE.\nWrite and understand basic automation scripts for GitHub Actions.\n\ns.t. we understand what PkgTemplates generates for us.\n\n\nMaterial is taken and modified from the SSE lecture."
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#what-is-testing",
-    "href": "material/2_tue/testing/slides.html#what-is-testing",
+    "objectID": "material/2_tue/ci/slides.html#why-automation",
+    "href": "material/2_tue/ci/slides.html#why-automation",
     "title": "Learning Goals",
-    "section": "What is Testing?",
-    "text": "What is Testing?\n\nSmelling old milk before using it\nA way to determine if a software is not producing reliable results and if so, what is the reason\nManual testing vs. automated testing"
+    "section": "Why Automation?",
+    "text": "Why Automation?\n\nAutomatize tasks\n\nRun tests frequently, give feedback early etc.\nEnsure reproducible test environments\nCannot forget automatized tasks\nLess burden to developer (and their workstation)\nAvoid manual errors\n\nProcess often integrated in development workflow\n\nExample: Support by Git hooks or Git forges"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
-    "href": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
+    "objectID": "material/2_tue/ci/slides.html#typical-automation-tasks-in-rse",
+    "href": "material/2_tue/ci/slides.html#typical-automation-tasks-in-rse",
     "title": "Learning Goals",
-    "section": "Why Should you Test your Software?",
-    "text": "Why Should you Test your Software?\n\nImprove software reliability and reproducibility\nMake sure that changes (bugfixes, new features) do not affect other parts of software\nGenerally all software is better off being tested regularly. Possible exceptions are very small codes with single users.\nEnsure that a released version of a software actually works."
+    "section": "Typical Automation Tasks in RSE",
+    "text": "Typical Automation Tasks in RSE\n\nCheck code formatting and quality\nCompile and test code for different platforms\nGenerate coverage reports and visualization\nBuild documentation and deploy it\nBuild, package, and upload releases"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#some-ways-to-test-software",
-    "href": "material/2_tue/testing/slides.html#some-ways-to-test-software",
+    "objectID": "material/2_tue/ci/slides.html#continuous-methodologies-12",
+    "href": "material/2_tue/ci/slides.html#continuous-methodologies-12",
     "title": "Learning Goals",
-    "section": "Some Ways to Test Software",
-    "text": "Some Ways to Test Software\n\nAssertions\nUnit testing\nIntegration testing\nRegression testing"
+    "section": "Continuous Methodologies (1/2)",
+    "text": "Continuous Methodologies (1/2)\n\nContinuous Integration (CI)\n\nContinuously integrate changes into “main” branch\nAvoids “merge hell”\nRelies on testing and checking code continuously\n\nShould be automatized"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#assertions",
-    "href": "material/2_tue/testing/slides.html#assertions",
+    "objectID": "material/2_tue/ci/slides.html#continuous-methodologies-22",
+    "href": "material/2_tue/ci/slides.html#continuous-methodologies-22",
     "title": "Learning Goals",
-    "section": "Assertions",
-    "text": "Assertions\n@assert condition \"message\"\n\nPrinciple of defensive programming\nNothing happens when an assertion is true; throws error when false.\nTypes of assertion statements:\n\nPrecondition\nPostcondition\nInvariant\n\nA basic but powerful tool to test a software on-the-go"
+    "section": "Continuous Methodologies (2/2)",
+    "text": "Continuous Methodologies (2/2)\n\nContinuous Delivery (CD)\n\nSoftware is in a state that allows new release at any time\nSoftware package is built\nActual release triggered manually\n\nContinuous Deployment (CD)\n\nSoftware is in a state that allows new release at any time\nSoftware package is built\nActual release triggered automatically (continuously)"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#unit-testing",
-    "href": "material/2_tue/testing/slides.html#unit-testing",
+    "objectID": "material/2_tue/ci/slides.html#automation-servicessoftware",
+    "href": "material/2_tue/ci/slides.html#automation-servicessoftware",
     "title": "Learning Goals",
-    "section": "Unit Testing",
-    "text": "Unit Testing\n\nCatching errors with assertions is good but preventing them is better.\nA unit is a single function in one situation.\n\nA situation is one amongst many possible variations of input parameters.\n\nUser creates the expected result manually.\nActual result is compared to the expected result by @test."
+    "section": "Automation Services/Software",
+    "text": "Automation Services/Software\n\nGitHub Actions\nGitLab CI/CD\nCircle CI\nTravis CI\nJenkins\n…"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#integration-testing",
-    "href": "material/2_tue/testing/slides.html#integration-testing",
+    "objectID": "material/2_tue/ci/slides.html#what-is-github-actions",
+    "href": "material/2_tue/ci/slides.html#what-is-github-actions",
     "title": "Learning Goals",
-    "section": "Integration Testing",
-    "text": "Integration Testing\n\nTest whether several units work in conjunction.\nIntegrate units and test them together in an integration test.\nOften more complicated than a unit test and gives higher test coverage."
+    "section": "What is “GitHub Actions”?",
+    "text": "What is “GitHub Actions”?\n\nAutomate, customize, and execute your software development workflows right in your repository with GitHub Actions.\n\nFrom: https://docs.github.com/en/actions"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#regression-testing",
-    "href": "material/2_tue/testing/slides.html#regression-testing",
+    "objectID": "material/2_tue/ci/slides.html#general-information",
+    "href": "material/2_tue/ci/slides.html#general-information",
     "title": "Learning Goals",
-    "section": "Regression Testing",
-    "text": "Regression Testing\n\nGenerating an expected result is not possible in some situations.\nCompare the current actual result with a previous actual result.\nNo guarantee that the current actual result is correct.\nRisk of a bug being carried over indefinitely.\nMain purpose is to identify changes in the current state of the code with respect to a past state."
+    "section": "General Information",
+    "text": "General Information\n\nUsage of GitHub’s runners is limited\nAvailable for public repositories or accounts with subscription\nBy default Actions run on GitHub’s runners\n\nLinux, Windows, or MacOS\n\nQuickly evolving and significant improvements in recent years"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#setup-of-test.jl",
-    "href": "material/2_tue/testing/slides.html#setup-of-test.jl",
+    "objectID": "material/2_tue/ci/slides.html#components-12",
+    "href": "material/2_tue/ci/slides.html#components-12",
     "title": "Learning Goals",
-    "section": "Setup of Test.jl",
-    "text": "Setup of Test.jl\n\nStandardized folder structure:\n├── Manifest.toml\n├── Project.toml\n├── src/\n└── test\n    ├── Manifest.toml\n    ├── Project.toml\n    ├── runtests.jl\n    └── setup.jl\nSingular test vs plural runtests.jl\nsetup.jl for all using XYZ statements, included in runtests.jl\nAdditional packages in [extra] section of ./Project.toml or in new ./test/Project.toml\n\nIn case of the latter: Do not add the package itself to the ./test/Project.toml\n\nRun: ]test when root project is activated"
+    "section": "Components (1/2)",
+    "text": "Components (1/2)\n\nWorkflow: Runs one or more jobs\nEvent: Triggers a workflow\nJobs: Set of steps (running on same runner)\n\nSteps executed consecutively and share data\nJobs by default executed in parallel\n\nAction: Application performing common, complex task (step) often used in workflows\nRunner: Server that runs jobs\nArtifacts: Files to be shared between jobs or to be kept after workflow finishes"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#implement-and-structure-tests",
-    "href": "material/2_tue/testing/slides.html#implement-and-structure-tests",
+    "objectID": "material/2_tue/ci/slides.html#components-22",
+    "href": "material/2_tue/ci/slides.html#components-22",
     "title": "Learning Goals",
-    "section": "Implement and Structure Tests",
-    "text": "Implement and Structure Tests\n\n@test expr: Test whether expression expr is true\n@test expr broken=true: Explicitly mark test as broken\n@test_throws exception expr: Test whether expression expr throws exception (test unhappy path)\njulia&gt; @test_throws DimensionMismatch [1, 2, 3] + [1, 2]\nTest Passed\n      Thrown: DimensionMismatch\n@testset: Structure tests\n@testset \"trigonometric identities\" begin\n    θ = 2/3*π\n    @test sin(-θ) ≈ -sin(θ)\n    @test cos(-θ) ≈ cos(θ)\nend;\n@testset for ... end: Test in loop"
+    "section": "Components (2/2)",
+    "text": "Components (2/2)\n\nFrom GitHub Actions tutorial"
   },
   {
-    "objectID": "material/2_tue/testing/slides.html#further-reading-and-watching",
-    "href": "material/2_tue/testing/slides.html#further-reading-and-watching",
+    "objectID": "material/2_tue/ci/slides.html#setting-up-a-workflow",
+    "href": "material/2_tue/ci/slides.html#setting-up-a-workflow",
     "title": "Learning Goals",
-    "section": "Further Reading and Watching",
-    "text": "Further Reading and Watching\n\nResearch Software Engineering with Python - Chapter 11: Testing Software\nHiRSE-Summer of Testing Part 2b: “Testing with Julia” by Nils Niggemann\nOfficial documentation of Test.jl"
+    "section": "Setting up a Workflow",
+    "text": "Setting up a Workflow\n\nWorkflow file files stored ${REPO_ROOT}/.github/workflows\nConfigured via YAML file\n\nname: learn-github-actions\non: [push]\njobs:\n  check-bats-version:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '14'\n      - run: npm install -g bats\n      - run: bats -v"
   },
   {
-    "objectID": "material/2_tue/git/tasks.html",
-    "href": "material/2_tue/git/tasks.html",
-    "title": "Tasks",
-    "section": "",
-    "text": "Tasks\n\nWork with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).\nPush your package MyStatsPackage to a remote repository.\nAdd a function printOwner to the package through a pull request. The function should print your (GitHub) user name (hard-coded).\nStart a new Julia environment and use your package through its url: ]add https://github.com/[username]/MyStatsPackage.\nNow use the package from somebody else in the classroom instead and verify with printOwner that you use the correct package.\nFork this other package and contribute a function printContributor to it via a PR. Get a review and get it merged.\nAdd more functions to other packages of classmates that print funny things, but always ensure a linear history."
+    "objectID": "material/2_tue/ci/slides.html#actions",
+    "href": "material/2_tue/ci/slides.html#actions",
+    "title": "Learning Goals",
+    "section": "Actions",
+    "text": "Actions\n- uses: actions/checkout@v3\n- uses: actions/setup-node@v2\n  with:\n    node-version: '14'\n\nIntegrated via uses directive\nAdditional configuration via with (options depend on Action)\nFind actions in marketplace\nWrite own actions"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#some-useful-julia-actions",
+    "href": "material/2_tue/ci/slides.html#some-useful-julia-actions",
+    "title": "Learning Goals",
+    "section": "Some Useful Julia Actions",
+    "text": "Some Useful Julia Actions\n\nFind on github.com/julia-actions\n- uses: julia-actions/setup-julia@v1\n     with:\n       version: '1.9'\nMore:\n\ncache: caches ~/.julia/artifacts/* and ~/.julia/packages/* to reduce runtime of CI\njulia-buildpkg: build package\njulia-runtest: run tests\njulia-format: format code (not really an action, but example)"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#user-specified-commands",
+    "href": "material/2_tue/ci/slides.html#user-specified-commands",
+    "title": "Learning Goals",
+    "section": "User-specified Commands",
+    "text": "User-specified Commands\n- name: \"Single line command\"\n  run: echo \"Single line command\"\n- name: \"Multi line command\"\n  run: |\n    echo \"First line\"\n    echo \"Second line. Directory ${PWD}\"\n  workdir: tmp/\n  shell: bash"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#events",
+    "href": "material/2_tue/ci/slides.html#events",
+    "title": "Learning Goals",
+    "section": "Events",
+    "text": "Events\n\nSingle or multiple events\non: [push, fork]\nActivities\non:\n  issue:\n    types:\n      - opened\n      - labeled\nFilters\non:\n  push:\n    branches:\n      - main\n      - 'releases/**'"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#artifacts",
+    "href": "material/2_tue/ci/slides.html#artifacts",
+    "title": "Learning Goals",
+    "section": "Artifacts",
+    "text": "Artifacts\n\nData sharing between jobs and data upload\nUploading artifact\n- name: \"Upload artifact\"\n  uses: actions/upload-artifact@v2\n  with:\n    name: my-artifact\n    path: my_file.txt\n    retention-days: 5\nDownloading artifact\n- name: \"Download a single artifact\"\n  uses: actions/download-artifact@v2\n  with:\n    name: my-artifact\nNote: Drop name to download all artifacts"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#test-actions-locally",
+    "href": "material/2_tue/ci/slides.html#test-actions-locally",
+    "title": "Learning Goals",
+    "section": "Test Actions Locally",
+    "text": "Test Actions Locally\n\nact\nRelies extensively on Docker\n\nUser should be in docker group\n\nRun act from root of the repository\nact (runs all workflows)\nact --job WORKFLOWNAME\nEnvironment is not 100% identical to GitHub’s\n\nWorkflows may fail locally, but work on GitHub"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#further-reading",
+    "href": "material/2_tue/ci/slides.html#further-reading",
+    "title": "Learning Goals",
+    "section": "Further Reading",
+    "text": "Further Reading\n\nWhat is Continuous Integration?\nGitHub Actions documentation\nGitHub Actions quickstart"
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#setting-up-a-test-job",
+    "href": "material/2_tue/ci/slides.html#setting-up-a-test-job",
+    "title": "Learning Goals",
+    "section": "Setting up a Test Job",
+    "text": "Setting up a Test Job\n\nImport Julia test package repository (the same code we used for testing)\nSet up workflow file\nmkdir -p .github/workflows\ncd .github/workflows\nvi format-check.yml\nLet’s check whether our code is formatted correctly. Edit format-check.yml to have following content\nname: format-check\n\non: [push, pull_request]\n\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: julia-actions/setup-julia@v1\n        with:\n          version: '1.9'\n      - name: Install JuliaFormatter and format\n        run: |\n          julia  -e 'using Pkg; Pkg.add(PackageSpec(name=\"JuliaFormatter\"))'\n          julia  -e 'using JuliaFormatter; format(\".\", verbose=true)'\n      - name: Format check\n        run: |\n          julia -e '\n          out = Cmd(`git diff --name-only`) |&gt; read |&gt; String\n          if out == \"\"\n              exit(0)\n          else\n              @error \"Some files have not been formatted\"\n              write(stdout, out)\n              exit(1)\n          end'     \nruns-on does not refer to a Docker container, but to a runner tag.\nAdd, commit, push\nAfter the push, inspect “Action” panel on GitHub repository\n\nGitHub will schedule a run (yellow dot)\nHooray. We have set up our first action.\n\nFailing test example:\n\nEdit settings on GitHub that one can only merge if all tests pass:\n\nSettings -&gt; Branches -&gt; Branch protection rule\nChoose main branch\nEnable “Require status checks to pass before merging”. Optionally enable “Require branches to be up to date before merging”\nChoose status checks that need to pass: test\nClick on “Create” at bottom of page.\n\nCreate a new branch break-code.\nEdit some file, violate the formatting, commit it and push it to the branch. Afterwards open a new PR and inspect the failing test. We are also not able to merge the changes as the “Merge” button should be inactive."
+  },
+  {
+    "objectID": "material/2_tue/ci/slides.html#act-demo",
+    "href": "material/2_tue/ci/slides.html#act-demo",
+    "title": "Learning Goals",
+    "section": "act Demo",
+    "text": "act Demo\n\nact is for quick checks while developing workflows, not for developing the code\nCheck available jobs (at root of repository)\nact -l\nRun jobs for push event (default event)\nact\nRun a specific job\nact -j test"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#error-detection",
+    "href": "material/2_tue/codereview/slides.html#error-detection",
+    "title": "Code Review",
+    "section": "Error Detection",
+    "text": "Error Detection\n\n\n\nAn analysis by Nuijten et al. (2016) of over 250K p-values reported in 8 major psych journals from 1985 to 2013 found that:\n\nhalf the papers had at least one inconsistent p-value\n1/8 of papers had errors that could affect conclusions\nerrors more likely to be erroneously significant than not"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#analysis-reproducibility",
+    "href": "material/2_tue/codereview/slides.html#analysis-reproducibility",
+    "title": "Code Review",
+    "section": "Analysis Reproducibility",
+    "text": "Analysis Reproducibility\nOf 35 articles published in Cognition with usable data (but no code, Hardwicke et al. (2018) found:\n\nonly 11 could be reproduced independently\n11 were reproducible with the original authors’ help\n13 were not reproducible even by the original authors"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#code-reproducibility",
+    "href": "material/2_tue/codereview/slides.html#code-reproducibility",
+    "title": "Code Review",
+    "section": "Code Reproducibility",
+    "text": "Code Reproducibility\nOf 62 Registered Reports in psychology published from 2014–2018, 36 had data and analysis code, 31 could be run, and 21 reproduced all the main results (Obels et al, 2020)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
+    "href": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
+    "title": "Code Review",
+    "section": "Barriers to Doing Code Review",
+    "text": "Barriers to Doing Code Review\n\n\n💻 Technical\n\nLack of skill\nNo guide\n\n\n⏱ Incentive\n\nNo time\nNot expected\n\n\n😳 Social\n\nExpectations\nFear of judgement"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#does-it-run",
+    "href": "material/2_tue/codereview/slides.html#does-it-run",
+    "title": "Code Review",
+    "section": "Does it run?",
+    "text": "Does it run?\n\nRequires the least expertise and time\nCan result in a substantial improvement\nRun on a different computer than coded on\nIdeally, access from the same place users or reviewers will\nNote if you get any errors\nIf you have the expertise to fix them, make and note the fix, then try again\n\n\nChecking whether the code runs is the simplest goal, but one of the most important and it would be a substantial improvement if all research code had this single check. It requires only the expertise to run a script in the relevant language. The reviewer does not necessarily need to be able to diagnose or help with any problems, just identify them to the coder."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-reproducible",
+    "href": "material/2_tue/codereview/slides.html#is-it-reproducible",
+    "title": "Code Review",
+    "section": "Is it reproducible?",
+    "text": "Is it reproducible?\n\nRequires more time, but not expertise\nThe coder can make this a lot easier for the reviewer\nAnyone running the code should get the same outputs\nOutputs include: Analysis Results; Plots; Tables\nCheck for a seed when random values are used\nAssess how straightforward it is to do this check\n\n\nComputational reproducibility means that anyone running the code gets the same results. The reviewer can check for consistency with outputs that are created by the code, such as an HTML or PDF rendered version of the script, or with values and figures in a manuscript.\nIt is also relevant to comment on how straightforward it is to check the outputs. For example, did the coder use literate programming, where the source code and natural-language explanations are interspersed in the same document, to divide the code into sections that clearly correspond with outputs that it needs to be consistent with? Are figures and tables numbered or labeled in a way that makes it easy for the reviewer to see their correspondence? This both helps the reviewer assess the reproducibility of the code, and helps other researchers use the code."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
+    "href": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
+    "title": "Code Review",
+    "section": "Is it auditable and understandable?",
+    "text": "Is it auditable and understandable?\n\nRequires a bit more expertise and time\nIs the code well-organised?\nHeaders make a complex script much more accessible\nCan you find corresponding parts of the outputs or manuscript?\nAre all parts of the process available (e.g., generating analysed data from raw data)?\nLiterate programming makes code more understandable.\n\n\nEven if a reviewer doesn’t have the expertise to assess the statistics or data processing, they can assess whether the code is well-organized enough to figure out what is intended so mistakes could be detected."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
+    "href": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
+    "title": "Code Review",
+    "section": "Does it follow best practices?",
+    "text": "Does it follow best practices?\n\nRequires substantial expertise and time\nGeneral coding principles that serve to reduce the scope for errors and make understanding code easier, for example:\n\nDo the variable names make sense?\nIs there repeated code (DRY) or values defined in multiple places (SPOT)?\nAre outputs of long processes saved and loaded from file?\nAre there sense checks or unit tests where appropriate?\n\n\n\nRecommendations about ‘best practices’ can be idiosyncratic, but here we mean general coding principles that serve to reduce the scope for errors and make understanding code easier. This goal can take a bit longer and requires more general coding expertise from the reviewer. It also may be more appropriate in earlier stages of the project. However, advice on best practices can still help coders with future projects, even when there isn’t scope to make big structural changes to the current project."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
+    "href": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
+    "title": "Code Review",
+    "section": "Is it correct and appropriate?",
+    "text": "Is it correct and appropriate?\n\nRequires substantial expertise and time\nIs the code actually doing what was intended?\nIs what was intended correct?\nDetect logical problems (e.g., filtering in instead of out)\nMay require domain expertise to detect some problems (e.g., knowing that a certain questionnaire has reverse-coded items)\n\n\nIs the code actually doing what was intended, and is what was intended correct? A careful answer to this question requires the reviewer to have domain-specific expertise and statistical expertise. Some logical problems can be caught without domain knowledge, such as intending to filter out male subjects, but actually filtering them IN. However, other problems will require specialist domain or statistical knowledge to detect."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#not-goals",
+    "href": "material/2_tue/codereview/slides.html#not-goals",
+    "title": "Code Review",
+    "section": "Not Goals",
+    "text": "Not Goals\n\nDo not submit code that doesn’t run for you for code review. Of course, code review may uncover bugs that were not apparent to you, but the reviewer should be able to assume that the code runs on your setup. Depending on their experience, a reviewer may fix bugs they find in review, or simply point them out. Severe enough bugs may cause the reviewer to terminate the review, which then prevents higher-order goals from being achieved. This is one reason it is important to do informal code check with colleagues before you send code for more formal review check, such as a journal submission.\nDon’t expect the reviewer to create code for you. Code review is not an opportunity to get someone else to fix sloppy or inefficient code, or to add documentation for you.Some reviewers, depending on their expertise and investment in the project, may of course choose to help improve the code directly, but this verges on a co-author role, not a review role.\nDo not rely on code review to assess the appropriateness of your scientific decisions or statistical analyses. In the context of a manuscript review at a journal, the reviewer may be both a scientific and code reviewer, but these are distinct roles. Code review itself is not a guarantee that your research is methodologically sound or that your statistical approach is appropriate.\n\n\n\n\nDebugging\nCode help\nStatistical help"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#a-review-package-should-include",
+    "href": "material/2_tue/codereview/slides.html#a-review-package-should-include",
+    "title": "Code Review",
+    "section": "A review package should include:",
+    "text": "A review package should include:\n\n\nA README file that describes the project; specifies credit and licensing\nAny outputs that the reviewers should try to reproduce\nAll data used to create the outputs to be reproduced\nAll code necessary to recreate the outputs\nA main script that runs any subscripts in the relevant order"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#project-organisation",
+    "href": "material/2_tue/codereview/slides.html#project-organisation",
+    "title": "Code Review",
+    "section": "Project organisation",
+    "text": "Project organisation\n\nMake sure all files used in the code are in a single directory that is the working directory\nUse Jupyter notebooks or RStudio projects to make this easy\nInclude a README that explains the purpose of all files\nDanielle Navarro’s Project structure"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#file-paths",
+    "href": "material/2_tue/codereview/slides.html#file-paths",
+    "title": "Code Review",
+    "section": "File paths",
+    "text": "File paths\nAll file references should use relative paths, not absolute paths.\n👎 Absolute Path\ndogs = open(\"C:\\Documents\\My Project\\data\\dogs.csv\", \"r\")\n\n👍 Relative Path\ndogs  open(\"data/dogs.csv\", \"r\")"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#naming-things",
+    "href": "material/2_tue/codereview/slides.html#naming-things",
+    "title": "Code Review",
+    "section": "Naming things",
+    "text": "Naming things\nName files and code objects so both people and computers can easily find things.\n\nFile and directory names should only contain letters, numbers, dashes, and underscores, with a full stop (.) between the file name and extension (no spaces!) e.g., DeBruine_code-review_2023-10-10.qmd\nBe consistent with capitalization, punctuation, and order\nUse a pattern that alphabetizes in a sensible order\nUse YYYY-MM-DD format for dates\nJenny Bryan’s Naming Things"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#data-documentation",
+    "href": "material/2_tue/codereview/slides.html#data-documentation",
+    "title": "Code Review",
+    "section": "Data documentation",
+    "text": "Data documentation\n\n\nOverview\n\nauthors\ndate and location\nsampling/inclusion criteria\ninstruments used\nupdates to the data\nlicense\n\n\nVariable information\n\nNames (i.e., the column names)\nLabels/description\nCodings (e.g., 1 = always, 5 = never)\nData type (e.g., binary, continuous)\nDescriptives (e.g., min, max)\nData units (e.g., mg/L, months)\nMissing values (e.g., NA, 999)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#literate-coding",
+    "href": "material/2_tue/codereview/slides.html#literate-coding",
+    "title": "Code Review",
+    "section": "Literate coding",
+    "text": "Literate coding\nAn approach to programming that focuses on the creation of a document containing a mix of human-readable narrative text and machine-readable computer code.\n\nQuarto, Jupyter, or R Markdown notebooks\n\n## Data Exclusions\n\nWhy we excluded these subjects...\n\n```{julia}\n# exclude subjects with more than 50% errors\ndf_grouped = groupby(df, :id)\ndf_excluded = combine(df_grouped) do sub_df\n    if mean(sub_df.correct) &gt;= 0.5\n        return sub_df\n    end\n    return DataFrame()\nend\n```\n\n\nWhen writing code, it is important to write it in such a way that it is easily understandable by others, and by your future self. The goals of literate programming are similar to those associated with writing clean code (Martin, 2009). Clean code is understandable by humans, well formatted, with an appropriate amount of white space, with meaningful names for variables and functions, and is well commented. Comments should clearly explain to the reader the purpose of the associated lines of code. The quality of commenting is more important than the quantity."
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
+    "href": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
+    "title": "Code Review",
+    "section": "Single point of truth (SPOT)",
+    "text": "Single point of truth (SPOT)\nWith repeated numbers\nusing DataFrames, Random\n\nsimdat = DataFrame(\n  id = 1:10, \n  group = repeat([\"A\", \"B\"], 5), \n  dv = randn(10)\n)\n\nWith parameter variables\nn = 10\n\nsimdat = DataFrame(\n  id = 1:n,\n  group = repeat([\"A\", \"B\"], n ÷ 2), \n  dv = randn(n)\n)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
+    "href": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
+    "title": "Code Review",
+    "section": "Don’t repeat yourself (DRY)",
+    "text": "Don’t repeat yourself (DRY)\n\nIf you find yourself copying and pasting code more than twice, it’s probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.\n\nWith repeated code\nusing HypothesisTests\n\ndfA = filter(row -&gt; row.group == \"A\", simdat)\nanalysisA = OneSampleTTest(dfA.dv)\n\ndfB = filter(row -&gt; row.group == \"B\", simdat)\nanalysisB = OneSampleTTest(dfB.dv)\n\nWith a function\nfunction subtest(data, level)\n    sub_df = filter(row -&gt; row.group == level, data)\n    return OneSampleTTest(sub_df.dv)\nend\n\nanalysisA = subtest(simdat, \"A\")\nanalysisB = subtest(simdat, \"B\")"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#unit-tests",
+    "href": "material/2_tue/codereview/slides.html#unit-tests",
+    "title": "Code Review",
+    "section": "Unit Tests",
+    "text": "Unit Tests\nusing Test\n\n# check length of DataFrame is correct\n@test size(simdat, 1) == 10\n\n# check column names are as expected\n@test names(simdat) == [\"id\", \"group\", \"dv\"]\n\n# check all dv values are positive\n@test all(simdat.dv .&gt; 0)"
+  },
+  {
+    "objectID": "material/2_tue/codereview/slides.html#exercises",
+    "href": "material/2_tue/codereview/slides.html#exercises",
+    "title": "Code Review",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n🔐 Personal Code\n\nFind code that you have written, in any language\nForm groups of 2-3 people with code in the same language\nTrade scripts and write code reviews\nGo over the code review with the writer\n\n\n🔓 Open Code\n\nForm groups of 2-3 with expertise in the same topic/language\nFind open code in that topic and language\nCollaboratively write a code review for it\nOptional: send it to the code author"
   },
   {
     "objectID": "material/2_tue/git/slides.html",
@@ -924,284 +1099,144 @@
     "text": "Commit Messages (2/2)\nThe seven rules of a great Git commit message:\n\nSeparate subject from body with a blank line.\nLimit the subject line to 50 characters.\nCapitalize the subject line.\nDo not end the subject line with a period.\nUse the imperative mood in the subject line.\nWrap the body at 72 characters.\nUse the body to explain what and why vs. how."
   },
   {
-    "objectID": "material/2_tue/codereview/slides.html#error-detection",
-    "href": "material/2_tue/codereview/slides.html#error-detection",
-    "title": "Code Review",
-    "section": "Error Detection",
-    "text": "Error Detection\n\n\n\nAn analysis by Nuijten et al. (2016) of over 250K p-values reported in 8 major psych journals from 1985 to 2013 found that:\n\nhalf the papers had at least one inconsistent p-value\n1/8 of papers had errors that could affect conclusions\nerrors more likely to be erroneously significant than not"
+    "objectID": "material/2_tue/git/tasks.html",
+    "href": "material/2_tue/git/tasks.html",
+    "title": "Tasks",
+    "section": "",
+    "text": "Tasks\n\nWork with any forge that you like and create a user account (we strongly recommend GitHub since we will need it later again).\nPush your package MyStatsPackage to a remote repository.\nAdd a function printOwner to the package through a pull request. The function should print your (GitHub) user name (hard-coded).\nStart a new Julia environment and use your package through its url: ]add https://github.com/[username]/MyStatsPackage.\nNow use the package from somebody else in the classroom instead and verify with printOwner that you use the correct package.\nFork this other package and contribute a function printContributor to it via a PR. Get a review and get it merged.\nAdd more functions to other packages of classmates that print funny things, but always ensure a linear history."
   },
   {
-    "objectID": "material/2_tue/codereview/slides.html#analysis-reproducibility",
-    "href": "material/2_tue/codereview/slides.html#analysis-reproducibility",
-    "title": "Code Review",
-    "section": "Analysis Reproducibility",
-    "text": "Analysis Reproducibility\nOf 35 articles published in Cognition with usable data (but no code, Hardwicke et al. (2018) found:\n\nonly 11 could be reproduced independently\n11 were reproducible with the original authors’ help\n13 were not reproducible even by the original authors"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#code-reproducibility",
-    "href": "material/2_tue/codereview/slides.html#code-reproducibility",
-    "title": "Code Review",
-    "section": "Code Reproducibility",
-    "text": "Code Reproducibility\nOf 62 Registered Reports in psychology published from 2014–2018, 36 had data and analysis code, 31 could be run, and 21 reproduced all the main results (Obels et al, 2020)"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
-    "href": "material/2_tue/codereview/slides.html#barriers-to-doing-code-review",
-    "title": "Code Review",
-    "section": "Barriers to Doing Code Review",
-    "text": "Barriers to Doing Code Review\n\n\n💻 Technical\n\nLack of skill\nNo guide\n\n\n⏱ Incentive\n\nNo time\nNot expected\n\n\n😳 Social\n\nExpectations\nFear of judgement"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#does-it-run",
-    "href": "material/2_tue/codereview/slides.html#does-it-run",
-    "title": "Code Review",
-    "section": "Does it run?",
-    "text": "Does it run?\n\nRequires the least expertise and time\nCan result in a substantial improvement\nRun on a different computer than coded on\nIdeally, access from the same place users or reviewers will\nNote if you get any errors\nIf you have the expertise to fix them, make and note the fix, then try again\n\n\nChecking whether the code runs is the simplest goal, but one of the most important and it would be a substantial improvement if all research code had this single check. It requires only the expertise to run a script in the relevant language. The reviewer does not necessarily need to be able to diagnose or help with any problems, just identify them to the coder."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#is-it-reproducible",
-    "href": "material/2_tue/codereview/slides.html#is-it-reproducible",
-    "title": "Code Review",
-    "section": "Is it reproducible?",
-    "text": "Is it reproducible?\n\nRequires more time, but not expertise\nThe coder can make this a lot easier for the reviewer\nAnyone running the code should get the same outputs\nOutputs include: Analysis Results; Plots; Tables\nCheck for a seed when random values are used\nAssess how straightforward it is to do this check\n\n\nComputational reproducibility means that anyone running the code gets the same results. The reviewer can check for consistency with outputs that are created by the code, such as an HTML or PDF rendered version of the script, or with values and figures in a manuscript.\nIt is also relevant to comment on how straightforward it is to check the outputs. For example, did the coder use literate programming, where the source code and natural-language explanations are interspersed in the same document, to divide the code into sections that clearly correspond with outputs that it needs to be consistent with? Are figures and tables numbered or labeled in a way that makes it easy for the reviewer to see their correspondence? This both helps the reviewer assess the reproducibility of the code, and helps other researchers use the code."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
-    "href": "material/2_tue/codereview/slides.html#is-it-auditable-and-understandable",
-    "title": "Code Review",
-    "section": "Is it auditable and understandable?",
-    "text": "Is it auditable and understandable?\n\nRequires a bit more expertise and time\nIs the code well-organised?\nHeaders make a complex script much more accessible\nCan you find corresponding parts of the outputs or manuscript?\nAre all parts of the process available (e.g., generating analysed data from raw data)?\nLiterate programming makes code more understandable.\n\n\nEven if a reviewer doesn’t have the expertise to assess the statistics or data processing, they can assess whether the code is well-organized enough to figure out what is intended so mistakes could be detected."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
-    "href": "material/2_tue/codereview/slides.html#does-it-follow-best-practices",
-    "title": "Code Review",
-    "section": "Does it follow best practices?",
-    "text": "Does it follow best practices?\n\nRequires substantial expertise and time\nGeneral coding principles that serve to reduce the scope for errors and make understanding code easier, for example:\n\nDo the variable names make sense?\nIs there repeated code (DRY) or values defined in multiple places (SPOT)?\nAre outputs of long processes saved and loaded from file?\nAre there sense checks or unit tests where appropriate?\n\n\n\nRecommendations about ‘best practices’ can be idiosyncratic, but here we mean general coding principles that serve to reduce the scope for errors and make understanding code easier. This goal can take a bit longer and requires more general coding expertise from the reviewer. It also may be more appropriate in earlier stages of the project. However, advice on best practices can still help coders with future projects, even when there isn’t scope to make big structural changes to the current project."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
-    "href": "material/2_tue/codereview/slides.html#is-it-correct-and-appropriate",
-    "title": "Code Review",
-    "section": "Is it correct and appropriate?",
-    "text": "Is it correct and appropriate?\n\nRequires substantial expertise and time\nIs the code actually doing what was intended?\nIs what was intended correct?\nDetect logical problems (e.g., filtering in instead of out)\nMay require domain expertise to detect some problems (e.g., knowing that a certain questionnaire has reverse-coded items)\n\n\nIs the code actually doing what was intended, and is what was intended correct? A careful answer to this question requires the reviewer to have domain-specific expertise and statistical expertise. Some logical problems can be caught without domain knowledge, such as intending to filter out male subjects, but actually filtering them IN. However, other problems will require specialist domain or statistical knowledge to detect."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#not-goals",
-    "href": "material/2_tue/codereview/slides.html#not-goals",
-    "title": "Code Review",
-    "section": "Not Goals",
-    "text": "Not Goals\n\nDo not submit code that doesn’t run for you for code review. Of course, code review may uncover bugs that were not apparent to you, but the reviewer should be able to assume that the code runs on your setup. Depending on their experience, a reviewer may fix bugs they find in review, or simply point them out. Severe enough bugs may cause the reviewer to terminate the review, which then prevents higher-order goals from being achieved. This is one reason it is important to do informal code check with colleagues before you send code for more formal review check, such as a journal submission.\nDon’t expect the reviewer to create code for you. Code review is not an opportunity to get someone else to fix sloppy or inefficient code, or to add documentation for you.Some reviewers, depending on their expertise and investment in the project, may of course choose to help improve the code directly, but this verges on a co-author role, not a review role.\nDo not rely on code review to assess the appropriateness of your scientific decisions or statistical analyses. In the context of a manuscript review at a journal, the reviewer may be both a scientific and code reviewer, but these are distinct roles. Code review itself is not a guarantee that your research is methodologically sound or that your statistical approach is appropriate.\n\n\n\n\nDebugging\nCode help\nStatistical help"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#a-review-package-should-include",
-    "href": "material/2_tue/codereview/slides.html#a-review-package-should-include",
-    "title": "Code Review",
-    "section": "A review package should include:",
-    "text": "A review package should include:\n\n\nA README file that describes the project; specifies credit and licensing\nAny outputs that the reviewers should try to reproduce\nAll data used to create the outputs to be reproduced\nAll code necessary to recreate the outputs\nA main script that runs any subscripts in the relevant order"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#project-organisation",
-    "href": "material/2_tue/codereview/slides.html#project-organisation",
-    "title": "Code Review",
-    "section": "Project organisation",
-    "text": "Project organisation\n\nMake sure all files used in the code are in a single directory that is the working directory\nUse Jupyter notebooks or RStudio projects to make this easy\nInclude a README that explains the purpose of all files\nDanielle Navarro’s Project structure"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#file-paths",
-    "href": "material/2_tue/codereview/slides.html#file-paths",
-    "title": "Code Review",
-    "section": "File paths",
-    "text": "File paths\nAll file references should use relative paths, not absolute paths.\n👎 Absolute Path\ndogs = open(\"C:\\Documents\\My Project\\data\\dogs.csv\", \"r\")\n\n👍 Relative Path\ndogs  open(\"data/dogs.csv\", \"r\")"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#naming-things",
-    "href": "material/2_tue/codereview/slides.html#naming-things",
-    "title": "Code Review",
-    "section": "Naming things",
-    "text": "Naming things\nName files and code objects so both people and computers can easily find things.\n\nFile and directory names should only contain letters, numbers, dashes, and underscores, with a full stop (.) between the file name and extension (no spaces!) e.g., DeBruine_code-review_2023-10-10.qmd\nBe consistent with capitalization, punctuation, and order\nUse a pattern that alphabetizes in a sensible order\nUse YYYY-MM-DD format for dates\nJenny Bryan’s Naming Things"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#data-documentation",
-    "href": "material/2_tue/codereview/slides.html#data-documentation",
-    "title": "Code Review",
-    "section": "Data documentation",
-    "text": "Data documentation\n\n\nOverview\n\nauthors\ndate and location\nsampling/inclusion criteria\ninstruments used\nupdates to the data\nlicense\n\n\nVariable information\n\nNames (i.e., the column names)\nLabels/description\nCodings (e.g., 1 = always, 5 = never)\nData type (e.g., binary, continuous)\nDescriptives (e.g., min, max)\nData units (e.g., mg/L, months)\nMissing values (e.g., NA, 999)"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#literate-coding",
-    "href": "material/2_tue/codereview/slides.html#literate-coding",
-    "title": "Code Review",
-    "section": "Literate coding",
-    "text": "Literate coding\nAn approach to programming that focuses on the creation of a document containing a mix of human-readable narrative text and machine-readable computer code.\n\nQuarto, Jupyter, or R Markdown notebooks\n\n## Data Exclusions\n\nWhy we excluded these subjects...\n\n```{julia}\n# exclude subjects with more than 50% errors\ndf_grouped = groupby(df, :id)\ndf_excluded = combine(df_grouped) do sub_df\n    if mean(sub_df.correct) &gt;= 0.5\n        return sub_df\n    end\n    return DataFrame()\nend\n```\n\n\nWhen writing code, it is important to write it in such a way that it is easily understandable by others, and by your future self. The goals of literate programming are similar to those associated with writing clean code (Martin, 2009). Clean code is understandable by humans, well formatted, with an appropriate amount of white space, with meaningful names for variables and functions, and is well commented. Comments should clearly explain to the reader the purpose of the associated lines of code. The quality of commenting is more important than the quantity."
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
-    "href": "material/2_tue/codereview/slides.html#single-point-of-truth-spot",
-    "title": "Code Review",
-    "section": "Single point of truth (SPOT)",
-    "text": "Single point of truth (SPOT)\nWith repeated numbers\nusing DataFrames, Random\n\nsimdat = DataFrame(\n  id = 1:10, \n  group = repeat([\"A\", \"B\"], 5), \n  dv = randn(10)\n)\n\nWith parameter variables\nn = 10\n\nsimdat = DataFrame(\n  id = 1:n,\n  group = repeat([\"A\", \"B\"], n ÷ 2), \n  dv = randn(n)\n)"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
-    "href": "material/2_tue/codereview/slides.html#dont-repeat-yourself-dry",
-    "title": "Code Review",
-    "section": "Don’t repeat yourself (DRY)",
-    "text": "Don’t repeat yourself (DRY)\n\nIf you find yourself copying and pasting code more than twice, it’s probably time to turn that into a function. This can save you both time and errors. What if you forgot to make the t-tests paired? With repeated code, you need to make sure to fix every instance. With a function, you just need to fix it once. This also makes the code easier to understand where the same thing is happening repeatedly, and exactly how it is different each time.\n\nWith repeated code\nusing HypothesisTests\n\ndfA = filter(row -&gt; row.group == \"A\", simdat)\nanalysisA = OneSampleTTest(dfA.dv)\n\ndfB = filter(row -&gt; row.group == \"B\", simdat)\nanalysisB = OneSampleTTest(dfB.dv)\n\nWith a function\nfunction subtest(data, level)\n    sub_df = filter(row -&gt; row.group == level, data)\n    return OneSampleTTest(sub_df.dv)\nend\n\nanalysisA = subtest(simdat, \"A\")\nanalysisB = subtest(simdat, \"B\")"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#unit-tests",
-    "href": "material/2_tue/codereview/slides.html#unit-tests",
-    "title": "Code Review",
-    "section": "Unit Tests",
-    "text": "Unit Tests\nusing Test\n\n# check length of DataFrame is correct\n@test size(simdat, 1) == 10\n\n# check column names are as expected\n@test names(simdat) == [\"id\", \"group\", \"dv\"]\n\n# check all dv values are positive\n@test all(simdat.dv .&gt; 0)"
-  },
-  {
-    "objectID": "material/2_tue/codereview/slides.html#exercises",
-    "href": "material/2_tue/codereview/slides.html#exercises",
-    "title": "Code Review",
-    "section": "Exercises",
-    "text": "Exercises\n\n\n🔐 Personal Code\n\nFind code that you have written, in any language\nForm groups of 2-3 people with code in the same language\nTrade scripts and write code reviews\nGo over the code review with the writer\n\n\n🔓 Open Code\n\nForm groups of 2-3 with expertise in the same topic/language\nFind open code in that topic and language\nCollaboratively write a code review for it\nOptional: send it to the code author"
-  },
-  {
-    "objectID": "material/2_tue/ci/slides.html",
-    "href": "material/2_tue/ci/slides.html",
+    "objectID": "material/2_tue/testing/slides.html",
+    "href": "material/2_tue/testing/slides.html",
     "title": "Learning Goals",
     "section": "",
-    "text": "Name and explain common workflows to automate in RSE.\nExplain the differences between the various continuous methodologies.\nExplain why automation is crucial in RSE.\nWrite and understand basic automation scripts for GitHub Actions.\n\ns.t. we understand what PkgTemplates generates for us.\n\n\nMaterial is taken and modified from the SSE lecture."
+    "text": "Get to know a few common terms of testing\nWork with the Julia unit testing package Test.jl\n\nMaterial is taken and modified from the SSE lecture, which builds partly on the py-rse book, and from the Test.jl docs."
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#why-automation",
-    "href": "material/2_tue/ci/slides.html#why-automation",
+    "objectID": "material/2_tue/testing/slides.html#what-is-testing",
+    "href": "material/2_tue/testing/slides.html#what-is-testing",
     "title": "Learning Goals",
-    "section": "Why Automation?",
-    "text": "Why Automation?\n\nAutomatize tasks\n\nRun tests frequently, give feedback early etc.\nEnsure reproducible test environments\nCannot forget automatized tasks\nLess burden to developer (and their workstation)\nAvoid manual errors\n\nProcess often integrated in development workflow\n\nExample: Support by Git hooks or Git forges"
+    "section": "What is Testing?",
+    "text": "What is Testing?\n\nSmelling old milk before using it\nA way to determine if a software is not producing reliable results and if so, what is the reason\nManual testing vs. automated testing"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#typical-automation-tasks-in-rse",
-    "href": "material/2_tue/ci/slides.html#typical-automation-tasks-in-rse",
+    "objectID": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
+    "href": "material/2_tue/testing/slides.html#why-should-you-test-your-software",
     "title": "Learning Goals",
-    "section": "Typical Automation Tasks in RSE",
-    "text": "Typical Automation Tasks in RSE\n\nCheck code formatting and quality\nCompile and test code for different platforms\nGenerate coverage reports and visualization\nBuild documentation and deploy it\nBuild, package, and upload releases"
+    "section": "Why Should you Test your Software?",
+    "text": "Why Should you Test your Software?\n\nImprove software reliability and reproducibility\nMake sure that changes (bugfixes, new features) do not affect other parts of software\nGenerally all software is better off being tested regularly. Possible exceptions are very small codes with single users.\nEnsure that a released version of a software actually works."
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#continuous-methodologies-12",
-    "href": "material/2_tue/ci/slides.html#continuous-methodologies-12",
+    "objectID": "material/2_tue/testing/slides.html#some-ways-to-test-software",
+    "href": "material/2_tue/testing/slides.html#some-ways-to-test-software",
     "title": "Learning Goals",
-    "section": "Continuous Methodologies (1/2)",
-    "text": "Continuous Methodologies (1/2)\n\nContinuous Integration (CI)\n\nContinuously integrate changes into “main” branch\nAvoids “merge hell”\nRelies on testing and checking code continuously\n\nShould be automatized"
+    "section": "Some Ways to Test Software",
+    "text": "Some Ways to Test Software\n\nAssertions\nUnit testing\nIntegration testing\nRegression testing"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#continuous-methodologies-22",
-    "href": "material/2_tue/ci/slides.html#continuous-methodologies-22",
+    "objectID": "material/2_tue/testing/slides.html#assertions",
+    "href": "material/2_tue/testing/slides.html#assertions",
     "title": "Learning Goals",
-    "section": "Continuous Methodologies (2/2)",
-    "text": "Continuous Methodologies (2/2)\n\nContinuous Delivery (CD)\n\nSoftware is in a state that allows new release at any time\nSoftware package is built\nActual release triggered manually\n\nContinuous Deployment (CD)\n\nSoftware is in a state that allows new release at any time\nSoftware package is built\nActual release triggered automatically (continuously)"
+    "section": "Assertions",
+    "text": "Assertions\n@assert condition \"message\"\n\nPrinciple of defensive programming\nNothing happens when an assertion is true; throws error when false.\nTypes of assertion statements:\n\nPrecondition\nPostcondition\nInvariant\n\nA basic but powerful tool to test a software on-the-go"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#automation-servicessoftware",
-    "href": "material/2_tue/ci/slides.html#automation-servicessoftware",
+    "objectID": "material/2_tue/testing/slides.html#unit-testing",
+    "href": "material/2_tue/testing/slides.html#unit-testing",
     "title": "Learning Goals",
-    "section": "Automation Services/Software",
-    "text": "Automation Services/Software\n\nGitHub Actions\nGitLab CI/CD\nCircle CI\nTravis CI\nJenkins\n…"
+    "section": "Unit Testing",
+    "text": "Unit Testing\n\nCatching errors with assertions is good but preventing them is better.\nA unit is a single function in one situation.\n\nA situation is one amongst many possible variations of input parameters.\n\nUser creates the expected result manually.\nActual result is compared to the expected result by @test."
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#what-is-github-actions",
-    "href": "material/2_tue/ci/slides.html#what-is-github-actions",
+    "objectID": "material/2_tue/testing/slides.html#integration-testing",
+    "href": "material/2_tue/testing/slides.html#integration-testing",
     "title": "Learning Goals",
-    "section": "What is “GitHub Actions”?",
-    "text": "What is “GitHub Actions”?\n\nAutomate, customize, and execute your software development workflows right in your repository with GitHub Actions.\n\nFrom: https://docs.github.com/en/actions"
+    "section": "Integration Testing",
+    "text": "Integration Testing\n\nTest whether several units work in conjunction.\nIntegrate units and test them together in an integration test.\nOften more complicated than a unit test and gives higher test coverage."
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#general-information",
-    "href": "material/2_tue/ci/slides.html#general-information",
+    "objectID": "material/2_tue/testing/slides.html#regression-testing",
+    "href": "material/2_tue/testing/slides.html#regression-testing",
     "title": "Learning Goals",
-    "section": "General Information",
-    "text": "General Information\n\nUsage of GitHub’s runners is limited\nAvailable for public repositories or accounts with subscription\nBy default Actions run on GitHub’s runners\n\nLinux, Windows, or MacOS\n\nQuickly evolving and significant improvements in recent years"
+    "section": "Regression Testing",
+    "text": "Regression Testing\n\nGenerating an expected result is not possible in some situations.\nCompare the current actual result with a previous actual result.\nNo guarantee that the current actual result is correct.\nRisk of a bug being carried over indefinitely.\nMain purpose is to identify changes in the current state of the code with respect to a past state."
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#components-12",
-    "href": "material/2_tue/ci/slides.html#components-12",
+    "objectID": "material/2_tue/testing/slides.html#setup-of-test.jl",
+    "href": "material/2_tue/testing/slides.html#setup-of-test.jl",
     "title": "Learning Goals",
-    "section": "Components (1/2)",
-    "text": "Components (1/2)\n\nWorkflow: Runs one or more jobs\nEvent: Triggers a workflow\nJobs: Set of steps (running on same runner)\n\nSteps executed consecutively and share data\nJobs by default executed in parallel\n\nAction: Application performing common, complex task (step) often used in workflows\nRunner: Server that runs jobs\nArtifacts: Files to be shared between jobs or to be kept after workflow finishes"
+    "section": "Setup of Test.jl",
+    "text": "Setup of Test.jl\n\nStandardized folder structure:\n├── Manifest.toml\n├── Project.toml\n├── src/\n└── test\n    ├── Manifest.toml\n    ├── Project.toml\n    ├── runtests.jl\n    └── setup.jl\nSingular test vs plural runtests.jl\nsetup.jl for all using XYZ statements, included in runtests.jl\nAdditional packages in [extra] section of ./Project.toml or in new ./test/Project.toml\n\nIn case of the latter: Do not add the package itself to the ./test/Project.toml\n\nRun: ]test when root project is activated"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#components-22",
-    "href": "material/2_tue/ci/slides.html#components-22",
+    "objectID": "material/2_tue/testing/slides.html#implement-and-structure-tests",
+    "href": "material/2_tue/testing/slides.html#implement-and-structure-tests",
     "title": "Learning Goals",
-    "section": "Components (2/2)",
-    "text": "Components (2/2)\n\nFrom GitHub Actions tutorial"
+    "section": "Implement and Structure Tests",
+    "text": "Implement and Structure Tests\n\n@test expr: Test whether expression expr is true\n@test expr broken=true: Explicitly mark test as broken\n@test_throws exception expr: Test whether expression expr throws exception (test unhappy path)\njulia&gt; @test_throws DimensionMismatch [1, 2, 3] + [1, 2]\nTest Passed\n      Thrown: DimensionMismatch\n@testset: Structure tests\n@testset \"trigonometric identities\" begin\n    θ = 2/3*π\n    @test sin(-θ) ≈ -sin(θ)\n    @test cos(-θ) ≈ cos(θ)\nend;\n@testset for ... end: Test in loop"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#setting-up-a-workflow",
-    "href": "material/2_tue/ci/slides.html#setting-up-a-workflow",
+    "objectID": "material/2_tue/testing/slides.html#further-reading-and-watching",
+    "href": "material/2_tue/testing/slides.html#further-reading-and-watching",
     "title": "Learning Goals",
-    "section": "Setting up a Workflow",
-    "text": "Setting up a Workflow\n\nWorkflow file files stored ${REPO_ROOT}/.github/workflows\nConfigured via YAML file\n\nname: learn-github-actions\non: [push]\njobs:\n  check-bats-version:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '14'\n      - run: npm install -g bats\n      - run: bats -v"
+    "section": "Further Reading and Watching",
+    "text": "Further Reading and Watching\n\nResearch Software Engineering with Python - Chapter 11: Testing Software\nHiRSE-Summer of Testing Part 2b: “Testing with Julia” by Nils Niggemann\nOfficial documentation of Test.jl"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#actions",
-    "href": "material/2_tue/ci/slides.html#actions",
-    "title": "Learning Goals",
-    "section": "Actions",
-    "text": "Actions\n- uses: actions/checkout@v3\n- uses: actions/setup-node@v2\n  with:\n    node-version: '14'\n\nIntegrated via uses directive\nAdditional configuration via with (options depend on Action)\nFind actions in marketplace\nWrite own actions"
+    "objectID": "material/4_thu/sim/slides.html#pre-registration",
+    "href": "material/4_thu/sim/slides.html#pre-registration",
+    "title": "Fake It Until You Make It",
+    "section": "Pre-Registration",
+    "text": "Pre-Registration\n\nPrep analysis scripts for pre-registration"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#some-useful-julia-actions",
-    "href": "material/2_tue/ci/slides.html#some-useful-julia-actions",
-    "title": "Learning Goals",
-    "section": "Some Useful Julia Actions",
-    "text": "Some Useful Julia Actions\n\nFind on github.com/julia-actions\n- uses: julia-actions/setup-julia@v1\n     with:\n       version: '1.9'\nMore:\n\ncache: caches ~/.julia/artifacts/* and ~/.julia/packages/* to reduce runtime of CI\njulia-buildpkg: build package\njulia-runtest: run tests\njulia-format: format code (not really an action, but example)"
+    "objectID": "material/4_thu/sim/slides.html#power",
+    "href": "material/4_thu/sim/slides.html#power",
+    "title": "Fake It Until You Make It",
+    "section": "Power",
+    "text": "Power\n\nCalculate power and sensitivity for analyses that don’t have empirical methods"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#user-specified-commands",
-    "href": "material/2_tue/ci/slides.html#user-specified-commands",
-    "title": "Learning Goals",
-    "section": "User-specified Commands",
-    "text": "User-specified Commands\n- name: \"Single line command\"\n  run: echo \"Single line command\"\n- name: \"Multi line command\"\n  run: |\n    echo \"First line\"\n    echo \"Second line. Directory ${PWD}\"\n  workdir: tmp/\n  shell: bash"
+    "objectID": "material/4_thu/sim/slides.html#reproducible-examples",
+    "href": "material/4_thu/sim/slides.html#reproducible-examples",
+    "title": "Fake It Until You Make It",
+    "section": "Reproducible Examples",
+    "text": "Reproducible Examples\n\n\nCreate reproducible examples when your data are too big or confidential to share"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#events",
-    "href": "material/2_tue/ci/slides.html#events",
-    "title": "Learning Goals",
-    "section": "Events",
-    "text": "Events\n\nSingle or multiple events\non: [push, fork]\nActivities\non:\n  issue:\n    types:\n      - opened\n      - labeled\nFilters\non:\n  push:\n    branches:\n      - main\n      - 'releases/**'"
+    "objectID": "material/4_thu/sim/slides.html#enhance-understanding",
+    "href": "material/4_thu/sim/slides.html#enhance-understanding",
+    "title": "Fake It Until You Make It",
+    "section": "Enhance Understanding",
+    "text": "Enhance Understanding\n\n\nEnhance your understanding of statistical concepts"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#artifacts",
-    "href": "material/2_tue/ci/slides.html#artifacts",
-    "title": "Learning Goals",
-    "section": "Artifacts",
-    "text": "Artifacts\n\nData sharing between jobs and data upload\nUploading artifact\n- name: \"Upload artifact\"\n  uses: actions/upload-artifact@v2\n  with:\n    name: my-artifact\n    path: my_file.txt\n    retention-days: 5\nDownloading artifact\n- name: \"Download a single artifact\"\n  uses: actions/download-artifact@v2\n  with:\n    name: my-artifact\nNote: Drop name to download all artifacts"
+    "objectID": "material/4_thu/sim/slides.html#teaching-data",
+    "href": "material/4_thu/sim/slides.html#teaching-data",
+    "title": "Fake It Until You Make It",
+    "section": "Teaching Data",
+    "text": "Teaching Data\n\nCreate demo data for teaching and tutorials"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#test-actions-locally",
-    "href": "material/2_tue/ci/slides.html#test-actions-locally",
-    "title": "Learning Goals",
-    "section": "Test Actions Locally",
-    "text": "Test Actions Locally\n\nact\nRelies extensively on Docker\n\nUser should be in docker group\n\nRun act from root of the repository\nact (runs all workflows)\nact --job WORKFLOWNAME\nEnvironment is not 100% identical to GitHub’s\n\nWorkflows may fail locally, but work on GitHub"
+    "objectID": "material/4_thu/sim/slides.html#plot",
+    "href": "material/4_thu/sim/slides.html#plot",
+    "title": "Fake It Until You Make It",
+    "section": "Plot",
+    "text": "Plot"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#further-reading",
-    "href": "material/2_tue/ci/slides.html#further-reading",
-    "title": "Learning Goals",
-    "section": "Further Reading",
-    "text": "Further Reading\n\nWhat is Continuous Integration?\nGitHub Actions documentation\nGitHub Actions quickstart"
+    "objectID": "material/4_thu/sim/slides.html#data",
+    "href": "material/4_thu/sim/slides.html#data",
+    "title": "Fake It Until You Make It",
+    "section": "Data",
+    "text": "Data"
   },
   {
-    "objectID": "material/2_tue/ci/slides.html#setting-up-a-test-job",
-    "href": "material/2_tue/ci/slides.html#setting-up-a-test-job",
-    "title": "Learning Goals",
-    "section": "Setting up a Test Job",
-    "text": "Setting up a Test Job\n\nImport Julia test package repository (the same code we used for testing)\nSet up workflow file\nmkdir -p .github/workflows\ncd .github/workflows\nvi format-check.yml\nLet’s check whether our code is formatted correctly. Edit format-check.yml to have following content\nname: format-check\n\non: [push, pull_request]\n\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: julia-actions/setup-julia@v1\n        with:\n          version: '1.9'\n      - name: Install JuliaFormatter and format\n        run: |\n          julia  -e 'using Pkg; Pkg.add(PackageSpec(name=\"JuliaFormatter\"))'\n          julia  -e 'using JuliaFormatter; format(\".\", verbose=true)'\n      - name: Format check\n        run: |\n          julia -e '\n          out = Cmd(`git diff --name-only`) |&gt; read |&gt; String\n          if out == \"\"\n              exit(0)\n          else\n              @error \"Some files have not been formatted\"\n              write(stdout, out)\n              exit(1)\n          end'     \nruns-on does not refer to a Docker container, but to a runner tag.\nAdd, commit, push\nAfter the push, inspect “Action” panel on GitHub repository\n\nGitHub will schedule a run (yellow dot)\nHooray. We have set up our first action.\n\nFailing test example:\n\nEdit settings on GitHub that one can only merge if all tests pass:\n\nSettings -&gt; Branches -&gt; Branch protection rule\nChoose main branch\nEnable “Require status checks to pass before merging”. Optionally enable “Require branches to be up to date before merging”\nChoose status checks that need to pass: test\nClick on “Create” at bottom of page.\n\nCreate a new branch break-code.\nEdit some file, violate the formatting, commit it and push it to the branch. Afterwards open a new PR and inspect the failing test. We are also not able to merge the changes as the “Merge” button should be inactive."
-  },
-  {
-    "objectID": "material/2_tue/ci/slides.html#act-demo",
-    "href": "material/2_tue/ci/slides.html#act-demo",
-    "title": "Learning Goals",
-    "section": "act Demo",
-    "text": "act Demo\n\nact is for quick checks while developing workflows, not for developing the code\nCheck available jobs (at root of repository)\nact -l\nRun jobs for push event (default event)\nact\nRun a specific job\nact -j test"
+    "objectID": "material/4_thu/sim/slides.html#code",
+    "href": "material/4_thu/sim/slides.html#code",
+    "title": "Fake It Until You Make It",
+    "section": "Code",
+    "text": "Code"
   },
   {
     "objectID": "material/4_thu/parallel/Julia_Parallel_Distributed_2023_Stuttgart.html",
