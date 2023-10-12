@@ -84,7 +84,7 @@ website:
             contents:
               - href: material/4_thu/sim/slides.qmd
                 text: "📝 1 - Simulation"
-              - href: material/4_thu/stats/Bootstrap.qmd
+              - href: material/4_thu/bootstrap/Bootstrap.qmd
                 text: "📝 2 - Bootstrapping"
               - href: material/4_thu/parallel/slides.qmd
                 text: "📝 3 - Parallelization"
