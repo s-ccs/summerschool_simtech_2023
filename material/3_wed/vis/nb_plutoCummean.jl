@@ -49,6 +49,17 @@ PlutoExtras
 # ╔═╡ 49a15661-9511-4da5-9d53-41cd0d140da0
 y = simulate(1,nmax);
 
+# ╔═╡ c9824258-0c54-48d6-a7de-76a324535e73
+begin
+	f123,ax123,h = hlines([0.5];xmax=0.7,space=:data)
+end
+
+# ╔═╡ f10cad89-cef8-44b5-95b1-497322e83644
+CairoMakie.spaces()
+
+# ╔═╡ 006f0413-ca33-44cc-bb70-afbd07728a6d
+h.space
+
 # ╔═╡ 0cb700aa-57dd-447e-8d68-5fbb495d55d4
 y_mean = sum.(simulate.(1:1000,nmax))./nmax;
 
@@ -1719,6 +1730,9 @@ version = "3.5.0+0"
 # ╠═4c273ad2-7b68-4384-b909-3419748b5bd3
 # ╠═ff47dbb9-3718-4fdd-b366-77bdd5204c32
 # ╠═49a15661-9511-4da5-9d53-41cd0d140da0
+# ╠═c9824258-0c54-48d6-a7de-76a324535e73
+# ╠═f10cad89-cef8-44b5-95b1-497322e83644
+# ╠═006f0413-ca33-44cc-bb70-afbd07728a6d
 # ╠═0cb700aa-57dd-447e-8d68-5fbb495d55d4
 # ╠═4c9f3a84-7988-4e53-8585-e09446b514c8
 # ╠═ae3b9284-3c57-488f-84df-0ab038fb4ed0
