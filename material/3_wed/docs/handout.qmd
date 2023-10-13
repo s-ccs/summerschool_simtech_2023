@@ -50,7 +50,7 @@ makedocs(
 
 ### How to generate
  - `julia --project=docs/ docs/make.jl`, or
- - `]activate docs/; include("make.jl")`, or
+ - `]activate docs/; include("docs/make.jl")`, or
  - `LiveServer.jl` + `deploydocs()`
 
 ### How to write
