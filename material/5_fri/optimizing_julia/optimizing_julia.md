@@ -134,6 +134,9 @@ PProf.jl (`pprof()` after creating a profile via `@profview`).
 
 Task: Optimize the code!
 
+You can find one improved version in the file
+[`optimizing_julia_solution.jl`](optimizing_julia_solution.jl).
+
 ## Introduction to generic Julia code and AD
 
 One of the strengths of Julia is that you can use quite a few
