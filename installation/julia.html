@@ -411,6 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
   <li><a href="#mac-linux" id="toc-mac-linux" class="nav-link" data-scroll-target="#mac-linux">Mac &amp; Linux</a></li>
   </ul></li>
+  <li><a href="#revise.jl" id="toc-revise.jl" class="nav-link" data-scroll-target="#revise.jl">Revise.jl</a></li>
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a></li>
   <li><a href="#optional-ohmyrepl" id="toc-optional-ohmyrepl" class="nav-link" data-scroll-target="#optional-ohmyrepl">Optional: OhMyREPL</a></li>
   </ul>
@@ -434,6 +435,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>curl -fsSL https://install.julialang.org | sh</code> in any shell</p>
 </section>
 </section>
+<section id="revise.jl" class="level1">
+<h1>Revise.jl</h1>
+<p>There is a julia-package <code>Revise.jl</code> that everyone should install. To do so open a julia REPL (=command line) and execute the following lines:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"Revise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and that’s it. Revise automatically screens the active packages and updates the function if it detects code changes. Similar to <code>autoreload 2</code> in ipython.</p>
+</section>
 <section id="vscode" class="level1">
 <h1>VSCode</h1>
 <p>To install VSCode (the recommended IDE), go to <a href="https://code.visualstudio.com/download">this link</a> and download + install the correct package.</p>
@@ -448,13 +456,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Install the package: <code>]activate</code> (without a path after activate, you activate the “global” environment) <code>]add OhMyREPL</code></p></li>
 <li><p>Add it to your <code>startup.jl</code> Open <code>.julia/config/startup.jl</code> or <code>c:/users/USERNAME/.julia/config/startup.jl</code> on windows and add</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">atreplinit</span>() <span class="cf">do</span> repl</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@eval</span> <span class="im">using</span> <span class="bu">OhMyREPL</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">catch</span> <span class="cn">e</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@warn</span> <span class="st">"error while importing OhMyREPL"</span> <span class="cn">e</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">atreplinit</span>() <span class="cf">do</span> repl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@eval</span> <span class="im">using</span> <span class="bu">OhMyREPL</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">catch</span> <span class="cn">e</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@warn</span> <span class="st">"error while importing OhMyREPL"</span> <span class="cn">e</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><span class="emoji" data-emoji="tada">🎉</span> <img src="https://kristofferc.github.io/OhMyREPL.jl/latest/features/rainbow_brackets.png" class="img-fluid"></p>
 
 
