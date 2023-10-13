@@ -11,6 +11,15 @@ AppStore -> JuliaUp,  or `winget install julia -s msstore` in CMD
 ### Mac & Linux
 `curl -fsSL https://install.julialang.org | sh` in any shell
 
+# Revise.jl
+There is a julia-package `Revise.jl` that everyone should install. To do so open a julia REPL (=command line) and execute the following lines:
+```julia
+using Pkg
+Pkg.add("Revise")
+```
+
+and that's it. Revise automatically screens the active packages and updates the function if it detects code changes. Similar to `autoreload 2` in ipython.
+
 # VSCode
 To install VSCode (the recommended IDE), go to [this link](https://code.visualstudio.com/download) and download + install the correct package.
 
