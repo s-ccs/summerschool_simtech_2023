@@ -1,7 +1,15 @@
 # # Optimizing Julia code
 
 # This session provides an introduction to optimizing Julia code.
-# The examples are developed with Julia v1.9.3.
+# The examples are developed with Julia v1.9.3. You can download
+# all files from the summer school website:
+#
+# - [`optimizing_julia.jl`](optimizing_julia.jl)
+# - [`Project.toml`](Project.toml)
+# - [`Manifest.toml`](Manifest.toml)
+#
+# This website renders the content of
+# [`optimizing_julia.jl`](optimizing_julia.jl).
 
 # First, we install all required packages
 import Pkg
