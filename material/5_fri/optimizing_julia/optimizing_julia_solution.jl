@@ -48,14 +48,6 @@ function simulate!(u; t_end, dt, dx)
     return t
 end
 
-# function rhs!(du, u, dx)
-#     for i in eachindex(u)
-#         im1 = i == firstindex(u) ? lastindex(u) : (i - 1)
-#         du[i] = -(u[i] - u[im1]) / dx
-#     end
-#     return nothing
-# end
-
 function rhs!(du, u, dx)
     inv_dx = inv(dx)
 
