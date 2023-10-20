@@ -118,6 +118,9 @@ using BenchmarkTools
 @profview simulate()
 
 # Task: Optimize the code!
+#
+# You can find one improved version in the file
+# [`optimizing_julia_solution.jl`](optimizing_julia_solution.jl).
 
 
 # ## Introduction to generic Julia code and AD
